@@ -1,5 +1,6 @@
 import { useLanguage } from "AppContext";
 import { useTranslation } from "react-i18next";
+
 import React from "react";
 
 const LanguageBox = ({ text, languageCode, logo }) => {
@@ -9,6 +10,7 @@ const LanguageBox = ({ text, languageCode, logo }) => {
   const changeLanguage = () => {
     i18n.changeLanguage(languageCode);
     setLanguage(languageCode);
+    window.electronAPI.storeSet("language", languageCode);
   };
 
   return (

@@ -2,12 +2,16 @@ const { app, BrowserWindow } = require("electron");
 
 const path = require("path");
 const isDev = require("electron-is-dev");
+const initStoreMain = require("./electron-utils/data/initStoreMain");
 
 function createWindow() {
   // Create the browser window.
   const win = new BrowserWindow({
     width: 800,
     height: 600,
+    webPreferences: {
+      preload: path.join(__dirname, "/electron-utils/preload.js"),
+    },
   });
 
   win.loadURL(
@@ -17,7 +21,10 @@ function createWindow() {
   );
 }
 
-app.on("ready", createWindow);
+app.whenReady().then(() => {
+  initStoreMain();
+  createWindow();
+});
 
 // Quit when all windows are closed.
 app.on("window-all-closed", () => app.quit());
