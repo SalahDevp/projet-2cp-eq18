@@ -3,10 +3,10 @@ import React, { useState, useContext } from "react";
 const languageContext = React.createContext();
 const userModeContext = React.createContext();
 
-export function useLanguageContext() {
+export function useLanguage() {
   return useContext(languageContext);
 }
-export function useUserModeContext() {
+export function useUserMode() {
   return useContext(userModeContext);
 }
 
