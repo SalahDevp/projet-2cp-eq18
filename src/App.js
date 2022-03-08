@@ -1,5 +1,7 @@
+import AppContext from "AppContext";
+
 function App() {
-  return <div></div>;
+  return <AppContext></AppContext>;
 }
 
 export default App;
