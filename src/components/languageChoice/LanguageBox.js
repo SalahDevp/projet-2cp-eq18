@@ -10,6 +10,7 @@ const LanguageBox = ({ text, languageCode, logo }) => {
   const changeLanguage = () => {
     i18n.changeLanguage(languageCode);
     setLanguage(languageCode);
+    //store the language choice
     window.electronAPI.storeSet("language", languageCode);
   };
 
