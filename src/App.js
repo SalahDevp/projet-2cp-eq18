@@ -1,7 +1,9 @@
 import AppContext from "AppContext";
-
+import Mode from "./pages/Mode"
 function App() {
-  return <AppContext></AppContext>;
+  return <AppContext>
+ <Mode />
+  </AppContext>;
 }
 
 export default App;

@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.h{
+    display: grid;
+    grid-template-rows: 80% 20%;
+     border: 1px solid red;
+}
