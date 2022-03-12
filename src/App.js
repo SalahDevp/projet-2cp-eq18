@@ -1,8 +1,11 @@
 import AppContext from "AppContext";
-import Mode from "./pages/Mode"
+import Menu from "pages/Menu";
+//import Mode from "./pages/Mode"
 function App() {
   return <AppContext>
- <Mode />
+    {/*
+ <Mode />*/}
+ <Menu />
   </AppContext>;
 }
 

@@ -3,8 +3,13 @@ module.exports = {
   theme: {
     extend: {
       spacing: {
-        '128': '33rem',
-      }
+        '128': '27rem',
+        '328':'40rem'
+      },
+      colors: {
+        'box': '#B9FFFC',
+        "title":"#3FD1CB",
+      },
     },
   },
   plugins: [],

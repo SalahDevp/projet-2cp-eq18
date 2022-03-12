@@ -6,5 +6,6 @@
 .h{
     display: grid;
     grid-template-rows: 80% 20%;
-     border: 1px solid red;
+     overflow:hidden;
+
 }
