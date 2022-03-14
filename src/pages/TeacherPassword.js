@@ -1,10 +1,12 @@
 import { useUserMode } from "AppContext";
 import confirmationIcon from "assets/password/confirmation.png";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const TeacherPassword = () => {
   const [password, setPassword] = useState("");
   const { setTeacherMode } = useUserMode();
+  const navigate = useNavigate();
 
   const handleSubmit = async () => {
     //get the stored password
@@ -13,7 +15,8 @@ const TeacherPassword = () => {
     if (password === storedPassword) {
       setTeacherMode(true);
       console.log("success!");
-      //TODO: navigate to menu
+      //navigate to menu
+      navigate("/menu");
     } else {
       console.log("wrong password!");
       setPassword("");

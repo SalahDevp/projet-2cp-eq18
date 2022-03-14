@@ -24,7 +24,7 @@ function createWindow() {
 
 app.whenReady().then(() => {
   initStoreMain();
-  store.openInEditor();
+  //store.openInEditor();
   createWindow();
 });
 

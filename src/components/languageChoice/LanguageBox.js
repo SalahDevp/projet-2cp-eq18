@@ -1,9 +1,11 @@
+import { useNavigate } from "react-router-dom";
 import { useLanguage } from "AppContext";
 import { useTranslation } from "react-i18next";
 
 import React from "react";
 
 const LanguageBox = ({ text, languageCode, image }) => {
+  const navigate = useNavigate();
   const { setLanguage } = useLanguage();
   const { i18n } = useTranslation();
   //func that changes the lng
@@ -12,7 +14,8 @@ const LanguageBox = ({ text, languageCode, image }) => {
     setLanguage(languageCode);
     //store the language choice
     window.electronAPI.storeSet("language", languageCode);
-    //TODO: navigate to user mode page
+    //navigate to user mode page
+    navigate("/user-mode");
   };
 
   return (
