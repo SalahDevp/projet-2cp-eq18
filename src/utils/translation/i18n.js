@@ -13,12 +13,30 @@ i18n
     resources: {
       fr: {
         translation: {
-          test: "bienvenue sur notre application",
+          student: "ÉLEVE",
+          teacher: "ENSEIGNANT",
+          courses: "COURS",
+          grid: "GRILLE", //la grille
+          exercices: "EXERCICES",
+          password: "Mot de passe",
+          pleaseEnterPassword: "Veuillez entrer votre mot de passe",
+          changePassword: "changer le mot de passe",
+          showPassword: "afficher le mot de passe",
+          hidePassword: "masquer le mot de passe",
         },
       },
       ar: {
         translation: {
-          test: "مرحبا بكم في تطبيقنا",
+          student: "تلميذ",
+          teacher: "أستاذ",
+          courses: "دروس",
+          grid: "المرصوفة", //la grille
+          exercices: "تمارين",
+          password: "كلمة السر",
+          pleaseEnterPassword: "يرجى ادخال كلمة السر",
+          changePassword: "تغيير كلمة السر",
+          showPassword: "اظهار كلمة المرور",
+          hidePassword: "اخفاء كلمة المرور",
         },
       },
     },
