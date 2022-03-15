@@ -10,7 +10,7 @@ const Menu = () => {
   const navigate = useNavigate();
   window.addEventListener("keydown", function (event) {
     if (event.key === "Escape") {
-      navigate("/");
+      navigate("/user-mode");
     }
     
   });

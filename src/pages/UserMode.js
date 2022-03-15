@@ -18,6 +18,12 @@ const UserMode = () => {
     //navigate to menu
     navigate("/menu");
   };
+  window.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+      navigate("/");
+    }
+    
+  });
   return (
     <div>
     <Nav />
