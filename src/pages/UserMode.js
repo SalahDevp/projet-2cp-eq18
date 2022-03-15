@@ -4,6 +4,7 @@ import imgT from "assets/userMode/teacher.png";
 import imgE from "assets/userMode/etudiant.png";
 import { useUserMode } from "AppContext";
 import { useNavigate } from "react-router-dom";
+import Nav from "components/Nav"
 
 const UserMode = () => {
   const { setTeacherMode } = useUserMode();
@@ -18,6 +19,8 @@ const UserMode = () => {
     navigate("/menu");
   };
   return (
+    <div>
+    <Nav />
     <div
       className=" absolute top-1/2 left-1/2
      -translate-x-1/2 -translate-y-1/2 
@@ -25,6 +28,7 @@ const UserMode = () => {
     >
       <Box image={imgT} title="PROFESSEUR" handleClick={handleTeacherMode} />
       <Box image={imgE} title="ÉLEVE" handleClick={handleStudentMode} />
+    </div>
     </div>
   );
 };

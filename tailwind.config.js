@@ -9,6 +9,8 @@ module.exports = {
       colors: {
         'box': '#B9FFFC',
         "title":"#3FD1CB",
+        "nav":"#7579E7",
+        
       },
     },
   },
