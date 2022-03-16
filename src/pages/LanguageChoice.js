@@ -7,7 +7,7 @@ import React from "react";
 const LanguageChoice = () => {
   return (
     <div>
-      <Nav />
+      <Nav title="choisir la langue" display="none" aff={false} />
     <div className="flex flex-col h-screen w-screen justify-around items-center">
       <LanguageBox text={"العربية"} languageCode="ar" image={ksaFlag} />
       <LanguageBox text={"français"} languageCode="fr" image={franceFlag} />

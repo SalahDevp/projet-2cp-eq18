@@ -10,13 +10,13 @@ const Menu = () => {
   const navigate = useNavigate();
   window.addEventListener("keydown", function (event) {
     if (event.key === "Escape") {
-      navigate("/user-mode");
+      navigate("/");
     }
     
   });
   return (
     <div>
-      <Nav />
+      <Nav title="se connecter" pathAvant="/user-mode" aff={false} />
               <div
                 className=" absolute top-1/2 left-1/2
               -translate-x-1/2 -translate-y-1/2 

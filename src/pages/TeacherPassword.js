@@ -32,7 +32,7 @@ const TeacherPassword = () => {
   });
   return (
     <div>
-      <Nav />
+      <Nav pathAvant="/user-mode"  aff={false} />
    
     <div className="h-screen w-screen flex items-center justify-center">
       <div className="w-1/2">
