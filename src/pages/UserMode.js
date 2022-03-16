@@ -5,7 +5,7 @@ import imgE from "assets/userMode/etudiant.png";
 import { useTranslation } from "react-i18next";
 import { useUserMode } from "AppContext";
 import { useNavigate } from "react-router-dom";
-import Nav from "components/Nav"
+import Nav from "components/Nav";
 
 const UserMode = () => {
   const { setTeacherMode } = useUserMode();
@@ -24,19 +24,26 @@ const UserMode = () => {
     if (event.key === "Escape") {
       navigate("/");
     }
-    
   });
   return (
     <div>
-    <Nav title="se connecter"  pathAvant="/" aff={true}/>
-    <div
-      className=" absolute top-1/2 left-1/2
+      <Nav title="se connecter" pathAvant="/" aff={true} />
+      <div
+        className=" absolute top-1/2 left-1/2
      -translate-x-1/2 -translate-y-1/2 
       h-96 w-128 flex items-center justify-between "
-    >
-      <Box image={imgT} title={t("teacher")} handleClick={handleTeacherMode} />
-      <Box image={imgE} title={t("student")} handleClick={handleStudentMode} />
-    </div>
+      >
+        <Box
+          image={imgT}
+          title={t("teacher")}
+          handleClick={handleTeacherMode}
+        />
+        <Box
+          image={imgE}
+          title={t("student")}
+          handleClick={handleStudentMode}
+        />
+      </div>
     </div>
   );
 };

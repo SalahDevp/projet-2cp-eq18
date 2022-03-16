@@ -4,7 +4,6 @@ const path = require("path");
 const isDev = require("electron-is-dev");
 const initStoreMain = require("./electron-utils/data/initStoreMain");
 const store = require("./electron-utils/data/store");
-const { ALL } = require("dns");
 
 function createWindow() {
   // Create the browser window.
