@@ -4,6 +4,7 @@ import Box from "components/menu-mode/Box";
 import img1 from "assets/menu/grille.png";
 import img2 from "assets/menu/online-course.png";
 import img3 from "assets/menu/online-exercice.png";
+import Nav from "components/Nav"
 import { useTranslation } from "react-i18next";
 
 const Menu = () => {
@@ -21,6 +22,8 @@ const Menu = () => {
   );
 
   return (
+    <>
+    <Nav title="se connecter" pathAvant="/user-mode" aff={false} />
     <div
       className=" absolute top-1/2 left-1/2
     -translate-x-1/2 -translate-y-1/2 
@@ -30,6 +33,7 @@ const Menu = () => {
       <Box image={img2} title={t("courses")} />
       <Box image={img3} title={t("exercices")} />
     </div>
+    </>
   );
 };
 

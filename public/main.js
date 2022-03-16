@@ -4,6 +4,7 @@ const path = require("path");
 const isDev = require("electron-is-dev");
 const initStoreMain = require("./electron-utils/data/initStoreMain");
 const store = require("./electron-utils/data/store");
+const { ALL } = require("dns");
 
 function createWindow() {
   // Create the browser window.
@@ -13,6 +14,7 @@ function createWindow() {
     webPreferences: {
       preload: path.join(__dirname, "/electron-utils/preload.js"),
     },
+    //frame:false,
   });
 
   win.loadURL(

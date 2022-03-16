@@ -1,5 +1,6 @@
 import { useUserMode } from "AppContext";
 import confirmationIcon from "assets/password/confirmation.png";
+import Nav from "components/Nav";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -22,8 +23,18 @@ const TeacherPassword = () => {
       console.log("wrong password!");
       setPassword("");
     }
+    
   };
+  window.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+      navigate("/user-mode");
+    }
+    
+  });
   return (
+    <div>
+      <Nav pathAvant="/user-mode"  aff={false} />
+   
     <div className="h-screen w-screen flex items-center justify-center">
       <div className="w-1/2">
         <span className="font-semibold text-lg pl-2">
@@ -49,6 +60,7 @@ const TeacherPassword = () => {
           </span>
         </div>
       </div>
+    </div>
     </div>
   );
 };

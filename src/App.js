@@ -11,7 +11,7 @@ function App() {
     <AppContext>
       <HashRouter>
         <Routes>
-          <Route index element={<LanguageChoice />} />
+          <Route index  element={<LanguageChoice />} />
           <Route path="user-mode" element={<UserMode />} />
           <Route path="teacher-password" element={<TeacherPassword />} />
           <Route path="menu" element={<Menu />} />
