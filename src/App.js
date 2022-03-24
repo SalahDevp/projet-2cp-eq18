@@ -12,11 +12,11 @@ function App() {
     <AppContext>
       <HashRouter>
         <Routes>
-          <Route path="h" element={<LanguageChoice />} />
+          <Route index element={<LanguageChoice />} />
           <Route path="user-mode" element={<UserMode />} />
           <Route path="teacher-password" element={<TeacherPassword />} />
           <Route path="menu" element={<Menu />} />
-          <Route index element={<Paint />} />
+          <Route path="grille" element={<Paint />} />
         </Routes>
       </HashRouter>
     </AppContext>
