@@ -1,6 +1,8 @@
 import Canvas from "components/paint/Canvas";
 import React, { useRef, useEffect, useState } from "react";
+
 import * as drawShape from "utils/paint/actions/drawShape";
+import * as movePoint from "utils/paint/actions/movePoint";
 import { clearCanvas, drawLine } from "utils/paint/basics";
 
 export const HEIGHT = 500,
@@ -35,12 +37,13 @@ const Paint = () => {
     setLine({});
     setCurrent({});
   };
+
   useEffect(() => {
     const context = canvasRef.current.getContext("2d");
     clearCanvas(context, WIDTH, HEIGHT, UNIT);
     shapes.forEach((shape) => shape.draw(context));
     if (line?.x1) drawLine(context, line);
-  }, [shapes, line]);
+  }, [shapes, line, drawing]);
   return (
     <>
       <Canvas
@@ -55,6 +58,7 @@ const Paint = () => {
         <button onClick={handleClear}>clear</button>
         <button onClick={() => setActionType(undefined)}>hand</button>
         <button onClick={() => setActionType(drawShape)}>draw shape</button>
+        <button onClick={() => setActionType(movePoint)}>move point</button>
       </div>
     </>
   );
