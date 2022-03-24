@@ -1,6 +1,3 @@
-import React, { useRef, useEffect } from "react";
-import useInitCanvas from "utils/paint/basics";
-
 const Canvas = ({
   canvasRef,
   width,
