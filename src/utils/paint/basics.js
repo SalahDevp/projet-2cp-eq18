@@ -27,6 +27,14 @@ export function getShapeFromPoint(shapes, x, y) {
   return { shape, pointIndex: index };
 }
 
+export function drawLine(context, line) {
+  context.beginPath();
+  context.strokeStyle = "#000000";
+  context.moveTo(line.x1, line.y1);
+  context.lineTo(line.x2, line.y2);
+  context.stroke();
+}
+
 const drawGrid = (context, width, height, unit) => {
   context.strokeStyle = "#75eaff";
   //vetical lines
