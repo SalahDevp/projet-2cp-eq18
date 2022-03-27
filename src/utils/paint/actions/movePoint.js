@@ -1,7 +1,7 @@
 import { UNIT } from "pages/Paint";
 
 import { getGridPos, getMousePos, getShapeFromPoint } from "utils/paint/basics";
-import { checkIfPointInShapeSegment } from "../geometry";
+import { checkIfPointInShapeSegment, rahMoghtasib } from "../geometry";
 
 export const handleMouseDown = (event, state) => {
   const { x: mouseX, y: mouseY } = getMousePos(state.canvasRef, event);
@@ -56,7 +56,6 @@ export const handleMouseUp = (event, state) => {
   const { x, y } = getGridPos(mouseX, mouseY, UNIT);
   const { shape, pointIndex } = getShapeFromPoint(state.shapes, x, y);
   state.current.shape.points[state.current.pointIndex] = { x, y };
-  let lineEq;
   if (shape) {
     if (
       !shape.polygone &&
@@ -82,133 +81,6 @@ export const handleMouseUp = (event, state) => {
     }
   }
 
-  /*-----------------------------------------------------------------------------------------*/
-  /* bon hna ybdaw les test (les cas) ta3 deplacement ta3 les point*/
-  /*1111111111111111111111111111111111111111111111111111111111111*/
-  /* l if lwla testi ida lpoint li ddeplassa yantamilk ll line (had line ttkwn ml point li 9bloo ou li b3doo) nsupprimooh*/
-  if (
-    state.current.shape.points[state.current.pointIndex - 1] &&
-    state.current.shape.points[state.current.pointIndex + 1]
-  ) {
-    lineEq = getLineEq(
-      state.current.shape.points[state.current.pointIndex - 1],
-      state.current.shape.points[state.current.pointIndex + 1]
-    );
-
-    if (
-      pointBelongsToLine(
-        lineEq,
-        state.current.shape.points[state.current.pointIndex]
-      )
-    ) {
-      // f had l if n7ssboo tool ta3 line ml x-1 ll x+1 ida kant toosawi line ml (x-->x-1) + (x-->x+1)
-      // ida ma kantch mou7a99a9a n3awdoonrdoo lpoint win kan (fl else)
-      if (
-        !(
-          lineLength(
-            state.current.shape.points[state.current.pointIndex],
-            state.current.shape.points[state.current.pointIndex - 1]
-          ) +
-            lineLength(
-              state.current.shape.points[state.current.pointIndex],
-              state.current.shape.points[state.current.pointIndex + 1]
-            ) ===
-          lineLength(
-            state.current.shape.points[state.current.pointIndex + 1],
-            state.current.shape.points[state.current.pointIndex - 1]
-          )
-        )
-      ) {
-        state.current.shape.points[state.current.pointIndex].x =
-          state.current.x;
-        state.current.shape.points[state.current.pointIndex].y =
-          state.current.y;
-      }
-    }
-  }
-  /*222222222222222222222222222222222222222222222222222222222222222222222222222222222*/
-  // had l if ntetsoo biha ida kan lpoint wzoog point li moorah mnfss line nsuprimooh
-  if (
-    state.current.shape.points[state.current.pointIndex + 1] &&
-    state.current.shape.points[state.current.pointIndex + 2]
-  ) {
-    lineEq = getLineEq(
-      state.current.shape.points[state.current.pointIndex + 1],
-      state.current.shape.points[state.current.pointIndex + 2]
-    );
-
-    if (
-      pointBelongsToLine(
-        lineEq,
-        state.current.shape.points[state.current.pointIndex]
-      )
-    ) {
-      //f had l if n7ssboo tool ta3 line ml x-1 ll x+1 ida kant toosawi line ml (x-->x+1) + (x-->x+2)
-      // ida ma kantch mou7a99a9a n3awdoonrdoo lpoint win kan (fl else)
-      if (
-        !(
-          lineLength(
-            state.current.shape.points[state.current.pointIndex + 1],
-            state.current.shape.points[state.current.pointIndex + 2]
-          ) +
-            lineLength(
-              state.current.shape.points[state.current.pointIndex],
-              state.current.shape.points[state.current.pointIndex + 1]
-            ) ===
-          lineLength(
-            state.current.shape.points[state.current.pointIndex],
-            state.current.shape.points[state.current.pointIndex + 2]
-          )
-        )
-      ) {
-        state.current.shape.points[state.current.pointIndex].x =
-          state.current.x;
-        state.current.shape.points[state.current.pointIndex].y =
-          state.current.y;
-      }
-    }
-  }
-  /*3333333333333333333333333333333333333333333333333333333333333333*/
-  // f had l if ntestoo ida kan lpoint wzood li 9bloo mnfss line nsuprimiw jdoo
-  if (
-    state.current.shape.points[state.current.pointIndex - 1] &&
-    state.current.shape.points[state.current.pointIndex - 2]
-  ) {
-    lineEq = getLineEq(
-      state.current.shape.points[state.current.pointIndex - 1],
-      state.current.shape.points[state.current.pointIndex - 2]
-    );
-    if (
-      pointBelongsToLine(
-        lineEq,
-        state.current.shape.points[state.current.pointIndex]
-      )
-    ) {
-      //f had l if n7ssboo tool ta3 line ml x ll x-2 ida kant toosawi line ml (x-->x-1) + (x-1-->x-2)
-      // ida ma kantch mou7a99a9a n3awdoonrdoo lpoint win kan (fl else)
-      if (
-        !(
-          lineLength(
-            state.current.shape.points[state.current.pointIndex],
-            state.current.shape.points[state.current.pointIndex - 1]
-          ) +
-            lineLength(
-              state.current.shape.points[state.current.pointIndex - 1],
-              state.current.shape.points[state.current.pointIndex - 2]
-            ) ===
-          lineLength(
-            state.current.shape.points[state.current.pointIndex],
-            state.current.shape.points[state.current.pointIndex - 2]
-          )
-        )
-      ) {
-        state.current.shape.points[state.current.pointIndex].x =
-          state.current.x;
-        state.current.shape.points[state.current.pointIndex].y =
-          state.current.y;
-      }
-    }
-  }
   if (checkIfPointInShapeSegment({ x, y }, state.shapes)) {
     state.current.shape.points[state.current.pointIndex].x = state.current.x;
     state.current.shape.points[state.current.pointIndex].y = state.current.y;

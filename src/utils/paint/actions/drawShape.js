@@ -14,24 +14,23 @@ export const handleMouseDown = (event, state) => {
   state.setLine({ x1: x, y1: y, x2: x, y2: y });
   let { shape, pointIndex } = getShapeFromPoint(state.shapes, x, y);
   //check if the point already belongs to a shape
-  if (shape) {
-    //if the shape isn't a "polygone" and the selected point is the first or the last one
-    //(you can only start drawing form the first or last point of a line/multiline)
-    if (
-      !shape.polygone &&
-      (pointIndex === 0 || pointIndex === shape.points.length - 1)
-    )
-      state.setCurrent({ shape, pointIndex });
-    else {
-      state.setLine({});
-      state.setDrawing(false);
-    }
-  }
-  //else we create a new shape
-  else {
+  // and if the shape isn't a "polygone" and the selected point is the first or the last one
+  //(you can only start drawing form the first or last point of a line/multiline)
+  if (
+    shape &&
+    !shape.polygone &&
+    (pointIndex === 0 || pointIndex === shape.points.length - 1)
+  )
+    state.setCurrent({ shape, pointIndex });
+  //check if the point doesnt belong to a shape segment
+  else if (!checkIfPointInShapeSegment({ x, y }, state.shapes) && !shape) {
+    //we create a new shape
     shape = new Shape({ x, y });
     state.setShapes((prv) => [...prv, shape]);
     state.setCurrent({ shape, pointIndex: 0 });
+  } else {
+    state.setLine({});
+    state.setDrawing(false);
   }
 };
 export const handleMouseMove = (event, state, lastPoint) => {
@@ -66,9 +65,12 @@ export const handleMouseUp = (event, state) => {
     //check if the new point either doesnt belong to a shape or it belongs the same shape as the mouseDown point
     (!shape ||
       (shape === state.current.shape &&
+        //shape has to have more than 3 points (bah nghl9oh)
         shape.points.length >= 3 &&
+        //check if the new point is the last or first of shape
         (pointIndex === 0 ||
           pointIndex === state.current.shape.points.length - 1))) &&
+    //check if the new point is not in some shape sagment
     !checkIfPointInShapeSegment(
       { x: state.line.x2, y: state.line.y2 },
       state.shapes
