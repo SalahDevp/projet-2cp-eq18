@@ -1,0 +1,1 @@
+function checkAuthorized(point, state) {}

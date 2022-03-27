@@ -1,6 +1,7 @@
 import { UNIT } from "pages/Paint";
 
 import { getGridPos, getMousePos, getShapeFromPoint } from "utils/paint/basics";
+import { checkIfPointInShapeSegment } from "../geometry";
 
 export const handleMouseDown = (event, state) => {
   const { x: mouseX, y: mouseY } = getMousePos(state.canvasRef, event);
@@ -207,6 +208,10 @@ export const handleMouseUp = (event, state) => {
           state.current.y;
       }
     }
+  }
+  if (checkIfPointInShapeSegment({ x, y }, state.shapes)) {
+    state.current.shape.points[state.current.pointIndex].x = state.current.x;
+    state.current.shape.points[state.current.pointIndex].y = state.current.y;
   }
   if (state.current.movetwopoints) {
     state.current.shape.points[0].x =

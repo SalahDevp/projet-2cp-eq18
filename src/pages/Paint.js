@@ -29,6 +29,7 @@ const Paint = () => {
     line,
     setLine,
     canvasRef,
+    actionType,
   };
 
   const handleClear = () => {

@@ -1,6 +1,7 @@
 import { getMousePos, getGridPos, getShapeFromPoint } from "../basics";
 import Shape from "../Shape";
 import { UNIT } from "pages/Paint";
+import { checkIfPointInShapeSegment } from "../geometry";
 
 export const handleMouseDown = (event, state) => {
   //start drawing
@@ -67,7 +68,11 @@ export const handleMouseUp = (event, state) => {
       (shape === state.current.shape &&
         shape.points.length >= 3 &&
         (pointIndex === 0 ||
-          pointIndex === state.current.shape.points.length - 1)))
+          pointIndex === state.current.shape.points.length - 1))) &&
+    !checkIfPointInShapeSegment(
+      { x: state.line.x2, y: state.line.y2 },
+      state.shapes
+    )
   ) {
     //add to end of shape
     if (state.current.pointIndex === state.current.shape.points.length - 1)
