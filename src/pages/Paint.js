@@ -3,6 +3,7 @@ import React, { useRef, useEffect, useState } from "react";
 
 import * as drawShape from "utils/paint/actions/drawShape";
 import * as movePoint from "utils/paint/actions/movePoint";
+import * as paintBucket from "utils/paint/actions/paintBucket";
 import { clearCanvas, drawLine } from "utils/paint/basics";
 
 export const HEIGHT = 500,
@@ -50,15 +51,17 @@ const Paint = () => {
         canvasRef={canvasRef}
         width={WIDTH}
         height={HEIGHT}
-        onMouseDown={(event) => actionType?.handleMouseDown(event, state)}
-        onMouseMove={(event) => actionType?.handleMouseMove(event, state)}
-        onMouseUp={(event) => actionType?.handleMouseUp(event, state)}
+        onMouseDown={(event) => actionType?.handleMouseDown?.(event, state)}
+        onMouseMove={(event) => actionType?.handleMouseMove?.(event, state)}
+        onMouseUp={(event) => actionType?.handleMouseUp?.(event, state)}
+        onClick={(event) => actionType?.handleClick?.(event, state)}
       />
       <div className="flex justify-between" style={{ width: WIDTH }}>
         <button onClick={handleClear}>clear</button>
         <button onClick={() => setActionType(undefined)}>hand</button>
         <button onClick={() => setActionType(drawShape)}>draw shape</button>
         <button onClick={() => setActionType(movePoint)}>move point</button>
+        <button onClick={() => setActionType(paintBucket)}>bucket</button>
       </div>
     </>
   );

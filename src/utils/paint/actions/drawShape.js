@@ -15,6 +15,7 @@ export const handleMouseDown = (event, state) => {
   //check if the point already belongs to a shape
   if (shape) {
     //if the shape isn't a "polygone" and the selected point is the first or the last one
+    //(you can only start drawing form the first or last point of a line/multiline)
     if (
       !shape.polygone &&
       (pointIndex === 0 || pointIndex === shape.points.length - 1)
@@ -54,6 +55,7 @@ export const handleMouseUp = (event, state) => {
     state.line.x2,
     state.line.y2
   );
+
   //check if the new point already belongs to a shape
   if (shape) {
     //if the point is the first or last one of the current shape set polygone to true (rah nghl9o shape)
@@ -69,6 +71,8 @@ export const handleMouseUp = (event, state) => {
     } else {
       //else (the point belongs to another shape or it is not the last or first of current shape) dont add the point
       state.setDrawing(false);
+      //check if the shape has only one point (user only draw one point) remove it
+      if (state.current.shape.points.length === 1) state.shapes.pop();
       return state.setLine({});
     }
   }
@@ -89,6 +93,8 @@ export const handleMouseUp = (event, state) => {
         y: state.line.y2,
       });
   } else state.current.shape.polygone = false; //ml fo9 ywli true so lzm trj3o false
+  //check if the shape has only one point (user only draw one point) remove it
+  if (state.current.shape.points.length === 1) state.shapes.pop();
   //stop drawing
   state.setDrawing(false);
 };
