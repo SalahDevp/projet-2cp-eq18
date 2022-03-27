@@ -12,12 +12,11 @@ export const handleMouseDown = (event, state) => {
   }
   if (
     shape?.polygone &&
-    (state.current.pointIndex === 0 ||
-      state.current.pointIndex === state.current.shape.points.length - 1)
+    (pointIndex === 0 || pointIndex === shape.points.length - 1)
   ) {
     state.setCurrent({
       shape,
-      pointIndex: state.current.shape.points.length - 1,
+      pointIndex: shape.points.length - 1,
       x,
       y,
       movetwopoints: true,
@@ -64,7 +63,8 @@ export const handleMouseUp = (event, state) => {
       ((state.current.pointIndex === 0 &&
         pointIndex === shape.points.length - 1) ||
         (state.current.pointIndex === shape.points.length - 1 &&
-          pointIndex === 0))
+          pointIndex === 0)) &&
+      shape.points.length >= 4
     ) {
       shape.polygone = true;
     } else {
