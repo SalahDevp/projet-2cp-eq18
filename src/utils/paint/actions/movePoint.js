@@ -24,7 +24,7 @@ export const handleMouseDown = (event, state) => {
     });
   }
 };
-export const handleMouseMove = (event, state, lastPoint) => {
+export const handleMouseMove = (event, state) => {
   if (!state.drawing) return;
   const { x, y } = getMousePos(state.canvasRef, event);
   state.current.shape.points[state.current.pointIndex] = { x, y };
