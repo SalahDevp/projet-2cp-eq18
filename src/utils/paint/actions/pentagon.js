@@ -5,7 +5,7 @@ import Shape from "../Shape";
 const handleFirstClick = (event, state) => {
   const { x: mouseX, y: mouseY } = getMousePos(state.canvasRef, event);
   const { x, y } = getGridPos(mouseX, mouseY, UNIT);
-  const { shape, pointIndex } = getShapeFromPoint(state.shapes, x, y);
+  const { shape } = getShapeFromPoint(state.shapes, x, y);
   if (!shape) {
     state.setDrawing(true);
     state.setCurrent({ x, y });
@@ -15,13 +15,18 @@ const handleFirstClick = (event, state) => {
 export const handleMouseMove = (event, state) => {
   if (!state.drawing) return;
   const { x, y } = getMousePos(state.canvasRef, event);
-  const point1 = { x: (state.current.x + x) / 2, y: state.current.y };
-  const point2 = { x: state.current.x, y: y };
-  const point3 = { x, y };
+  const point1 = { x: state.current.x, y: 0.6 * state.current.y + y * 0.4 };
+  const point2 = { x: state.current.x * 0.8 + x * 0.2, y };
+  const point3 = { x: state.current.x * 0.2 + x * 0.8, y };
+  const point4 = { x, y: 0.6 * state.current.y + y * 0.4 };
+  const point5 = { x: (state.current.x + x) / 2, y: state.current.y };
+
   state.shapes[state.shapes.length - 1].points = [
     point1,
     point2,
     point3,
+    point4,
+    point5,
     point1,
   ];
   state.setLine({ x, y });
@@ -29,13 +34,21 @@ export const handleMouseMove = (event, state) => {
 const handleSecondClick = (event, state) => {
   const { x: mouseX, y: mouseY } = getMousePos(state.canvasRef, event);
   const { x, y } = getGridPos(mouseX, mouseY, UNIT);
-  const point1 = getGridPos((state.current.x + x) / 2, state.current.y, UNIT);
-  const point2 = { x: state.current.x, y: y };
-  const point3 = { x, y };
+  const point1 = getGridPos(
+    state.current.x,
+    0.6 * state.current.y + y * 0.4,
+    UNIT
+  );
+  const point2 = getGridPos(state.current.x * 0.8 + x * 0.2, y, UNIT);
+  const point3 = getGridPos(state.current.x * 0.2 + x * 0.8, y, UNIT);
+  const point4 = getGridPos(x, 0.6 * state.current.y + y * 0.4, UNIT);
+  const point5 = getGridPos((state.current.x + x) / 2, state.current.y, UNIT);
   state.shapes[state.shapes.length - 1].points = [
     point1,
     point2,
     point3,
+    point4,
+    point5,
     point1,
   ];
   state.shapes[state.shapes.length - 1].polygone = true;

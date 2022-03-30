@@ -5,11 +5,12 @@ import * as drawShape from "utils/paint/actions/drawShape";
 import * as movePoint from "utils/paint/actions/movePoint";
 import * as paintBucket from "utils/paint/actions/paintBucket";
 import * as drawTriangle from "utils/paint/actions/drawTriangle";
+import * as pentagon from "utils/paint/actions/pentagon";
 import { clearCanvas, drawLine } from "utils/paint/basics";
 
 export const HEIGHT = 500,
   WIDTH = 1000,
-  UNIT = 20;
+  UNIT = 15;
 
 const Paint = () => {
   const [drawing, setDrawing] = useState(false);
@@ -65,6 +66,7 @@ const Paint = () => {
         <button onClick={() => setActionType(movePoint)}>move point</button>
         <button onClick={() => setActionType(drawTriangle)}>triangle</button>
         <button onClick={() => setActionType(paintBucket)}>bucket</button>
+        <button onClick={() => setActionType(pentagon)}>pentagon</button>
       </div>
     </>
   );
