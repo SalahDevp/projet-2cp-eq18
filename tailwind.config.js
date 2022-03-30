@@ -3,14 +3,14 @@ module.exports = {
   theme: {
     extend: {
       spacing: {
-        '128': '27rem',
-        '328':'40rem'
+        128: "27rem",
+        328: "40rem",
+        100: "37rem",
       },
       colors: {
-        'box': '#B9FFFC',
-        "title":"#3FD1CB",
-        "nav":"#7579E7",
-        
+        box: "#B9FFFC",
+        title: "#3FD1CB",
+        nav: "#7579E7",
       },
     },
   },
