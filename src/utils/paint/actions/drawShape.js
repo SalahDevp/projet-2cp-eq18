@@ -1,7 +1,7 @@
 import { getMousePos, getGridPos, getShapeFromPoint } from "../basics";
 import Shape from "../Shape";
 import { UNIT } from "pages/Paint";
-import { checkIfPointInShapeSegment } from "../geometry";
+import { checkIfPointInShapeSegment, checkZeroAngle } from "../geometry";
 
 export const handleMouseDown = (event, state) => {
   //start drawing
@@ -47,31 +47,27 @@ export const handleMouseMove = (event, state, lastPoint) => {
   }
 };
 export const handleMouseUp = (event, state) => {
-  /** checks if the new drawn line (head, newPoint)and (head, prvPoint) are overlaping  */
-  const checkOverlapingLines = (shape, headIndex, newPoint) => {
-    //if shape doesnt exist or has only one point
-    if (!shape || shape.points.length < 2) return false;
-    const prvIndex = headIndex === 0 ? 1 : headIndex - 1;
-    const head = shape.points[headIndex];
-    const prvPoint = shape.points[prvIndex];
-    return (
-      (head.y - newPoint.y) / (head.x - newPoint.x) ===
-        (head.y - prvPoint.y) / (head.x - prvPoint.x) &&
-      (head.y - prvPoint.y) * (head.y - newPoint.y) >= 0 &&
-      (head.x - prvPoint.x) * (head.x - newPoint.x) >= 0
-    );
-  };
-
   if (!state.drawing) return;
   //set the line
   handleMouseMove(event, state, true);
+
+  //for checking if the new point already belongs to another shape
   const { shape, pointIndex } = getShapeFromPoint(
     state.shapes,
     state.line.x2,
     state.line.y2
   );
 
-  //add the new point to the current shape
+  // this var is for checking the zero angle
+  const prvPoint =
+    //if shape is only one point (no prv point) set prvPoint to that only point
+    state.current.shape.points.length >= 2
+      ? state.current.shape.points[
+          state.current.pointIndex === 0 ? 1 : state.current.pointIndex - 1
+        ]
+      : state.current.shape.points[state.current.pointIndex];
+
+  //-------------add the new point to the current shape------------
   if (
     //check if the new point is diffrent from the one from mouse down (to prevent duplicated points)
     (state.current.shape.points[state.current.pointIndex].x !== state.line.x2 ||
@@ -90,10 +86,14 @@ export const handleMouseUp = (event, state) => {
       { x: state.line.x2, y: state.line.y2 },
       state.shapes
     ) &&
-    !checkOverlapingLines(state.current.shape, state.current.pointIndex, {
-      x: state.line.x2,
-      y: state.line.y2,
-    })
+    !checkZeroAngle(
+      prvPoint,
+      state.current.shape.points[state.current.pointIndex],
+      {
+        x: state.line.x2,
+        y: state.line.y2,
+      }
+    )
   ) {
     //add to end of shape
     if (state.current.pointIndex === state.current.shape.points.length - 1)
