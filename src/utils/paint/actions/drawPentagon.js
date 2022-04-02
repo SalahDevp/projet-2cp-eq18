@@ -27,7 +27,7 @@ export const handleMouseMove = (event, state) => {
     point3,
     point4,
     point5,
-    point1,
+    point1, //makes a copy of point1 (same attributes diffrent adresses)
   ];
   state.setLine({ x, y });
 };
@@ -49,7 +49,7 @@ const handleSecondClick = (event, state) => {
     point3,
     point4,
     point5,
-    point1,
+    { ...point1 }, //makes a copy of point1 (same attributes diffrent adresses)
   ];
   state.shapes[state.shapes.length - 1].polygone = true;
   state.setDrawing(false);

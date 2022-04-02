@@ -1,3 +1,5 @@
+import { UNIT } from "pages/Paint";
+
 /**returns true if point belongs to one of the shapes segments */
 export const checkIfPointInShapeSegment = (point, shapes) => {
   for (let shape of shapes) {
@@ -63,3 +65,51 @@ export function checkOverlap(shape, pointIndex) {
     checkZeroAngle(point, nextPoint, nextNextPoint)
   );
 }
+
+/**return the shape(polygone only) the user clicked inside else returns null */
+export function clickInsidePolygone(shapes, clickPoint) {
+  if (clickPoint.y % UNIT === 0) clickPoint.y--; //to prevent the click point to be on the same line with one of the shape points wich causes a problem
+
+  for (let shape of shapes) {
+    let intersectionCount = 0;
+    if (!shape.polygone) continue;
+    for (let i = 0; i < shape.points.length - 1; i++) {
+      if (checkIntersection(clickPoint, shape.points[i], shape.points[i + 1]))
+        intersectionCount++;
+    }
+    //if num of intrs is odd the point is inside the shape
+    if (intersectionCount % 2 === 1) {
+      return shape;
+    }
+  }
+  return null;
+}
+export function clickOnShapeSegment(shapes, clickPoint) {
+  const OFFSET = 2;
+  for (let shape of shapes) {
+    for (let i = 0; i < shape.points.length - 1; i++) {
+      //check if point is in [points[i], points[i+1]] segment
+      if (
+        Math.abs(
+          segmentLength(shape.points[i], shape.points[i + 1]) -
+            (segmentLength(shape.points[i], clickPoint) +
+              segmentLength(shape.points[i + 1], clickPoint))
+        ) <= OFFSET
+      ) {
+        return { shape, firstPointInd: i };
+      }
+    }
+  }
+  return { shape: null, firstPointInd: -1 };
+}
+/**checks if the horziental line drawn to the right of p intersects with the segment q1q2
+ **/
+const checkIntersection = (p, q1, q2) =>
+  //cond1: y of inters y1<=y<=y2 (intersection inside the segment)
+  //cond2: x of inters x>= xp (intersection to the right of p)
+  p.y <= Math.max(q1.y, q2.y) &&
+  p.y >= Math.min(q1.y, q2.y) &&
+  ((q2.x - q1.x) * (q2.y - p.y)) / (q1.y - q2.y) + q2.x >= p.x;
+
+const segmentLength = (p1, p2) =>
+  Math.sqrt((p2.x - p1.x) ** 2 + (p2.y - p1.y) ** 2);

@@ -36,7 +36,7 @@ const handleSecondClick = (event, state) => {
     point1,
     point2,
     point3,
-    point1,
+    { ...point1 }, //makes a copy of point1 (same attributes diffrent adresses)
   ];
   state.shapes[state.shapes.length - 1].polygone = true;
   state.setDrawing(false);
