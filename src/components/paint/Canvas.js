@@ -5,6 +5,7 @@ const Canvas = ({
   onMouseDown,
   onMouseUp,
   onMouseMove,
+  onClick,
 }) => {
   return (
     <div className="border-8 border-green-500 inline-block">
@@ -16,6 +17,7 @@ const Canvas = ({
         onMouseDown={onMouseDown}
         onMouseUp={onMouseUp}
         onMouseMove={onMouseMove}
+        onClick={onClick}
       ></canvas>
     </div>
   );

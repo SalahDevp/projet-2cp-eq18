@@ -3,11 +3,15 @@ import React, { useRef, useEffect, useState } from "react";
 
 import * as drawShape from "utils/paint/actions/drawShape";
 import * as movePoint from "utils/paint/actions/movePoint";
+import * as paintBucket from "utils/paint/actions/paintBucket";
+import * as drawTriangle from "utils/paint/actions/drawTriangle";
+import * as drawPentagon from "utils/paint/actions/drawPentagon";
+import * as moveShape from "utils/paint/actions/moveShape";
 import { clearCanvas, drawLine } from "utils/paint/basics";
 
 export const HEIGHT = 500,
   WIDTH = 1000,
-  UNIT = 20;
+  UNIT = 15;
 
 const Paint = () => {
   const [drawing, setDrawing] = useState(false);
@@ -28,6 +32,7 @@ const Paint = () => {
     line,
     setLine,
     canvasRef,
+    actionType,
   };
 
   const handleClear = () => {
@@ -50,15 +55,20 @@ const Paint = () => {
         canvasRef={canvasRef}
         width={WIDTH}
         height={HEIGHT}
-        onMouseDown={(event) => actionType?.handleMouseDown(event, state)}
-        onMouseMove={(event) => actionType?.handleMouseMove(event, state)}
-        onMouseUp={(event) => actionType?.handleMouseUp(event, state)}
+        onMouseDown={(event) => actionType?.handleMouseDown?.(event, state)}
+        onMouseMove={(event) => actionType?.handleMouseMove?.(event, state)}
+        onMouseUp={(event) => actionType?.handleMouseUp?.(event, state)}
+        onClick={(event) => actionType?.handleClick?.(event, state)}
       />
       <div className="flex justify-between" style={{ width: WIDTH }}>
         <button onClick={handleClear}>clear</button>
         <button onClick={() => setActionType(undefined)}>hand</button>
         <button onClick={() => setActionType(drawShape)}>draw shape</button>
         <button onClick={() => setActionType(movePoint)}>move point</button>
+        <button onClick={() => setActionType(drawTriangle)}>triangle</button>
+        <button onClick={() => setActionType(paintBucket)}>bucket</button>
+        <button onClick={() => setActionType(drawPentagon)}>pentagon</button>
+        <button onClick={() => setActionType(moveShape)}>move shape</button>
       </div>
     </>
   );
