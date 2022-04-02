@@ -40,6 +40,7 @@ const handleSecondClick = (event, state) => {
   ];
   state.shapes[state.shapes.length - 1].polygone = true;
   state.setDrawing(false);
+  //TODO: check points positions if valid
 };
 export const handleClick = (event, state) => {
   if (!state.drawing) handleFirstClick(event, state);

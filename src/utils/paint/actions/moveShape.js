@@ -1,7 +1,10 @@
 import { UNIT } from "pages/Paint";
-import { getGridPos, getMousePos, getShapeFromPoint } from "utils/paint/basics";
-import { clickInsidePolygone, clickOnShapeSegment } from "../geometry";
-import Shape from "../Shape";
+import { getGridPos, getMousePos } from "utils/paint/basics";
+import {
+  checkPoints,
+  clickInsidePolygone,
+  clickOnShapeSegment,
+} from "../geometry";
 
 const handleFirstClick = (event, state) => {
   //get click pos
@@ -24,23 +27,29 @@ export const handleMouseMove = (event, state) => {
   const { x, y } = getMousePos(state.canvasRef, event);
   const offsetX = x - state.current.initialPoint.x,
     offsetY = y - state.current.initialPoint.y;
+  //update all points
   state.current.shape.points.forEach((point) => {
     point.x += offsetX;
     point.y += offsetY;
   });
   //update intial point
   state.setCurrent((prv) => ({ ...prv, initialPoint: { x, y } }));
-  //to rerender
+  //rerender canvas
   state.setLine({});
 };
 
 const handleSecondClick = (event, state) => {
-  state.setDrawing(false);
-  state.current.shape.points.forEach((point) => {
-    const newPoint = getGridPos(point.x, point.y, UNIT);
-    point.x = newPoint.x;
-    point.y = newPoint.y;
-  });
+  const newPoints = [];
+  //we create a new points array and not directly uppdate shape points to check first if those new points are in valid positons
+  state.current.shape.points.forEach((point) =>
+    newPoints.push(getGridPos(point.x, point.y, UNIT))
+  );
+  //check if positions are valid
+  if (checkPoints(state.shapes, newPoints)) {
+    //we update shape points
+    state.current.shape.points = newPoints;
+    return state.setDrawing(false);
+  } //else selected shape will continue moving with the mouse
 };
 
 export const handleClick = (event, state) => {

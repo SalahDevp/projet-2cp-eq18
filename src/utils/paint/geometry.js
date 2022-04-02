@@ -1,4 +1,5 @@
 import { UNIT } from "pages/Paint";
+import { getShapeFromPoint } from "./basics";
 
 /**returns true if point belongs to one of the shapes segments */
 export const checkIfPointInShapeSegment = (point, shapes) => {
@@ -102,6 +103,15 @@ export function clickOnShapeSegment(shapes, clickPoint) {
   }
   return { shape: null, firstPointInd: -1 };
 }
+
+/**return true if all points positions are valid (no other point exit in that pos) */
+export function checkPoints(shapes, points) {
+  for (let point of points) {
+    if (getShapeFromPoint(shapes, point.x, point.y).shape) return false;
+  }
+  return true;
+}
+
 /**checks if the horziental line drawn to the right of p intersects with the segment q1q2
  **/
 const checkIntersection = (p, q1, q2) =>
