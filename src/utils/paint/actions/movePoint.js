@@ -1,7 +1,7 @@
 import { UNIT } from "pages/Paint";
 
 import { getGridPos, getMousePos, getShapeFromPoint } from "utils/paint/basics";
-import { checkIfPointInShapeSegment, rahMoghtasib } from "../geometry";
+import { checkIfPointInShapeSegment, checkOverlap } from "../geometry";
 
 export const handleMouseDown = (event, state) => {
   const { x: mouseX, y: mouseY } = getMousePos(state.canvasRef, event);
@@ -67,7 +67,7 @@ export const handleMouseUp = (event, state) => {
 
   if (
     checkIfPointInShapeSegment({ x, y }, state.shapes) ||
-    rahMoghtasib(state.current.shape, state.current.pointIndex)
+    checkOverlap(state.current.shape, state.current.pointIndex)
   ) {
     state.current.shape.points[state.current.pointIndex].x = state.current.x;
     state.current.shape.points[state.current.pointIndex].y = state.current.y;

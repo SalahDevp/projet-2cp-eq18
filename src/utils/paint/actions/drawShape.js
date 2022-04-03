@@ -1,7 +1,7 @@
 import { getMousePos, getGridPos, getShapeFromPoint } from "../basics";
 import Shape from "../Shape";
 import { UNIT } from "pages/Paint";
-import { checkIfPointInShapeSegment } from "../geometry";
+import { checkIfPointInShapeSegment, checkZeroAngle } from "../geometry";
 
 export const handleMouseDown = (event, state) => {
   //start drawing
@@ -40,7 +40,7 @@ export const handleMouseMove = (event, state, lastPoint) => {
     ? getGridPos(mouseX, mouseY, UNIT)
     : { x: mouseX, y: mouseY };
   state.setLine((prv) => ({ ...prv, x2: x, y2: y }));
-  //updating line bcs setLine is asyn (problem in handleMouseUp)
+  //updating line bcs setLine is async (problem in handleMouseUp)
   if (lastPoint) {
     state.line.x2 = x;
     state.line.y2 = y;
@@ -50,13 +50,24 @@ export const handleMouseUp = (event, state) => {
   if (!state.drawing) return;
   //set the line
   handleMouseMove(event, state, true);
+
+  //for checking if the new point already belongs to another shape
   const { shape, pointIndex } = getShapeFromPoint(
     state.shapes,
     state.line.x2,
     state.line.y2
   );
 
-  //add the new point to the current shape
+  // this var is for checking the zero angle
+  const prvPoint =
+    //if shape is only one point (no prv point) set prvPoint to that only point
+    state.current.shape.points.length >= 2
+      ? state.current.shape.points[
+          state.current.pointIndex === 0 ? 1 : state.current.pointIndex - 1
+        ]
+      : state.current.shape.points[state.current.pointIndex];
+
+  //-------------add the new point to the current shape------------
   if (
     //check if the new point is diffrent from the one from mouse down (to prevent duplicated points)
     (state.current.shape.points[state.current.pointIndex].x !== state.line.x2 ||
@@ -74,6 +85,14 @@ export const handleMouseUp = (event, state) => {
     !checkIfPointInShapeSegment(
       { x: state.line.x2, y: state.line.y2 },
       state.shapes
+    ) &&
+    !checkZeroAngle(
+      prvPoint,
+      state.current.shape.points[state.current.pointIndex],
+      {
+        x: state.line.x2,
+        y: state.line.y2,
+      }
     )
   ) {
     //add to end of shape

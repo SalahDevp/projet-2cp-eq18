@@ -5,8 +5,12 @@ import * as drawShape from "utils/paint/actions/drawShape";
 import * as movePoint from "utils/paint/actions/movePoint";
 import * as paintBucket from "utils/paint/actions/paintBucket";
 import * as drawTriangle from "utils/paint/actions/drawTriangle";
-import * as pentagon from "utils/paint/actions/pentagon";
+
 import * as erase from "utils/paint/actions/erase";
+
+import * as drawPentagon from "utils/paint/actions/drawPentagon";
+import * as moveShape from "utils/paint/actions/moveShape";
+
 import { clearCanvas, drawLine } from "utils/paint/basics";
 
 export const HEIGHT = 500,
@@ -67,8 +71,13 @@ const Paint = () => {
         <button onClick={() => setActionType(movePoint)}>move point</button>
         <button onClick={() => setActionType(drawTriangle)}>triangle</button>
         <button onClick={() => setActionType(paintBucket)}>bucket</button>
+<<<<<<< HEAD
         <button onClick={() => setActionType(pentagon)}>pentagon</button>
         <button onClick={() => setActionType(erase)}>delete</button>
+=======
+        <button onClick={() => setActionType(drawPentagon)}>pentagon</button>
+        <button onClick={() => setActionType(moveShape)}>move shape</button>
+>>>>>>> e8ac3b7727ae752e4d11815c3e4f8334183619c0
       </div>
     </>
   );
