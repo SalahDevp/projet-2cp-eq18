@@ -1,25 +1,24 @@
 import { UNIT } from "pages/Paint";
 import { getShapeFromPoint } from "./basics";
 
-/**returns true if point belongs to one of the shapes segments */
-export const checkIfPointInShapeSegment = (point, shapes) => {
-  for (let shape of shapes) {
-    for (let i = 0; i < shape.points.length - 1; i++) {
-      //check if point is in [points[i], points[i+1]] segment
-      if (
-        //if point is between points[i] and points[i+1]
-        point.y <= Math.max(shape.points[i].y, shape.points[i + 1].y) &&
-        point.y >= Math.min(shape.points[i].y, shape.points[i + 1].y) &&
-        point.x <= Math.max(shape.points[i].x, shape.points[i + 1].x) &&
-        point.x >= Math.min(shape.points[i].x, shape.points[i + 1].x) &&
-        //if point is collinear with points[i] and points[i+1]
-        (shape.points[i].y - point.y) / (shape.points[i].x - point.x) ===
-          (shape.points[i + 1].y - point.y) / (shape.points[i + 1].x - point.x)
-      ) {
-        return true;
-      }
+/**returns true if point belongs to a segments */
+export const checkIfPointInSameShapeSegment = (shape, point) => {
+  for (let i = 0; i < shape.points.length - 1; i++) {
+    //check if point is in [points[i], points[i+1]] segment
+    if (
+      //if point is between points[i] and points[i+1]
+      point.y <= Math.max(shape.points[i].y, shape.points[i + 1].y) &&
+      point.y >= Math.min(shape.points[i].y, shape.points[i + 1].y) &&
+      point.x <= Math.max(shape.points[i].x, shape.points[i + 1].x) &&
+      point.x >= Math.min(shape.points[i].x, shape.points[i + 1].x) &&
+      //if point is collinear with points[i] and points[i+1]
+      (shape.points[i].y - point.y) / (shape.points[i].x - point.x) ===
+        (shape.points[i + 1].y - point.y) / (shape.points[i + 1].x - point.x)
+    ) {
+      return true;
     }
   }
+
   return false;
 };
 
