@@ -13,7 +13,7 @@ function createWindow() {
     webPreferences: {
       preload: path.join(__dirname, "/electron-utils/preload.js"),
     },
-    //frame:false,
+   // frame:false,
   });
 
   win.loadURL(

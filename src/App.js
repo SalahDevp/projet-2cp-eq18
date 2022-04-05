@@ -1,24 +1,25 @@
-import { HashRouter, Routes, Route } from "react-router-dom";
-
 import AppContext from "AppContext";
-import LanguageChoice from "pages/LanguageChoice";
-import TeacherPassword from "pages/TeacherPassword";
-import UserMode from "pages/UserMode";
-import Menu from "pages/Menu";
-import Paint from "pages/Paint";
-
+import { HashRouter, Routes, Route } from "react-router-dom";
+ import LanguageChoice from "pages/LanguageChoice";
+ import TeacherPassword from "pages/TeacherPassword";
+ import UserMode from "pages/UserMode";
+ import Menu from "pages/Menu";
+ import Paint from "pages/Paint";
+ import Cour from "pages/cour";
 function App() {
   return (
     <AppContext>
-      <HashRouter>
+   
+        <HashRouter>
         <Routes>
-          <Route path="h" element={<LanguageChoice />} />
+          <Route  path='/'  element={<LanguageChoice />} />
           <Route path="user-mode" element={<UserMode />} />
           <Route path="teacher-password" element={<TeacherPassword />} />
           <Route path="menu" element={<Menu />} />
-          <Route index element={<Paint />} />
+          <Route path="/paint" element={<Paint />} />    
+          <Route index element={<Cour />} />     
         </Routes>
-      </HashRouter>
+      </HashRouter>   
     </AppContext>
   );
 }

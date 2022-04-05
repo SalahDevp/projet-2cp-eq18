@@ -20,7 +20,10 @@ const Menu = () => {
       }),
     [navigate]
   );
-
+  const handleCour = () => {
+    //navigte to password page.
+    navigate("/cour");
+  };
   return (
     <>
       <Nav title="se connecter" pathAvant="/user-mode" aff={false} />
@@ -34,7 +37,7 @@ const Menu = () => {
           title={t("grid")}
           handleClick={() => navigate("/grille")}
         />
-        <Box image={img2} title={t("courses")} />
+        <Box image={img2} title={t("courses")} handleClick={handleCour} />
         <Box image={img3} title={t("exercices")} />
       </div>
     </>

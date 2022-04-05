@@ -1,0 +1,23 @@
+import React from 'react'
+import video2 from "../../assets/cour/Videos projet/2_segment.mp4"
+
+const Courp5 = () => {
+  return (
+    <div>
+           <h1 className='underline decoration-solid text-2xl font-bold'>Procédé de construction : </h1>
+       <div className='ml-6 mt-2'>
+            <p className='text-xl font-normal'>Pour tracer le symétrique d'un segment [AB] par rapport au point O :</p>
+            <ul className='ml-10 text-xl font-normal list-disc'>
+                <li>on trace les symétriques des points A et B par rapport à O et nommant les A’ et B’.</li>
+                <li>on trace ensuite le segment [A'B'] .   </li>
+                <li>on n'oublie pas de coder la figure et on laisse les traits de construction.</li>
+            </ul>
+        </div>
+        <div className='mt-10 flex justify-center'>
+           <video width="500" height="100" controls="controls" autoplay="true"  src={video2} ></video>
+      </div>
+    </div>
+  )
+}
+
+export default Courp5
