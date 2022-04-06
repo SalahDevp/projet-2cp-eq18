@@ -1,19 +1,23 @@
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow, dialog } = require("electron");
 
 const path = require("path");
 const isDev = require("electron-is-dev");
-const initStoreMain = require("./electron-utils/data/initStoreMain");
 const store = require("./electron-utils/data/store");
+//ipc
+const initStoreMain = require("./electron-utils/data/initStoreMain");
+const { initGetImageMain } = require("./electron-utils/InitGetImage");
+
+let win;
 
 function createWindow() {
   // Create the browser window.
-  const win = new BrowserWindow({
+  win = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
       preload: path.join(__dirname, "/electron-utils/preload.js"),
     },
-   // frame:false,
+    // frame:false,
   });
 
   win.loadURL(
@@ -27,6 +31,7 @@ app.whenReady().then(() => {
   initStoreMain();
   //store.openInEditor();
   createWindow();
+  console.log(dialog.showOpenDialogSync({ properties: ["openFile"] }));
 });
 
 // Quit when all windows are closed.
