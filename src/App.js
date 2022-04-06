@@ -18,8 +18,8 @@ function App() {
           <Route path="teacher-password" element={<TeacherPassword />} />
           <Route path="menu" element={<Menu />} />
           <Route path="/paint" element={<Paint />} />    
-          <Route  path="/cour-centrale"   element={<Cour />} />    
-          <Route index element={<CourAxiale />} />     
+          <Route index    element={<Cour />} />    
+          <Route path="/cour-centrale" element={<CourAxiale />} />     
  
         </Routes>
       </HashRouter>   
