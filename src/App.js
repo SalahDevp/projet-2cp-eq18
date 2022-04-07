@@ -5,8 +5,10 @@ import TeacherPassword from "pages/TeacherPassword";
 import UserMode from "pages/UserMode";
 import Menu from "pages/Menu";
 import Paint from "pages/Paint";
-import Cour from "pages/cour";
 import EditCour from "pages/EditCour";
+import Cour from "pages/cour-centrale";
+import CourAxiale from "pages/cour-axiale";
+
 function App() {
   return (
     <AppContext>
@@ -16,9 +18,10 @@ function App() {
           <Route path="user-mode" element={<UserMode />} />
           <Route path="teacher-password" element={<TeacherPassword />} />
           <Route path="menu" element={<Menu />} />
-          <Route path="hh" element={<Paint />} />
-          <Route path="cour" element={<Cour />} />
-          <Route index element={<EditCour />} />
+          <Route path="edit-cour" element={<EditCour />} />
+          <Route path="paint" element={<Paint />} />
+          <Route path="cour-centrale" element={<Cour />} />
+          <Route index element={<CourAxiale />} />
         </Routes>
       </HashRouter>
     </AppContext>

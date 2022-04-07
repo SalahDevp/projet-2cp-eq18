@@ -8,9 +8,9 @@ const Courp6 = () => {
           <div className='ml-6 mt-2'>
                     <p className='font-normal text-xl '>Le symétrique d'une droite par rapport à un point est une droite parallèle.</p>
                     <ul className='list-disc ml-10 mt-2 font-normal text-xl'>
-                        <li> A’ est le symétrique de A par O.</li>
-                        <li>B’ est le symétrique de B par O.</li>
-                        <li>Le symétrique de la droite (AB) est la droite (A’B’).</li>
+                        <li> <span className="text-ltr-cr">A'</span> est le symétrique de <span className="text-ltr-cr">A</span> par <span className="text-ltr-cr">O</span> .</li>
+                        <li> <span className="text-ltr-cr">B'</span> est le symétrique de <span className="text-ltr-cr">B</span> par <span className="text-ltr-cr">O</span> .</li>
+                        <li>Le symétrique de la droite <span className="text-ltr-cr">(AB)</span> est la droite <span className="text-ltr-cr">(A’B’)</span>.</li>
                     </ul>
             </div>
             <div className='mt-14 flex justify-center  '>

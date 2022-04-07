@@ -1,23 +1,23 @@
 import React from 'react'
 import {useState,useEffect } from 'react'
 import Nav from 'components/Nav'
-import Courp1 from './courpages/courp1'
-import Courp2 from './courpages/courp2'
-import Courp3 from './courpages/courp3'
-import Courp4 from './courpages/courp4'
-import Courp5 from './courpages/courp5'
-import Courp6 from './courpages/courp6'
-import Courp7 from './courpages/courp7'
-import Courp8 from './courpages/courp8'
-import Courp9 from './courpages/courp9'
-import Courp10 from './courpages/courp10'
-
+import Courp1 from './courpages-centrale/courp1'
+import Courp2 from './courpages-centrale/courp2'
+import Courp3 from './courpages-centrale/courp3'
+import Courp4 from './courpages-centrale/courp4'
+import Courp5 from './courpages-centrale/courp5'
+import Courp6 from './courpages-centrale/courp6'
+import Courp7 from './courpages-centrale/courp7'
+import Courp8 from './courpages-centrale/courp8'
+import Courp9 from './courpages-centrale/courp9'
+import Courp10 from './courpages-centrale/courp10'
+import TBMC from "./courpages-centrale/TABC"
 const Cour = () => {
     const [cpt, setCpt] = useState(0)
     const [boolean1,setBoolean1]=useState(false)
     const [boolean2,setBoolean2]=useState(true)
     const [mousse, setMousse]=useState(true)
-    const tab=[ <Courp1 />,<Courp2 />,<Courp3 />,<Courp4 />,<Courp5 />,<Courp6 />
+    const tab=[ <TBMC />,<Courp1 />,<Courp2 />,<Courp3 />,<Courp4 />,<Courp5 />,<Courp6 />
     ,<Courp7/>,<Courp8 />,<Courp9 />,<Courp10 />]
 
 const postab= tab.length-1;
