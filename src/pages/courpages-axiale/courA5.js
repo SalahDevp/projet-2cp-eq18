@@ -13,8 +13,8 @@ const CourA5 = () => {
                 <li>Ces deux cercles se coupent en A et aussi en un autre point A1 symétrique du point A par rapport à la droite (d).</li>
             </ul>
         </div>
-        <div className='mt-10 flex justify-center'>
-        <video width="500" height="100" controls="controls" autoplay="true"  src={video1} ></video>
+        <div className=' mt-10 flex justify-center'>
+        <video width="600" height="200" controls="controls" autoplay="true"  src={video1} ></video>
       </div>
     </div>
   )

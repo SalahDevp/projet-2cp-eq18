@@ -19,7 +19,7 @@ function App() {
           <Route path="menu" element={<Menu />} />
           <Route path="/paint" element={<Paint />} />    
           <Route index    element={<Cour />} />    
-          <Route path="/cour-centrale" element={<CourAxiale />} />     
+          <Route  path="/cour-centrale" element={<CourAxiale />} />     
  
         </Routes>
       </HashRouter>   

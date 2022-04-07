@@ -7,7 +7,7 @@ const Courp1 = () => {
                 <h1 className='underline decoration-solid text-nav font-black text-3xl'>I. Figures symétriques par rapport à un point :</h1>
              
                 <div className='ml-6 mt-2'>
-                    <p className='  text-xl font-normal' > <span className='underline decoration-solid text-2xl font-bold'>Définition :</span>  Deux figures sont dites symétriques par rapport à un point lorsqu'elles sont superposables<br/>  par un demi-tour autour de ce point</p>
+                    <p className=' text-xl font-normal' > <span className='underline decoration-solid text-2xl font-bold'>Définition :</span>  Deux figures sont dites symétriques par rapport à un point lorsqu'elles sont superposables<br/>  par un demi-tour autour de ce point</p>
                     <ul className='ml-10 list-disc  text-xl font-normal'>
                         <li className=''> On dit que les deux figures sont symétriques par rapport au point O.</li>
                         <li className=''>Le point <span className='text-ltr-cr'> A’</span> est le symétrique du point <span className='text-ltr-cr'>A</span>  par rapport au point <span className='text-ltr-cr'>O</span> . Inversement, le <br /> point <span className='text-ltr-cr'>A</span> est le symétrique du point <span className='text-ltr-cr'> A’</span>  par rapport au point <span className='text-ltr-cr'>O</span>, et on a <span  className='text-ltr-cr'>OA’=OA. </span>  </li>
