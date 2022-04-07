@@ -1,11 +1,11 @@
-const { app, BrowserWindow, dialog } = require("electron");
+const { app, BrowserWindow } = require("electron");
 
 const path = require("path");
 const isDev = require("electron-is-dev");
-const store = require("./electron-utils/data/store");
+const store = require("./electron-utils/store");
 //ipc
-const initStoreMain = require("./electron-utils/data/initStoreMain");
-const { initGetImageMain } = require("./electron-utils/InitGetImage");
+const initStoreMain = require("./electron-utils/ipc/initStoreMain");
+const { initSaveNewCourseMain } = require("./electron-utils/ipc/saveNewCourse");
 
 let win;
 
@@ -16,6 +16,7 @@ function createWindow() {
     height: 600,
     webPreferences: {
       preload: path.join(__dirname, "/electron-utils/preload.js"),
+      webSecurity: isDev ? false : true,
     },
     // frame:false,
   });
@@ -29,9 +30,9 @@ function createWindow() {
 
 app.whenReady().then(() => {
   initStoreMain();
+  initSaveNewCourseMain();
   //store.openInEditor();
   createWindow();
-  console.log(dialog.showOpenDialogSync({ properties: ["openFile"] }));
 });
 
 // Quit when all windows are closed.

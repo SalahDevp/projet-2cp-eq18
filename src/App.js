@@ -16,9 +16,9 @@ function App() {
           <Route path="user-mode" element={<UserMode />} />
           <Route path="teacher-password" element={<TeacherPassword />} />
           <Route path="menu" element={<Menu />} />
-          <Route index element={<Paint />} />
+          <Route path="hh" element={<Paint />} />
           <Route path="cour" element={<Cour />} />
-          <Route path="hh" element={<EditCour />} />
+          <Route index element={<EditCour />} />
         </Routes>
       </HashRouter>
     </AppContext>

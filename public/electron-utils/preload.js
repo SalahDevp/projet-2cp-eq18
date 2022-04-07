@@ -1,9 +1,9 @@
 const { contextBridge } = require("electron");
-const initStoreRender = require("./data/initStoreRender");
-const { initGetImageRender } = require("./InitGetImage");
+const initStoreRender = require("./ipc/initStoreRender");
+const { initSaveNewCourseRender } = require("./ipc/saveNewCourse");
 
 //load -store api- in window object
 contextBridge.exposeInMainWorld("electronAPI", {
-  ...initStoreRender,
-  initGetImageRender,
+  ...initSaveNewCourseRender(),
+  ...initStoreRender(),
 });
