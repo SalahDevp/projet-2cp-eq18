@@ -5,21 +5,23 @@ import { HashRouter, Routes, Route } from "react-router-dom";
  import UserMode from "pages/UserMode";
  import Menu from "pages/Menu";
  import Paint from "pages/Paint";
- import Cour from "pages/cour-centrale";
+ import CourCentrale from "pages/cour-centrale";
  import CourAxiale from "pages/cour-axiale";
+ import MenuCour from "pages/MenuCour";
 function App() {
   return (
     <AppContext>
    
         <HashRouter>
         <Routes>
-          <Route  path='/'  element={<LanguageChoice />} />
+          <Route index  element={<LanguageChoice />} />
           <Route path="user-mode" element={<UserMode />} />
           <Route path="teacher-password" element={<TeacherPassword />} />
           <Route path="menu" element={<Menu />} />
           <Route path="/paint" element={<Paint />} />    
-          <Route path="/cour-centrale"    element={<Cour />} />    
-          <Route  index element={<CourAxiale />} />     
+          <Route  path="/Menu-Cour" element={<MenuCour />} />     
+          <Route path="/cour-centrale"    element={<CourCentrale />} />    
+          <Route  path="/cour-axiale" element={<CourAxiale />} />     
  
         </Routes>
       </HashRouter>   

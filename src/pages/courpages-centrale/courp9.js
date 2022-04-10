@@ -1,5 +1,5 @@
 import React from 'react'
-import video4 from "../../assets/cour/Videos projet/4_cercle.mp4"
+import video4 from "../../assets/cour/Video/4_cercle.mp4"
 
 const Courp9 = () => {
   return (
@@ -14,8 +14,8 @@ const Courp9 = () => {
             </ul>
         </div>
         <div className='mt-10 flex justify-center'>
-           <video width="500" height="100" controls="controls" autoplay="false"  src={video4} ></video>
-      </div>
+           <video width="500" height="100" controls="controls" autoplay="true"  src={video4} ></video>
+       </div>
     </div>
   )
 }

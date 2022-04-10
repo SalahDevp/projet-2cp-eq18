@@ -1,5 +1,5 @@
 import React from 'react'
-import video2 from "../../assets/cour/Videos projet/2_segment.mp4"
+import video2 from "../../assets/cour/Video/2_segment.mp4"
 
 const Courp5 = () => {
   return (

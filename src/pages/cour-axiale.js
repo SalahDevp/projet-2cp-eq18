@@ -56,7 +56,7 @@ const postab= tabA.length-1;
     })   
   return (
     <div className='bg-white h-screen'>
-          <Nav  title="Cour"  pathAvant="/menu"  />  
+          <Nav  title="Cour"  pathAvant="/Menu-Cour"  />  
 
             <div className='pl-20 pr-20 pt-5'>
                       {tabA[cpt]}                    
@@ -69,5 +69,4 @@ const postab= tabA.length-1;
     </div>
   )
 }
-
 export default CourAxiale

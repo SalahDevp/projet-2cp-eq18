@@ -12,7 +12,7 @@ import Courp8 from './courpages-centrale/courp8'
 import Courp9 from './courpages-centrale/courp9'
 import Courp10 from './courpages-centrale/courp10'
 import TBMC from "./courpages-centrale/TABC"
-const Cour = () => {
+const CourCentrale = () => {
     const [cpt, setCpt] = useState(0)
     const [boolean1,setBoolean1]=useState(false)
     const [boolean2,setBoolean2]=useState(true)
@@ -40,18 +40,18 @@ const postab= tab.length-1;
     })   
   return (
       <div className='bg-white h-screen' > 
-             <Nav  title="Cour"  pathAvant="/menu"  />   
+             <Nav  title="Cour"  pathAvant="/Menu-Cour"  />   
    
                   <div className='pl-20 pr-20 pt-5'>
                       {tab[cpt]}                    
-                     <div className=' absolute top-3 left-1/2
-                      -translate-x-1/2 -translate-y-1/2  w-72'> 
-                          {boolean1 &&  mousse && <button onClick={() =>{if(cpt>0){setCpt(cpt -1)}}}>&#9754;</button>}
-                          {boolean2  && mousse && <button onClick={() =>  {if(cpt<14) setCpt(cpt + 1)}}>&#9755;</button>}
-                      </div>  
+                        <>
+                          {boolean1 &&  mousse && <button className='absolute top-1/2 left-6 w-10 h-8' onClick={() =>{if(cpt>0){setCpt(cpt -1)}}}>&#9754;</button>}
+                          {boolean2  && mousse && <button className='absolute top-1/2 right-6 w-10 h-8' onClick={() =>  {if(cpt<14) setCpt(cpt + 1)}}>&#9755;</button>}
+                       </>
+                      {cpt>0 && <p className='absolute left-1/2 bottom-2'>{cpt}</p>}
                    </div>
      </div>
   )
 }
 
-export default Cour
+export default CourCentrale
