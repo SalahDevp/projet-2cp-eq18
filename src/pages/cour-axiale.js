@@ -60,11 +60,12 @@ const postab= tabA.length-1;
 
             <div className='pl-20 pr-20 pt-5'>
                       {tabA[cpt]}                    
-                     <div className=' absolute top-3 left-1/2
-                      -translate-x-1/2 -translate-y-1/2  w-96'> 
-                          {boolean1 &&  mousse && <button onClick={() =>{if(cpt>0){setCpt(cpt -1)}}}>&#9754;</button>}
-                          {boolean2  && mousse && <button  onClick={() =>  {if(cpt<16) setCpt(cpt + 1)}}>&#9755;</button>}
-                      </div>  
+                           <>
+                          {boolean1 &&  mousse && <button className='absolute top-1/2 left-6 w-10 h-8' onClick={() =>{if(cpt>0){setCpt(cpt -1)}}}>&#9754;</button>}
+                          {boolean2  && mousse && <button className='absolute top-1/2 right-6 w-10 h-8'  onClick={() =>  {if(cpt<16) setCpt(cpt + 1)}}>&#9755;</button>}
+                          </>
+                          {cpt>0 && <p className='absolute left-1/2 bottom-2'>{cpt}</p>}
+
               </div> 
     </div>
   )

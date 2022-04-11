@@ -1,5 +1,6 @@
 import React from 'react'
-import vid1 from "../../assets/cour/Video/1_absis.mp4"
+// import VideoPlayer from 'react-video-js-player'
+import Video from "../../assets/cour/Video/abcd.mp4"
 const CourA4 = () => {
   return (
     <div>
@@ -13,13 +14,15 @@ const CourA4 = () => {
                 <li>On obtient ainsi le symétrique <span className="text-ltr-cr">A1</span> du point <span className="text-ltr-cr">A</span> par rapport à la droite <span className="text-ltr-cr">(d)</span>.</li>
             </ul>
         </div>
-        <div className=' mt-10 flex justify-center'>
-           <video  src={vid1} width="480" height="230"  controls="controls" autoPlay="true"   >
-             
-           </video>
-          
-      </div>
-     
+         <div className=' mt-10 flex justify-center'>
+              <video  src={Video}
+                width="500" height="400" 
+                controls="controls" autoPlay="true">
+              </video>
+          </div> 
+      
+   
+        {/* <VideoPlayer src={test} width="400" height="220" />  */}
     </div>
   )
 }

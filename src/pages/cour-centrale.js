@@ -1,5 +1,7 @@
 import React from 'react'
 import {useState,useEffect } from 'react'
+import { useTranslation } from "react-i18next";
+
 import Nav from 'components/Nav'
 import Courp1 from './courpages-centrale/courp1'
 import Courp2 from './courpages-centrale/courp2'
@@ -12,7 +14,19 @@ import Courp8 from './courpages-centrale/courp8'
 import Courp9 from './courpages-centrale/courp9'
 import Courp10 from './courpages-centrale/courp10'
 import TBMC from "./courpages-centrale/TABC"
+import i18n from 'utils/translation/i18n';
+
 const CourCentrale = () => {
+   //trans
+const { i18n } = useTranslation();
+const  [fr,setFR]=useState(true)
+
+useEffect(() => {
+ if(i18n.language==="ar"){
+   setFR(false)
+     }
+},[i18n.language]);
+//
     const [cpt, setCpt] = useState(0)
     const [boolean1,setBoolean1]=useState(false)
     const [boolean2,setBoolean2]=useState(true)
