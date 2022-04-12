@@ -1,5 +1,5 @@
 import React from 'react'
-import video1 from "../../assets/cour/Video/5_A.mp4"
+//import video1 from "../../assets/cour/Video/5_A.mp4"
 
 const CourA5 = () => {
   return (
@@ -13,9 +13,9 @@ const CourA5 = () => {
                 <li>Ces deux cercles se coupent en <span className='text-ltr-cr'>A</span> et aussi en un autre point <span className='text-ltr-cr'>A1</span> symétrique du point <span className='text-ltr-cr'>A</span> par rapport à la droite <span className='text-ltr-cr'>(d)</span>.</li>
             </ul>
         </div>
-          <div className=' mt-10 flex justify-center'>
+          {/* <div className=' mt-10 flex justify-center'>
               <video width="400" height="300" controls autoPlay src={video1}></video>
-          </div>
+          </div> */}
     </div>
   )
 }

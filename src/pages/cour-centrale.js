@@ -1,6 +1,8 @@
 import React from 'react'
 import {useState,useEffect } from 'react'
 import { useTranslation } from "react-i18next";
+import img1 from "../assets/cour/flecheD.png"
+import img2 from "../assets/cour/flecheL.png"
 
 import Nav from 'components/Nav'
 import Courp1 from './courpages-centrale/courp1'
@@ -58,10 +60,22 @@ const postab= tab.length-1;
    
                   <div className='pl-20 pr-20 pt-5'>
                       {tab[cpt]}                    
-                        <>
+                        {/* <>
                           {boolean1 &&  mousse && <button className='absolute top-1/2 left-6 w-10 h-8' onClick={() =>{if(cpt>0){setCpt(cpt -1)}}}>&#9754;</button>}
                           {boolean2  && mousse && <button className='absolute top-1/2 right-6 w-10 h-8' onClick={() =>  {if(cpt<14) setCpt(cpt + 1)}}>&#9755;</button>}
+                       </> */}
+                        {fr?
+                        <>
+                          {boolean1 &&  mousse && <img src={img2} className='absolute top-1/2 left-6 w-10 h-8' onClick={() =>{if(cpt>0){setCpt(cpt -1)}}} alt="not found"/>}
+                          {boolean2  && mousse && <img src={img1}className='absolute top-1/2 right-6 w-10 h-8' onClick={() =>  {if(cpt<14) setCpt(cpt + 1)}} alt="not found" />}
                        </>
+                       :
+                       <>
+                       { !(cpt===postab) && mousse && <img src={img2} className='absolute top-1/2 left-6 w-10 h-8' onClick={() =>{setCpt(cpt +1)}} alt="not found"/>}
+                       {cpt>0 && mousse && <img src={img1}className='absolute top-1/2 right-6 w-10 h-8' onClick={() =>  {setCpt(cpt -1)}} alt="not found" />}
+                       </>
+                       }
+                       
                       {cpt>0 && <p className='absolute left-1/2 bottom-2'>{cpt}</p>}
                    </div>
      </div>

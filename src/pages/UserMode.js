@@ -27,7 +27,7 @@ const UserMode = () => {
   });
   return (
     <div>
-      <Nav title="se connecter" pathAvant="/" aff={true} />
+      <Nav  title="mode d'utilisateur" pathAvant="/" aff={true} />
       <div
         className=" absolute top-1/2 left-1/2
      -translate-x-1/2 -translate-y-1/2 
