@@ -82,7 +82,7 @@ const postab= tabA.length-1;
                        </>
                        :
                        <>
-                       { !(cpt===postab) && mousse && <img src={img2} className='absolute top-1/2 left-6 w-10 h-8' onClick={() =>{setCpt(cpt +1)}} alt="not found"/>}
+                       { !(cpt===postab) && mousse && <img  src={img2} className='absolute top-1/2 left-6 w-10 h-8' onClick={() =>{setCpt(cpt +1)}} alt="not found"/>}
                        {cpt>0 && mousse && <img src={img1}className='absolute top-1/2 right-6 w-10 h-8' onClick={() =>  {setCpt(cpt -1)}} alt="not found" />}
                        </>
                        }

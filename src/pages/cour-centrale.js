@@ -3,7 +3,6 @@ import {useState,useEffect } from 'react'
 import { useTranslation } from "react-i18next";
 import img1 from "../assets/cour/flecheD.png"
 import img2 from "../assets/cour/flecheL.png"
-
 import Nav from 'components/Nav'
 import Courp1 from './courpages-centrale/courp1'
 import Courp2 from './courpages-centrale/courp2'
@@ -22,13 +21,14 @@ const CourCentrale = () => {
    //trans
 const { i18n } = useTranslation();
 const  [fr,setFR]=useState(true)
-
+const [hover,setHover]=useState(false)
 useEffect(() => {
  if(i18n.language==="ar"){
    setFR(false)
      }
+    
 },[i18n.language]);
-//
+
     const [cpt, setCpt] = useState(0)
     const [boolean1,setBoolean1]=useState(false)
     const [boolean2,setBoolean2]=useState(true)
@@ -53,7 +53,8 @@ const postab= tab.length-1;
 
     window.addEventListener('mousemove',()=>{
       setMousse(true)
-    })   
+    })
+    
   return (
       <div className='bg-white h-screen' > 
              <Nav  title="Cour"  pathAvant="/Menu-Cour"  />   
@@ -66,8 +67,8 @@ const postab= tab.length-1;
                        </> */}
                         {fr?
                         <>
-                          {boolean1 &&  mousse && <img src={img2} className='absolute top-1/2 left-6 w-10 h-8' onClick={() =>{if(cpt>0){setCpt(cpt -1)}}} alt="not found"/>}
-                          {boolean2  && mousse && <img src={img1}className='absolute top-1/2 right-6 w-10 h-8' onClick={() =>  {if(cpt<14) setCpt(cpt + 1)}} alt="not found" />}
+                          {boolean1 &&  (mousse || hover)  && <img onMouseMove={()=>{setHover(true)}} onMouseLeave={()=>{setHover(false)}} id="flh" src={img2} className='absolute top-1/2 left-6 w-10 h-8' onClick={() =>{if(cpt>0){setCpt(cpt -1)}}} alt="not found"/>}
+                          {boolean2  && ( mousse || hover) && <img id="flh" src={img1}className='absolute top-1/2 right-6 w-10 h-8' onClick={() =>  {if(cpt<14) setCpt(cpt + 1)}} alt="not found" />}
                        </>
                        :
                        <>
@@ -80,6 +81,7 @@ const postab= tab.length-1;
                    </div>
      </div>
   )
+  
 }
 
 export default CourCentrale
