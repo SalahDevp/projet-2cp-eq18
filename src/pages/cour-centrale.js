@@ -39,7 +39,7 @@ useEffect(() => {
 const postab= tab.length-1;
     useEffect(() => {
              if(mousse)  {
-             setTimeout(() => {  setMousse(false) }, 5000);
+             setTimeout(() => {  setMousse(false) }, 7000);
              if(!(cpt===0)){setBoolean1(true)}
              else{
                 setBoolean1(false)
@@ -68,12 +68,12 @@ const postab= tab.length-1;
                         {fr?
                         <>
                           {boolean1 &&  (mousse || hover)  && <img onMouseMove={()=>{setHover(true)}} onMouseLeave={()=>{setHover(false)}} id="flh" src={img2} className='absolute top-1/2 left-6 w-10 h-8' onClick={() =>{if(cpt>0){setCpt(cpt -1)}}} alt="not found"/>}
-                          {boolean2  && ( mousse || hover) && <img id="flh" src={img1}className='absolute top-1/2 right-6 w-10 h-8' onClick={() =>  {if(cpt<14) setCpt(cpt + 1)}} alt="not found" />}
+                          {boolean2  && ( mousse || hover) && <img onMouseMove={()=>{setHover(true)}} onMouseLeave={()=>{setHover(false)}} id="flh" src={img1}className='absolute top-1/2 right-6 w-10 h-8' onClick={() =>  {if(cpt<14) setCpt(cpt + 1)}} alt="not found" />}
                        </>
                        :
                        <>
-                       { !(cpt===postab) && mousse && <img src={img2} className='absolute top-1/2 left-6 w-10 h-8' onClick={() =>{setCpt(cpt +1)}} alt="not found"/>}
-                       {cpt>0 && mousse && <img src={img1}className='absolute top-1/2 right-6 w-10 h-8' onClick={() =>  {setCpt(cpt -1)}} alt="not found" />}
+                       { !(cpt===postab) && (mousse || hover) && <img onMouseMove={()=>{setHover(true)}} onMouseLeave={()=>{setHover(false)}} src={img2} className='absolute top-1/2 left-6 w-10 h-8' onClick={() =>{setCpt(cpt +1)}} alt="not found"/>}
+                       {cpt>0 && (mousse || hover) && <img onMouseMove={()=>{setHover(true)}} onMouseLeave={()=>{setHover(false)}} src={img1}className='absolute top-1/2 right-6 w-10 h-8' onClick={() =>  {setCpt(cpt -1)}} alt="not found" />}
                        </>
                        }
                        
