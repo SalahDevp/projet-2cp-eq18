@@ -31,7 +31,7 @@ const TeacherPassword = () => {
   });
   return (
     <div>
-      <Nav pathAvant="/user-mode" aff={false} />
+      <Nav title="se connecter" pathAvant="/user-mode" aff={false} />
       <div className="h-100 w-screen flex items-center justify-center">
         <div className="w-1/2">
           <span className="font-semibold text-lg pl-2">

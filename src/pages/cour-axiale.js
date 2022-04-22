@@ -17,8 +17,22 @@ import CourA13 from './courpages-axiale/courA13'
 import CourA14 from './courpages-axiale/courA14'
 import CourA15 from './courpages-axiale/courA15'
 import TBMA from "./courpages-axiale/TBMA"
+import img1 from "../assets/cour/flecheD.png"
+import img2 from "../assets/cour/flecheL.png"
+import { useTranslation } from "react-i18next";
+import i18n from 'utils/translation/i18n';
 
 const CourAxiale = () => {
+  const { i18n } = useTranslation();
+const  [fr,setFR]=useState(true)
+
+useEffect(() => {
+ if(i18n.language==="ar"){
+   setFR(false)
+     }
+},[i18n.language]);
+//
+   
     const [cpt, setCpt] = useState(0)
     const [boolean1,setBoolean1]=useState(false)
     const [boolean2,setBoolean2]=useState(true)
@@ -56,18 +70,26 @@ const postab= tabA.length-1;
     })   
   return (
     <div className='bg-white h-screen'>
-          <Nav  title="Cour"  pathAvant="/menu"  />  
+          <Nav  title="Cour"  pathAvant="/Menu-Cour"  />  
 
             <div className='pl-20 pr-20 pt-5'>
                       {tabA[cpt]}                    
-                     <div className=' absolute top-3 left-1/2
-                      -translate-x-1/2 -translate-y-1/2  w-96'> 
-                          {boolean1 &&  mousse && <button onClick={() =>{if(cpt>0){setCpt(cpt -1)}}}>&#9754;</button>}
-                          {boolean2  && mousse && <button  onClick={() =>  {if(cpt<16) setCpt(cpt + 1)}}>&#9755;</button>}
-                      </div>  
+                       
+                       {fr?
+                       <>
+                          {boolean1 &&  mousse && <img src={img2} className='absolute top-1/2 left-6 w-10 h-8' onClick={() =>{if(cpt>0){setCpt(cpt -1)}}} alt="not found"/>}
+                          {boolean2  && mousse && <img src={img1}className='absolute top-1/2 right-6 w-10 h-8' onClick={() =>  {if(cpt<14) setCpt(cpt + 1)}} alt="not found" />}
+                       </>
+                       :
+                       <>
+                       { !(cpt===postab) && mousse && <img src={img2} className='absolute top-1/2 left-6 w-10 h-8' onClick={() =>{setCpt(cpt +1)}} alt="not found"/>}
+                       {cpt>0 && mousse && <img src={img1}className='absolute top-1/2 right-6 w-10 h-8' onClick={() =>  {setCpt(cpt -1)}} alt="not found" />}
+                       </>
+                       }
+                          {cpt>0 && <p className='absolute left-1/2 bottom-2'>{cpt}</p>}
+
               </div> 
     </div>
   )
 }
-
 export default CourAxiale

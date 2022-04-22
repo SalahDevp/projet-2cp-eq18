@@ -1,5 +1,6 @@
 import React from "react";
-import video1 from "../../assets/cour/Videos projet/1_A.mp4";
+// import VideoPlayer from 'react-video-js-player'
+import Video4 from "../../assets/cour/Video/1.mp4";
 const CourA4 = () => {
   return (
     <div>
@@ -33,11 +34,14 @@ const CourA4 = () => {
           </li>
         </ul>
       </div>
-      <div className="mt-10 flex justify-center">
+
+      <div className=" mt-10 flex justify-center">
         <video
-          width="1000"
-          /*height="300"*/ controls="controls"
-          /*autoplay="true"*/ src={video1}
+          src={Video4}
+          width="500"
+          height="400"
+          controls="controls"
+          autoPlay="true"
         ></video>
       </div>
     </div>

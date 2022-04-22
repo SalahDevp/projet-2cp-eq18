@@ -6,8 +6,9 @@ import UserMode from "pages/UserMode";
 import Menu from "pages/Menu";
 import Paint from "pages/Paint";
 import EditCour from "pages/EditCour";
-import Cour from "pages/cour-centrale";
+import CourCentrale from "pages/cour-centrale";
 import CourAxiale from "pages/cour-axiale";
+import MenuCour from "pages/MenuCour";
 
 function App() {
   return (
@@ -20,8 +21,9 @@ function App() {
           <Route path="menu" element={<Menu />} />
           <Route /*path="edit-cour"*/ element={<EditCour />} />
           <Route /*path="paint"*/ element={<Paint />} />
-          <Route path="cour-centrale" element={<Cour />} />
-          <Route index /*path="cour-axiale"*/ element={<CourAxiale />} />
+          <Route path="/Menu-Cour" element={<MenuCour />} />
+          <Route path="/cour-centrale" element={<CourCentrale />} />
+          <Route path="/cour-axiale" element={<CourAxiale />} />
         </Routes>
       </HashRouter>
     </AppContext>

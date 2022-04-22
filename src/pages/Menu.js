@@ -22,21 +22,17 @@ const Menu = () => {
   );
   const handleCour = () => {
     //navigte to password page.
-    navigate("/cour");
+    navigate("/Menu-Cour");
   };
   return (
     <>
-      <Nav title="se connecter" pathAvant="/user-mode" aff={false} />
+      <Nav title="Menu" pathAvant="/user-mode" aff={false} />
       <div
         className=" absolute top-1/2 left-1/2
-    -translate-x-1/2 -translate-y-1/2 
-     h-96 w-328 flex items-center justify-between "
+        -translate-x-1/2 -translate-y-1/2 
+        h-96 w-328 flex items-center justify-between "
       >
-        <Box
-          image={img1}
-          title={t("grid")}
-          handleClick={() => navigate("/grille")}
-        />
+        <Box image={img1} title={t("grid")} />
         <Box image={img2} title={t("courses")} handleClick={handleCour} />
         <Box image={img3} title={t("exercices")} />
       </div>
