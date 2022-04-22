@@ -18,10 +18,10 @@ function App() {
           <Route path="user-mode" element={<UserMode />} />
           <Route path="teacher-password" element={<TeacherPassword />} />
           <Route path="menu" element={<Menu />} />
-          <Route path="edit-cour" element={<EditCour />} />
-          <Route path="paint" element={<Paint />} />
+          <Route /*path="edit-cour"*/ element={<EditCour />} />
+          <Route /*path="paint"*/ element={<Paint />} />
           <Route path="cour-centrale" element={<Cour />} />
-          <Route index element={<CourAxiale />} />
+          <Route index /*path="cour-axiale"*/ element={<CourAxiale />} />
         </Routes>
       </HashRouter>
     </AppContext>
