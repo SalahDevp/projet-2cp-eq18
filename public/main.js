@@ -2,7 +2,7 @@ const { app, BrowserWindow } = require("electron");
 
 const path = require("path");
 const isDev = require("electron-is-dev");
-const store = require("./electron-utils/store");
+
 //ipc
 const initStoreMain = require("./electron-utils/ipc/initStoreMain");
 const { initSaveNewCourseMain } = require("./electron-utils/ipc/saveNewCourse");
@@ -12,6 +12,7 @@ const {
 const {
   initGetCourseContentMain,
 } = require("./electron-utils/ipc/getCourseContent");
+const { initGetCoursePathMain } = require("./electron-utils/ipc/getCoursePath");
 
 let win;
 
@@ -39,6 +40,7 @@ app.whenReady().then(() => {
   initSaveNewCourseMain();
   initGetCourseTitlesMain();
   initGetCourseContentMain();
+  initGetCoursePathMain();
   //store.openInEditor();
   createWindow();
 });

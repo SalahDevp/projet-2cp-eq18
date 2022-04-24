@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Nav from "components/Nav";
 import { useNavigate } from "react-router-dom";
 import Box from "components/menu-mode/Box";
+import courImg from "assets/cour/custom-course.png";
 
 const MenuCour = () => {
   const navigate = useNavigate();
@@ -22,14 +23,14 @@ const MenuCour = () => {
         >
           <div className="m-4">
             <Box
-              // image={}
+              image={courImg}
               title="Centale"
               handleClick={() => navigate("/cour-centrale")}
             />
           </div>
           <div className="m-4">
             <Box
-              //  image={}
+              image={courImg}
               title="Axiale"
               handleClick={() => navigate("/cour-axiale")}
             />
@@ -37,6 +38,7 @@ const MenuCour = () => {
           {customCourseTitles.map((title) => (
             <div className="m-4">
               <Box
+                image={courImg}
                 key={title}
                 title={title}
                 handleClick={() =>

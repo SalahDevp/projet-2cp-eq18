@@ -3,18 +3,19 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 const CustomCourse = () => {
-  const { title } = useParams();
-  const [content, setContent] = useState("");
+  const { title } = useParams(); //title is the same as file name ('_' instead of ' ')
+  const [path, setPath] = useState("");
   useEffect(() => {
-    window.electronAPI.getCourseContent(title).then((cont) => setContent(cont));
+    window.electronAPI.getCoursePath(title).then((path) => setPath(path));
   }, []);
   return (
-    <div>
+    <div className="flex flex-col w-screen min-h-screen">
       <Nav title={title.replace(/_/g, " ")} pathAvant="/menu-cour" />
-      <div
-        className="bg-white prose max-w-none h-100 w-screen p-2"
-        dangerouslySetInnerHTML={{ __html: content }}
-      ></div>
+      <iframe
+        title="custom-cour"
+        src={path}
+        className="bg-white w-full flex-grow"
+      ></iframe>
     </div>
   );
 };
