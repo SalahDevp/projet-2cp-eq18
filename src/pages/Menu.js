@@ -22,7 +22,7 @@ const Menu = () => {
   );
   const handleCour = () => {
     //navigte to password page.
-    navigate("/Menu-Cour");
+    navigate("/menu-cour");
   };
   return (
     <>

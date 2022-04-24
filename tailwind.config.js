@@ -14,8 +14,9 @@ module.exports = {
         title: "#3FD1CB",
         nav: "#7579E7",
         "ltr-cr": "#10C518",
+        "smoke-light": "rgba(0, 0, 0, 0.4)",
       },
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
 };

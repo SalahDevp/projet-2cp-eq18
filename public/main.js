@@ -6,6 +6,12 @@ const store = require("./electron-utils/store");
 //ipc
 const initStoreMain = require("./electron-utils/ipc/initStoreMain");
 const { initSaveNewCourseMain } = require("./electron-utils/ipc/saveNewCourse");
+const {
+  initGetCourseTitlesMain,
+} = require("./electron-utils/ipc/GetCourseTitles");
+const {
+  initGetCourseContentMain,
+} = require("./electron-utils/ipc/getCourseContent");
 
 let win;
 
@@ -31,6 +37,8 @@ function createWindow() {
 app.whenReady().then(() => {
   initStoreMain();
   initSaveNewCourseMain();
+  initGetCourseTitlesMain();
+  initGetCourseContentMain();
   //store.openInEditor();
   createWindow();
 });

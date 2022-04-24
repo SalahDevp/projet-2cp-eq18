@@ -1,16 +1,20 @@
 import { EditorState, convertToRaw } from "draft-js";
 import { Editor } from "react-draft-wysiwyg";
 import { useState } from "react";
-//html conversion
-import draftToHtml from "draftjs-to-html";
+//nav component
+import Nav from "components/Nav";
 //translation
 import { useTranslation } from "react-i18next";
 import arTranslation from "utils/translation/edit-cour-ar";
 //styling
 import "style/editor.css";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import SaveCoursDialogue from "components/Cours/SaveCoursDialogue";
 
 const EditCour = () => {
+  //save cour dialogue state
+  const [dialogueOpened, setDialogueOpened] = useState(false);
+  //editor state
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
   );
@@ -31,67 +35,59 @@ const EditCour = () => {
       });
     });
 
-  const saveCour = () => {
-    const contentAsHtml = draftToHtml(
-      convertToRaw(editorState.getCurrentContent()),
-      undefined,
-      true,
-      ({ type, data }) => {
-        //to fix -image doesnt align in the center-
-        if (type === "IMAGE") {
-          const textAlign = data.alignment || "center";
-          return `
-                <p style="text-align:${textAlign};">
-                    <img src="${data.src}" alt="${
-            data.alt || ""
-          }" style="height: ${data.height};width: ${data.width}"/>
-                </p>
-            `;
-        }
-      }
-    );
-    window.electronAPI.saveNewCourse(contentAsHtml);
-  };
-
   return (
-    <div className="h-100">
-      <Editor
-        editorState={editorState}
-        onEditorStateChange={handleEditorChange}
-        wrapperClassName="wrapper-class"
-        editorClassName="editor-class"
-        toolbarClassName="toolbar-class"
-        localization={
-          i18n.language === "ar"
-            ? {
-                locale: "ar",
-                translations: arTranslation,
-              }
-            : { locale: "fr" }
-        }
-        toolbar={{
-          options: [
-            "inline",
-            "blockType",
-            "fontSize",
-            "fontFamily",
-            "list",
-            "textAlign",
-            "colorPicker",
-            "emoji",
-            "image",
-            "history",
-          ],
-          image: {
-            urlEnabled: false,
-            uploadCallback: getImage,
-            uploadEnabled: true,
-            previewImage: true,
-          },
-        }}
-      />
-      <button onClick={saveCour}>save</button>
-    </div>
+    <>
+      {dialogueOpened && (
+        <SaveCoursDialogue
+          setDialogueOpened={setDialogueOpened}
+          editorState={editorState}
+        />
+      )}
+      <Nav title={"editeur"} pathAvant="/menu-cour" />
+      <div className="h-100">
+        <Editor
+          editorState={editorState}
+          onEditorStateChange={handleEditorChange}
+          wrapperClassName="wrapper-class"
+          editorClassName="editor-class"
+          toolbarClassName="toolbar-class"
+          localization={
+            i18n.language === "ar"
+              ? {
+                  locale: "ar",
+                  translations: arTranslation,
+                }
+              : { locale: "fr" }
+          }
+          toolbar={{
+            options: [
+              "inline",
+              "blockType",
+              "fontSize",
+              "fontFamily",
+              "list",
+              "textAlign",
+              "colorPicker",
+              "emoji",
+              "image",
+              "history",
+            ],
+            image: {
+              urlEnabled: false,
+              uploadCallback: getImage,
+              uploadEnabled: true,
+              previewImage: true,
+            },
+          }}
+        />
+        <button
+          className="bg-green-400 p-2 ml-4"
+          onClick={() => setDialogueOpened(true)}
+        >
+          save
+        </button>
+      </div>
+    </>
   );
 };
 

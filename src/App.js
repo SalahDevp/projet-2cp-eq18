@@ -9,21 +9,23 @@ import EditCour from "pages/EditCour";
 import CourCentrale from "pages/cour-centrale";
 import CourAxiale from "pages/cour-axiale";
 import MenuCour from "pages/MenuCour";
+import CustomCourse from "pages/CustomCourse";
 
 function App() {
   return (
     <AppContext>
       <HashRouter>
         <Routes>
-          <Route path="h" element={<LanguageChoice />} />
+          <Route index element={<LanguageChoice />} />
           <Route path="user-mode" element={<UserMode />} />
           <Route path="teacher-password" element={<TeacherPassword />} />
           <Route path="menu" element={<Menu />} />
-          <Route /*path="edit-cour"*/ element={<EditCour />} />
-          <Route /*path="paint"*/ element={<Paint />} />
-          <Route path="/Menu-Cour" element={<MenuCour />} />
+          <Route path="edit-cour" element={<EditCour />} />
+          <Route path="paint" element={<Paint />} />
+          <Route path="/menu-cour" element={<MenuCour />} />
           <Route path="/cour-centrale" element={<CourCentrale />} />
           <Route path="/cour-axiale" element={<CourAxiale />} />
+          <Route path="/custom-course/:title" element={<CustomCourse />} />
         </Routes>
       </HashRouter>
     </AppContext>
