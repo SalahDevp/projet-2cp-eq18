@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useLanguage } from "AppContext";
 import { useTranslation } from "react-i18next";
-
 import React from "react";
 
 const LanguageBox = ({ text, languageCode, image }) => {
@@ -39,5 +38,4 @@ const LanguageBox = ({ text, languageCode, image }) => {
     </div>
   );
 };
-
 export default LanguageBox;

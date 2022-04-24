@@ -5,14 +5,18 @@ module.exports = {
       spacing: {
         128: "27rem",
         328: "40rem",
+        98: "32rem",
+        99: "35rem",
         100: "37rem",
       },
       colors: {
         box: "#B9FFFC",
         title: "#3FD1CB",
         nav: "#7579E7",
+        "ltr-cr": "#10C518",
+        "smoke-light": "rgba(0, 0, 0, 0.4)",
       },
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
 };

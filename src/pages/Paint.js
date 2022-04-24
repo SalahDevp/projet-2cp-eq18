@@ -1,13 +1,17 @@
 import Canvas from "components/paint/Canvas";
 import React, { useRef, useEffect, useState } from "react";
-
+import { clearCanvas, drawLine } from "utils/paint/basics";
+//actions
 import * as drawShape from "utils/paint/actions/drawShape";
 import * as movePoint from "utils/paint/actions/movePoint";
 import * as paintBucket from "utils/paint/actions/paintBucket";
 import * as drawTriangle from "utils/paint/actions/drawTriangle";
 import * as drawPentagon from "utils/paint/actions/drawPentagon";
 import * as moveShape from "utils/paint/actions/moveShape";
-import { clearCanvas, drawLine } from "utils/paint/basics";
+import * as drawRectangle from "utils/paint/actions/drawRectangle";
+import * as drawLosange from "utils/paint/actions/drawLosange";
+import * as drawHexagone from "utils/paint/actions/drawHexagone";
+import * as drawHexa from "utils/paint/actions/drawHexa";
 
 export const HEIGHT = 500,
   WIDTH = 1000,
@@ -66,6 +70,10 @@ const Paint = () => {
         <button onClick={() => setActionType(drawShape)}>draw shape</button>
         <button onClick={() => setActionType(movePoint)}>move point</button>
         <button onClick={() => setActionType(drawTriangle)}>triangle</button>
+        <button onClick={() => setActionType(drawRectangle)}>rectangle</button>
+        <button onClick={() => setActionType(drawLosange)}>losange</button>
+        <button onClick={() => setActionType(drawHexagone)}>hexagone</button>
+        <button onClick={() => setActionType(drawHexa)}>hexa</button>
         <button onClick={() => setActionType(paintBucket)}>bucket</button>
         <button onClick={() => setActionType(drawPentagon)}>pentagon</button>
         <button onClick={() => setActionType(moveShape)}>move shape</button>

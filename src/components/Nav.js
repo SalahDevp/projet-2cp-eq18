@@ -1,7 +1,6 @@
 import React from "react";
 import img1 from "assets/Nav/parametres.png";
 import img2 from "assets/Nav/sortir.png";
-//
 import img3 from "assets/Nav/aide.png";
 import img4 from "assets/Nav/home.png";
 import img5 from "assets/Nav/retour.png";
