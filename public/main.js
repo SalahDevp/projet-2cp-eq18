@@ -2,18 +2,30 @@ const { app, BrowserWindow } = require("electron");
 
 const path = require("path");
 const isDev = require("electron-is-dev");
-const initStoreMain = require("./electron-utils/data/initStoreMain");
-const store = require("./electron-utils/data/store");
+
+//ipc
+const initStoreMain = require("./electron-utils/ipc/initStoreMain");
+const { initSaveNewCourseMain } = require("./electron-utils/ipc/saveNewCourse");
+const {
+  initGetCourseTitlesMain,
+} = require("./electron-utils/ipc/GetCourseTitles");
+const {
+  initGetCourseContentMain,
+} = require("./electron-utils/ipc/getCourseContent");
+const { initGetCoursePathMain } = require("./electron-utils/ipc/getCoursePath");
+
+let win;
 
 function createWindow() {
   // Create the browser window.
-  const win = new BrowserWindow({
+  win = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
       preload: path.join(__dirname, "/electron-utils/preload.js"),
+      webSecurity: isDev ? false : true,
     },
-    //frame:false,
+    // frame:false,
   });
 
   win.loadURL(
@@ -25,6 +37,10 @@ function createWindow() {
 
 app.whenReady().then(() => {
   initStoreMain();
+  initSaveNewCourseMain();
+  initGetCourseTitlesMain();
+  initGetCourseContentMain();
+  initGetCoursePathMain();
   //store.openInEditor();
   createWindow();
 });
