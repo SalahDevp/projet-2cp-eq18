@@ -49,6 +49,7 @@ useEffect(() => {
     <CourA12 />,<CourA13 />,
     <CourA14 />,<CourA15 />
   ]
+  const [hover,setHover]=useState(false)
 
 const postab= tabA.length-1;
     useEffect(() => {
@@ -77,13 +78,13 @@ const postab= tabA.length-1;
                        
                        {fr?
                        <>
-                          {boolean1 &&  mousse && <img src={img2} className='absolute top-1/2 left-6 w-10 h-8' onClick={() =>{if(cpt>0){setCpt(cpt -1)}}} alt="not found"/>}
-                          {boolean2  && mousse && <img src={img1}className='absolute top-1/2 right-6 w-10 h-8' onClick={() =>  {if(cpt<14) setCpt(cpt + 1)}} alt="not found" />}
+                         {boolean1 &&  (mousse || hover)  && <img onMouseMove={()=>{setHover(true)}} onMouseLeave={()=>{setHover(false)}} id="flh" src={img2} className='absolute top-1/2 left-6 w-10 h-8' onClick={() =>{if(cpt>0){setCpt(cpt -1)}}} alt="not found"/>}
+                          {boolean2  && ( mousse || hover) && <img onMouseMove={()=>{setHover(true)}} onMouseLeave={()=>{setHover(false)}} id="flh" src={img1}className='absolute top-1/2 right-6 w-10 h-8' onClick={() =>  {if(cpt<14) setCpt(cpt + 1)}} alt="not found" />}
                        </>
                        :
                        <>
-                       { !(cpt===postab) && mousse && <img src={img2} className='absolute top-1/2 left-6 w-10 h-8' onClick={() =>{setCpt(cpt +1)}} alt="not found"/>}
-                       {cpt>0 && mousse && <img src={img1}className='absolute top-1/2 right-6 w-10 h-8' onClick={() =>  {setCpt(cpt -1)}} alt="not found" />}
+                       { !(cpt===postab) && (mousse || hover) && <img onMouseMove={()=>{setHover(true)}} onMouseLeave={()=>{setHover(false)}} src={img2} className='absolute top-1/2 left-6 w-10 h-8' onClick={() =>{setCpt(cpt +1)}} alt="not found"/>}
+                       {cpt>0 && (mousse || hover) && <img onMouseMove={()=>{setHover(true)}} onMouseLeave={()=>{setHover(false)}} src={img1}className='absolute top-1/2 right-6 w-10 h-8' onClick={() =>  {setCpt(cpt -1)}} alt="not found" />}
                        </>
                        }
                           {cpt>0 && <p className='absolute left-1/2 bottom-2'>{cpt}</p>}
