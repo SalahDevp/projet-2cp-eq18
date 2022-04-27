@@ -1,6 +1,7 @@
+//editor
 import { EditorState, convertToRaw } from "draft-js";
+import draftToHtml from "draftjs-to-html";
 import { Editor } from "react-draft-wysiwyg";
-import { useState } from "react";
 //nav component
 import Nav from "components/Nav";
 //translation
@@ -9,11 +10,14 @@ import arTranslation from "utils/translation/edit-cour-ar";
 //styling
 import "style/editor.css";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import SaveCoursDialogue from "components/Cours/SaveCoursDialogue";
+//react
+import { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 const EditCour = () => {
-  //save cour dialogue state
-  const [dialogueOpened, setDialogueOpened] = useState(false);
+  //routing
+  const navigate = useNavigate();
+  const { type: CourseType } = useParams();
   //editor state
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
@@ -23,7 +27,7 @@ const EditCour = () => {
   const handleEditorChange = (state) => {
     setEditorState(state);
   };
-
+  //to insert an image
   const getImage = (file) =>
     new Promise((resolve, reject) => {
       console.log(file);
@@ -35,15 +39,35 @@ const EditCour = () => {
       });
     });
 
+  const savePage = async () => {
+    const contentAsHtml = draftToHtml(
+      convertToRaw(editorState.getCurrentContent()),
+      undefined,
+      true,
+      ({ type, data }) => {
+        //to fix -image doesnt align in the center-
+        if (type === "IMAGE") {
+          const textAlign = data.alignment || "center";
+          return `
+                <p style="text-align:${textAlign};">
+                    <img src="${data.src}" alt="${
+            data.alt || ""
+          }" style="height: ${data.height};width: ${data.width}"/>
+                </p>
+            `;
+        }
+      }
+    );
+    const fileSaved = await window.electronAPI.saveNewCoursePage(
+      CourseType,
+      contentAsHtml
+    );
+    if (fileSaved) navigate(`/cour-${CourseType}`);
+  };
+
   return (
     <>
-      {dialogueOpened && (
-        <SaveCoursDialogue
-          setDialogueOpened={setDialogueOpened}
-          editorState={editorState}
-        />
-      )}
-      <Nav title={"editeur"} pathAvant="/menu-cour" />
+      <Nav title={"editeur"} pathAvant={`/cour-${CourseType}`} />
       <div className="h-100">
         <Editor
           editorState={editorState}
@@ -80,10 +104,7 @@ const EditCour = () => {
             },
           }}
         />
-        <button
-          className="bg-green-400 p-2 ml-4"
-          onClick={() => setDialogueOpened(true)}
-        >
+        <button className="bg-green-400 p-2 ml-4" onClick={() => savePage()}>
           save
         </button>
       </div>

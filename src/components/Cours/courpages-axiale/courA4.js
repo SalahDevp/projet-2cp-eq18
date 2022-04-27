@@ -1,6 +1,6 @@
 import React from "react";
 // import VideoPlayer from 'react-video-js-player'
-import Video4 from "../../assets/cour/Video/1.mp4";
+import Video4 from "assets/cour/Video/1.mp4";
 const CourA4 = () => {
   return (
     <div>

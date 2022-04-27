@@ -5,13 +5,15 @@ const isDev = require("electron-is-dev");
 
 //ipc
 const initStoreMain = require("./electron-utils/ipc/initStoreMain");
-const { initSaveNewCourseMain } = require("./electron-utils/ipc/saveNewCourse");
+const {
+  initSaveNewCoursePageMain,
+} = require("./electron-utils/ipc/saveNewCoursePage");
 const {
   initGetCourseTitlesMain,
 } = require("./electron-utils/ipc/GetCourseTitles");
 const {
-  initGetCourseContentMain,
-} = require("./electron-utils/ipc/getCourseContent");
+  initGetCoursePagesMain,
+} = require("./electron-utils/ipc/getCoursePages");
 const { initGetCoursePathMain } = require("./electron-utils/ipc/getCoursePath");
 
 let win;
@@ -37,9 +39,9 @@ function createWindow() {
 
 app.whenReady().then(() => {
   initStoreMain();
-  initSaveNewCourseMain();
+  initSaveNewCoursePageMain();
   initGetCourseTitlesMain();
-  initGetCourseContentMain();
+  initGetCoursePagesMain();
   initGetCoursePathMain();
   //store.openInEditor();
   createWindow();
