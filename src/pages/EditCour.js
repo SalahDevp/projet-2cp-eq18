@@ -1,6 +1,7 @@
 //editor
-import { EditorState, convertToRaw } from "draft-js";
+import { EditorState, ContentState, convertToRaw } from "draft-js";
 import draftToHtml from "draftjs-to-html";
+import htmlToDraft from "html-to-draftjs";
 import { Editor } from "react-draft-wysiwyg";
 //nav component
 import Nav from "components/Nav";
@@ -11,13 +12,14 @@ import arTranslation from "utils/translation/edit-cour-ar";
 import "style/editor.css";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 //react
-import { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 
 const EditCour = () => {
   //routing
   const navigate = useNavigate();
   const { type: CourseType } = useParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   //editor state
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
@@ -40,6 +42,7 @@ const EditCour = () => {
     });
 
   const savePage = async () => {
+    //get content as html
     const contentAsHtml = draftToHtml(
       convertToRaw(editorState.getCurrentContent()),
       undefined,
@@ -58,13 +61,41 @@ const EditCour = () => {
         }
       }
     );
-    const fileSaved = await window.electronAPI.saveNewCoursePage(
+    //save page
+    const pageNum =
+      searchParams.get("edit") === "true"
+        ? searchParams.get("pageNum")
+        : undefined;
+    const fileSaved = await window.electronAPI.saveCoursePage(
       CourseType,
-      contentAsHtml
+      contentAsHtml,
+      pageNum
     );
     if (fileSaved) navigate(`/cour-${CourseType}`);
   };
-
+  //init editor with page content if in editing mode
+  useEffect(() => {
+    if (searchParams.get("edit") !== "true") return; //teacher is not editing an existing page
+    const pageNum = searchParams.get("pageNum");
+    //async bloc
+    (async () => {
+      try {
+        const htmlContent = await window.electronAPI.getCoursePageContent(
+          CourseType,
+          pageNum
+        );
+        const { contentBlocks, entityMap } = htmlToDraft(htmlContent);
+        const contentState = ContentState.createFromBlockArray(
+          contentBlocks,
+          entityMap
+        );
+        setEditorState(EditorState.createWithContent(contentState));
+      } catch (e) {
+        console.error(e);
+        navigate(`/cour-${CourseType}`);
+      }
+    })();
+  }, []);
   return (
     <>
       <Nav title={"editeur"} pathAvant={`/cour-${CourseType}`} />

@@ -46,6 +46,7 @@ const CourCentrale = () => {
           cpt={cpt}
           setCpt={setCpt}
           type="centrale"
+          defaultPagesLength={tab.length}
         />
         {pages[cpt]}
         {cpt > 0 && <p className="absolute left-1/2 bottom-2">{cpt}</p>}
