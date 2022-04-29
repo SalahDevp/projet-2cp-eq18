@@ -8,6 +8,7 @@ import CourControls from "components/Cours/CourControls";
 const CourAxiale = () => {
   const [cpt, setCpt] = useState(0);
   const [pages, setPages] = useState([]);
+  const [rerender, setRerender] = useState(false); //this var is toggled when techer deletes a page to reexecute useEffect
 
   const tab = [
     <courPages.TBMA />,
@@ -40,7 +41,7 @@ const CourAxiale = () => {
       ));
       setPages([...tab, ...customPages]);
     })();
-  }, []);
+  }, [rerender]);
 
   return (
     <div className="bg-white h-screen flex flex-col">
@@ -52,6 +53,8 @@ const CourAxiale = () => {
           cpt={cpt}
           setCpt={setCpt}
           type="axiale"
+          defaultPagesLength={tab.length}
+          setRerender={setRerender}
         />
         {pages[cpt]}
         {cpt > 0 && <p className="absolute left-1/2 bottom-2">{cpt}</p>}

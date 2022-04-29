@@ -8,6 +8,7 @@ import CourControls from "components/Cours/CourControls";
 const CourCentrale = () => {
   const [cpt, setCpt] = useState(0); //page counter
   const [pages, setPages] = useState([]); //pages array
+  const [rerender, setRerender] = useState(false); //this var is toggled when techer deletes a page to reexecute useEffect
 
   const tab = [
     <courPages.TBMC />,
@@ -34,7 +35,7 @@ const CourCentrale = () => {
       ));
       setPages([...tab, ...customPages]);
     })();
-  }, []);
+  }, [rerender]);
 
   return (
     <div className="bg-white h-screen flex flex-col">
@@ -47,6 +48,7 @@ const CourCentrale = () => {
           setCpt={setCpt}
           type="centrale"
           defaultPagesLength={tab.length}
+          setRerender={setRerender}
         />
         {pages[cpt]}
         {cpt > 0 && <p className="absolute left-1/2 bottom-2">{cpt}</p>}

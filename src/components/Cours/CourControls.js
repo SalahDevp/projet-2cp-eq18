@@ -14,6 +14,7 @@ const CourControls = ({
   setCpt,
   type,
   defaultPagesLength,
+  setRerender,
 }) => {
   const timer = useRef();
   const mouseOnControl = useRef(false); //if the mouse is on a one of the controls
@@ -29,6 +30,13 @@ const CourControls = ({
       //only hide controls if mouse is not on one of them
       if (!mouseOnControl.current) setShowControls(false);
     }, 4000);
+  };
+
+  const handleDeletePage = () => {
+    const pageNum = cpt - defaultPagesLength + 1;
+    window.electronAPI.deleteCoursePage(type, pageNum);
+    setCpt(cpt - 1);
+    setRerender((prv) => !prv);
   };
 
   return (
@@ -92,7 +100,10 @@ const CourControls = ({
               >
                 <img className="h-7" src={editIcon} alt="edit" />
               </button>
-              <button className="border rounded-full bg-gray-200 p-3">
+              <button
+                className="border rounded-full bg-gray-200 p-3"
+                onClick={handleDeletePage}
+              >
                 <img className="h-7" src={deleteIcon} alt="delete" />
               </button>
             </div>

@@ -9,6 +9,9 @@ const {
   initSaveCoursePageMain,
 } = require("./electron-utils/ipc/saveCoursePage");
 const {
+  initDeleteCoursePageMain,
+} = require("./electron-utils/ipc/deleteCoursePage");
+const {
   initGetCoursePageContentMain,
 } = require("./electron-utils/ipc/getCoursePageContent");
 const {
@@ -39,6 +42,7 @@ function createWindow() {
 app.whenReady().then(() => {
   initStoreMain();
   initSaveCoursePageMain();
+  initDeleteCoursePageMain();
   initGetCoursePageContentMain();
   initGetCoursePagesMain();
   //store.openInEditor();
