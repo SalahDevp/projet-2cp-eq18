@@ -8,21 +8,27 @@ import { HashRouter, Routes, Route } from "react-router-dom";
  import CourCentrale from "pages/cour-centrale";
  import CourAxiale from "pages/cour-axiale";
  import MenuCour from "pages/MenuCour";
+ import Lngchoix from "./pages/lngchoix"
+ import NUserMode from "pages/NuserMode";
+ import NMenu from "pages/NMenu";
 function App() {
   return (
     <AppContext>
    
         <HashRouter>
         <Routes>
-          <Route index  element={<LanguageChoice />} />
-          <Route path="user-mode" element={<UserMode />} />
-          <Route path="teacher-password" element={<TeacherPassword />} />
-          <Route path="menu" element={<Menu />} />
-          <Route path="/paint" element={<Paint />} />    
-          <Route  path="/Menu-Cour" element={<MenuCour />} />     
+        <Route index element={<Lngchoix />} />
+        <Route  path="/userMode" element={<NUserMode />} />    
+        <Route  path="NMenu"  element={<NMenu />} />
+        <Route  path="/Menu-Cour" element={<MenuCour />} />     
           <Route path="/cour-centrale"    element={<CourCentrale />} />    
-          <Route  path="/cour-axiale" element={<CourAxiale />} />     
- 
+          <Route  path="/cour-axiale" element={<CourAxiale />} />   
+           {/* <Route index  element={<LanguageChoice />} /> */}
+         {/* <Route path="user-mode" element={<UserMode />} />*/}
+         {/* <Route path="teacher-password" element={<TeacherPassword />} />*/}
+          {/* <Route index  element={<Menu />} /> */}
+         {/* <Route path="/paint" element={<Paint />} />    */}
+          
         </Routes>
       </HashRouter>   
     </AppContext>

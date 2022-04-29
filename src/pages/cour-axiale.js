@@ -71,7 +71,7 @@ const postab= tabA.length-1;
     })   
   return (
     <div className='bg-white h-screen'>
-          <Nav  title="Cour"  pathAvant="/Menu-Cour"  />  
+          {/* <Nav  title="Cour"  pathAvant="/Menu-Cour"  />   */}
 
             <div className='pl-20 pr-20 pt-5'>
                       {tabA[cpt]}                    
