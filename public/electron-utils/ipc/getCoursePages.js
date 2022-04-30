@@ -1,6 +1,7 @@
 const { ipcMain, ipcRenderer, app } = require("electron");
 const fs = require("fs");
 const path = require("path");
+const sortPages = require("../sortPages");
 
 //returns pages absolute paths
 function initGetCoursePagesMain() {
@@ -8,6 +9,8 @@ function initGetCoursePagesMain() {
     const coursesDirPath = path.join(app.getPath("userData"), "courses", type);
     if (!fs.existsSync(coursesDirPath)) return []; //if folder doesn't exit
     const fileNames = await fs.promises.readdir(coursesDirPath);
+    //sort
+    sortPages(fileNames);
     //get all pages content
     const pagesPath = fileNames.map((fileName) =>
       path.join(coursesDirPath, fileName)

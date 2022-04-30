@@ -9,7 +9,6 @@ import EditCour from "pages/EditCour";
 import CourCentrale from "pages/CourCentrale";
 import CourAxiale from "pages/CourAxiale";
 import MenuCour from "pages/MenuCour";
-import CustomCourse from "components/Cours/CustomCoursePage";
 
 function App() {
   return (

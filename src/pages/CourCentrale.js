@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 //components
 import * as courPages from "components/Cours/courpages-centrale";
 import Nav from "components/Nav";
-import CustomCoursePage from "components/Cours/CustomCoursePage";
+import CustomCourse from "components/Cours/CustomCourse";
 import CourControls from "components/Cours/CourControls";
 
 const CourCentrale = () => {
@@ -31,7 +31,7 @@ const CourCentrale = () => {
         "centrale"
       );
       const customPages = customPagesPathes.map((path) => (
-        <CustomCoursePage path={path} />
+        <CustomCourse path={path} />
       ));
       setPages([...tab, ...customPages]);
     })();
@@ -41,7 +41,7 @@ const CourCentrale = () => {
     <div className="bg-white h-screen flex flex-col">
       <Nav title="Cour" pathAvant="/Menu-Cour" />
 
-      <div className="relative pl-20 pr-20 pt-5 flex-grow">
+      <div className="relative pl-20 pr-20 pt-5 pb-7 flex-grow">
         <CourControls
           pagesLength={pages.length}
           cpt={cpt}
@@ -51,7 +51,9 @@ const CourCentrale = () => {
           setRerender={setRerender}
         />
         {pages[cpt]}
-        {cpt > 0 && <p className="absolute left-1/2 bottom-2">{cpt}</p>}
+        {cpt > 0 && (
+          <p className="absolute left-1/2 bottom-2 -translate-x-1/2">{cpt}</p>
+        )}
       </div>
     </div>
   );

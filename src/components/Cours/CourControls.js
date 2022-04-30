@@ -29,7 +29,7 @@ const CourControls = ({
     timer.current = setTimeout(() => {
       //only hide controls if mouse is not on one of them
       if (!mouseOnControl.current) setShowControls(false);
-    }, 4000);
+    }, 3000);
   };
 
   const handleDeletePage = () => {
@@ -88,6 +88,7 @@ const CourControls = ({
           )}
           {cpt >= defaultPagesLength && (
             <div className="absolute -translate-x-1/2 bottom-12 left-1/2 flex justify-between w-40">
+              {/*edit btn*/}
               <button
                 className="border rounded-full bg-gray-200 p-3"
                 onClick={() =>
@@ -100,6 +101,7 @@ const CourControls = ({
               >
                 <img className="h-7" src={editIcon} alt="edit" />
               </button>
+              {/*delete btn*/}
               <button
                 className="border rounded-full bg-gray-200 p-3"
                 onClick={handleDeletePage}
