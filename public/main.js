@@ -2,34 +2,19 @@ const { app, BrowserWindow } = require("electron");
 
 const path = require("path");
 const isDev = require("electron-is-dev");
-
 //ipc
-const initStoreMain = require("./electron-utils/ipc/initStoreMain");
-const {
-  initSaveCoursePageMain,
-} = require("./electron-utils/ipc/saveCoursePage");
-const {
-  initDeleteCoursePageMain,
-} = require("./electron-utils/ipc/deleteCoursePage");
-const {
-  initGetCoursePageContentMain,
-} = require("./electron-utils/ipc/getCoursePageContent");
-const {
-  initGetCoursePagesMain,
-} = require("./electron-utils/ipc/getCoursePages");
-
-let win;
+const initIpcMain = require("./electron-utils/initIpcMain");
 
 function createWindow() {
   // Create the browser window.
-  win = new BrowserWindow({
-    width: 800,
-    height: 600,
+  const win = new BrowserWindow({
+    fullscreen: true,
+    resizable: false,
+    show: false,
     webPreferences: {
       preload: path.join(__dirname, "/electron-utils/preload.js"),
       webSecurity: isDev ? false : true,
     },
-    // frame:false,
   });
 
   win.loadURL(
@@ -37,15 +22,24 @@ function createWindow() {
       ? "http://localhost:3000"
       : `file://${path.join(__dirname, "../build/index.html")}`
   );
+  //loading screen
+  const loadingWindow = new BrowserWindow({
+    fullscreen: true,
+    resizable: false,
+    alwaysOnTop: true,
+    frame: false,
+  });
+  loadingWindow.loadFile(path.join(__dirname, "loadingScreen/index.html"));
+  win.once("ready-to-show", () => {
+    setTimeout(() => {
+      loadingWindow.close();
+      win.show();
+    }, 5000);
+  });
 }
 
 app.whenReady().then(() => {
-  initStoreMain();
-  initSaveCoursePageMain();
-  initDeleteCoursePageMain();
-  initGetCoursePageContentMain();
-  initGetCoursePagesMain();
-  //store.openInEditor();
+  initIpcMain();
   createWindow();
 });
 

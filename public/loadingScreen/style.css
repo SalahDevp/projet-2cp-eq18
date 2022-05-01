@@ -1,0 +1,160 @@
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: #162534;
+    height: 100vh;
+    display: grid;
+    place-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.loader-wrapper {
+    width: 135px;
+    height: 135px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-13%, 90%);
+}
+
+.loader {
+    box-sizing: border-box;
+    /* box-sizing: border-box makes it so that the padding is calculated inside of the element and not outside. You can remove this to see what happens. */
+    width: 100%;
+    /* Takes up the entire with of the parent (.loader-wrapper 60px) */
+    height: 100%;
+    /* Takes up the entire height of the parent (.loader-wrapper 60px) */
+    border: 10px solid #fff6ea;
+    /* The border: is going to be the thickness of the ring & a solid color is added. */
+    border-top-color: #ff008e;
+    /* We target specific parts of the border and change the color */
+    border-bottom-color: #ffe300;
+    /* We target specific parts of the border and change the color */
+    border-radius: 50%;
+    /* Makes the element a circle */
+    animation: rotation 5s linear infinite;
+    /* Applies the keyframe animation by using the name, duration of 5 seconds, timing function linear, and the iteration to run infinitely. */
+}
+
+.loader-inner {
+    border-top-color: #9900f8;
+    border-bottom-color: #00ffb2;
+    animation-duration: 2.5s;
+}
+
+@keyframes rotation {
+    0% {
+        transform: scale(1) rotate(360deg);
+    }
+    50% {
+        transform: scale(0.8) rotate(-360deg);
+    }
+    100% {
+        transform: scale(1) rotate(360deg);
+    }
+}
+
+.box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-60%, -90%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 60px;
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    background-image: linear-gradient(45deg, #9900f8, #ff008e, #ffe300, #00ffb2);
+    box-shadow: 0 0 100px #00FFB2;
+    animation: rotate 1.75s ease-in infinite;
+    overflow: hidden;
+}
+
+.logo {
+    margin: 15px;
+    width: 260px;
+    height: 260px;
+}
+
+@keyframes rotate {
+    5% {
+        background-image: linear-gradient(63deg, #9900f8, #ff008e, #ffe300, #00ffb2);
+    }
+    10% {
+        background-image: linear-gradient(81deg, #9900f8, #ff008e, #ffe300, #00ffb2);
+    }
+    15% {
+        background-image: linear-gradient(99deg, #9900f8, #ff008e, #ffe300, #00ffb2);
+    }
+    20% {
+        background-image: linear-gradient(117deg, #9900f8, #ff008e, #ffe300, #00ffb2);
+    }
+    25% {
+        background-image: linear-gradient(135deg, #9900f8, #ff008e, #ffe300, #00ffb2);
+    }
+    30% {
+        background-image: linear-gradient(153deg, #9900f8, #ff008e, #ffe300, #00ffb2);
+    }
+    35% {
+        background-image: linear-gradient(171deg, #9900f8, #ff008e, #ffe300, #00ffb2);
+    }
+    40% {
+        background-image: linear-gradient(189deg, #9900f8, #ff008e, #ffe300, #00ffb2);
+    }
+    45% {
+        background-image: linear-gradient(207deg, #9900f8, #ff008e, #ffe300, #00ffb2);
+    }
+    50% {
+        background-image: linear-gradient(225deg, #9900f8, #ff008e, #ffe300, #00ffb2);
+    }
+    55% {
+        background-image: linear-gradient(243deg, #9900f8, #ff008e, #ffe300, #00ffb2);
+    }
+    60% {
+        background-image: linear-gradient(261deg, #9900f8, #ff008e, #ffe300, #00ffb2);
+    }
+    65% {
+        background-image: linear-gradient(279deg, #9900f8, #ff008e, #ffe300, #00ffb2);
+    }
+    70% {
+        background-image: linear-gradient(297deg, #9900f8, #ff008e, #ffe300, #00ffb2);
+    }
+    75% {
+        background-image: linear-gradient(315deg, #9900f8, #ff008e, #ffe300, #00ffb2);
+    }
+    80% {
+        background-image: linear-gradient(333deg, #9900f8, #ff008e, #ffe300, #00ffb2);
+    }
+    85% {
+        background-image: linear-gradient(351deg, #9900f8, #ff008e, #ffe300, #00ffb2);
+    }
+    90% {
+        background-image: linear-gradient(9deg, #9900f8, #ff008e, #ffe300, #00ffb2);
+    }
+    95% {
+        background-image: linear-gradient(27deg, #9900f8, #ff008e, #ffe300, #00ffb2);
+    }
+}
+
+.waviy {
+    position: absolute;
+    transform: translate(10%, 90%);
+}
+
+.waviy span {
+    position: relative;
+    display: inline-block;
+    font-size: 15px;
+    color: #00ffb2;
+    text-transform: uppercase;
+    text-shadow: 15px 5px 30px #00ffb2;
+    animation: flip 2s infinite;
+    animation-delay: calc(0.2s * var(--i));
+}
+
+@keyframes flip {
+    0%,
+    80% {
+        transform: rotateY(360deg);
+    }
+}
