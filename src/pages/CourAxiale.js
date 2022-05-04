@@ -45,7 +45,7 @@ const CourAxiale = () => {
 
   return (
     <div className="bg-white h-screen flex flex-col">
-      <Nav title="Cour" pathAvant="/Menu-Cour" />
+      {/* <Nav title="Cour" pathAvant="/Menu-Cour" /> */}
 
       <div className="relative pl-20 pr-20 pt-5 pb-7 flex-grow">
         <CourControls
