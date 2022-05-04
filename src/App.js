@@ -1,7 +1,5 @@
 import AppContext from "AppContext";
 import { HashRouter, Routes, Route } from "react-router-dom";
-import TeacherPassword from "pages/TeacherPassword";
-import Menu from "pages/Menu";
 import Paint from "pages/Paint";
 import EditCour from "pages/EditCour";
 import CourCentrale from "pages/CourCentrale";
@@ -16,8 +14,6 @@ function App() {
     <AppContext>
       <HashRouter>
         <Routes>
-          <Route path="teacher-password" element={<TeacherPassword />} />
-          <Route path="menu" element={<Menu />} />
           <Route path="edit-cour/:type" element={<EditCour />} />
           <Route path="paint" element={<Paint />} />
           <Route path="/cour-centrale" element={<CourCentrale />} />
