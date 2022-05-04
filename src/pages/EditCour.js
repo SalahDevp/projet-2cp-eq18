@@ -1,6 +1,8 @@
-import { EditorState, convertToRaw } from "draft-js";
+//editor
+import { EditorState, ContentState, convertToRaw } from "draft-js";
+import draftToHtml from "draftjs-to-html";
+import htmlToDraft from "html-to-draftjs";
 import { Editor } from "react-draft-wysiwyg";
-import { useState } from "react";
 //nav component
 import Nav from "components/Nav";
 //translation
@@ -9,11 +11,15 @@ import arTranslation from "utils/translation/edit-cour-ar";
 //styling
 import "style/editor.css";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import SaveCoursDialogue from "components/Cours/SaveCoursDialogue";
+//react
+import { useEffect, useState } from "react";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 
 const EditCour = () => {
-  //save cour dialogue state
-  const [dialogueOpened, setDialogueOpened] = useState(false);
+  //routing
+  const navigate = useNavigate();
+  const { type: CourseType } = useParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   //editor state
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
@@ -23,7 +29,7 @@ const EditCour = () => {
   const handleEditorChange = (state) => {
     setEditorState(state);
   };
-
+  //to insert an image
   const getImage = (file) =>
     new Promise((resolve, reject) => {
       console.log(file);
@@ -35,15 +41,64 @@ const EditCour = () => {
       });
     });
 
+  const savePage = async () => {
+    //get content as html
+    const contentAsHtml = draftToHtml(
+      convertToRaw(editorState.getCurrentContent()),
+      undefined,
+      true,
+      ({ type, data }) => {
+        //to fix -image doesnt align in the center-
+        if (type === "IMAGE") {
+          const textAlign = data.alignment || "center";
+          return `
+                <p style="text-align:${textAlign};">
+                    <img src="${data.src}" alt="${
+            data.alt || ""
+          }" style="height: ${data.height};width: ${data.width}"/>
+                </p>
+            `;
+        }
+      }
+    );
+    //save page
+    const pageNum =
+      searchParams.get("edit") === "true"
+        ? searchParams.get("pageNum")
+        : undefined;
+    const fileSaved = await window.electronAPI.saveCoursePage(
+      CourseType,
+      contentAsHtml,
+      pageNum
+    );
+    if (fileSaved) navigate(`/cour-${CourseType}`);
+  };
+  //init editor with page content if in editing mode
+  useEffect(() => {
+    if (searchParams.get("edit") !== "true") return; //teacher is not editing an existing page
+    const pageNum = searchParams.get("pageNum");
+    //async bloc
+    (async () => {
+      try {
+        const htmlContent = await window.electronAPI.getCoursePageContent(
+          CourseType,
+          pageNum
+        );
+        const { contentBlocks, entityMap } = htmlToDraft(htmlContent);
+        const contentState = ContentState.createFromBlockArray(
+          contentBlocks,
+          entityMap
+        );
+        setEditorState(EditorState.createWithContent(contentState));
+      } catch (e) {
+        console.error(e);
+        navigate(`/cour-${CourseType}`);
+      }
+    })();
+  }, []);
   return (
     <>
-      {dialogueOpened && (
-        <SaveCoursDialogue
-          setDialogueOpened={setDialogueOpened}
-          editorState={editorState}
-        />
-      )}
-      <Nav title={"editeur"} pathAvant="/menu-cour" />
+      <Nav title={"editeur"} pathAvant={`/cour-${CourseType}`} />
       <div className="h-100">
         <Editor
           editorState={editorState}
@@ -80,10 +135,7 @@ const EditCour = () => {
             },
           }}
         />
-        <button
-          className="bg-green-400 p-2 ml-4"
-          onClick={() => setDialogueOpened(true)}
-        >
+        <button className="bg-green-400 p-2 ml-4" onClick={() => savePage()}>
           save
         </button>
       </div>

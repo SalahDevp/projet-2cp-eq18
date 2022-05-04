@@ -1,15 +1,17 @@
 const { contextBridge } = require("electron");
 const initStoreRender = require("./ipc/initStoreRender");
-const { initSaveNewCourseRender } = require("./ipc/saveNewCourse");
-const { initGetCourseTitlesRender } = require("./ipc/getCourseTitles");
-const { initGetCourseContentRender } = require("./ipc/getCourseContent");
-const { initGetCoursePathRender } = require("./ipc/getCoursePath");
+const { initSaveCoursePageRender } = require("./ipc/saveCoursePage");
+const { initDeleteCoursePageRender } = require("./ipc/deleteCoursePage");
+const {
+  initGetCoursePageContentRender,
+} = require("./ipc/getCoursePageContent");
+const { initGetCoursePagesRender } = require("./ipc/getCoursePages");
 
 //load -store api- in window object
 contextBridge.exposeInMainWorld("electronAPI", {
-  ...initSaveNewCourseRender(),
+  ...initSaveCoursePageRender(),
+  ...initDeleteCoursePageRender(),
   ...initStoreRender(),
-  ...initGetCourseTitlesRender(),
-  ...initGetCourseContentRender(),
-  ...initGetCoursePathRender(),
+  ...initGetCoursePageContentRender(),
+  ...initGetCoursePagesRender(),
 });
