@@ -1,7 +1,7 @@
 import Nav from "components/Nav";
 import sortir from "../components/nouveau-protype-component/sortir.png";
 import submitBtn from "assets/exercices/submitBtn.png";
-import QCSImage from "assets/exercices/QCS-image.png";
+import QCMImage from "assets/exercices/QCM-image.png";
 import QCMOption from "components/exercices/QCMOption";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
@@ -113,9 +113,9 @@ const QCM = () => {
           </button>
         )}
         <img
-          src={QCSImage}
+          src={QCMImage}
           alt=""
-          className="absolute bottom-0 left-0 opacity-80"
+          className="absolute bottom-0 left-0 opacity-50 h-1/3"
         />
       </div>
     </div>

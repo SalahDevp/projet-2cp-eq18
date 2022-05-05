@@ -108,7 +108,7 @@ const QCS = () => {
         <img
           src={QCSImage}
           alt=""
-          className="absolute bottom-0 left-0 opacity-80"
+          className="absolute bottom-0 left-0 opacity-80 h-1/3"
         />
       </div>
     </div>
