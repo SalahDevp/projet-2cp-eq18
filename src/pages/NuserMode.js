@@ -82,7 +82,7 @@ function nanaTL() {
                       {/* div full space */}
 
                         <div id="teacherALL" className=' px-4 py-2   hidden overflow-hidden border-px border-gray-500 w-full rounded-xl'
-                        onMouseLeave={nanaTL}>
+                        onMouseLeave={nanaTL} onClick={()=>navigate("/TeacherPassword")}>
                         <p className='text-start text-2xl'>Enseignant</p>
                           <img className='h-72 w-96 text-center' src={teacherall} alt="" />
                         </div>

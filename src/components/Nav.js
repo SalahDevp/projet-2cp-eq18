@@ -11,9 +11,7 @@ const Nav = ({pathAvant}) => {
   const Routeur = () => {
    navigate(`${pathAvant}`);
   };
-  const sortir = () => {
-    window.close();
-  };
+ 
 
   return (
     <div className="bg-violet relative rounded-r-2xl h-screen w-20 flex flex-col items-center      ">
@@ -21,11 +19,11 @@ const Nav = ({pathAvant}) => {
         <img className="w-11 h-11 cursor-pointer " onClick={Routeur} src={img1}  alt="" />
         <img className="mt-10 w-12 h-12  cursor-pointer"
           src={img2}
-          alt=""
+          alt="" onClick={()=>navigate('/userMode')}
         />
         <img    className="mt-12 w-14 h-14 cursor-pointer"
           src={img3}
-          alt=""
+          alt="" onClick={()=>navigate('/paramatre')}
         />
       </div>
     
