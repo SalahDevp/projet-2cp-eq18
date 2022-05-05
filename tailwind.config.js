@@ -4,11 +4,13 @@ module.exports = {
     extend: {
       borderWidth: {
         px: "1px",
+        1: "1.5px",
       },
       spacing: {
         px: "3px",
         128: "27rem",
         enorme: "55rem",
+        97: "26rem",
         98: "30rem",
         99: "35rem",
         100: "33rem",
@@ -25,6 +27,7 @@ module.exports = {
         "v-clair": "#DB00FF",
         whiteL: "#FDFDFD",
         bleu: "#000699",
+        green: "#00FFB2",
         "smoke-light": "rgba(0, 0, 0, 0.4)",
       },
     },

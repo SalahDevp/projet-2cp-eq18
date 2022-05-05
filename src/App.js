@@ -11,6 +11,9 @@ import NMenu from "pages/NMenu";
 import QCS from "pages/QCS";
 import Redirect from "pages/Redirect";
 import QCM from "pages/QCM";
+import NTeacherpassword from "pages/NTeacherpassword";
+import NchangeTeacherpassword from "pages/NchangeTeacherPassword";
+import Paramatre from "pages/paramatre";
 
 function App() {
   return (
@@ -28,6 +31,12 @@ function App() {
           <Route path="qcs/:num" element={<QCS />} />
           <Route path="qcm/:num" element={<QCM />} />
           <Route index element={<Redirect />} />
+          <Route path="/TeacherPassword" element={<NTeacherpassword />} />
+          <Route
+            path="/NchangeTeacherPassword"
+            element={<NchangeTeacherpassword />}
+          />
+          <Route path="/paramatre" element={<Paramatre />} />
 
           {/* <Route index  element={<LanguageChoice />} /> */}
           {/* <Route path="user-mode" element={<UserMode />} />*/}
