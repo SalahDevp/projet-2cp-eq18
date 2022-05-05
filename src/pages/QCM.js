@@ -1,6 +1,8 @@
 import Nav from "components/Nav";
 import sortir from "../components/nouveau-protype-component/sortir.png";
 import submitBtn from "assets/exercices/submitBtn.png";
+import greenArrow from "assets/exercices/green-arrow.png";
+import redArrow from "assets/exercices/red-arrow.png";
 import QCMImage from "assets/exercices/QCM-image.png";
 import QCMOption from "components/exercices/QCMOption";
 import { useState, useEffect } from "react";
@@ -32,6 +34,8 @@ const QCM = () => {
     setCheckedOptions(new Set([...checkedOptions]));
   };
   const handleSubmit = () => {
+    //dont submit if user hasn't checked any box
+    if (checkedOptions.size === 0) return;
     //set the right options color to green
     for (let optNum of rightOptions) options[optNum - 1].color = "green";
     //if the selected opt is wrong we set its color to red
@@ -106,7 +110,17 @@ const QCM = () => {
           ))}
         </form>
         {submitted ? (
-          <button onClick={handleNext}>next</button>
+          <button className="translate-x-60" onClick={handleNext}>
+            <img
+              src={
+                areSetsEqual(checkedOptions, rightOptions)
+                  ? greenArrow
+                  : redArrow
+              }
+              alt=""
+              className="h-14"
+            />
+          </button>
         ) : (
           <button className="translate-x-60" onClick={handleSubmit}>
             <img className="h-14 w-14" src={submitBtn} alt="" />

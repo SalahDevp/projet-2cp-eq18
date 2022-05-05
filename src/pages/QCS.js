@@ -2,6 +2,8 @@ import Nav from "components/Nav";
 import sortir from "../components/nouveau-protype-component/sortir.png";
 import submitBtn from "assets/exercices/submitBtn.png";
 import QCSImage from "assets/exercices/QCS-image.png";
+import greenArrow from "assets/exercices/green-arrow.png";
+import redArrow from "assets/exercices/red-arrow.png";
 import QCSOption from "components/exercices/QCSOption";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -26,6 +28,8 @@ const QCS = () => {
   };
   //
   const handleSubmit = () => {
+    //dont submit if user hasn't checked any box
+    if (!checkedOption) return;
     //set the right option color to green
     options[rightOption - 1].color = "green";
     //if the selected opt is wrong we set its color to red
@@ -99,7 +103,13 @@ const QCS = () => {
           ))}
         </form>
         {submitted ? (
-          <button onClick={handleNext}>next</button>
+          <button className="translate-x-60" onClick={handleNext}>
+            <img
+              src={checkedOption === rightOption ? greenArrow : redArrow}
+              alt=""
+              className="h-14"
+            />
+          </button>
         ) : (
           <button className="translate-x-60" onClick={handleSubmit}>
             <img className="h-14 w-14" src={submitBtn} alt="" />
