@@ -3,13 +3,25 @@ import sortir from "../components/nouveau-protype-component/sortir.png"
 import teacher from "../components/nouveau-protype-component/teacher.png"
 import student from "../components/nouveau-protype-component/student.png"
 import teacherall from "../components/nouveau-protype-component/teacherall.png"
-import s from "../components/nouveau-protype-component/s.png"
+import studentall from "../components/nouveau-protype-component/s.png"
 import retour from "../components/nouveau-protype-component/retour.png"
-import img1 from "../components/nouveau-protype-component/vousetes.png"
+import imgfr from "../components/nouveau-protype-component/vousetes.png"
+import imgar from "../components/nouveau-protype-component/أنت.png"
+import {useState,useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 
 const NUserMode = () => {
+  const { t } = useTranslation();
+  const { i18n } = useTranslation();
+  const  [fr,setFR]=useState(true)
+  
+  useEffect(() => {
+   if(i18n.language==="ar"){
+     setFR(false)
+       }
+  },[i18n.language]);
    function nanaTE() {
 const divT=document.getElementById('teacher')
 const divS=document.getElementById('student')
@@ -58,7 +70,8 @@ function nanaTL() {
              {/* coté violé */}
             <div className='relative overflow-hidden  w-1/3 h-screen rounded-r-2xl bg-violet flex justify-center items-center'>
            <img className='absolute top-9 left-10 h-10 w-10 ' src={retour} alt="" onClick={Routeur} />
-             <img className='h-2/4 w-full' src={img1} alt="" />
+            {fr? <img className='h-2/4 w-full' src={imgfr} alt="" />
+            :<img className='h-2/4 w-full' src={imgar} alt="" />}
             </div>
             <div className=' relative w-2/3 h-screen flex justify-center items-center'> 
                           <div className='left-1/3 absolute h-screen w-1 bg-v-clair z-0'></div>
@@ -69,29 +82,29 @@ function nanaTL() {
                      {/* div for teacher */}
                       <div id="teacher" className=' overflow-hidden pt-2 pb-12 px-4 border-px border-gray-500 w-52 rounded-xl h-full'
                        onMouseEnter={nanaTE}  >
-                        <p className='text-center text-2xl'>Enseignant</p>
+                        <p className='text-center text-2xl'>{t("teacher")}</p>
                         <img className='h-full w-full mt-2' src={teacher} alt="" />
                       </div>
                    {/* div for student */}
                       <div id="student" className='overflow-hidden pt-2 pb-12 px-5  border-px border-gray-500 w-52 rounded-xl h-full'
                        onMouseEnter={nanaSE}  
                        >
-                        <p className='text-center text-2xl'>Etudiant</p>
+                        <p className='text-center text-2xl'>{t("student")}</p>
                           <img className='h-full w-56 mt-2' src={student} alt="" />
                       </div>
                       {/* div full space */}
 
                         <div id="teacherALL" className=' px-4 py-2   hidden overflow-hidden border-px border-gray-500 w-full rounded-xl'
                         onMouseLeave={nanaTL} onClick={()=>navigate("/TeacherPassword")}>
-                        <p className='text-start text-2xl'>Enseignant</p>
+                        <p className='text-start text-2xl'>{t("teacher")}</p>
                           <img className='h-72 w-96 text-center' src={teacherall} alt="" />
                         </div>
 
 
                         <div id="SALL" className=' px-4 pt-2 hidden overflow-hidden border-px border-gray-500 w-full rounded-xl'
                         onMouseLeave={nanaSL} onClick={()=>navigate("/NMenu")}>
-                        <p className='text-start text-2xl'>Etudiant</p>
-                          <img className=' w-96 text-center' src={s} alt="bf" />
+                        <p className='text-start text-2xl'>{t("student")}</p>
+                          <img className=' w-96 text-center' src={studentall} alt="bf" />
                         </div>
                     </div>
                     

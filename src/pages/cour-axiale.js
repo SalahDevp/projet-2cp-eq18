@@ -1,5 +1,5 @@
 import React from 'react'
-import Nav from 'components/Nav'
+//import Nav from 'components/Nav'
 import {useState,useEffect } from 'react'
 import CourA1 from './courpages-axiale/courA1'
 import CourA2 from './courpages-axiale/courA2'
