@@ -2,13 +2,13 @@ const { ipcMain, ipcRenderer } = require("electron");
 const fs = require("fs");
 const path = require("path");
 
-function initGetQCSQustionMain() {
-  ipcMain.handle("get-QCS-question", async (evnt, questionNum) => {
+function initGetQuizQustionMain() {
+  ipcMain.handle("get-quiz-question", async (evnt, type, questionNum) => {
     const questionsPath = path.join(
       __dirname,
       "../..",
       "exercices",
-      "QCS",
+      type,
       "questions"
     );
     try {
@@ -32,11 +32,11 @@ function initGetQCSQustionMain() {
   });
 }
 
-function initGetQCSQustionRender() {
+function initGetQuizQustionRender() {
   return {
-    getQCSQuestion: (questionNum) =>
-      ipcRenderer.invoke("get-QCS-question", questionNum),
+    getQuizQuestion: (type, questionNum) =>
+      ipcRenderer.invoke("get-quiz-question", type, questionNum),
   };
 }
 
-module.exports = { initGetQCSQustionMain, initGetQCSQustionRender };
+module.exports = { initGetQuizQustionMain, initGetQuizQustionRender };

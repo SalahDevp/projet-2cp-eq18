@@ -9,6 +9,8 @@ import Lngchoix from "./pages/lngchoix";
 import NUserMode from "pages/NuserMode";
 import NMenu from "pages/NMenu";
 import QCS from "pages/QCS";
+import Redirect from "pages/Redirect";
+import QCM from "pages/QCM";
 
 function App() {
   return (
@@ -23,7 +25,9 @@ function App() {
           <Route path="/userMode" element={<NUserMode />} />
           <Route path="NMenu" element={<NMenu />} />
           <Route path="/Menu-Cour" element={<MenuCour />} />
-          <Route index element={<QCS />} />
+          <Route path="qcs/:num" element={<QCS />} />
+          <Route path="qcm/:num" element={<QCM />} />
+          <Route index element={<Redirect />} />
 
           {/* <Route index  element={<LanguageChoice />} /> */}
           {/* <Route path="user-mode" element={<UserMode />} />*/}

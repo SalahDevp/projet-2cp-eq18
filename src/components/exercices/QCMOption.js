@@ -1,11 +1,10 @@
 import React from "react";
 
-const QCSOption = ({ text, color, onChange, checked }) => {
+const QCMOption = ({ text, color, onChange, checked }) => {
   return (
     <label>
       <input
-        type="radio"
-        name="option"
+        type="checkbox"
         onChange={onChange}
         checked={checked}
         className={`h-6 w-6 align-middle ${
@@ -23,4 +22,4 @@ const QCSOption = ({ text, color, onChange, checked }) => {
   );
 };
 
-export default QCSOption;
+export default QCMOption;

@@ -1,0 +1,6 @@
+{
+  "question": "Pour quel point les 2 octogones sont symétrique  ?",
+  "image": "question2.png",
+  "options": ["aucun point", "Point A", "Point B", "Point C"],
+  "rightOption": 3
+}
