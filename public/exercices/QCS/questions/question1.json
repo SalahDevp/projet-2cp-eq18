@@ -1,0 +1,6 @@
+{
+  "question": "Pour quel axe les 2 octogones sont symétrique ?",
+  "image": "question1.png",
+  "options": ["aucun axe", "l’axe rouge", "l’axe bleu", "l’axe vert"],
+  "rightOption": 2
+}

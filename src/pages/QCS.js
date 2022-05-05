@@ -1,20 +1,16 @@
 import Nav from "components/Nav";
 import sortir from "../components/nouveau-protype-component/sortir.png";
-import quizImg from "assets/temp/img.png";
 import submitBtn from "assets/exercices/submitBtn.png";
 import QCSImage from "assets/exercices/QCS-image.png";
 import QCSOption from "components/exercices/QCSOption";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const QCS = () => {
-  const rightOption = 2;
   //states
-  const [options, setOptions] = useState([
-    { text: "aucun axe" },
-    { text: "l’axe rouge" },
-    { text: "l’axe bleu" },
-    { text: "l’axe vert" },
-  ]);
+  const [question, setQuestion] = useState("");
+  const [imageSrc, setImageSrc] = useState();
+  const [options, setOptions] = useState([]);
+  const [rightOption, setRightOption] = useState();
   const [checkedOption, setCheckedOption] = useState();
   const [submitted, setSubmitted] = useState(false);
   //funcs
@@ -38,6 +34,26 @@ const QCS = () => {
     setSubmitted(false);
     options.forEach((opt) => delete opt.color);
   };
+  ////
+  useEffect(() => {
+    let questionObj;
+    (async () => {
+      try {
+        questionObj = await window.electronAPI.getQCSQuestion(1);
+        setQuestion(questionObj.question);
+        setOptions(
+          questionObj.options.map((opt) => ({
+            text: opt,
+          }))
+        );
+        setRightOption(questionObj.rightOption);
+        setImageSrc(questionObj.image);
+      } catch (e) {
+        console.error(e);
+        //TODO: navigate to exercices menu
+      }
+    })();
+  }, []);
 
   return (
     <div className="bg-beige relative h-screen w-screen flex overflow-hidden">
@@ -57,12 +73,9 @@ const QCS = () => {
         }`}
       >
         <span className="font-bold text-2xl absolute top-1 right-4">1/20</span>
-        <div className="text-2xl font-bold text-center py-4">
-          Lorem ipsum dolor sit amet consectetur, hohohodj lowndkdlas
-          adipisicing elit. Corrupti repudiandae unde atque?
-        </div>
+        <div className="text-2xl font-bold text-center py-4">{question}</div>
         <div>
-          <img src={quizImg} alt="" className="h-60 mt-8" />
+          <img src={imageSrc} alt="" className="h-60 mt-8" />
         </div>
         <form className="flex-grow w-4/5 grid grid-cols-2 place-items-center z-10">
           {options.map((opt, ind) => (
