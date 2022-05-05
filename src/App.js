@@ -8,6 +8,7 @@ import MenuCour from "pages/MenuCour";
 import Lngchoix from "./pages/lngchoix";
 import NUserMode from "pages/NuserMode";
 import NMenu from "pages/NMenu";
+import QCS from "pages/QCS";
 
 function App() {
   return (
@@ -18,10 +19,11 @@ function App() {
           <Route path="paint" element={<Paint />} />
           <Route path="/cour-centrale" element={<CourCentrale />} />
           <Route path="/cour-axiale" element={<CourAxiale />} />
-          <Route index element={<Lngchoix />} />
+          <Route element={<Lngchoix />} />
           <Route path="/userMode" element={<NUserMode />} />
           <Route path="NMenu" element={<NMenu />} />
           <Route path="/Menu-Cour" element={<MenuCour />} />
+          <Route index element={<QCS />} />
 
           {/* <Route index  element={<LanguageChoice />} /> */}
           {/* <Route path="user-mode" element={<UserMode />} />*/}
