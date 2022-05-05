@@ -58,7 +58,7 @@ const QCS = () => {
             text: opt,
           }))
         );
-        setRightOption(questionObj.rightOption);
+        setRightOption(questionObj.rightOptions);
         setImageSrc(questionObj.image);
         setCheckedOption();
         setSubmitted(false);

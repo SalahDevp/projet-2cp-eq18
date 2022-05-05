@@ -1,6 +1,12 @@
 {
-  "question": "Pour quel axe les 2 octogones sont symétrique ?",
+  "question": {
+    "fr": "Pour quel axe les 2 octogones sont symétrique ?",
+    "ar": "من اجل اي محور يكون الثمانيان متناظران؟"
+  },
   "image": "question1.png",
-  "options": ["aucun axe", "l’axe rouge", "l’axe bleu", "l’axe vert"],
-  "rightOption": 2
+  "options": {
+    "fr": ["aucun axe", "l’axe rouge", "l’axe bleu", "l’axe vert"],
+    "ar": ["لا يوجد محور", "المحور الأحمر", "المحور الأزرق", "المحور الأخضر"]
+  },
+  "rightOptions": 2
 }

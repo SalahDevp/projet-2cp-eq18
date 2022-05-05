@@ -1,11 +1,13 @@
 {
-  "question": "La symétrie conserve :",
+  "question": { "fr": "La symétrie conserve :" },
   "image": "question1.png",
-  "options": [
-    "les longueurs",
-    "les angles",
-    "les aires et les périmètres",
-    "l’alignement"
-  ],
-  "rightOption": [1, 2, 3]
+  "options": {
+    "fr": [
+      "les longueurs",
+      "les angles",
+      "les aires et les périmètres",
+      "l’alignement"
+    ]
+  },
+  "rightOptions": [1, 2, 3]
 }

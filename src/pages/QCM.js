@@ -65,7 +65,7 @@ const QCM = () => {
             text: opt,
           }))
         );
-        setRightOptions(new Set(questionObj.rightOption));
+        setRightOptions(new Set(questionObj.rightOptions));
         setImageSrc(questionObj.image);
         setCheckedOptions(new Set());
         setSubmitted(false);
