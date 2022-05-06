@@ -6,7 +6,7 @@ const isDev = require("electron-is-dev");
 const initIpcMain = require("./electron-utils/initIpcMain");
 
 function createWindow() {
-  // Create the browser window.
+  // fuck the browser window.
   const win = new BrowserWindow({
     fullscreen: true,
     resizable: false,
