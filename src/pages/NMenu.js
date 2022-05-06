@@ -3,6 +3,9 @@ import NBox from "../components/menu-mode/NBOX"
 import img1 from "../components/nouveau-protype-component/cour.png"
 import img2 from "../components/nouveau-protype-component/grille.png"
 import img3 from "../components/nouveau-protype-component/exo.png"
+import imgH1 from "../components/nouveau-protype-component/courhover.png"
+import imgH2 from "../components/nouveau-protype-component/grillehover.png"
+import imgH3 from "../components/nouveau-protype-component/exohover.png"
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import Nav from "../components/Nav"
@@ -24,12 +27,14 @@ const NMenu = () => {
         <Nav pathAvant="/userMode" />
         <div className='z-10   absolute  top-1/2  left-1/2
         -translate-x-1/2   -translate-y-1/2   
-        h-auto w-enorme flex  justify-between '>
+        h-auto w-enorme flex justify-between   '>
              <NBox image={img1} title={t("courses")}  handleClick={handleCour} />
-             <div className='mt-36'>
-             <NBox image={img2} title={t("grid")}  />
+             <div className='mt-36 '>
+             <NBox  image={img2} title={t("grid")}  />
              </div>
+             <div className=''>
              <NBox image={img3} title={t("exercices")}/>
+             </div>
         </div>
     </div>
   )

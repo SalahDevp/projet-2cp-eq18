@@ -1,0 +1,6 @@
+{
+  "question": { "fr": "Pour quel point les 2 polygone sont symétrique  ?" },
+  "image": "question2.png",
+  "options": { "fr": ["aucun point", "Point A", "Point B", "Point C"] },
+  "rightOptions": 3
+}
