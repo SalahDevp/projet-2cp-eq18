@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const Redirect = () => {
   const navigate = useNavigate();
   useEffect(() => {
-    navigate("/lng");
+    navigate("/qcm-image/1");
   });
   return <div>Redirecting...</div>;
 };
