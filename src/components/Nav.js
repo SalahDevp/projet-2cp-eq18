@@ -33,7 +33,6 @@ const Nav = ({ pathAvant }) => {
           alt=""
           onClick={() => navigate("/paramatre")}
         />
-        <img className="mt-12 w-14 h-14 cursor-pointer" src={img3} alt="" />
       </div>
 
       <img
