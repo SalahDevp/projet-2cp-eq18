@@ -5,11 +5,17 @@ import QCSImage from "assets/exercices/QCS-image.png";
 import greenArrow from "assets/exercices/green-arrow.png";
 import redArrow from "assets/exercices/red-arrow.png";
 import QCSOption from "components/exercices/QCSOption";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 const QCS = () => {
   const maxQuestions = 2;
+  //audio
+  const correctAudio = useMemo(
+    () => new Audio("./audio/correct-answer.wav"),
+    []
+  );
+  const wrongAudio = useMemo(() => new Audio("./audio/wrong-answer.mp3"), []);
   //routing
   const { num: questionNum } = useParams();
   const navigate = useNavigate();
@@ -32,8 +38,11 @@ const QCS = () => {
     if (!checkedOption) return;
     //set the right option color to green
     options[rightOption - 1].color = "green";
-    //if the selected opt is wrong we set its color to red
-    if (checkedOption !== rightOption) options[checkedOption - 1].color = "red";
+    //if the selected opt is wrong
+    if (checkedOption !== rightOption) {
+      options[checkedOption - 1].color = "red"; //set its color to red
+      wrongAudio.play(); //play sound
+    } else correctAudio.play();
     //set states
     setOptions([...options]);
     setSubmitted(true);

@@ -6,7 +6,8 @@ const {
   initGetCoursePageContentRender,
 } = require("./ipc/getCoursePageContent");
 const { initGetCoursePagesRender } = require("./ipc/getCoursePages");
-const { initGetQuizQustionRender } = require("./ipc/getQuizQuestion");
+const { initGetQuizQuestionRender } = require("./ipc/getQuizQuestion");
+const { initGetImageQCMQustionRender } = require("./ipc/getImageQCMQuestion");
 
 //load -store api- in window object
 contextBridge.exposeInMainWorld("electronAPI", {
@@ -15,5 +16,6 @@ contextBridge.exposeInMainWorld("electronAPI", {
   ...initStoreRender(),
   ...initGetCoursePageContentRender(),
   ...initGetCoursePagesRender(),
-  ...initGetQuizQustionRender(),
+  ...initGetQuizQuestionRender(),
+  ...initGetImageQCMQustionRender(),
 });
