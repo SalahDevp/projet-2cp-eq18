@@ -6,6 +6,8 @@ import redArrow from "assets/exercices/red-arrow.png";
 import ImageQCMOption from "components/exercices/ImageQCMOption";
 import { useState, useEffect, useMemo } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+//translation
+import { useTranslation } from "react-i18next";
 
 const areSetsEqual = (a, b) =>
   a.size === b.size && [...a].every((value) => b.has(value));
@@ -27,6 +29,8 @@ const ImageQCM = () => {
   const [rightOptions, setRightOptions] = useState(new Set());
   const [checkedOptions, setCheckedOptions] = useState(new Set());
   const [submitted, setSubmitted] = useState(false);
+  //translation
+  const { i18n } = useTranslation();
   //funcs
   const handleChange = (optionNum) => {
     //if the form is submitted exit (to prevent user form changing answer)
@@ -64,7 +68,10 @@ const ImageQCM = () => {
     let questionObj;
     (async () => {
       try {
-        questionObj = await window.electronAPI.getImageQCMQuestion(questionNum);
+        questionObj = await window.electronAPI.getImageQCMQuestion(
+          questionNum,
+          i18n.language
+        );
         setQuestion(questionObj.question);
         setOptions(
           questionObj.optionsSrc.map((src) => ({
@@ -79,7 +86,7 @@ const ImageQCM = () => {
         //TODO: navigate to exercices menu
       }
     })();
-  }, [questionNum]);
+  }, [questionNum, i18n.language]);
 
   return (
     <div className="bg-beige relative h-screen w-screen flex overflow-hidden">

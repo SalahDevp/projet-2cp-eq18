@@ -11,15 +11,7 @@ const Menu = () => {
   //NOTE: for testing only
   const navigate = useNavigate();
   const { t } = useTranslation();
-  useEffect(
-    () =>
-      window.addEventListener("keydown", function (event) {
-        if (event.key === "Escape") {
-          navigate("/");
-        }
-      }),
-    [navigate]
-  );
+
   const handleCour = () => {
     //navigte to password page.
     navigate("/menu-cour");

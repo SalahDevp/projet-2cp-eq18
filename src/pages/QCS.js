@@ -7,6 +7,8 @@ import redArrow from "assets/exercices/red-arrow.png";
 import QCSOption from "components/exercices/QCSOption";
 import { useEffect, useState, useMemo } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+//translation
+import { useTranslation } from "react-i18next";
 
 const QCS = () => {
   const maxQuestions = 2;
@@ -26,6 +28,8 @@ const QCS = () => {
   const [rightOption, setRightOption] = useState();
   const [checkedOption, setCheckedOption] = useState();
   const [submitted, setSubmitted] = useState(false);
+  //translation
+  const { i18n } = useTranslation();
   //funcs
   const handleChange = (evnt, optionNum) => {
     //if the form is submitted exit (to prevent user form changing answer)
@@ -59,7 +63,8 @@ const QCS = () => {
       try {
         questionObj = await window.electronAPI.getQuizQuestion(
           "QCS",
-          questionNum
+          questionNum,
+          i18n.language
         );
         setQuestion(questionObj.question);
         setOptions(
@@ -76,7 +81,7 @@ const QCS = () => {
         //TODO: navigate to exercices menu
       }
     })();
-  }, [questionNum]);
+  }, [questionNum, i18n.language]);
 
   return (
     <div className="bg-beige relative h-screen w-screen flex overflow-hidden">

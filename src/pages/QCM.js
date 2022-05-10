@@ -7,6 +7,8 @@ import QCMImage from "assets/exercices/QCM-image.png";
 import QCMOption from "components/exercices/QCMOption";
 import { useState, useEffect, useMemo } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+//translation
+import { useTranslation } from "react-i18next";
 
 const areSetsEqual = (a, b) =>
   a.size === b.size && [...a].every((value) => b.has(value));
@@ -29,6 +31,8 @@ const QCM = () => {
   const [rightOptions, setRightOptions] = useState(new Set());
   const [checkedOptions, setCheckedOptions] = useState(new Set());
   const [submitted, setSubmitted] = useState(false);
+  //translation
+  const { i18n } = useTranslation();
   //funcs
   const handleChange = (optionNum) => {
     //if the form is submitted exit (to prevent user form changing answer)
@@ -65,7 +69,8 @@ const QCM = () => {
       try {
         questionObj = await window.electronAPI.getQuizQuestion(
           "QCM",
-          questionNum
+          questionNum,
+          i18n.language
         );
         setQuestion(questionObj.question);
         setOptions(
@@ -82,7 +87,7 @@ const QCM = () => {
         //TODO: navigate to exercices menu
       }
     })();
-  }, [questionNum]);
+  }, [questionNum, i18n.language]);
 
   return (
     <div className="bg-beige relative h-screen w-screen flex overflow-hidden">

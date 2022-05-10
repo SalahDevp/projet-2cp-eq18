@@ -5,23 +5,33 @@ const sortPages = require("../sortPages");
 
 //returns pages absolute paths
 function initGetCoursePagesMain() {
-  ipcMain.handle("get-course-pages", async (evnt, type) => {
-    const coursesDirPath = path.join(app.getPath("userData"), "courses", type);
-    if (!fs.existsSync(coursesDirPath)) return []; //if folder doesn't exit
-    const fileNames = await fs.promises.readdir(coursesDirPath);
-    //sort
-    sortPages(fileNames);
-    //get all pages content
-    const pagesPath = fileNames.map((fileName) =>
-      path.join(coursesDirPath, fileName)
+  ipcMain.handle("get-course-pages", async (evnt, type, language = "fr") => {
+    const coursesDirPath = path.join(
+      app.getPath("userData"),
+      "courses",
+      type,
+      language
     );
-    return pagesPath;
+    if (!fs.existsSync(coursesDirPath)) return []; //if folder doesn't exit
+    try {
+      const fileNames = await fs.promises.readdir(coursesDirPath);
+      //sort
+      sortPages(fileNames);
+      //get all pages content
+      const pagesPath = fileNames.map((fileName) =>
+        path.join(coursesDirPath, fileName)
+      );
+      return pagesPath;
+    } catch (e) {
+      throw e;
+    }
   });
 }
 
 function initGetCoursePagesRender() {
   return {
-    getCoursePages: (type) => ipcRenderer.invoke("get-course-pages", type),
+    getCoursePages: (type, language) =>
+      ipcRenderer.invoke("get-course-pages", type, language),
   };
 }
 

@@ -24,11 +24,7 @@ const TeacherPassword = () => {
       setPassword("");
     }
   };
-  window.addEventListener("keydown", function (event) {
-    if (event.key === "Escape") {
-      navigate("/user-mode");
-    }
-  });
+
   return (
     <div>
       <Nav title="se connecter" pathAvant="/user-mode" aff={false} />

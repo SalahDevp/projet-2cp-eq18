@@ -5,11 +5,12 @@ const path = require("path");
 function initSaveCoursePageMain() {
   ipcMain.handle(
     "save-course-page",
-    async (evnt, type, htmlContent, pageNum) => {
+    async (evnt, type, htmlContent, pageNum, language = "fr") => {
       const coursesDirPath = path.join(
         app.getPath("userData"),
         "courses",
-        type
+        type,
+        language
       );
       if (!fs.existsSync(coursesDirPath)) fs.mkdirSync(coursesDirPath); //if dir doesnt exits create one
       const fileNames = await fs.promises.readdir(coursesDirPath);
@@ -35,8 +36,14 @@ function initSaveCoursePageRender() {
      * @param pageNum -if not specified if creates a new page
      *
      */
-    saveCoursePage: (type, htmlContent, pageNum) =>
-      ipcRenderer.invoke("save-course-page", type, htmlContent, pageNum),
+    saveCoursePage: (type, htmlContent, pageNum, language) =>
+      ipcRenderer.invoke(
+        "save-course-page",
+        type,
+        htmlContent,
+        pageNum,
+        language
+      ),
   };
 }
 
