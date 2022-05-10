@@ -4,8 +4,19 @@ import img1 from "../components/nouveau-protype-component/changeTpass.png"
 import { useNavigate } from "react-router-dom";
 import sortir from "../components/nouveau-protype-component/sortir.png"
 import ok from "../components/nouveau-protype-component/ok.png"
+import i18n from "utils/translation/i18n";
+import { useTranslation } from "react-i18next";
+import { useState,useEffect } from 'react';
 
 const NchangeTeacherpassword = () => {
+  const [fr, setFR] = useState(true);
+  
+  useEffect(() => {
+    if (i18n.language === "ar") {
+      setFR(false);
+    }
+  }, [i18n.language]);
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   const Routeur = () => {
@@ -26,17 +37,17 @@ const NchangeTeacherpassword = () => {
 
           <div className=' px-10 py-10  z-10 overflow-hidden bg-white shadow-md	 border-jeune border-2 border-solid w-98 h-97 rounded-3xl'>
          
-          <label for="pwd" className='-ml-3  text-2xl '>Mot de passe actuel :</label>
-          <input placeholder="Mot de passe actuel"  className='mt-1 px-4 text-2xl w-full h-12 rounded-xl border-1 border-rouze outline-2' type="text" name="password"id="pwd"/>
+          <p dir={fr ?"ltr" :"rtl"} for="pwd" className={fr?'-ml-0  text-2xl': '-mr-0  text-2xl'}>{t("CurrentPassword")}</p>
+          <input dir={fr?"ltr" :"rtl"} placeholder="Mot de passe actuel"  className='mt-1 px-4 text-2xl w-full h-12 rounded-xl border-1 border-rouze outline-2' type="text" name="password"id="pwd"/>
          <div className='mt-2'>
-            <label for="pwd" className='-ml-3  text-2xl '>Nouveau mot de passe :</label>
-            <input placeholder="Nouveau mot de passe"  className='mt-1 px-4 text-2xl w-full h-12 rounded-xl border-1 border-rouze outline-2' type="text" name="password"id="pwd"/>
+            <p dir={fr ?"ltr" :"rtl"} for="pwd" className={fr?'-ml-0  text-2xl': '-mr-0  text-2xl'}>{t("NewPassword")}</p>
+            <input dir={fr?"ltr" :"rtl"}  placeholder="Nouveau mot de passe"  className='mt-1 px-4 text-2xl w-full h-12 rounded-xl border-1 border-rouze outline-2' type="text" name="password"id="pwd"/>
           </div>
           <div className='mt-2'>
-            <label for="pwd" className='-ml-3  text-2xl '>Confirmation mot de passe :</label>
-            <input placeholder="Confirmation mot de passe" className='mt-1 px-4 text-2xl w-full h-12 rounded-xl border-1 border-rouze outline-2' type="text" name="password"id="pwd"/>
+            <p dir={fr ?"ltr" :"rtl"} for="pwd" className={fr?'-ml-0  text-2xl': '-mr-0  text-2xl'}> {t("Passwordconfirmation")}</p>
+            <input dir={fr?"ltr" :"rtl"} placeholder="Confirmation mot de passe" className='mt-1 px-4 text-2xl w-full h-12 rounded-xl border-1 border-rouze outline-2' type="text" name="password"id="pwd"/>
            </div>
-             <img className='-mr-7 float-right h-28 w-28' src={ok} alt="" />
+             <img className={fr?'-mr-7 float-right h-28 w-28':'-ml-7 float-left h-28 w-28'} src={ok} alt="" />
         </div>
           </div>
 

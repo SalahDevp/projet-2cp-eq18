@@ -27,7 +27,7 @@ module.exports = {
         "v-clair": "#DB00FF",
         whiteL: "#FDFDFD",
         bleu: "#000699",
-        green: "#00FFB2",
+        vert: "#00FFB2",
         "smoke-light": "rgba(0, 0, 0, 0.4)",
       },
     },
