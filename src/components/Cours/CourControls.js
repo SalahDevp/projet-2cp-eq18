@@ -10,6 +10,8 @@ import backIcon from "components/nouveau-protype-component/retour.png";
 import { useNavigate } from "react-router-dom";
 //translation
 import { useTranslation } from "react-i18next";
+//user mode
+import { useUserMode } from "AppContext";
 
 const CourControls = ({
   pagesLength,
@@ -27,6 +29,8 @@ const CourControls = ({
   const navigate = useNavigate();
   //translation
   const { i18n } = useTranslation();
+  //user mode
+  const { teacherMode } = useUserMode();
 
   const handleMouseMove = () => {
     if (!showControls) setShowControls(true);
@@ -87,7 +91,7 @@ const CourControls = ({
               alt="next"
             />
           )}
-          {cpt === pagesLength - 1 && (
+          {cpt === pagesLength - 1 && teacherMode && (
             <img
               onMouseEnter={() => {
                 mouseOnControl.current = true;
@@ -103,7 +107,7 @@ const CourControls = ({
               alt="add"
             />
           )}
-          {cpt >= defaultPagesLength && (
+          {cpt >= defaultPagesLength && teacherMode && (
             <div className="absolute -translate-x-1/2 bottom-12 left-1/2 flex justify-between w-40">
               {/*edit btn*/}
               <button

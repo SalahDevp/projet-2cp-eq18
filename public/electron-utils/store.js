@@ -8,7 +8,6 @@ const schema = {
   teacherPassword: {
     type: "string",
     minLength: 4,
-    maxLength: 15,
     default: "0000",
   },
 };

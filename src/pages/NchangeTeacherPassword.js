@@ -23,9 +23,13 @@ const NchangeTeacherpassword = () => {
     if (currentPass === storedPassword) {
       //check if new password and confirmed password are identical
       if (newPass === confirmedPass) {
-        //set the new password
-        window.electronAPI.storeSet("teacherPassword", newPass);
-        navigate("/TeacherPassword");
+        //password length has to be >= 4
+        if (newPass.length >= 4) {
+          //set the new password
+          window.electronAPI.storeSet("teacherPassword", newPass);
+          navigate("/TeacherPassword");
+        } else {
+        } //new pass length < 4
       } else {
       } //new pass and confirmed pass are diffrent
     } else {
