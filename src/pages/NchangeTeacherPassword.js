@@ -38,14 +38,14 @@ const NchangeTeacherpassword = () => {
           <div className=' px-10 py-10  z-10 overflow-hidden bg-white shadow-md	 border-jeune border-2 border-solid w-98 h-97 rounded-3xl'>
          
           <p dir={fr ?"ltr" :"rtl"} for="pwd" className={fr?'-ml-0  text-2xl': '-mr-0  text-2xl'}>{t("CurrentPassword")}</p>
-          <input dir={fr?"ltr" :"rtl"} placeholder="Mot de passe actuel"  className='mt-1 px-4 text-2xl w-full h-12 rounded-xl border-1 border-rouze outline-2' type="text" name="password"id="pwd"/>
+          <input dir={fr?"ltr" :"rtl"} placeholder={t("CurrentPassword")}  className='mt-1 px-4 text-2xl w-full h-12 rounded-xl border-1 border-rouze outline-2' type="text" name="password"id="pwd"/>
          <div className='mt-2'>
             <p dir={fr ?"ltr" :"rtl"} for="pwd" className={fr?'-ml-0  text-2xl': '-mr-0  text-2xl'}>{t("NewPassword")}</p>
-            <input dir={fr?"ltr" :"rtl"}  placeholder="Nouveau mot de passe"  className='mt-1 px-4 text-2xl w-full h-12 rounded-xl border-1 border-rouze outline-2' type="text" name="password"id="pwd"/>
+            <input dir={fr?"ltr" :"rtl"}  placeholder={t("NewPassword")} className='mt-1 px-4 text-2xl w-full h-12 rounded-xl border-1 border-rouze outline-2' type="text" name="password"id="pwd"/>
           </div>
           <div className='mt-2'>
             <p dir={fr ?"ltr" :"rtl"} for="pwd" className={fr?'-ml-0  text-2xl': '-mr-0  text-2xl'}> {t("Passwordconfirmation")}</p>
-            <input dir={fr?"ltr" :"rtl"} placeholder="Confirmation mot de passe" className='mt-1 px-4 text-2xl w-full h-12 rounded-xl border-1 border-rouze outline-2' type="text" name="password"id="pwd"/>
+            <input dir={fr?"ltr" :"rtl"} placeholder={t("Passwordconfirmation")} className='mt-1 px-4 text-2xl w-full h-12 rounded-xl border-1 border-rouze outline-2' type="text" name="password"id="pwd"/>
            </div>
              <img className={fr?'-mr-7 float-right h-28 w-28':'-ml-7 float-left h-28 w-28'} src={ok} alt="" />
         </div>

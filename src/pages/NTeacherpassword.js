@@ -45,7 +45,7 @@ const NTeacherpassword = () => {
           
           <p className='cursor-pointer  float-right mt-3 text-xl text-vert' onClick={()=>navigate("/NchangeTeacherPassword")}> {t("changePassword")}</p>
           <div dir={fr? "lrt" :"rtl"} className=' flex justify-end items-end w-full h-24   '>
-            <img className={fr?'h-16   mr-5':'h-16   ml-5'} src={cadna} alt="" />
+            <img className={fr?'h-16   mr-7':'h-16   ml-7'} src={cadna} alt="" />
             <button className='w-28 h-14 rounded-xl border-px   border-vert text-xl'>{t("confirm")}</button>
           </div>
          </div>
