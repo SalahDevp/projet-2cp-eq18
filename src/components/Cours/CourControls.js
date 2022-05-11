@@ -5,6 +5,7 @@ import leftArrow from "assets/cour/flecheL.png";
 import addIcon from "assets/cour/add.png";
 import editIcon from "assets/cour/edit.png";
 import deleteIcon from "assets/cour/delete.png";
+import backIcon from "components/nouveau-protype-component/retour.png";
 //routing
 import { useNavigate } from "react-router-dom";
 //translation
@@ -47,6 +48,12 @@ const CourControls = ({
     <div className="absolute inset-0" onMouseMove={handleMouseMove}>
       {showControls && (
         <>
+          <button
+            className="absolute top-4 left-4 h-10 w-10"
+            onClick={() => navigate("/Menu-Cour")}
+          >
+            <img src={backIcon} alt="" />
+          </button>
           {cpt > 0 && (
             <img
               onMouseEnter={() => {
@@ -55,8 +62,10 @@ const CourControls = ({
               onMouseLeave={() => {
                 mouseOnControl.current = false;
               }}
-              src={leftArrow}
-              className="cursor-pointer absolute top-1/2 left-6 w-10 h-8"
+              src={i18n.language === "fr" ? leftArrow : rightArrow}
+              className={`cursor-pointer absolute top-1/2 ${
+                i18n.language === "fr" ? "left-6" : "right-6"
+              } w-10 h-8`}
               onClick={() => setCpt(cpt - 1)}
               alt="previous"
             />
@@ -70,8 +79,10 @@ const CourControls = ({
               onMouseLeave={() => {
                 mouseOnControl.current = false;
               }}
-              src={rightArrow}
-              className="cursor-pointer absolute top-1/2 right-6 w-10 h-8"
+              src={i18n.language === "fr" ? rightArrow : leftArrow}
+              className={`cursor-pointer absolute top-1/2 ${
+                i18n.language === "fr" ? "right-6" : "left-6"
+              } w-10 h-8`}
               onClick={() => setCpt(cpt + 1)}
               alt="next"
             />
@@ -85,7 +96,9 @@ const CourControls = ({
                 mouseOnControl.current = false;
               }}
               src={addIcon}
-              className="cursor-pointer absolute top-1/2 right-6 w-10 h-8"
+              className={`cursor-pointer absolute top-1/2 ${
+                i18n.language === "fr" ? "right-6" : "left-6"
+              } w-10 h-8`}
               onClick={() => navigate(`/edit-cour/${type}`)}
               alt="add"
             />

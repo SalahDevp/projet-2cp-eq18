@@ -22,6 +22,7 @@ const NUserMode = () => {
      setFR(false)
        }
   },[i18n.language]);
+
    function nanaTE() {
 const divT=document.getElementById('teacher')
 const divS=document.getElementById('student')
@@ -35,7 +36,7 @@ function nanaTL() {
   const divT=document.getElementById('teacher')
   const divS=document.getElementById('student')
   const teacherALL=document.getElementById('teacherALL')
-      teacherALL.style.display='none'
+   teacherALL.style.display='none'
    divT.style.display="inline"
 
    divS.style.display="inline"
@@ -77,16 +78,16 @@ function nanaTL() {
                           <div className='left-1/3 absolute h-screen w-1 bg-v-clair z-0'></div>
                           <img className='absolute top-9 right-10 h-11 w-11 ' src={sortir} alt="sortir" />
 
-                    <div className='flex justify-between px-8 py-5 z-10 bg-white shadow-md	 border-jeune border-2 border-solid w-98 h-96 rounded-3xl'>
+                    <div className='transition flex justify-between px-8 py-5 z-10 bg-white shadow-md	 border-jeune border-2 border-solid w-98 h-96 rounded-3xl'>
                      
                      {/* div for teacher */}
-                      <div id="teacher" className=' overflow-hidden pt-2 pb-12 px-4 border-px border-gray-500 w-52 rounded-xl h-full'
+                      <div id="teacher" className='cursor-pointer overflow-hidden pt-2 pb-12 px-4 border-px border-gray-500 w-52 rounded-xl h-full'
                        onMouseEnter={nanaTE}  >
                         <p className='text-center text-2xl'>{t("teacher")}</p>
                         <img className='h-full w-full mt-2' src={teacher} alt="" />
                       </div>
                    {/* div for student */}
-                      <div id="student" className='overflow-hidden pt-2 pb-12 px-5  border-px border-gray-500 w-52 rounded-xl h-full'
+                      <div id="student" className='cursor-pointer overflow-hidden pt-2 pb-12 px-5  border-px border-gray-500 w-52 rounded-xl h-full'
                        onMouseEnter={nanaSE}  
                        >
                         <p className='text-center text-2xl'>{t("student")}</p>
@@ -94,16 +95,15 @@ function nanaTL() {
                       </div>
                       {/* div full space */}
 
-                        <div id="teacherALL" className=' px-4 py-2   hidden overflow-hidden border-px border-gray-500 w-full rounded-xl'
+                        <div id="teacherALL" className='cursor-pointer px-4 py-2   hidden overflow-hidden border-px border-gray-500 w-full rounded-xl'
                         onMouseLeave={nanaTL} onClick={()=>navigate("/TeacherPassword")}>
-                        <p className='text-start text-2xl'>{t("teacher")}</p>
+                        <p dir={fr ?"ltr":"rtl"} className='text-start text-2xl'>{t("teacher")}</p>
                           <img className='h-72 w-96 text-center' src={teacherall} alt="" />
                         </div>
 
-
-                        <div id="SALL" className=' px-4 pt-2 hidden overflow-hidden border-px border-gray-500 w-full rounded-xl'
+                        <div id="SALL" className='cursor-pointer px-4 pt-2 hidden overflow-hidden border-px border-gray-500 w-full rounded-xl'
                         onMouseLeave={nanaSL} onClick={()=>navigate("/NMenu")}>
-                        <p className='text-start text-2xl'>{t("student")}</p>
+                        <p dir={fr ?"ltr":"rtl"}  className='text-start text-2xl'>{t("student")}</p>
                           <img className=' w-96 text-center' src={studentall} alt="bf" />
                         </div>
                     </div>
