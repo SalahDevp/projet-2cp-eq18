@@ -5,7 +5,7 @@ import Shape from "../Shape";
 const handleFirstClick = (event, state) => {
   const { x: mouseX, y: mouseY } = getMousePos(state.canvasRef, event);
   const { x, y } = getGridPos(mouseX, mouseY, UNIT);
-  const { shape, pointIndex } = getShapeFromPoint(state.shapes, x, y);
+  const { shape } = getShapeFromPoint(state.shapes, x, y);
   if (!shape) {
     state.setDrawing(true);
     state.setCurrent({ x, y });
