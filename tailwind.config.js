@@ -14,6 +14,7 @@ module.exports = {
         98: "30rem",
         99: "35rem",
         100: "33rem",
+        "9/10": "90%",
       },
       colors: {
         box: "#B9FFFC",
@@ -27,8 +28,11 @@ module.exports = {
         "v-clair": "#DB00FF",
         whiteL: "#FDFDFD",
         bleu: "#000699",
-        green: "#00FFB2",
+        vert: "#00FFB2",
         "smoke-light": "rgba(0, 0, 0, 0.4)",
+      },
+      backgroundSize: {
+        check: "1rem",
       },
     },
   },

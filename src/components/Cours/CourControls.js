@@ -7,6 +7,8 @@ import editIcon from "assets/cour/edit.png";
 import deleteIcon from "assets/cour/delete.png";
 //routing
 import { useNavigate } from "react-router-dom";
+//translation
+import { useTranslation } from "react-i18next";
 
 const CourControls = ({
   pagesLength,
@@ -22,6 +24,8 @@ const CourControls = ({
   const [showControls, setShowControls] = useState(true);
   //navigation
   const navigate = useNavigate();
+  //translation
+  const { i18n } = useTranslation();
 
   const handleMouseMove = () => {
     if (!showControls) setShowControls(true);
@@ -34,7 +38,7 @@ const CourControls = ({
 
   const handleDeletePage = () => {
     const pageNum = cpt - defaultPagesLength + 1;
-    window.electronAPI.deleteCoursePage(type, pageNum);
+    window.electronAPI.deleteCoursePage(type, pageNum, i18n.language);
     setCpt(cpt - 1);
     setRerender((prv) => !prv);
   };

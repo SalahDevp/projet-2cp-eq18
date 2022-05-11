@@ -4,11 +4,15 @@ import * as courPages from "components/Cours/courpages-centrale";
 import Nav from "components/Nav";
 import CustomCourse from "components/Cours/CustomCourse";
 import CourControls from "components/Cours/CourControls";
+//translation
+import { useTranslation } from "react-i18next";
 
 const CourCentrale = () => {
   const [cpt, setCpt] = useState(0); //page counter
   const [pages, setPages] = useState([]); //pages array
   const [rerender, setRerender] = useState(false); //this var is toggled when techer deletes a page to reexecute useEffect
+  //translation
+  const { i18n } = useTranslation();
 
   const tab = [
     <courPages.TBMC />,
@@ -28,14 +32,15 @@ const CourCentrale = () => {
     (async () => {
       //get pages created by the teacher
       const customPagesPathes = await window.electronAPI.getCoursePages(
-        "centrale"
+        "centrale",
+        i18n.language
       );
       const customPages = customPagesPathes.map((path) => (
         <CustomCourse path={path} />
       ));
       setPages([...tab, ...customPages]);
     })();
-  }, [rerender]);
+  }, [rerender, i18n.language]);
 
   return (
     <div className="bg-white h-screen flex flex-col">

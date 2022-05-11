@@ -3,8 +3,7 @@ import sortir from "../components/nouveau-protype-component/sortir.png";
 import submitBtn from "assets/exercices/submitBtn.png";
 import greenArrow from "assets/exercices/green-arrow.png";
 import redArrow from "assets/exercices/red-arrow.png";
-import QCMImage from "assets/exercices/QCM-image.png";
-import QCMOption from "components/exercices/QCMOption";
+import ImageQCMOption from "components/exercices/ImageQCMOption";
 import { useState, useEffect, useMemo } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 //translation
@@ -13,7 +12,7 @@ import { useTranslation } from "react-i18next";
 const areSetsEqual = (a, b) =>
   a.size === b.size && [...a].every((value) => b.has(value));
 
-const QCM = () => {
+const ImageQCM = () => {
   const maxQuestions = 1;
   //audio
   const correctAudio = useMemo(
@@ -26,7 +25,6 @@ const QCM = () => {
   const navigate = useNavigate();
   //states
   const [question, setQuestion] = useState("");
-  const [imageSrc, setImageSrc] = useState();
   const [options, setOptions] = useState([]);
   const [rightOptions, setRightOptions] = useState(new Set());
   const [checkedOptions, setCheckedOptions] = useState(new Set());
@@ -42,6 +40,7 @@ const QCM = () => {
     else checkedOptions.add(optionNum);
     setCheckedOptions(new Set([...checkedOptions]));
   };
+
   const handleSubmit = () => {
     //dont submit if user hasn't checked any box
     if (checkedOptions.size === 0) return;
@@ -51,35 +50,35 @@ const QCM = () => {
     for (let optNum of checkedOptions) {
       if (!rightOptions.has(optNum)) options[optNum - 1].color = "red";
     }
-    //play audio
-    if (areSetsEqual(checkedOptions, rightOptions)) correctAudio.play();
-    else wrongAudio.play();
+    //submit sound
+    if (areSetsEqual(checkedOptions, rightOptions)) {
+      correctAudio.play();
+    } else wrongAudio.play();
     //set states
     setOptions([...options]);
     setSubmitted(true);
   };
+
   const handleNext = () => {
     const nextQuestion = parseInt(questionNum) + 1;
-    navigate(`/qcm/${nextQuestion <= maxQuestions ? nextQuestion : 1}`);
+    navigate(`/image-qcm/${nextQuestion <= maxQuestions ? nextQuestion : 1}`);
   };
   //
   useEffect(() => {
     let questionObj;
     (async () => {
       try {
-        questionObj = await window.electronAPI.getQuizQuestion(
-          "QCM",
+        questionObj = await window.electronAPI.getImageQCMQuestion(
           questionNum,
           i18n.language
         );
         setQuestion(questionObj.question);
         setOptions(
-          questionObj.options.map((opt) => ({
-            text: opt,
+          questionObj.optionsSrc.map((src) => ({
+            src,
           }))
         );
         setRightOptions(new Set(questionObj.rightOptions));
-        setImageSrc(questionObj.image);
         setCheckedOptions(new Set());
         setSubmitted(false);
       } catch (e) {
@@ -98,7 +97,7 @@ const QCM = () => {
       />
       <Nav pathAvant={"/NMenu"} />
       <div
-        className={`relative h-auto flex-grow border-2 rounded-3xl border-jeune mx-24 mt-20 mb-10 pb-6 pt-7 flex flex-col items-center ${
+        className={`relative h-auto flex-grow border-2 rounded-3xl border-jeune mx-24 mt-16 mb-8 pb-6 pt-7 flex flex-col items-center ${
           !submitted
             ? "bg-white"
             : areSetsEqual(checkedOptions, rightOptions)
@@ -108,22 +107,22 @@ const QCM = () => {
       >
         <span className="font-bold text-2xl absolute top-1 right-4">{`${questionNum}/${maxQuestions}`}</span>
         <div className="text-2xl font-bold text-center py-4">{question}</div>
-        <div>
-          <img src={imageSrc} alt="" className="h-60 mt-8" />
-        </div>
-        <form className="flex-grow w-4/5 grid grid-cols-2 place-items-center z-10">
+
+        <ul className="h-98 w-4/5 grid grid-cols-3 gap-2 place-items-center z-10">
           {options.map((opt, ind) => (
-            <QCMOption
-              text={opt.text}
+            <ImageQCMOption
+              imgSrc={opt.src}
               color={opt.color}
-              key={ind}
-              checked={checkedOptions.has(ind + 1)}
+              submitted={submitted}
+              key={opt.src}
+              id={ind}
               onChange={() => handleChange(ind + 1)}
+              checked={checkedOptions.has(ind + 1)}
             />
           ))}
-        </form>
+        </ul>
         {submitted ? (
-          <button className="translate-x-60" onClick={handleNext}>
+          <button className="translate-x-96 mt-3" onClick={handleNext}>
             <img
               src={
                 areSetsEqual(checkedOptions, rightOptions)
@@ -131,22 +130,17 @@ const QCM = () => {
                   : redArrow
               }
               alt=""
-              className="h-14"
+              className="h-12"
             />
           </button>
         ) : (
-          <button className="translate-x-60" onClick={handleSubmit}>
-            <img className="h-14 w-14" src={submitBtn} alt="" />
+          <button className="translate-x-96 mt-3" onClick={handleSubmit}>
+            <img className="h-12 w-12" src={submitBtn} alt="" />
           </button>
         )}
-        <img
-          src={QCMImage}
-          alt=""
-          className="absolute bottom-0 left-0 opacity-50 h-1/3"
-        />
       </div>
     </div>
   );
 };
 
-export default QCM;
+export default ImageQCM;

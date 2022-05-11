@@ -1,0 +1,13 @@
+{
+  "question": { "fr": "Quelles figures représnetent une symétrie ?" },
+  "options": [
+    "qst1-img1.png",
+    "qst1-img2.png",
+    "qst1-img3.png",
+    "qst1-img4.png",
+    "qst1-img5.png",
+    "qst1-img6.png"
+  ],
+
+  "rightOptions": [1, 2, 3]
+}

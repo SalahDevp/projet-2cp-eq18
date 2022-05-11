@@ -14,6 +14,7 @@ import QCM from "pages/QCM";
 import NTeacherpassword from "pages/NTeacherpassword";
 import NchangeTeacherpassword from "pages/NchangeTeacherPassword";
 import Paramatre from "pages/paramatre";
+import ImageQCM from "pages/ImageQCM";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="/Menu-Cour" element={<MenuCour />} />
           <Route path="qcs/:num" element={<QCS />} />
           <Route path="qcm/:num" element={<QCM />} />
+          <Route path="image-qcm/:num" element={<ImageQCM />} />
           <Route index element={<Redirect />} />
           <Route path="/TeacherPassword" element={<NTeacherpassword />} />
           <Route

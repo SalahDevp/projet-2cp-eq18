@@ -69,7 +69,8 @@ const EditCour = () => {
     const fileSaved = await window.electronAPI.saveCoursePage(
       CourseType,
       contentAsHtml,
-      pageNum
+      pageNum,
+      i18n.language
     );
     if (fileSaved) navigate(`/cour-${CourseType}`);
   };
@@ -82,7 +83,8 @@ const EditCour = () => {
       try {
         const htmlContent = await window.electronAPI.getCoursePageContent(
           CourseType,
-          pageNum
+          pageNum,
+          i18n.language
         );
         const { contentBlocks, entityMap } = htmlToDraft(htmlContent);
         const contentState = ContentState.createFromBlockArray(
@@ -95,7 +97,7 @@ const EditCour = () => {
         navigate(`/cour-${CourseType}`);
       }
     })();
-  }, []);
+  }, [i18n.language]);
   return (
     <>
       <Nav title={"editeur"} pathAvant={`/cour-${CourseType}`} />

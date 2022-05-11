@@ -5,11 +5,19 @@ import QCSImage from "assets/exercices/QCS-image.png";
 import greenArrow from "assets/exercices/green-arrow.png";
 import redArrow from "assets/exercices/red-arrow.png";
 import QCSOption from "components/exercices/QCSOption";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+//translation
+import { useTranslation } from "react-i18next";
 
 const QCS = () => {
   const maxQuestions = 2;
+  //audio
+  const correctAudio = useMemo(
+    () => new Audio("./audio/correct-answer.wav"),
+    []
+  );
+  const wrongAudio = useMemo(() => new Audio("./audio/wrong-answer.mp3"), []);
   //routing
   const { num: questionNum } = useParams();
   const navigate = useNavigate();
@@ -20,6 +28,8 @@ const QCS = () => {
   const [rightOption, setRightOption] = useState();
   const [checkedOption, setCheckedOption] = useState();
   const [submitted, setSubmitted] = useState(false);
+  //translation
+  const { i18n } = useTranslation();
   //funcs
   const handleChange = (evnt, optionNum) => {
     //if the form is submitted exit (to prevent user form changing answer)
@@ -32,8 +42,11 @@ const QCS = () => {
     if (!checkedOption) return;
     //set the right option color to green
     options[rightOption - 1].color = "green";
-    //if the selected opt is wrong we set its color to red
-    if (checkedOption !== rightOption) options[checkedOption - 1].color = "red";
+    //if the selected opt is wrong
+    if (checkedOption !== rightOption) {
+      options[checkedOption - 1].color = "red"; //set its color to red
+      wrongAudio.play(); //play sound
+    } else correctAudio.play();
     //set states
     setOptions([...options]);
     setSubmitted(true);
@@ -50,7 +63,8 @@ const QCS = () => {
       try {
         questionObj = await window.electronAPI.getQuizQuestion(
           "QCS",
-          questionNum
+          questionNum,
+          i18n.language
         );
         setQuestion(questionObj.question);
         setOptions(
@@ -67,7 +81,7 @@ const QCS = () => {
         //TODO: navigate to exercices menu
       }
     })();
-  }, [questionNum]);
+  }, [questionNum, i18n.language]);
 
   return (
     <div className="bg-beige relative h-screen w-screen flex overflow-hidden">

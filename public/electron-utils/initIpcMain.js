@@ -3,7 +3,8 @@ const { initSaveCoursePageMain } = require("./ipc/saveCoursePage");
 const { initDeleteCoursePageMain } = require("./ipc/deleteCoursePage");
 const { initGetCoursePageContentMain } = require("./ipc/getCoursePageContent");
 const { initGetCoursePagesMain } = require("./ipc/getCoursePages");
-const { initGetQuizQustionMain } = require("./ipc/getQuizQuestion");
+const { initGetQuizQuestionMain } = require("./ipc/getQuizQuestion");
+const { initGetImageQCMQustionMain } = require("./ipc/getImageQCMQuestion");
 
 function initIpcMain() {
   initStoreMain();
@@ -11,7 +12,8 @@ function initIpcMain() {
   initDeleteCoursePageMain();
   initGetCoursePageContentMain();
   initGetCoursePagesMain();
-  initGetQuizQustionMain();
+  initGetQuizQuestionMain();
+  initGetImageQCMQustionMain();
 }
 
 module.exports = initIpcMain;

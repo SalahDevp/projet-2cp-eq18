@@ -2,15 +2,15 @@ const { ipcMain, ipcRenderer } = require("electron");
 const fs = require("fs");
 const path = require("path");
 
-function initGetQuizQuestionMain() {
+function initGetImageQCMQustionMain() {
   ipcMain.handle(
-    "get-quiz-question",
-    async (evnt, type, questionNum, language = "fr") => {
+    "get-image-qcm-question",
+    async (evnt, questionNum, language = "fr") => {
       const questionsPath = path.join(
         __dirname,
         "../..",
         "exercices",
-        type,
+        "ImageQCM",
         "questions"
       );
       try {
@@ -21,14 +21,9 @@ function initGetQuizQuestionMain() {
         const questionObj = JSON.parse(jsonContent);
         return {
           question: questionObj.question[language],
-          image: path.join(
-            "file:",
-            questionsPath,
-            "..",
-            "images",
-            questionObj.image
+          optionsSrc: questionObj.options.map((opt) =>
+            path.join("file:", questionsPath, "..", "images", opt)
           ),
-          options: questionObj.options[language],
           rightOptions: questionObj.rightOptions,
         };
       } catch (e) {
@@ -39,11 +34,11 @@ function initGetQuizQuestionMain() {
   );
 }
 
-function initGetQuizQuestionRender() {
+function initGetImageQCMQustionRender() {
   return {
-    getQuizQuestion: (type, questionNum) =>
-      ipcRenderer.invoke("get-quiz-question", type, questionNum),
+    getImageQCMQuestion: (questionNum) =>
+      ipcRenderer.invoke("get-image-qcm-question", questionNum),
   };
 }
 
-module.exports = { initGetQuizQuestionMain, initGetQuizQuestionRender };
+module.exports = { initGetImageQCMQustionMain, initGetImageQCMQustionRender };
