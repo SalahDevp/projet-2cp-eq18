@@ -34,7 +34,7 @@ function createWindow() {
     setTimeout(() => {
       loadingWindow.close();
       win.show();
-    }, 5000);
+    }, 4000);
   });
 }
 
