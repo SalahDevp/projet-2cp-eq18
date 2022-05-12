@@ -7,16 +7,24 @@ const initIpcMain = require("./electron-utils/initIpcMain");
 
 function createWindow() {
   // Create the browser window.
+  // const win = new BrowserWindow({
+  //   fullscreen: true,
+  //   resizable: false,
+  //   show: false,
+  //   webPreferences: {
+  //     preload: path.join(__dirname, "/electron-utils/preload.js"),
+  //     webSecurity: isDev ? false : true,
+  //   },
+  // });
   const win = new BrowserWindow({
-    fullscreen: true,
-    resizable: false,
-    show: false,
+    width: 800,
+    height: 600,
     webPreferences: {
       preload: path.join(__dirname, "/electron-utils/preload.js"),
-      webSecurity: isDev ? false : true,
     },
+   // frame:false,
   });
-
+  
   win.loadURL(
     isDev
       ? "http://localhost:3000"
