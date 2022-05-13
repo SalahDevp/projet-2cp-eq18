@@ -13,7 +13,7 @@ const areSetsEqual = (a, b) =>
   a.size === b.size && [...a].every((value) => b.has(value));
 
 const ImageQCM = () => {
-  const maxQuestions = 1;
+  const maxQuestions = 10;
   //audio
   const correctAudio = useMemo(
     () => new Audio("./audio/correct-answer.wav"),
@@ -73,11 +73,7 @@ const ImageQCM = () => {
           i18n.language
         );
         setQuestion(questionObj.question);
-        setOptions(
-          questionObj.optionsSrc.map((src) => ({
-            src,
-          }))
-        );
+        setOptions(questionObj.options);
         setRightOptions(new Set(questionObj.rightOptions));
         setCheckedOptions(new Set());
         setSubmitted(false);
@@ -108,13 +104,14 @@ const ImageQCM = () => {
         <span className="font-bold text-2xl absolute top-1 right-4">{`${questionNum}/${maxQuestions}`}</span>
         <div className="text-2xl font-bold text-center py-4">{question}</div>
 
-        <ul className="h-98 w-4/5 grid grid-cols-3 gap-2 place-items-center z-10">
+        <ul className="h-98 w-4/5 grid grid-cols-3 grid-rows-2 gap-2 place-items-center z-10">
           {options.map((opt, ind) => (
             <ImageQCMOption
-              imgSrc={opt.src}
+              imgSrc={opt.imageSrc}
               color={opt.color}
+              hoverText={opt.hoverText}
               submitted={submitted}
-              key={opt.src}
+              key={opt.imageSrc}
               id={ind}
               onChange={() => handleChange(ind + 1)}
               checked={checkedOptions.has(ind + 1)}

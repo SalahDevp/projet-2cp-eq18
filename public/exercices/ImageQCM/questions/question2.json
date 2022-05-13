@@ -1,0 +1,16 @@
+{
+    "question": {
+        "fr": "Quelles figures représnetent une symétrie ?",
+        "ar": "اي مما يلي يمثل تناظرا؟"
+    },
+    "options": [
+        { "image": "qst2-img1.png", "text": { "fr": "Ecran", "ar": "شاشة" } },
+        { "image": "qst2-img2.png", "text": { "fr": "Smartphone -iphone13 pro-", "ar": " هاتف ذكي آيفون 13 برو" } },
+        { "image": "qst2-img3.png", "text": { "fr": "Ipad", "ar": "آيباد" } },
+        { "image": "qst2-img4.png", "text": { "fr": "Nintendo Switch", "ar": "نينتيندو سويتش" } },
+        { "image": "qst2-img5.png", "text": { "fr": "PlayStation -4 pro -", "ar": "بلايستيشن 4 برو" } },
+        { "image": "qst2-img6.png", "text": { "fr": "Ordinateur personnel-MacBook Pro-", "ar": "حاسوب شخصي ماكبوك برو" } }
+    ],
+
+    "rightOptions": [1, 3]
+}

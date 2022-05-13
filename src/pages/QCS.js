@@ -11,7 +11,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 const QCS = () => {
-  const maxQuestions = 2;
+  const maxQuestions = 20;
   //audio
   const correctAudio = useMemo(
     () => new Audio("./audio/correct-answer.wav"),

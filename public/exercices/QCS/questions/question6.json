@@ -1,0 +1,12 @@
+{
+    "question": {
+      "fr": "un cercle posséde : ",
+      "ar": ": الدائرة لها  "
+    },
+    "image": "question6.png",
+    "options": {
+        "fr": ["une infinité d'axes", "quatre axes ", "aucun axe ", "deux axes"],
+        "ar": ["لا نهاية من المحاور  ", "أربعة محاور", "لا يوجد محور", "محورين"]
+    },
+    "rightOptions": 1
+  }

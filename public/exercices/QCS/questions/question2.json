@@ -1,6 +1,10 @@
 {
-  "question": { "fr": "Pour quel point les 2 polygone sont symétrique  ?" },
+  "question": { "fr": "Pour quel point les 2 polygone sont symétrique  ?", 
+                 "ar": "لأي نقطة يكون المضلعان متماثلان؟"
+  },
   "image": "question2.png",
-  "options": { "fr": ["aucun point", "Point A", "Point B", "Point C"] },
+  "options": { "fr": ["aucun point", "Point A", "Point B", "Point C"] , 
+               "ar" :[ "ليس هناك نقطة","A النقطة","  B النقطة " , "C النقطة"]
+  },
   "rightOptions": 3
 }

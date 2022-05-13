@@ -1,0 +1,16 @@
+{
+    "question": {
+        "fr": "Quelles figures représnetent une symétrie ?",
+        "ar": "اي مما يلي يمثل تناظرا؟"
+    },
+    "options": [
+        { "image": "qst7-img1.png", "text": { "fr": "Brocoli", "ar": "القنبيط الأخضر" } },
+        { "image": "qst7-img2.png", "text": { "fr": "Avocado", "ar": "الأفوكادو" } },
+        { "image": "qst7-img3.png", "text": { "fr": "Pomme de terre", "ar": "البطاطا" } },
+        { "image": "qst7-img4.png", "text": { "fr": "Poivron", "ar": "الفلفل" } },
+        { "image": "qst7-img5.png", "text": { "fr": "Aubergine", "ar": "الباذندجان" } },
+        { "image": "qst7-img6.png", "text": { "fr": "Tomate", "ar": "الطماطم" } }
+    ],
+
+    "rightOptions": [2, 3, 5]
+}

@@ -1,0 +1,12 @@
+{
+    "question": {
+      "fr": "Toutes les formes suivantes ont au moins un axe de symétrie sauf ?",
+      "ar": "كل الأشكال التالية لها محور تناظر واحد على الأقل ما عدا؟"
+    },
+    "image": "question9.png",
+    "options": {
+      "fr": ["rectangle", "triangle", "cercle", "Quadrilatère"],
+      "ar": ["مستطيل", "مثلث", "دائرة", "رباعي"]
+    },
+    "rightOptions": 4
+  }

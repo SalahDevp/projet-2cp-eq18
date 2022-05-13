@@ -1,0 +1,13 @@
+{
+    "question": {
+      "fr": "combien d'axe de symétrie admet un carré ?",
+      "ar": "كم عدد خطوط التماثل التي يمتلكها المربع؟"
+    },
+    "image": "question3.png",
+    "options": {
+      "fr": ["un seul axe", "quatre axes ", "aucun axe ", "deux axes"],
+      "ar": ["محور واحد", "أربعة محاور", "لا يوجد محور", "محورين"]
+    },
+    "rightOptions": 2
+  }
+  

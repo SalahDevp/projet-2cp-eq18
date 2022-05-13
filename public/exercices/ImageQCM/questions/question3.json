@@ -1,0 +1,16 @@
+{
+    "question": {
+        "fr": "Quelles figures représnetent une symétrie ?",
+        "ar": "اي مما يلي يمثل تناظرا؟"
+    },
+    "options": [
+        { "image": "qst3-img1.png", "text": { "fr": "Fusée", "ar": "صاروخ" } },
+        { "image": "qst3-img2.png", "text": { "fr": "Voiture", "ar": "سيارة" } },
+        { "image": "qst3-img3.png", "text": { "fr": "Avion", "ar": "طائرة" } },
+        { "image": "qst3-img4.png", "text": { "fr": "Moto", "ar": "دراجة نارية" } },
+        { "image": "qst3-img5.png", "text": { "fr": "Bateau", "ar": "قارب" } },
+        { "image": "qst3-img6.png", "text": { "fr": "Train", "ar": "قطار" } }
+    ],
+
+    "rightOptions": [1, 3, 4, 6]
+}

@@ -1,0 +1,13 @@
+{
+    "question": {
+      "fr": "Par une symétrie centrale, quel est le symétrique d'un cercle ?",
+      "ar": "بواسطة تناظر مركزي ، ما هو تناظر الدائرة؟"
+    },
+    "image": "question4.png",
+    "options": {
+      "fr": ["Un cercle de même rayon et les deux centres des cercles sont symétriques", "Un cercle de même rayon", "Un cercle dont le centre est symétrique à l'autre centre du cercle", "un cercle qui n'a pas le méme rayon"],
+      "ar": ["الدائرة التي لها نفس نصف القطر ومركزا الدوائر متماثلان", "دائرة لها نفس نصف القطر", "دائرة مركزها متماثل مع مركز الدائرة الآخر", "دائرة ليس لها نفس نصف القطر"]
+    },
+    "rightOptions": 1
+  }
+  

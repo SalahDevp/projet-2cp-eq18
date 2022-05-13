@@ -1,0 +1,12 @@
+{
+    "question": {
+      "fr": "Lequel des éléments suivants a à la fois un axe de symétrie horizontal et vertical ?",
+      "ar": "أي مما يلي يحتوي على خطوط تماثل أفقية ورأسية؟"
+    },
+    "image": "question18.png",
+    "options": {
+      "fr": ["H", "S", "V", "A"],
+      "ar": ["H", "S", "V", "A"]
+    },
+    "rightOptions": 1
+  }

@@ -1,0 +1,16 @@
+{
+    "question": {
+        "fr": "Quelles figures représnetent une symétrie ?",
+        "ar": "اي مما يلي يمثل تناظرا؟"
+    },
+    "options": [
+        { "image": "qst8-img1.png", "text": { "fr": "Molécule", "ar": "المركب" } },
+        { "image": "qst8-img2.png", "text": { "fr": "L'atom", "ar": "الذرة" } },
+        { "image": "qst8-img3.png", "text": { "fr": "Réacteur Nucléaire", "ar": "مفاعل نووي" } },
+        { "image": "qst8-img4.png", "text": { "fr": "Molécules", "ar": "الجزيئات" } },
+        { "image": "qst8-img5.png", "text": { "fr": "Quarks", "ar": "الكوارك داخل الذرة" } },
+        { "image": "qst8-img6.png", "text": { "fr": "La matière", "ar": "المادة" } }
+    ],
+
+    "rightOptions": [1, 2, 3, 4]
+}

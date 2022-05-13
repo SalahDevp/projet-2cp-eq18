@@ -4,6 +4,7 @@ const ImageQCMOption = ({
   onChange,
   checked,
   color,
+  hoverText,
   submitted,
 }) => {
   return (
@@ -16,6 +17,7 @@ const ImageQCMOption = ({
         checked={checked}
       />
       <label
+        title={hoverText}
         htmlFor={id}
         className={`relative ${
           !submitted && "cursor-pointer"

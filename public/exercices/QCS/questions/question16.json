@@ -1,0 +1,12 @@
+{
+    "question": {
+      "fr": "Combien y a-t-il d'axes de symétrie dans un pentagone régulier ?",
+      "ar": "كم عدد خطوط التماثل الموجودة في خماسي الاضلاع المنتظم؟ "
+    },
+    "image": "question16.png",
+    "options": {
+      "fr": ["un", "deux", "trois", "cinq"],
+      "ar": ["واحد", "إثنان", "ثلاثة", "خمسة"]
+    },
+    "rightOptions": 1
+  }

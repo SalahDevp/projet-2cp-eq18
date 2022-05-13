@@ -1,0 +1,16 @@
+{
+    "question": {
+        "fr": "Quelles figures représnetent une symétrie ?",
+        "ar": "اي مما يلي يمثل تناظرا؟"
+    },
+    "options": [
+        { "image": "qst9-img1.png", "text": { "fr": "Maison", "ar": "منزل" } },
+        { "image": "qst9-img2.png", "text": { "fr": "Hospital", "ar": "مستشفى" } },
+        { "image": "qst9-img3.png", "text": { "fr": "Université", "ar": "جامعة" } },
+        { "image": "qst9-img4.png", "text": { "fr": "Tribunal", "ar": "محكمة" } },
+        { "image": "qst9-img5.png", "text": { "fr": "Bnaque", "ar": "بنك" } },
+        { "image": "qst9-img6.png", "text": { "fr": "Magasin", "ar": "محل" } }
+    ],
+
+    "rightOptions": [1, 2, 4]
+}

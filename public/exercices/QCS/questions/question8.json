@@ -1,0 +1,22 @@
+{
+  "question": {
+    "fr": "Par une symétrie centrale, quel est le symétrique d'une droite ?",
+    "ar": "بواسطة التناظر المركزي ، ما هو تناظر الخط؟"
+  },
+  "image": "question8.jpg",
+  "options": {
+    "fr": [
+      "Une droite qui lui est parallèle",
+      "Une droite de même mesure",
+      "Une droite qui lui est sécante",
+      "Une droite qui lui est perpendiculaire"
+    ],
+    "ar": [
+      "خط مستقيم موازٍ لها",
+      "خط مستقيم من نفس المقياس",
+      "خط مستقيم القاطع لها",
+      "خط مستقيم عمودي عليها"
+    ]
+  },
+  "rightOptions": 1
+}

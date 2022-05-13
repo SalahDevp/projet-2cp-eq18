@@ -1,0 +1,16 @@
+{
+    "question": {
+        "fr": "Quelles figures représnetent une symétrie ?",
+        "ar": "اي مما يلي يمثل تناظرا؟"
+    },
+    "options": [
+        { "image": "qst6-img1.png", "text": { "fr": "Confiture de cerises", "ar": "مربى الكرز" } },
+        { "image": "qst6-img2.png", "text": { "fr": "Donuts", "ar": "دونات" } },
+        { "image": "qst6-img3.png", "text": { "fr": "Lait au chocolat", "ar": "حليب بالشوكلاته" } },
+        { "image": "qst6-img4.png", "text": { "fr": "Thermos", "ar": "ترمس القهوة" } },
+        { "image": "qst6-img5.png", "text": { "fr": "Tarte", "ar": "كعك" } },
+        { "image": "qst6-img6.png", "text": { "fr": "Tea", "ar": "الشاي" } }
+    ],
+
+    "rightOptions": [2, 3, 4, 6]
+}

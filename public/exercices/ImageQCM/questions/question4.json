@@ -1,0 +1,16 @@
+{
+    "question": {
+        "fr": "Quelles figures représnetent une symétrie axiale?",
+        "ar": "اي مما يلي يمثل تناظرا محوريا؟"
+    },
+    "options": [
+        { "image": "qst4-img1.png", "text": { "fr": "Orange", "ar": "البرتقال" } },
+        { "image": "qst4-img2.png", "text": { "fr": "Kiwi", "ar": "الكيوي" } },
+        { "image": "qst4-img3.png", "text": { "fr": "Pastèque", "ar": "البطيخ" } },
+        { "image": "qst4-img4.png", "text": { "fr": "Cerises", "ar": "الكرز" } },
+        { "image": "qst4-img5.png", "text": { "fr": "Ananas", "ar": "أناناس" } },
+        { "image": "qst4-img6.png", "text": { "fr": "Citron", "ar": "الليمون" } }
+    ],
+
+    "rightOptions": [1, 2]
+}

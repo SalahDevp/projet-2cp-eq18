@@ -1,0 +1,12 @@
+{
+  "question": {
+    "fr": "Combien y a-t-il d'axes de symétrie dans un parallélogramme ?",
+    "ar": "كم عدد خطوط التماثل الموجودة في متوازي الأضلاع؟"
+  },
+  "image": "question15.png",
+  "options": {
+    "fr": ["un", "deux ", "trois", "aucune de ces réponse"],
+    "ar": ["واحد", "إثنان", "ثلاثة", "أيا من هذه الإجابات"]
+  },
+  "rightOptions": 4
+}

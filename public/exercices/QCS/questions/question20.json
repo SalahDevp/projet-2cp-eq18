@@ -1,0 +1,12 @@
+{
+    "question": {
+      "fr": "Combien y a-t-il d'axes de symétrie dans la figure suivante ?",
+      "ar": "كم عدد خطوط التماثل الموجودة في الشكل التالي؟"
+    },
+    "image": "question20.png",
+    "options": {
+      "fr": ["un", "deux", "trois", "quatre"],
+      "ar": ["واحد", "إثنان", "ثلاثة", "أربعة"]
+    },
+    "rightOptions": 1
+  }

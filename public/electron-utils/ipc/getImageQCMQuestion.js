@@ -21,9 +21,16 @@ function initGetImageQCMQustionMain() {
         const questionObj = JSON.parse(jsonContent);
         return {
           question: questionObj.question[language],
-          optionsSrc: questionObj.options.map((opt) =>
-            path.join("file:", questionsPath, "..", "images", opt)
-          ),
+          options: questionObj.options.map((opt) => ({
+            imageSrc: path.join(
+              "file:",
+              questionsPath,
+              "..",
+              "images",
+              opt.image
+            ),
+            hoverText: opt.text[language],
+          })),
           rightOptions: questionObj.rightOptions,
         };
       } catch (e) {
@@ -36,8 +43,8 @@ function initGetImageQCMQustionMain() {
 
 function initGetImageQCMQustionRender() {
   return {
-    getImageQCMQuestion: (questionNum) =>
-      ipcRenderer.invoke("get-image-qcm-question", questionNum),
+    getImageQCMQuestion: (questionNum, language) =>
+      ipcRenderer.invoke("get-image-qcm-question", questionNum, language),
   };
 }
 

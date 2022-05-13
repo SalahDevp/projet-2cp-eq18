@@ -1,0 +1,12 @@
+{
+    "question": {
+      "fr": "Combien y a-t-il d'axes de symétrie dans un triangle scalène ?",
+      "ar": "كم عدد خطوط التماثل الموجودة في مثلث ؟"
+    },
+    "image": "question14.png",
+    "options": {
+      "fr": ["un", "deux", "il n'y a pas", "quatre"],
+      "ar": ["واحد", "إثنان", "لا يوجد", "أربعة"]
+    },
+    "rightOptions": 3
+  }

@@ -1,0 +1,12 @@
+{
+    "question": {
+      "fr": "Lequel des triangles suivants n'a pas d'axe de symétrie ?",
+      "ar": "أي من المثلثات التالية ليس له خط تماثل؟"
+    },
+    "image": "question17.png",
+    "options": {
+      "fr": ["un triangle équilatéral", "un triangle scaléne", "un triangle scaléne", "toutes les réponse "],
+      "ar": ["مثلث متساوي الأضلاع", "مثلث متساوي الساقين", " كيفي مثلث", "كل ما سبق"]
+    },
+    "rightOptions": 3
+  }

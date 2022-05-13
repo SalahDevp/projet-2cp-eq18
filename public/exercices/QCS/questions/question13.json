@@ -1,0 +1,12 @@
+{
+    "question": {
+      "fr": "Lequel des éléments suivants n'a qu'un seul axe de symétrie ?",
+      "ar": "أي مما يلي له خط واحد فقط من التماثل؟"
+    },
+    "image": "question13.png",
+    "options": {
+      "fr": ["rectangle", "carrée", "demi cercle", "triangle équilatéral"],
+      "ar": ["مستطيل", "مربع", "نصف دائرة", "مثلث متساوي الاضلاع"]
+    },
+    "rightOptions": 3
+  }
