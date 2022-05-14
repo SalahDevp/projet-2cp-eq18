@@ -9,12 +9,11 @@ import * as drawTriangle from "utils/paint/actions/drawTriangle";
 import * as drawPentagon from "utils/paint/actions/drawPentagon";
 import * as moveShape from "utils/paint/actions/moveShape";
 import * as symetrieCentrale from "utils/paint/actions/symetrieCentrale";
-import * as supprimer from "utils/paint/actions/supprimer";
+import * as supprimerPoly from "utils/paint/actions/supprimerPoly";
 import * as rotation from "utils/paint/actions/rotation";
 
 import * as drawRectangle from "utils/paint/actions/drawRectangle";
 import * as drawLosange from "utils/paint/actions/drawLosange";
-import * as drawHexagone from "utils/paint/actions/drawHexagone";
 import * as drawHexa from "utils/paint/actions/drawHexa";
 
 export const HEIGHT = 500,
@@ -68,21 +67,24 @@ const Paint = () => {
         onMouseUp={(event) => actionType?.handleMouseUp?.(event, state)}
         onClick={(event) => actionType?.handleClick?.(event, state)}
       />
-      <div className="flex justify-between" style={{ width: WIDTH }}>
+      <div className="grid grid-cols-5 gap-2" style={{ width: WIDTH }}>
         <button onClick={handleClear}>clear</button>
         <button onClick={() => setActionType(undefined)}>hand</button>
         <button onClick={() => setActionType(drawShape)}>draw shape</button>
         <button onClick={() => setActionType(movePoint)}>move point</button>
+        <button onClick={() => setActionType(moveShape)}>move shape</button>
         <button onClick={() => setActionType(drawTriangle)}>triangle</button>
         <button onClick={() => setActionType(drawRectangle)}>rectangle</button>
         <button onClick={() => setActionType(drawLosange)}>losange</button>
-        <button onClick={() => setActionType(drawHexagone)}>hexagone</button>
-        <button onClick={() => setActionType(drawHexa)}>hexa</button>
-        <button onClick={() => setActionType(paintBucket)}>bucket</button>
+        <button onClick={() => setActionType(drawHexa)}>hexagone</button>
         <button onClick={() => setActionType(drawPentagon)}>pentagon</button>
-        <button onClick={() => setActionType(moveShape)}>move shape</button>
-        <button onClick={() => setActionType(symetrieCentrale)}>symetrie centrale</button>
-        <button onClick={() => setActionType(supprimer)}>supprimer</button>
+        <button onClick={() => setActionType(paintBucket)}>bucket</button>
+        <button onClick={() => setActionType(symetrieCentrale)}>
+          symetrie centrale
+        </button>
+        <button onClick={() => setActionType(supprimerPoly)}>
+          supprimer polygone
+        </button>
         <button onClick={() => setActionType(rotation)}>rotation</button>
       </div>
     </>
