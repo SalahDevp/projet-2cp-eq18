@@ -9,6 +9,8 @@ import { useState, useEffect, useMemo } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 //translation
 import { useTranslation } from "react-i18next";
+//audio
+import useAudio from "utils/exercices/useAudio";
 
 const areSetsEqual = (a, b) =>
   a.size === b.size && [...a].every((value) => b.has(value));
@@ -16,11 +18,7 @@ const areSetsEqual = (a, b) =>
 const QCM = () => {
   const maxQuestions = 1;
   //audio
-  const correctAudio = useMemo(
-    () => new Audio("./audio/correct-answer.wav"),
-    []
-  );
-  const wrongAudio = useMemo(() => new Audio("./audio/wrong-answer.mp3"), []);
+  const [correctAudio, wrongAudio] = useAudio();
   //routing
   const { num: questionNum } = useParams();
   const navigate = useNavigate();
