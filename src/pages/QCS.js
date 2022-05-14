@@ -59,6 +59,9 @@ const QCS = () => {
   ////
   useEffect(() => {
     let questionObj;
+    //load audio
+    correctAudio.load();
+    wrongAudio.load();
     (async () => {
       try {
         questionObj = await window.electronAPI.getQuizQuestion(

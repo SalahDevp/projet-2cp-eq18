@@ -44,16 +44,16 @@ const ImageQCM = () => {
   const handleSubmit = () => {
     //dont submit if user hasn't checked any box
     if (checkedOptions.size === 0) return;
+    //play sound
+    if (areSetsEqual(checkedOptions, rightOptions)) {
+      correctAudio.play();
+    } else wrongAudio.play();
     //set the right options color to green
     for (let optNum of rightOptions) options[optNum - 1].color = "green";
     //if the selected opt is wrong we set its color to red
     for (let optNum of checkedOptions) {
       if (!rightOptions.has(optNum)) options[optNum - 1].color = "red";
     }
-    //submit sound
-    if (areSetsEqual(checkedOptions, rightOptions)) {
-      correctAudio.play();
-    } else wrongAudio.play();
     //set states
     setOptions([...options]);
     setSubmitted(true);
@@ -66,6 +66,9 @@ const ImageQCM = () => {
   //
   useEffect(() => {
     let questionObj;
+    //load audio
+    correctAudio.load();
+    wrongAudio.load();
     (async () => {
       try {
         questionObj = await window.electronAPI.getImageQCMQuestion(

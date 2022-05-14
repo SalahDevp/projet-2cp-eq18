@@ -6,7 +6,7 @@
     "image": "question7.png",
     "options": {
       "fr": ["Possède 2 axes de symétrie", "Ne possède pas d'axe de symétrie", "Possède 3 axes de symétrie ", "Possède 1 axe de symétrie"],
-      "ar": ["يحتوي على محورين للتناظر", "لا يحتوي على محور تناظر", "لديه 3 محاور للتماثل", "يحتوي على محور تناظر واحد"]
+      "ar": ["يحتوي على محورين للتناظر", "لا يحتوي على محور تناظر", " لديه 3 محاور للتناظر  ", "يحتوي على محور تناظر واحد"]
     },
     "rightOptions": 4
   }
