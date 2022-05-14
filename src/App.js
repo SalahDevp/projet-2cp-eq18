@@ -21,18 +21,8 @@ function App() {
     <AppContext>
       <HashRouter>
         <Routes>
-<<<<<<< HEAD
           <Route path="edit-cour/:type" element={<EditCour />} />
           <Route path="paint" element={<Paint />} />
-=======
-          <Route path="h" element={<LanguageChoice />} />
-          <Route path="user-mode" element={<UserMode />} />
-          <Route path="teacher-password" element={<TeacherPassword />} />
-          <Route path="menu" element={<Menu />} />
-          <Route path="edit-cour" element={<EditCour />} />
-          <Route index element={<Paint />} />
-          <Route path="/menu-cour" element={<MenuCour />} />
->>>>>>> f89ad1a7c8af9c2cf17f7ab64d17750187f2a27d
           <Route path="/cour-centrale" element={<CourCentrale />} />
           <Route path="/cour-axiale" element={<CourAxiale />} />
           <Route path="lng" element={<Lngchoix />} />
