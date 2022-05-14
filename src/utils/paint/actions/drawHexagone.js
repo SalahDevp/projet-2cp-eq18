@@ -5,7 +5,7 @@ import Shape from "../Shape";
 const handleFirstClick = (event, state) => {
   const { x: mouseX, y: mouseY } = getMousePos(state.canvasRef, event);
   const { x, y } = getGridPos(mouseX, mouseY, UNIT);
-  const { shape, pointIndex } = getShapeFromPoint(state.shapes, x, y);
+  const { shape} = getShapeFromPoint(state.shapes, x, y);
   if (!shape) {
     state.setDrawing(true);
     state.setCurrent({ x, y });
@@ -143,28 +143,28 @@ const handleSecondClick = (event, state) => {
   const point2 = { x, y };
   let xpoint3 = calcX(x, state.current.x, y, state.current.y);
   let ypoint3 = calcY(x, state.current.x, y, state.current.y);
-  const point3 = { x: xpoint3, y: ypoint3 };
+  const point3 = getGridPos(xpoint3, ypoint3, UNIT);
   let xpoint4 = calcX(xpoint3, x, ypoint3, y);
   let ypoint4 = calcY(xpoint3, x, ypoint3, y);
-  const point4 = { x: xpoint4, y: ypoint4 };
+  const point4 = getGridPos(xpoint4, ypoint4, UNIT);
   let xpoint5 = calcX(xpoint4, xpoint3, ypoint4, ypoint3);
   let ypoint5 = calcY(xpoint4, xpoint3, ypoint4, ypoint3);
-  const point5 = { x: xpoint5, y: ypoint5 };
+  const point5 = getGridPos(xpoint5, ypoint5, UNIT);
   let xpoint6 = calcX(xpoint5, xpoint4, ypoint5, ypoint4);
   let ypoint6 = calcY(xpoint5, xpoint4, ypoint5, ypoint4);
-  const point6 = { x: xpoint6, y: ypoint6 };
+  const point6 = getGridPos(xpoint6, ypoint6, UNIT);
   let xpoint7 = calcX(xpoint6, xpoint5, ypoint6, ypoint5);
   let ypoint7 = calcY(xpoint6, xpoint5, ypoint6, ypoint5);
-  const point7 = { x: xpoint7, y: ypoint7 };
+  const point7 = getGridPos(xpoint7, ypoint7, UNIT);
   let xpoint8 = calcX(xpoint7, xpoint6, ypoint7, ypoint6);
   let ypoint8 = calcY(xpoint7, xpoint6, ypoint7, ypoint6);
-  const point8 = { x: xpoint8, y: ypoint8 };
+  const point8 = getGridPos(xpoint8, ypoint8, UNIT);
   let xpoint9 = calcX(xpoint8, xpoint7, ypoint8, ypoint7);
   let ypoint9 = calcY(xpoint8, xpoint7, ypoint8, ypoint7);
-  const point9 = { x: xpoint9, y: ypoint9 };
+  const point9 = getGridPos(xpoint9, ypoint9, UNIT);
   let xpoint10 = calcX(xpoint9, xpoint8, ypoint9, ypoint8);
   let ypoint10 = calcY(xpoint9, xpoint8, ypoint9, ypoint8);
-  const point10 = { x: xpoint10, y: ypoint10 };
+  const point10 = getGridPos(xpoint10, ypoint10, UNIT);
   state.shapes[state.shapes.length - 1].points = [
     point1,
     point2,
