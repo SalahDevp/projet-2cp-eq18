@@ -18,8 +18,9 @@ import * as drawHexa from "utils/paint/actions/drawHexa";
 import * as eraseLine from "utils/paint/actions/eraseLine";
 import * as symetrieAxiale from "utils/paint/actions/symetireAxiale";
 
-export const HEIGHT = 600,
-  WIDTH = 600,
+// WIDTH and HEIGHT have to be equal
+export const HEIGHT = 700,
+  WIDTH = 700,
   UNIT = 20;
 
 const Paint = () => {
@@ -59,7 +60,7 @@ const Paint = () => {
     if (line?.x1) drawLine(context, line);
   }, [shapes, line, drawing]);
   return (
-    <>
+    <div className="w-screen h-screen flex">
       <Canvas
         canvasRef={canvasRef}
         width={WIDTH}
@@ -100,7 +101,7 @@ const Paint = () => {
 
         <button onClick={() => setActionType(rotation)}>rotation</button>
       </div>
-    </>
+    </div>
   );
 };
 

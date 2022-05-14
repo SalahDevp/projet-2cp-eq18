@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const Redirect = () => {
   const navigate = useNavigate();
   useEffect(() => {
-    navigate("/paint");
+    navigate("/lng");
   });
   return <div>Redirecting...</div>;
 };
