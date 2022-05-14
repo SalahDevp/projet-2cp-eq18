@@ -9,15 +9,14 @@ import { useEffect, useState, useMemo } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 //translation
 import { useTranslation } from "react-i18next";
+//audio
+import useAudio from "utils/exercices/useAudio";
 
 const QCS = () => {
   const maxQuestions = 20;
   //audio
-  const correctAudio = useMemo(
-    () => new Audio("./audio/correct-answer.wav"),
-    []
-  );
-  const wrongAudio = useMemo(() => new Audio("./audio/wrong-answer.mp3"), []);
+  //audio
+  const [correctAudio, wrongAudio] = useAudio();
   //routing
   const { num: questionNum } = useParams();
   const navigate = useNavigate();

@@ -1,13 +1,11 @@
 import { useState, useEffect } from "react";
 //components
 import * as courPages from "components/Cours/courpages-axiale";
-import Nav from "components/Nav";
 import CustomCourse from "components/Cours/CustomCourse";
 import CourControls from "components/Cours/CourControls";
 //translation
 import { useTranslation } from "react-i18next";
 import useRestorePage from "utils/course/useRestorePage";
-import { useSearchParams } from "react-router-dom";
 import changeCpt from "utils/course/changeCpt";
 
 const CourAxiale = () => {
