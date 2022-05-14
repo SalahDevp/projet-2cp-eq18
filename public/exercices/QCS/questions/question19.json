@@ -1,12 +1,12 @@
 {
-  "question": {
-    "fr": "Dans un cercle, chaque __ est un axe de symétrie",
-    "ar": "في الدائرة ،كل __ يمثل محور تناظر"
-  },
-  "image": "question19.png",
-  "options": {
-    "fr": ["diamètre", "demi diamètre", "les deux", "aucune de celles-ci"],
-    "ar": ["القطر", "نصف القطر", "كلاهما", "لا شيء من هؤلاء"]
-  },
-  "rightOptions": 1
-}
+    "question": {
+      "fr": "Dans un cercle, chaque __ est un axe de symétrie",
+      "ar": "في الدائرة ،كل __ يمثل محور تناظر"
+    },
+    "image": "question1.png",
+    "options": {
+      "fr": ["diamètre", "demi diamètre", "les deux", "aucune de celles-ci"],
+      "ar": ["القطر", "نصف القطر", "كلاهما", "لا شيء من هؤلاء"]
+    },
+    "rightOptions": 1
+  }

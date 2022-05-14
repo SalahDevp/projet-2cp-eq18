@@ -41,8 +41,8 @@ function initGetQuizQuestionMain() {
 
 function initGetQuizQuestionRender() {
   return {
-    getQuizQuestion: (type, questionNum) =>
-      ipcRenderer.invoke("get-quiz-question", type, questionNum),
+    getQuizQuestion: (type, questionNum, language) =>
+      ipcRenderer.invoke("get-quiz-question", type, questionNum, language),
   };
 }
 
