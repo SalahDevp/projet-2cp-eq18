@@ -6,8 +6,14 @@ import CustomCourse from "components/Cours/CustomCourse";
 import CourControls from "components/Cours/CourControls";
 //translation
 import { useTranslation } from "react-i18next";
+import { useParams, useSearchParams } from "react-router-dom";
+import changeCpt from "utils/course/changeCpt";
+import useRestorePage from "utils/course/useRestorePage";
 
 const CourCentrale = () => {
+  //routing
+  const [searchParams, setSearchParams] = useSearchParams();
+  //state
   const [cpt, setCpt] = useState(0); //page counter
   const [pages, setPages] = useState([]); //pages array
   const [rerender, setRerender] = useState(false); //this var is toggled when techer deletes a page to reexecute useEffect
@@ -27,6 +33,8 @@ const CourCentrale = () => {
     <courPages.Courp9 />,
     <courPages.Courp10 />,
   ];
+
+  useRestorePage("cour-centrale", setCpt);
   useEffect(() => {
     //async block
     (async () => {
@@ -50,7 +58,7 @@ const CourCentrale = () => {
         <CourControls
           pagesLength={pages.length}
           cpt={cpt}
-          setCpt={setCpt}
+          setCpt={(value) => changeCpt("cour-centrale", value, setCpt)}
           type="centrale"
           defaultPagesLength={tab.length}
           setRerender={setRerender}

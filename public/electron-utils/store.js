@@ -10,6 +10,12 @@ const schema = {
     minLength: 4,
     default: "0000",
   },
+  "cour-centrale": {
+    type: "number",
+  },
+  "cour-axiale": {
+    type: "number",
+  },
 };
 
 const store = new Store({ schema });
