@@ -8,6 +8,10 @@ import * as paintBucket from "utils/paint/actions/paintBucket";
 import * as drawTriangle from "utils/paint/actions/drawTriangle";
 import * as drawPentagon from "utils/paint/actions/drawPentagon";
 import * as moveShape from "utils/paint/actions/moveShape";
+import * as symetrieCentrale from "utils/paint/actions/symetrieCentrale";
+import * as supprimer from "utils/paint/actions/supprimer";
+import * as rotation from "utils/paint/actions/rotation";
+
 import * as drawRectangle from "utils/paint/actions/drawRectangle";
 import * as drawLosange from "utils/paint/actions/drawLosange";
 import * as drawHexagone from "utils/paint/actions/drawHexagone";
@@ -77,6 +81,9 @@ const Paint = () => {
         <button onClick={() => setActionType(paintBucket)}>bucket</button>
         <button onClick={() => setActionType(drawPentagon)}>pentagon</button>
         <button onClick={() => setActionType(moveShape)}>move shape</button>
+        <button onClick={() => setActionType(symetrieCentrale)}>symetrie centrale</button>
+        <button onClick={() => setActionType(supprimer)}>supprimer</button>
+        <button onClick={() => setActionType(rotation)}>rotation</button>
       </div>
     </>
   );
