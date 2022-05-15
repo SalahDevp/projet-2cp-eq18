@@ -31,7 +31,7 @@ const Nav = ({ pathAvant }) => {
           className="mt-12 w-14 h-14 cursor-pointer"
           src={img3}
           alt=""
-          onClick={() => navigate("/paramatre")}
+          onClick={() => navigate("/parametre")}
         />
       </div>
 

@@ -13,7 +13,7 @@ import Redirect from "pages/Redirect";
 import QCM from "pages/QCM";
 import NTeacherpassword from "pages/NTeacherpassword";
 import NchangeTeacherpassword from "pages/NchangeTeacherPassword";
-import Paramatre from "pages/paramatre";
+import Parametre from "pages/Parametre";
 import ImageQCM from "pages/ImageQCM";
 
 function App() {
@@ -38,7 +38,7 @@ function App() {
             path="/NchangeTeacherPassword"
             element={<NchangeTeacherpassword />}
           />
-          <Route path="/paramatre" element={<Paramatre />} />
+          <Route path="/parametre" element={<Parametre />} />
 
           {/* <Route index  element={<LanguageChoice />} /> */}
           {/* <Route path="user-mode" element={<UserMode />} />*/}
