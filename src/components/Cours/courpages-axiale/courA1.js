@@ -34,8 +34,8 @@ const { i18n } = useTranslation();
         </p> :
           <p dir="rtl" className="  text-xl font-normal">
          <span className="underline decoration-solid text-2xl font-bold" > تعريف : </span> 
-   نقول عن شكلان أنهما متناظران بالنسبة إلى مستقيم(d) إذا تطابقا عند استخدام الطي حول المستقيم(d)
-        </p>}
+        نقول عن شكلان أنهما متناظران بالنسبة إلى مستقيم  <span className="text-ltr-cr">(d)</span> إذا تطابقا عند استخدام الطي حول المستقيم  <span className="text-ltr-cr">(d)</span>
+         </p>}
         {fr?<ul className="ml-10 list-disc  text-xl font-normal">
           <li className="">
             Les deux figures sont{" "}
@@ -48,8 +48,8 @@ const { i18n } = useTranslation();
           </li>
         </ul >:
         <ul dir="rtl"  className="mr-10 list-disc  text-xl font-normal">
-          <li>الشكلان متناظران بالنسبة إلى المستقيم(d).</li>
-          <li>الشكلان متطابقان عند الطي حول المستقيم(d).</li>
+          <li>الشكلان  <span className="text-ltr-cr"> متناظران </span>بالنسبة إلى المستقيم<span className="text-ltr-cr"> (d) </span>.</li>
+          <li>الشكلان متطابقان عند الطي حول المستقيم<span className="text-ltr-cr"> (d) </span>.</li>
           </ul>}
 
       </div>
@@ -78,10 +78,10 @@ const { i18n } = useTranslation();
         </ul> :
         <ul dir="rtl" className="mr-10 list-disc text-xl font-normal">
         <li>
-        نقول عن التناظر بالنسبة إلى مستقيم التناظر المتعامد بالنسبة إلى ذلك المستقيم أو التناظر المحوري
+        نقول عن التناظر بالنسبة إلى مستقيم   <span className="text-ltr-cr"> التناظر المتعامد بالنسبة إلى ذلك المستقيم </span> أو <span className="text-ltr-cr"> التناظر المحوري </span> 
         .</li>
         <li>
-        المستقيم(d) هو محور التناظر
+        المستقيم<span className="text-ltr-cr"> (d) </span> هو محور التناظر
         .</li>
       </ul>  }
       </div>

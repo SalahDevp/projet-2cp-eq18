@@ -27,18 +27,20 @@ const CourA2 = () => {
                         <li className=''> Le symétrique d'un cercle est <span className='text-ltr-cr'>un cercle de même rayon</span> .</li>           
                         <li className=''>Les symétriques de trois points alignés sont <span className='text-ltr-cr'>trois points alignés</span> .</li>
                     </ul>
-                </div>
+                </div>                                                                                                                                              
                 : 
-                <div dir="rtl" className='mr-6 mt-6'>
-                <p className='  text-xl font-normal' >شكلان متناظران لهما نفس الشكل ونفس الأبعاد. لذلك فإن لهم نفس المحيط ونفس المساحة (للأسطح).</p>
+                <div dir="rtl" className='mr-6 mt-6'>   
+                                                                                                                                                                                     
+                <p className='  text-xl font-normal' >شكلان متناظران لهما نفس <span className='text-ltr-cr'>الشكل</span> ونفس <span className='text-ltr-cr'>الأبعاد</span>. لذلك فإن لهم نفس <span className='text-ltr-cr'>المحيط</span>  ونفس <span className='text-ltr-cr'>المساحة</span>  (للأسطح).</p>
+                
                 <p className='mt-3 mb-3 text-xl font-normal'>على وجه الخصوص ، في سياق التناظر المحوري:</p>
                 <ul className='ml-10 list-disc  text-xl font-normal'>
-                    <li className=''>نظير قطعة مستقيمة هي قطعة مستقيمة من نفس الطول.</li>
-                    <li className=''>نظير نصف مستقيم هو نصف مستقيم</li>
-                    <li className=''> نظير مستقيم هو مستقيم.</li>
-                    <li className=''>نظير زاوية هي زاوية من نفس القياس.</li>
-                    <li className=''>نظير دائرة هي دائرة لها نفس القطر.</li>           
-                    <li className=''>نظير ثلاث نقاط في استقامة واحدة هي ثلاث نقاط في استقامة واحدة.</li>
+                    <li className=''>نظير قطعة مستقيمة هي <span className='text-ltr-cr'>قطعة مستقيمة من نفس الطول</span>.</li>
+                    <li className=''>نظير نصف مستقيم هو  <span className='text-ltr-cr'>نصف مستقيم</span> </li>
+                    <li className=''> نظير مستقيم هو <span className='text-ltr-cr'>مستقيم</span> .</li>
+                    <li className=''>نظير زاوية هي <span className='text-ltr-cr'> زاوية من نفس القياس</span>.</li>
+                    <li className=''>نظير دائرة هي <span className='text-ltr-cr'>دائرة لها نفس القطر</span>. </li>           
+                    <li className=''>نظير ثلاث نقاط في استقامة واحدة هي <span className='text-ltr-cr'>ثلاث نقاط في استقامة واحدة</span>.</li>
                 </ul>
             </div>
                 }
@@ -48,7 +50,8 @@ const CourA2 = () => {
             <p className='ml-6 text-xl font-normal'> On dit que la symétrie axiale <span className='text-ltr-cr'>conserve les longueurs (donc aussi les périmètres)</span> , <span className='text-ltr-cr'>les angles</span> , <span className='text-ltr-cr'> les aires </span> et <span className='text-ltr-cr'> l'alignement</span> .</p>
         </div> :<div dir="rtl" className='mt-20'>
             <p className='underline decoration-solid text-2xl text-red-600 font-semibold'>ملاحظة : </p>
-            <p className='mr-6 text-xl font-normal'>نقول ان التناظر المحوري يحفظ المسافات (إذا المحيط), الزوايا, المساحات والمحاذاة والاستقامة .</p>
+            <p className='mr-6 text-xl font-normal'> نقول أن التناظر المحوري 
+              <span className='text-ltr-cr'>  يحفظ المسافات ( إذا المحيط ) , الزوايا, المساحات والمحاذاة والاستقامة    </span> .</p>
         </div> }
     </div>
   )
