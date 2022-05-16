@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 //images
-import rightArrow from "assets/cour/flecheD.png";
-import leftArrow from "assets/cour/flecheL.png";
+import rightArrow from "assets/cour/right-arrow.png";
+import leftArrow from "assets/cour/left-arrow.png";
 import addIcon from "assets/cour/add.png";
 import editIcon from "assets/cour/edit.png";
 import deleteIcon from "assets/cour/delete.png";
@@ -53,65 +53,77 @@ const CourControls = ({
       {showControls && (
         <>
           <button
-            className="absolute top-4 left-4 h-10 w-10"
+            className="absolute top-4 left-4 p-2 rounded-full hover:bg-gray-200"
             onClick={() => navigate("/Menu-Cour")}
           >
-            <img src={backIcon} alt="" />
+            <img src={backIcon} alt="" className="h-10" />
           </button>
           {cpt > 0 && (
-            <img
+            <button
+              className={`cursor-pointer absolute top-1/2 ${
+                i18n.language === "fr" ? "left-6" : "right-6"
+              } p-3 rounded-full hover:bg-gray-200`}
               onMouseEnter={() => {
                 mouseOnControl.current = true;
               }}
               onMouseLeave={() => {
                 mouseOnControl.current = false;
               }}
-              src={i18n.language === "fr" ? leftArrow : rightArrow}
-              className={`cursor-pointer absolute top-1/2 ${
-                i18n.language === "fr" ? "left-6" : "right-6"
-              } w-10 h-8`}
-              onClick={() => setCpt(cpt - 1)}
-              alt="previous"
-            />
+            >
+              <img
+                src={i18n.language === "fr" ? leftArrow : rightArrow}
+                className="h-11"
+                onClick={() => setCpt(cpt - 1)}
+                alt="previous"
+              />
+            </button>
           )}
 
           {cpt < pagesLength - 1 && (
-            <img
+            <button
+              className={`cursor-pointer absolute top-1/2 ${
+                i18n.language === "fr" ? "right-6" : "left-6"
+              } p-3 rounded-full hover:bg-gray-200`}
               onMouseEnter={() => {
                 mouseOnControl.current = true;
               }}
               onMouseLeave={() => {
                 mouseOnControl.current = false;
               }}
-              src={i18n.language === "fr" ? rightArrow : leftArrow}
-              className={`cursor-pointer absolute top-1/2 ${
-                i18n.language === "fr" ? "right-6" : "left-6"
-              } w-10 h-8`}
-              onClick={() => setCpt(cpt + 1)}
-              alt="next"
-            />
+            >
+              <img
+                src={i18n.language === "fr" ? rightArrow : leftArrow}
+                className="h-11"
+                onClick={() => setCpt(cpt + 1)}
+                alt="next"
+              />
+            </button>
           )}
           {cpt === pagesLength - 1 && teacherMode && (
-            <img
+            <button
+              className={`cursor-pointer absolute top-1/2 ${
+                i18n.language === "fr" ? "right-6" : "left-6"
+              } p-3 rounded-full hover:bg-gray-200`}
               onMouseEnter={() => {
                 mouseOnControl.current = true;
               }}
               onMouseLeave={() => {
                 mouseOnControl.current = false;
               }}
-              src={addIcon}
-              className={`cursor-pointer absolute top-1/2 ${
-                i18n.language === "fr" ? "right-6" : "left-6"
-              } w-10 h-8`}
-              onClick={() => navigate(`/edit-cour/${type}`)}
-              alt="add"
-            />
+            >
+              <img
+                src={addIcon}
+                className="h-11"
+                onClick={() => navigate(`/edit-cour/${type}`)}
+                alt="add"
+              />
+            </button>
           )}
           {cpt >= defaultPagesLength && teacherMode && (
-            <div className="absolute -translate-x-1/2 bottom-12 left-1/2 flex justify-between w-40">
+            <div className="absolute -translate-x-1/2 bottom-12 left-1/2 flex justify-between w-48">
               {/*edit btn*/}
               <button
-                className="border rounded-full bg-gray-200 p-3"
+                className="rounded-full p-3 hover:bg-gray-200"
                 onClick={() =>
                   navigate(
                     `/edit-cour/${type}?edit=true&pageNum=${
@@ -120,14 +132,14 @@ const CourControls = ({
                   )
                 }
               >
-                <img className="h-7" src={editIcon} alt="edit" />
+                <img className="h-9" src={editIcon} alt="edit" />
               </button>
               {/*delete btn*/}
               <button
-                className="border rounded-full bg-gray-200 p-3"
+                className="rounded-full p-3 hover:bg-gray-200"
                 onClick={handleDeletePage}
               >
-                <img className="h-7" src={deleteIcon} alt="delete" />
+                <img className="h-9" src={deleteIcon} alt="delete" />
               </button>
             </div>
           )}

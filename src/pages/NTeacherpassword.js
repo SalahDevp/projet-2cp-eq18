@@ -9,12 +9,14 @@ import { useUserMode } from "AppContext";
 import sortir from "../components/nouveau-protype-component/sortir.png";
 import cadna from "../components/nouveau-protype-component/cadna.png";
 import i18n from "utils/translation/i18n";
+import ErrorMessage from "components/password/ErrorMessage";
 
 const NTeacherpassword = () => {
   //state
   const [password, setPassword] = useState("");
   const [fr, setFR] = useState(true);
   const { setTeacherMode } = useUserMode();
+  const [wrongPassword, setWrongPassword] = useState(false);
 
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -23,16 +25,18 @@ const NTeacherpassword = () => {
     setPassword(e.target.value);
   };
   const handleSubmit = async () => {
+    //if password field empty exit fnc
+    if (password === "") return;
     //get the stored password
     const storedPassword = await window.electronAPI.storeGet("teacherPassword");
     //check if the password is correct
     if (password === storedPassword) {
       setTeacherMode(true);
-      console.log("success!");
       //navigate to menu
       navigate("/NMenu");
     } else {
-      console.log("wrong password!");
+      //wrong password
+      setWrongPassword(true);
       setPassword("");
     }
   };
@@ -67,31 +71,37 @@ const NTeacherpassword = () => {
           alt="sortir"
           onClick={quit}
         />
-        <div className="pb-14 pt-20 px-14  z-10 bg-white shadow-md overflow-hidden	 border-jeune border-2 border-solid w-98 h-96 rounded-3xl">
+        <div
+          className={`pb-14 pt-20 px-14  z-10 ${
+            wrongPassword ? "bg-red-200" : "bg-white"
+          } shadow-md overflow-hidden	 border-jeune border-2 border-solid w-98 h-96 rounded-3xl`}
+        >
           <p
             dir={fr ? "ltr" : "rtl"}
             for="pwd"
             className={fr ? "-ml-0  text-4xl" : " -mr-0   text-4xl"}
           >
-            {t("password")}
+            {t("password.password")}
           </p>
           <input
             dir={fr ? "ltr" : "rtl"}
-            className="mt-5 px-5 w-full h-16 text-2xl rounded-xl border-1 border-rouze  outline-none"
-            placeholder={t("password")}
+            className={`mt-5 px-5 w-full h-16 bg-white text-2xl rounded-xl border-1 ${
+              wrongPassword ? "border-red-500" : "border-rouze"
+            } outline-none`}
+            placeholder={t("password.password")}
             type="password"
             name="password"
             id="pwd"
             value={password}
             onChange={handleChange}
           />
-
+          {wrongPassword && <ErrorMessage fr={fr} msg={t("password.wrong")} />}
           <p
             className="cursor-pointer  float-right mt-3 text-xl text-vert"
             onClick={() => navigate("/NchangeTeacherPassword")}
           >
             {" "}
-            {t("changePassword")}
+            {t("password.change")}
           </p>
           <div
             dir={fr ? "lrt" : "rtl"}
@@ -104,7 +114,7 @@ const NTeacherpassword = () => {
             />
             <button
               onClick={handleSubmit}
-              className="w-28 h-14 rounded-xl border-px   border-vert text-xl"
+              className="w-28 h-14 rounded-xl bg-white border-px   border-vert text-xl"
             >
               {t("confirm")}
             </button>

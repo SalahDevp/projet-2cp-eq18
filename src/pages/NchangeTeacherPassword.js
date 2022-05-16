@@ -7,16 +7,27 @@ import ok from "../components/nouveau-protype-component/ok.png";
 import i18n from "utils/translation/i18n";
 import { useTranslation } from "react-i18next";
 import { useState, useEffect } from "react";
+import ErrorMessage from "components/password/ErrorMessage";
 
 const NchangeTeacherpassword = () => {
   //password states
   const [currentPass, setCurrentPass] = useState();
   const [newPass, setNewPass] = useState();
   const [confirmedPass, setConfirmedPass] = useState();
+  //password validation
+  const [wrongPassword, setWrongPassword] = useState(false);
+  const [passwordLength, setPasswordLength] = useState(false);
+  const [passwordDifferent, setpasswordDifferent] = useState(false);
 
   const [fr, setFR] = useState(true);
 
   const handleSubmit = async () => {
+    //if one of the three fields is empty exit fnc
+    if (currentPass === "" || newPass === "" || confirmedPass === "") return;
+    //set all validation states to false
+    setpasswordDifferent(false);
+    setPasswordLength(false);
+    setWrongPassword(false);
     //get the stored password
     const storedPassword = await window.electronAPI.storeGet("teacherPassword");
     //check if the password is correct
@@ -29,11 +40,22 @@ const NchangeTeacherpassword = () => {
           window.electronAPI.storeSet("teacherPassword", newPass);
           navigate("/TeacherPassword");
         } else {
-        } //new pass length < 4
+          //new pass length < 4
+          setNewPass("");
+          setConfirmedPass("");
+          setPasswordLength(true);
+        }
       } else {
-      } //new pass and confirmed pass are diffrent
+        //new pass and confirmed pass are diffrent
+        setNewPass("");
+        setConfirmedPass("");
+        setpasswordDifferent(true);
+      }
     } else {
-    } //current pass is wrong
+      //current pass is wrong
+      setCurrentPass("");
+      setWrongPassword(true);
+    }
   };
 
   useEffect(() => {
@@ -70,17 +92,17 @@ const NchangeTeacherpassword = () => {
           onClick={quit}
         />
 
-        <div className=" px-10 py-10  z-10 overflow-hidden bg-white shadow-md	 border-jeune border-2 border-solid w-98 h-97 rounded-3xl">
+        <div className=" px-10 py-5  z-10 overflow-hidden bg-white shadow-md	 border-jeune border-2 border-solid w-98 rounded-3xl">
           <p
             dir={fr ? "ltr" : "rtl"}
             for="pwd"
             className={fr ? "-ml-0  text-2xl" : "-mr-0  text-2xl"}
           >
-            {t("CurrentPassword")}
+            {t("password.current")}
           </p>
           <input
             dir={fr ? "ltr" : "rtl"}
-            placeholder={t("CurrentPassword")}
+            placeholder={t("password.current")}
             className="mt-1 px-4 text-2xl w-full h-12 rounded-xl border-1 border-rouze outline-2"
             type="password"
             name="password"
@@ -88,17 +110,18 @@ const NchangeTeacherpassword = () => {
             value={currentPass}
             onChange={(e) => setCurrentPass(e.target.value)}
           />
+          {wrongPassword && <ErrorMessage fr={fr} msg={t("password.wrong")} />}
           <div className="mt-2">
             <p
               dir={fr ? "ltr" : "rtl"}
               for="pwd"
               className={fr ? "-ml-0  text-2xl" : "-mr-0  text-2xl"}
             >
-              {t("NewPassword")}
+              {t("password.new")}
             </p>
             <input
               dir={fr ? "ltr" : "rtl"}
-              placeholder={t("NewPassword")}
+              placeholder={t("password.new")}
               className="mt-1 px-4 text-2xl w-full h-12 rounded-xl border-1 border-rouze outline-2"
               type="password"
               name="password"
@@ -106,6 +129,9 @@ const NchangeTeacherpassword = () => {
               value={newPass}
               onChange={(e) => setNewPass(e.target.value)}
             />
+            {passwordLength && (
+              <ErrorMessage fr={fr} msg={t("password.length")} />
+            )}
           </div>
           <div className="mt-2">
             <p
@@ -114,11 +140,11 @@ const NchangeTeacherpassword = () => {
               className={fr ? "-ml-0  text-2xl" : "-mr-0  text-2xl"}
             >
               {" "}
-              {t("Passwordconfirmation")}
+              {t("password.confirm")}
             </p>
             <input
               dir={fr ? "ltr" : "rtl"}
-              placeholder={t("Passwordconfirmation")}
+              placeholder={t("password.confirm")}
               className="mt-1 px-4 text-2xl w-full h-12 rounded-xl border-1 border-rouze outline-2"
               type="password"
               name="password"
@@ -126,12 +152,15 @@ const NchangeTeacherpassword = () => {
               value={confirmedPass}
               onChange={(e) => setConfirmedPass(e.target.value)}
             />
+            {passwordDifferent && (
+              <ErrorMessage fr={fr} msg={t("password.different")} />
+            )}
           </div>
           <button
             onClick={handleSubmit}
             className={fr ? "-mr-7 float-right" : "-ml-7 float-left"}
           >
-            <img className=" h-28 w-28" src={ok} alt="" />
+            <img className=" h-28 w-28 -mb-10" src={ok} alt="" />
           </button>
         </div>
       </div>
