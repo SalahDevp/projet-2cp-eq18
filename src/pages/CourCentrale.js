@@ -7,6 +7,7 @@ import CourControls from "components/Cours/CourControls";
 import { useTranslation } from "react-i18next";
 import changeCpt from "utils/course/changeCpt";
 import useRestorePage from "utils/course/useRestorePage";
+import { useUserMode } from "AppContext";
 
 const CourCentrale = () => {
   //state
@@ -15,6 +16,8 @@ const CourCentrale = () => {
   const [rerender, setRerender] = useState(false); //this var is toggled when techer deletes a page to reexecute useEffect
   //translation
   const { i18n } = useTranslation();
+  //userMode
+  const { teacherMode } = useUserMode();
 
   const tab = [
     <courPages.TBMC />,
@@ -30,7 +33,7 @@ const CourCentrale = () => {
     <courPages.Courp10 />,
   ];
 
-  useRestorePage("cour-centrale", setCpt);
+  useRestorePage("cour-centrale", setCpt, teacherMode);
   useEffect(() => {
     //async block
     (async () => {
@@ -54,7 +57,9 @@ const CourCentrale = () => {
         <CourControls
           pagesLength={pages.length}
           cpt={cpt}
-          setCpt={(value) => changeCpt("cour-centrale", value, setCpt)}
+          setCpt={(value) =>
+            changeCpt("cour-centrale", value, setCpt, teacherMode)
+          }
           type="centrale"
           defaultPagesLength={tab.length}
           setRerender={setRerender}

@@ -11,10 +11,18 @@ const schema = {
     default: "0000",
   },
   "cour-centrale": {
-    type: "number",
+    type: "object",
+    properties: {
+      teacher: { type: "number" },
+      student: { type: "number" },
+    },
   },
   "cour-axiale": {
-    type: "number",
+    type: "object",
+    properties: {
+      teacher: { type: "number" },
+      student: { type: "number" },
+    },
   },
   sound: {
     type: "number",
