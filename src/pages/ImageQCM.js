@@ -94,7 +94,7 @@ const ImageQCM = () => {
       />
       <Nav pathAvant={"/NMenu"} />
       <div
-        className={`relative h-auto flex-grow border-2 rounded-3xl border-jeune mx-24 mt-16 mb-8 pb-6 pt-7 flex flex-col items-center ${
+        className={`relative h-auto w-[1100px] border-2 rounded-3xl border-jeune ml-24 mt-16 mb-8 pb-6 pt-7 flex flex-col items-center ${
           !submitted
             ? "bg-white"
             : areSetsEqual(checkedOptions, rightOptions)

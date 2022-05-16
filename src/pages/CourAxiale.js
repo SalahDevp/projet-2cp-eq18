@@ -7,6 +7,7 @@ import CourControls from "components/Cours/CourControls";
 import { useTranslation } from "react-i18next";
 import useRestorePage from "utils/course/useRestorePage";
 import changeCpt from "utils/course/changeCpt";
+import { useUserMode } from "AppContext";
 
 const CourAxiale = () => {
   //state
@@ -15,6 +16,8 @@ const CourAxiale = () => {
   const [rerender, setRerender] = useState(false); //this var is toggled when techer deletes a page to reexecute useEffect
   //tarnslation
   const { i18n } = useTranslation();
+  //user mode
+  const { teacherMode } = useUserMode();
 
   const tab = [
     <courPages.TBMA />,
@@ -34,7 +37,7 @@ const CourAxiale = () => {
     <courPages.CourA14 />,
     <courPages.CourA15 />,
   ];
-  useRestorePage("cour-axiale", setCpt);
+  useRestorePage("cour-axiale", setCpt, teacherMode);
   useEffect(() => {
     //async block
     (async () => {
@@ -58,7 +61,9 @@ const CourAxiale = () => {
         <CourControls
           pagesLength={pages.length}
           cpt={cpt}
-          setCpt={(value) => changeCpt("cour-axiale", value, setCpt)}
+          setCpt={(value) =>
+            changeCpt("cour-axiale", value, setCpt, teacherMode)
+          }
           type="axiale"
           defaultPagesLength={tab.length}
           setRerender={setRerender}

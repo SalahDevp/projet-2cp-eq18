@@ -107,7 +107,7 @@ const QCS = () => {
         <div>
           <img src={imageSrc} alt="" className="h-60 mt-8" />
         </div>
-        <form className="flex-grow w-4/5 grid grid-cols-2 place-items-center z-10">
+        <form className="flex-grow w-4/5 grid grid-cols-2 place-items-start z-10 mt-4">
           {options.map((opt, ind) => (
             <QCSOption
               text={opt.text}
