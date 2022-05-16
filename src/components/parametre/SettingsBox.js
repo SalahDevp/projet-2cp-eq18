@@ -6,7 +6,8 @@ import soundOn from "assets/parametre/sound-on.png";
 import soundOff from "assets/parametre/sound-off.png";
 import languageIcon from "assets/parametre/language.png";
 import { useTranslation } from "react-i18next";
-import { useMusicLevel, useSoundLevel } from "AppContext";
+import { useMusicLevel, useSoundLevel, useUserMode } from "AppContext";
+import { useNavigate } from "react-router-dom";
 
 const STEP = 5;
 
@@ -19,6 +20,10 @@ const SettingsBox = () => {
   const [soundActivated, setSoundActivated] = useState(soundLevel !== 0);
   //language
   const { i18n, t } = useTranslation();
+  //user mode
+  const { teacherMode } = useUserMode();
+  //routing
+  const navigate = useNavigate();
   //handlers
   const handleAudioLevelChange = (e, setLevelState) => {
     if (e.target.value >= STEP) setLevelState(e.target.value / 100);
@@ -110,10 +115,18 @@ const SettingsBox = () => {
         </select>
       </div>
       <div className="absolute bottom-0 left-0 pb-4 pl-4">
-        <p className="cursor-pointer font-bold text-xl text-settingsLightGreen mb-3">
-          {t("changePassword")}
-        </p>
-        <p className="cursor-pointer font-bold text-xl text-settingsLightGreen">
+        {teacherMode && (
+          <p
+            onClick={() => navigate("/NchangeTeacherPassword")}
+            className="cursor-pointer font-bold text-xl text-settingsLightGreen mb-3"
+          >
+            {t("changePassword")}
+          </p>
+        )}
+        <p
+          onClick={() => navigate("/userMode")}
+          className="cursor-pointer font-bold text-xl text-settingsLightGreen"
+        >
           {t("settings.changeUserMode")}
         </p>
       </div>

@@ -10,7 +10,7 @@ const Paramatre = () => {
   const navigate = useNavigate();
 
   const Routeur = () => {
-    navigate("/");
+    navigate(-1);
   };
   const quit = () => {
     window.close();

@@ -9,7 +9,7 @@ const Nav = ({ pathAvant }) => {
   const navigate = useNavigate();
 
   const Routeur = () => {
-    navigate(`${pathAvant}`);
+    navigate(-1);
   };
 
   return (
