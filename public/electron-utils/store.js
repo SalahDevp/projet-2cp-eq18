@@ -16,6 +16,18 @@ const schema = {
   "cour-axiale": {
     type: "number",
   },
+  sound: {
+    type: "number",
+    maximum: 1,
+    minimum: 0,
+    default: 1,
+  },
+  music: {
+    type: "number",
+    maximum: 1,
+    minimum: 0,
+    default: 1,
+  },
 };
 
 const store = new Store({ schema });

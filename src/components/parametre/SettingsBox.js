@@ -28,13 +28,8 @@ const SettingsBox = () => {
     setAudioActivated,
     setAudioLevel
   ) => {
-    if (audioActivated) {
-      setAudioActivated(false);
-      setAudioLevel(0);
-    } else {
-      setAudioActivated(true);
-      setAudioLevel(STEP / 100);
-    }
+    setAudioLevel(audioActivated ? 0 : STEP / 100);
+    setAudioActivated(!audioActivated);
   };
   return (
     <div className="relative flex-grow mx-12 px-14 py-14  z-10 bg-white shadow-md border-black border-2 border-solid w-auto h-100 rounded-3xl bg-[url('./assets/parametre/settings-background.png')] bg-no-repeat bg-right-bottom bg-origin-border bg-clip-border">
