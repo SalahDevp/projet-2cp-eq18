@@ -32,7 +32,7 @@ const Menu = () => {
         -translate-x-1/2 -translate-y-1/2 
         h-96 w-328 flex items-center justify-between "
       >
-        <Box image={img1} title={t("grid")} />
+        <Box image={img1} title={t("grid")}/>
         <Box image={img2} title={t("courses")} handleClick={handleCour} />
         <Box image={img3} title={t("exercices")} />
       </div>
