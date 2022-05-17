@@ -38,23 +38,23 @@ const Grillecomponent = () => {
            <NAV  pathAvant="/" image1={dossier} image2={sauvgarde}/>
            </div>
           
-            <div className='pt-6 border-2  border-violet absolute rounded-l-2xl right-0 h-screen w-20 bg-marron
-            flex flex-col items-center'>
+            <div className='py-3 border-2  border-violet border-r-0 absolute rounded-l-2xl right-0 h-screen w-20 bg-marron
+            flex flex-col items-center justify-between'>
 
-                <img className='h-14 w-14' src={sortir} alt=""  />
-                <img className='mt-4 h-14 w-14' src={first} alt="" />
-                <img className='mt-3 h-14 w-14' src={second} alt="" />
+                <img className='mt-1 h-14 w-14' src={sortir} alt=""  />
+                <img className=' h-14 w-14' src={first} alt="" />
+                <img className=' h-14 w-14' src={second} alt="" />
                      <div dir="rtl" className='flex flex-row justify-between '>
-                           <img className=' mt-3 h-16 w-14' src={third} alt=""  onClick={()=>{if(icons1){setIcons1(false) }else{setIcons1(true);setIcons2(false);setIcons3(false);setIcons4(false);setIcons5(false)}}}/>
+                           <img className='  h-16 w-14' src={third} alt=""  onClick={()=>{if(icons1){setIcons1(false) }else{setIcons1(true);setIcons2(false);setIcons3(false);setIcons4(false);setIcons5(false)}}}/>
                            {icons1 && <div  className='p-1 px-1 w-32 rounded-xl justify-between  flex items-center flex-row bg-marron
                              mt-4 mr-20 absolute   '>
                                       <img className=' h-12 w-12' src={I1} alt="" />
                                     <img className=' h-12 w-12' src={I2} alt="" />  
                               </div> } 
                     </div> 
-                    {/* bjfbvjbfv */}
+                    
                     <div dir="rtl" className='flex flex-row justify-between '>
-                     <img className='mt-3 h-16 w-14' src={fourth} alt="" onClick={()=>{if(icons2){setIcons2(false) }else{setIcons2(true);setIcons1(false);setIcons3(false);setIcons4(false);setIcons5(false)}}}/>
+                     <img className='h-16 w-14' src={fourth} alt="" onClick={()=>{if(icons2){setIcons2(false) }else{setIcons2(true);setIcons1(false);setIcons3(false);setIcons4(false);setIcons5(false)}}}/>
                      {(icons2) &&   <div  className='p-1 px-1 w-56 rounded-xl justify-between  flex items-center flex-row bg-marron
                              mt-4 mr-20 absolute   '>
                                     <img className=' h-12 w-12' src={I2} alt="" />  
@@ -64,9 +64,9 @@ const Grillecomponent = () => {
 
                               </div>  }
                     </div> 
-                    {/* :v,kl,b */}
+                   
                     <div dir="rtl" className='flex flex-row justify-between '>
-                    <img className='mt-3 h-16 w-14' src={fifth} alt="" onClick={()=>{if(icons3){setIcons3(false) }else{setIcons3(true);setIcons1(false);setIcons2(false);setIcons4(false);setIcons5(false)}}}/>
+                    <img className=' h-16 w-14' src={fifth} alt="" onClick={()=>{if(icons3){setIcons3(false) }else{setIcons3(true);setIcons1(false);setIcons2(false);setIcons4(false);setIcons5(false)}}}/>
                     {icons3 && <div  className='p-1 px-1 w-80 rounded-xl justify-between  flex items-center flex-row bg-marron
                                 mt-4 mr-20 absolute   ' >
                                     <img className=' h-14 w-12' src={P1} alt="" />
@@ -79,7 +79,7 @@ const Grillecomponent = () => {
 
 
                     <div dir="rtl" className='flex flex-row justify-between '>
-                    <img className='mt-3 h-16 w-14' src={sixth} alt="" onClick={()=>{if(icons4){setIcons4(false) }else{setIcons4(true);setIcons1(false);setIcons2(false);setIcons3(false);setIcons5(false)}}} />
+                    <img className=' h-16 w-14' src={sixth} alt="" onClick={()=>{if(icons4){setIcons4(false) }else{setIcons4(true);setIcons1(false);setIcons2(false);setIcons3(false);setIcons5(false)}}} />
                     {icons4 &&  <div  className='p-0.5 px-1 w-48 h-28 border-2 border-violet rounded-xl flex flex-row justify-between  items-center  bg-marron
                              mt-4 mr-20 absolute   '>
                                <div className='flex flex-col h-24 justify-between'>
@@ -101,11 +101,11 @@ const Grillecomponent = () => {
                     </div> 
 
                     <div dir="rtl" className='flex flex-row justify-between '>
-                    <img className='mt-3 h-14 w-14' src={seventh} alt="" />      
+                    <img className=' h-14 w-14' src={seventh} alt="" />      
                     </div> 
                     
                     <div dir="rtl" className='flex flex-row justify-between '>
-                           <img className=' mt-3 h-16 w-14' src={eighth} alt=""  onClick={()=>{if(icons5){setIcons5(false) }else{setIcons5(true);setIcons1(false);setIcons2(false);setIcons3(false);setIcons4(false)}}}/>
+                           <img className='  h-16 w-14' src={eighth} alt=""  onClick={()=>{if(icons5){setIcons5(false) }else{setIcons5(true);setIcons1(false);setIcons2(false);setIcons3(false);setIcons4(false)}}}/>
                            {icons5 && <div  className='p-1 px-1 w-32 rounded-xl justify-between  flex items-center flex-row bg-marron
                              mt-4 mr-20 absolute   '>
                                       <img className=' h-12 w-12' src={SC} alt="" />
