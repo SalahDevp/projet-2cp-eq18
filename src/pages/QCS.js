@@ -36,16 +36,16 @@ const QCS = () => {
     setCheckedOption(optionNum);
   };
   //
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     //dont submit if user hasn't checked any box
     if (!checkedOption) return;
-    //set the right option color to green
-    options[rightOption - 1].color = "green";
     //if the selected opt is wrong
     if (checkedOption !== rightOption) {
+      await wrongAudio.current.play(); //play sound
       options[checkedOption - 1].color = "red"; //set its color to red
-      wrongAudio.play(); //play sound
-    } else correctAudio.play();
+    } else await correctAudio.current.play();
+    //set the right option color to green
+    options[rightOption - 1].color = "green";
     //set states
     setOptions([...options]);
     setSubmitted(true);
@@ -59,8 +59,8 @@ const QCS = () => {
   useEffect(() => {
     let questionObj;
     //load audio
-    correctAudio.load();
-    wrongAudio.load();
+    correctAudio.current.load();
+    wrongAudio.current.load();
     (async () => {
       try {
         questionObj = await window.electronAPI.getQuizQuestion(

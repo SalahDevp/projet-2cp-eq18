@@ -3,8 +3,6 @@ import { EditorState, ContentState, convertToRaw } from "draft-js";
 import draftToHtml from "draftjs-to-html";
 import htmlToDraft from "html-to-draftjs";
 import { Editor } from "react-draft-wysiwyg";
-//nav component
-import Nav from "components/Nav";
 //translation
 import { useTranslation } from "react-i18next";
 import arTranslation from "utils/translation/edit-cour-ar";
@@ -14,6 +12,8 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 //react
 import { useEffect, useState } from "react";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+//images
+import backIcon from "components/nouveau-protype-component/retour.png";
 
 const EditCour = () => {
   //routing
@@ -99,49 +99,46 @@ const EditCour = () => {
     })();
   }, [i18n.language]);
   return (
-    <>
-      <Nav title={"editeur"} pathAvant={`/cour-${CourseType}`} />
-      <div className="h-100">
-        <Editor
-          editorState={editorState}
-          onEditorStateChange={handleEditorChange}
-          wrapperClassName="wrapper-class"
-          editorClassName="editor-class"
-          toolbarClassName="toolbar-class"
-          localization={
-            i18n.language === "ar"
-              ? {
-                  locale: "ar",
-                  translations: arTranslation,
-                }
-              : { locale: "fr" }
-          }
-          toolbar={{
-            options: [
-              "inline",
-              "blockType",
-              "fontSize",
-              "fontFamily",
-              "list",
-              "textAlign",
-              "colorPicker",
-              "emoji",
-              "image",
-              "history",
-            ],
-            image: {
-              urlEnabled: false,
-              uploadCallback: getImage,
-              uploadEnabled: true,
-              previewImage: true,
-            },
-          }}
-        />
-        <button className="bg-green-400 p-2 ml-4" onClick={() => savePage()}>
-          save
-        </button>
-      </div>
-    </>
+    <div className="h-screen bg-beige">
+      <Editor
+        editorState={editorState}
+        onEditorStateChange={handleEditorChange}
+        wrapperClassName="wrapper-class"
+        editorClassName="editor-class"
+        toolbarClassName="toolbar-class"
+        localization={
+          i18n.language === "ar"
+            ? {
+                locale: "ar",
+                translations: arTranslation,
+              }
+            : { locale: "fr" }
+        }
+        toolbar={{
+          options: [
+            "inline",
+            "blockType",
+            "fontSize",
+            "fontFamily",
+            "list",
+            "textAlign",
+            "colorPicker",
+            "emoji",
+            "image",
+            "history",
+          ],
+          image: {
+            urlEnabled: false,
+            uploadCallback: getImage,
+            uploadEnabled: true,
+            previewImage: true,
+          },
+        }}
+      />
+      <button className="bg-green-400 p-2 ml-4" onClick={() => savePage()}>
+        save
+      </button>
+    </div>
   );
 };
 
