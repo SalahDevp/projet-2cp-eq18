@@ -51,7 +51,7 @@ const CourA2 = () => {
         </div> :<div dir="rtl" className='mt-20'>
             <p className='underline decoration-solid text-2xl text-red-600 font-semibold'>ملاحظة : </p>
             <p className='mr-6 text-xl font-normal'> نقول أن التناظر المحوري 
-              <span className='text-ltr-cr'>  يحفظ المسافات ( إذا المحيط ) , الزوايا, المساحات والمحاذاة والاستقامة    </span> .</p>
+              <span className='text-ltr-cr'>  يحفظ المسافات (إذا المحيط ) , الزوايا, المساحات والمحاذاة والاستقامة    </span> .</p>
         </div> }
     </div>
   )
