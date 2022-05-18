@@ -1,10 +1,7 @@
-import { HEIGHT,UNIT,WIDTH } from "pages/Paint";
+import { HEIGHT, UNIT, WIDTH } from "components/paint/PaintComponent";
 import { getMousePos } from "utils/paint/basics";
 import Shape from "../Shape";
-import {
-  clickInsidePolygone,
-  clickOnShapeSegment,
-} from "../geometry";
+import { clickInsidePolygone, clickOnShapeSegment } from "../geometry";
 
 export const handleClick = (event, state) => {
   //get click pos
@@ -20,10 +17,12 @@ export const handleClick = (event, state) => {
   if (shape) {
     const newShape = new Shape({ x, y });
     newShape.points = shape.points.map((point) => ({
-    x: w - point.x,
-    y: h - point.y,
-  }));
-  if(shape.polygone === true ){newShape.polygone = true}
-  state.setShapes((prv) => [...prv, newShape]);
- } 
+      x: w - point.x,
+      y: h - point.y,
+    }));
+    if (shape.polygone === true) {
+      newShape.polygone = true;
+    }
+    state.setShapes((prv) => [...prv, newShape]);
+  }
 };

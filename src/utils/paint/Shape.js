@@ -1,5 +1,5 @@
 export default function Shape(firstPoint) {
-  this.points = [firstPoint];
+  this.points = firstPoint ? [firstPoint] : [];
   this.polygone = false;
   this.color = undefined;
 

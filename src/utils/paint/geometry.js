@@ -1,4 +1,4 @@
-import { UNIT } from "pages/Paint";
+import { UNIT } from "components/paint/PaintComponent";
 import { getShapeFromPoint } from "./basics";
 
 /**returns true if point belongs to a segments */

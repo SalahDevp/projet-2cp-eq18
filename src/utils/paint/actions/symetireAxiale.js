@@ -1,4 +1,4 @@
-import { UNIT, HEIGHT, WIDTH } from "pages/Paint";
+import { UNIT, HEIGHT, WIDTH } from "components/paint/PaintComponent";
 import { getGridPos, getMousePos, getShapeFromPoint } from "utils/paint/basics";
 import Shape from "../Shape";
 import { clickInsidePolygone, clickOnShapeSegment } from "../geometry";

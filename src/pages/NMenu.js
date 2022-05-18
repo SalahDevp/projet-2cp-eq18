@@ -42,7 +42,12 @@ const NMenu = () => {
           handleClick={handleCour}
         />
         <div className="mt-36 ">
-          <NBox image={img2} image2={imgH2} title={t("grid")} />
+          <NBox
+            image={img2}
+            image2={imgH2}
+            title={t("grid")}
+            handleClick={() => navigate("/paint")}
+          />
         </div>
         <div className="">
           <NBox

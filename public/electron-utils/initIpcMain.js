@@ -5,6 +5,8 @@ const { initGetCoursePageContentMain } = require("./ipc/getCoursePageContent");
 const { initGetCoursePagesMain } = require("./ipc/getCoursePages");
 const { initGetQuizQuestionMain } = require("./ipc/getQuizQuestion");
 const { initGetImageQCMQustionMain } = require("./ipc/getImageQCMQuestion");
+const { initSavePaintDrawingMain } = require("./ipc/savePaintDrawing");
+const { initGetPaintDrawingMain } = require("./ipc/getPaintDrawing");
 
 function initIpcMain() {
   initStoreMain();
@@ -14,6 +16,8 @@ function initIpcMain() {
   initGetCoursePagesMain();
   initGetQuizQuestionMain();
   initGetImageQCMQustionMain();
+  initSavePaintDrawingMain();
+  initGetPaintDrawingMain();
 }
 
 module.exports = initIpcMain;
