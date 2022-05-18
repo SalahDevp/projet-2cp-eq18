@@ -8,7 +8,7 @@ const Canvas = ({
   onClick,
 }) => {
   return (
-    <div className="border-8 border-green-500 inline-block h-fit">
+    <div className="border-4 border-green-400 inline-block h-fit">
       <canvas
         ref={canvasRef}
         height={height}
