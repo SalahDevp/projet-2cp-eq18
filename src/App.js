@@ -15,6 +15,7 @@ import NTeacherpassword from "pages/NTeacherpassword";
 import NchangeTeacherpassword from "pages/NchangeTeacherPassword";
 import Parametre from "pages/Parametre";
 import ImageQCM from "pages/ImageQCM";
+import MenuExo from "pages/MenuExo";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
             element={<NchangeTeacherpassword />}
           />
           <Route path="/parametre" element={<Parametre />} />
+          <Route path="/menu-exo" element={<MenuExo />} />
 
           {/* <Route index  element={<LanguageChoice />} /> */}
           {/* <Route path="user-mode" element={<UserMode />} />*/}

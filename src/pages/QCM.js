@@ -40,12 +40,13 @@ const QCM = () => {
     else checkedOptions.add(optionNum);
     setCheckedOptions(new Set([...checkedOptions]));
   };
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     //dont submit if user hasn't checked any box
     if (checkedOptions.size === 0) return;
     //play audio
-    if (areSetsEqual(checkedOptions, rightOptions)) correctAudio.play();
-    else wrongAudio.play();
+    if (areSetsEqual(checkedOptions, rightOptions))
+      await correctAudio.current.play();
+    else await wrongAudio.current.play();
     //set the right options color to green
     for (let optNum of rightOptions) options[optNum - 1].color = "green";
     //if the selected opt is wrong we set its color to red
@@ -64,8 +65,8 @@ const QCM = () => {
   useEffect(() => {
     let questionObj;
     //load audio
-    correctAudio.load();
-    wrongAudio.load();
+    correctAudio.current.load();
+    wrongAudio.current.load();
     (async () => {
       try {
         questionObj = await window.electronAPI.getQuizQuestion(

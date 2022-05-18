@@ -3,8 +3,6 @@ import { EditorState, ContentState, convertToRaw } from "draft-js";
 import draftToHtml from "draftjs-to-html";
 import htmlToDraft from "html-to-draftjs";
 import { Editor } from "react-draft-wysiwyg";
-//nav component
-import Nav from "components/Nav";
 //translation
 import { useTranslation } from "react-i18next";
 import arTranslation from "utils/translation/edit-cour-ar";
@@ -14,6 +12,9 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 //react
 import { useEffect, useState } from "react";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+//images
+import backIcon from "components/nouveau-protype-component/retour.png";
+import saveIcon from "assets/edit-cour/save.png";
 
 const EditCour = () => {
   //routing
@@ -25,7 +26,7 @@ const EditCour = () => {
     EditorState.createEmpty()
   );
   //translation
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
   const handleEditorChange = (state) => {
     setEditorState(state);
   };
@@ -99,49 +100,56 @@ const EditCour = () => {
     })();
   }, [i18n.language]);
   return (
-    <>
-      <Nav title={"editeur"} pathAvant={`/cour-${CourseType}`} />
-      <div className="h-100">
-        <Editor
-          editorState={editorState}
-          onEditorStateChange={handleEditorChange}
-          wrapperClassName="wrapper-class"
-          editorClassName="editor-class"
-          toolbarClassName="toolbar-class"
-          localization={
-            i18n.language === "ar"
-              ? {
-                  locale: "ar",
-                  translations: arTranslation,
-                }
-              : { locale: "fr" }
-          }
-          toolbar={{
-            options: [
-              "inline",
-              "blockType",
-              "fontSize",
-              "fontFamily",
-              "list",
-              "textAlign",
-              "colorPicker",
-              "emoji",
-              "image",
-              "history",
-            ],
-            image: {
-              urlEnabled: false,
-              uploadCallback: getImage,
-              uploadEnabled: true,
-              previewImage: true,
-            },
-          }}
-        />
-        <button className="bg-green-400 p-2 ml-4" onClick={() => savePage()}>
-          save
+    <div className="flex flex-col h-screen w-screen overflow-hidden bg-beige">
+      <div className="bg-nav w-screen flex justify-between items-center px-2">
+        <button className="p-2" onClick={() => navigate(`/cour-${CourseType}`)}>
+          <img src={backIcon} alt="" className="h-7" />
+        </button>
+        <h3 className="text-2xl font-bold">{t("editCourse.editor")}</h3>
+        <button
+          title={t("editCourse.save")}
+          className="p-2"
+          onClick={() => savePage()}
+        >
+          <img src={saveIcon} alt="" className="h-7" />
         </button>
       </div>
-    </>
+      <Editor
+        editorState={editorState}
+        onEditorStateChange={handleEditorChange}
+        wrapperClassName="wrapper-class"
+        editorClassName="editor-class"
+        toolbarClassName="toolbar-class"
+        localization={
+          i18n.language === "ar"
+            ? {
+                locale: "ar",
+                translations: arTranslation,
+              }
+            : { locale: "fr" }
+        }
+        toolbar={{
+          options: [
+            "inline",
+            "blockType",
+            "fontSize",
+            "fontFamily",
+            "list",
+            "textAlign",
+            "colorPicker",
+            "emoji",
+            "image",
+            "history",
+          ],
+          image: {
+            urlEnabled: false,
+            uploadCallback: getImage,
+            uploadEnabled: true,
+            previewImage: true,
+          },
+        }}
+      />
+    </div>
   );
 };
 

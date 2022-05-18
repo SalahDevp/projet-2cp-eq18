@@ -1,0 +1,9 @@
+{
+  "question": {
+    "fr": "Pour construire le symétrique d'une droite par rapport à un axe de symétrie,il suffit de construire les symétriques au moins de trois points de cette droite .",
+    "ar": "من اجل تحديد نظير مستقيم نحتاج إلى تحديد نظائر ثلاثة نقاط على الأقل من ذلك المستقيم"
+  },
+  "image": "004.png",
+
+  "rightOptions": false
+}

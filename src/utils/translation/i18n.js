@@ -37,6 +37,10 @@ i18n
             sound: "le son",
             music: "la musique",
           },
+          editCourse: {
+            editor: "Editeur de Cours",
+            save: "sauvegarder",
+          },
         },
       },
       ar: {
@@ -64,6 +68,10 @@ i18n
             changeUserMode: "تغيير وضع المستخدم",
             sound: "الصوت",
             music: "الموسيقى",
+          },
+          editCourse: {
+            editor: "محرر الدروس",
+            save: "حفظ",
           },
         },
       },
