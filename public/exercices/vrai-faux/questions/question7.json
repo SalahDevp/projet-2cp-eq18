@@ -1,0 +1,9 @@
+{
+  "question": {
+    "fr": "Nous avons une horloge symétrique d'une autre horloge par rapport à un centre de symétrie, le sens de rotation de cette horloge est le même que le sens de rotation de l'autre.",
+    "ar": "لدينا ساعة نظيرة ساعة بالنسبة إلى مركز تناظر ،فاتجاه دوران عقارب الساعة النظيرة هو نفس إتجاه دوران عقارب الساعة الاولى"
+  },
+  "image": "007.png",
+
+  "rightOptions": true
+}

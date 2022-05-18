@@ -1,0 +1,9 @@
+{
+  "question": {
+    "fr": "On a un point le symétrie d'un autre point par rapport à un axe de symétrie vertical, lorsqu'on bouge ce point vert le bas son symétrique va se déplacer vers le haut.",
+    "ar": "لدينا نقطة نظيرة نقطة بالنسبة إلى محور تناظر عمودي،لما نحرك هذه القطة نحو الاعلى فإن نظيرتها تتحرك نحو الأسفل"
+  },
+  "image": "006.png",
+
+  "rightOptions": false
+}
