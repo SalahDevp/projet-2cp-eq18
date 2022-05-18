@@ -16,12 +16,14 @@ import NchangeTeacherpassword from "pages/NchangeTeacherPassword";
 import Parametre from "pages/Parametre";
 import ImageQCM from "pages/ImageQCM";
 import MenuExo from "pages/MenuExo";
-
+import Grillecomponent from "components/paint/grillecomponent";
 function App() {
   return (
     <AppContext>
       <HashRouter>
         <Routes>
+          <Route path="grille" element={<Grillecomponent />} />
+
           <Route path="edit-cour/:type" element={<EditCour />} />
           <Route path="paint" element={<Paint />} />
           <Route path="/cour-centrale" element={<CourCentrale />} />
