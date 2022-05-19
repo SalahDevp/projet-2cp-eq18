@@ -10,12 +10,25 @@ import { clearCanvas, drawLine } from "utils/paint/basics";
 import Shape from "utils/paint/Shape";
 
 // WIDTH and HEIGHT have to be equal
-export const HEIGHT = 700,
-  WIDTH = 1140,
-  UNIT = 20;
+export const HEIGHT = 720,
+  WIDTH = 1160,
+  UNIT = 20,
+  LINEWIDTH = 3;
 
 const PaintComponent = forwardRef(
-  ({ actionType, bucketColor, shapes, setShapes }, ref) => {
+  (
+    {
+      actionType,
+      bucketColor,
+      shapes,
+      setShapes,
+      exoShapes,
+      symetrieCentraleMode,
+      symetrieAxialeVerticalMode,
+      symetrieAxialeHorizontalMode,
+    },
+    ref
+  ) => {
     const [drawing, setDrawing] = useState(false);
     const [current, setCurrent] = useState({});
     const [line, setLine] = useState();
@@ -35,26 +48,60 @@ const PaintComponent = forwardRef(
       actionType,
       bucketColor,
     };
+    //
 
     useEffect(() => {
       const context = canvasRef.current.getContext("2d");
-      clearCanvas(context, WIDTH, HEIGHT, UNIT);
+      context.lineWidth = LINEWIDTH;
+      clearCanvas(
+        context,
+        WIDTH,
+        HEIGHT,
+        UNIT,
+        exoShapes,
+        symetrieCentraleMode,
+        symetrieAxialeVerticalMode,
+        symetrieAxialeHorizontalMode
+      );
       shapes.forEach((shape) => shape.draw(context));
       if (line?.x1) drawLine(context, line);
-    }, [shapes, line, drawing]);
+      //exo shapes are redrawn in clear canvas fnc
+    }, [
+      shapes,
+      line,
+      drawing,
+      exoShapes,
+      symetrieCentraleMode,
+      symetrieAxialeHorizontalMode,
+      symetrieAxialeVerticalMode,
+    ]);
 
     useImperativeHandle(
       ref,
       () => ({
         handleClear: () => {
           const context = canvasRef.current.getContext("2d");
-          clearCanvas(context, WIDTH, HEIGHT, UNIT);
+          clearCanvas(
+            context,
+            WIDTH,
+            HEIGHT,
+            UNIT,
+            exoShapes,
+            symetrieCentraleMode,
+            symetrieAxialeVerticalMode,
+            symetrieAxialeHorizontalMode
+          );
           setShapes([]);
           setLine({});
           setCurrent({});
         },
       }),
-      []
+      [
+        exoShapes,
+        symetrieCentraleMode,
+        symetrieAxialeHorizontalMode,
+        symetrieAxialeVerticalMode,
+      ]
     );
     return (
       <div className="h-screen flex-grow flex justify-center items-center">

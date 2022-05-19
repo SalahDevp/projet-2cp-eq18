@@ -1,7 +1,7 @@
 {
     "question": {
-        "fr": "Quelles figures représnetent une symétrie ?",
-        "ar": "اي مما يلي يمثل تناظرا؟"
+        "fr": "Quelles figures représnetent une symétrie centrale ?",
+        "ar": "اي مما يلي يمثل تناظرا مركزيا؟"
     },
     "options": [
         { "image": "qst6-img1.png", "text": { "fr": "Confiture de cerises", "ar": "مربى الكرز" } },

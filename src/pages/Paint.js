@@ -17,7 +17,9 @@ import P3 from "assets/Grille/iconsovert/Rectangle.png";
 import P4 from "assets/Grille/iconsovert/Rhombus.png";
 import P5 from "assets/Grille/iconsovert/triangle.png";
 import SC from "assets/Grille/iconsovert/SC.png";
-import SA from "assets/Grille/iconsovert/SA.png";
+import SAV from "assets/Grille/iconsovert/SAV.png";
+import SAH from "assets/Grille/iconsovert/SAH.png";
+import submitBtn from "assets/exercices/submitBtn.png";
 import dossier from "components/nouveau-protype-component/dossier-ouvert .png";
 import sauvgarde from "components/nouveau-protype-component/sauvgarde.png";
 import NAV from "components/Nav";
@@ -37,7 +39,8 @@ import * as drawRectangle from "utils/paint/actions/drawRectangle";
 import * as drawLosange from "utils/paint/actions/drawLosange";
 import * as drawHexa from "utils/paint/actions/drawHexa";
 import * as eraseLine from "utils/paint/actions/eraseLine";
-import * as symetrieAxiale from "utils/paint/actions/symetireAxiale";
+import * as symetrieAxialeHorizontal from "utils/paint/actions/symetrieAxialeHorizontal";
+import * as symetrieAxialeVertical from "utils/paint/actions/symetrieAxialeVertical";
 import PaintComponent from "components/paint/PaintComponent";
 import Shape from "utils/paint/Shape";
 
@@ -59,8 +62,10 @@ const Paint = () => {
   const [icons4, setIcons4] = useState(false);
   //paint state
   const [shapes, setShapes] = useState([]);
+  const [exoShapes, setExoShapes] = useState([]);
   const [actionType, setActionType] = useState();
   const [bucketColor, setBucketColor] = useState(RED);
+  const [exoMode, setExoMode] = useState(false);
   //ref
   const paintRef = useRef(null);
   //funcs
@@ -81,6 +86,14 @@ const Paint = () => {
     console.log(newShapes);
     setShapes(newShapes);
   };
+  //close all menu's
+  const closeAll = () => {
+    setIcons1(false);
+    setIcons2(false);
+    setIcons3(false);
+    setIcons4(false);
+    setIcons5(false);
+  };
 
   return (
     <div className="relative flex justify-between overflow-hidden bg-white h-screen w-screen">
@@ -96,40 +109,43 @@ const Paint = () => {
         bucketColor={bucketColor}
         shapes={shapes}
         setShapes={setShapes}
+        exoShapes={exoShapes}
+        symetrieCentraleMode={actionType === symetrieCentrale}
+        symetrieAxialeHorizontalMode={actionType === symetrieAxialeHorizontal}
+        symetrieAxialeVerticalMode={actionType === symetrieAxialeVertical}
         ref={paintRef}
       />
       <div
         className="py-3 border-l-2 border-violet rounded-l-2xlh-screen w-20 bg-marron
             flex flex-col items-center justify-between"
       >
-        <img className="mt-1 h-14 w-14" src={sortir} alt="" />
+        <img className="cursor-pointer mt-1 h-14 w-14" src={sortir} alt="" />
         <img
-          onClick={() => setActionType(undefined)}
-          className=" h-14 w-14"
+          onClick={() => {
+            setActionType(undefined);
+            closeAll();
+          }}
+          className="cursor-pointer h-14 w-14"
           src={first}
           alt=""
         />
         <img
-          onClick={() => setActionType(drawShape)}
-          className=" h-14 w-14"
+          onClick={() => {
+            setActionType(drawShape);
+            closeAll();
+          }}
+          className="cursor-pointer h-14 w-14"
           src={second}
           alt=""
         />
         <div dir="rtl" className="flex flex-row justify-between ">
           <img
-            className="  h-16 w-14"
+            className="cursor-pointer h-16 w-14"
             src={third}
             alt=""
             onClick={() => {
-              if (icons1) {
-                setIcons1(false);
-              } else {
-                setIcons1(true);
-                setIcons2(false);
-                setIcons3(false);
-                setIcons4(false);
-                setIcons5(false);
-              }
+              closeAll();
+              if (!icons1) setIcons1(true);
             }}
           />
           {icons1 && (
@@ -139,13 +155,13 @@ const Paint = () => {
             >
               <img
                 onClick={() => setActionType(movePoint)}
-                className=" h-12 w-12"
+                className="cursor-pointer h-12 w-12"
                 src={I1}
                 alt=""
               />
               <img
                 onClick={() => setActionType(moveShape)}
-                className=" h-12 w-12"
+                className="cursor-pointer h-12 w-12"
                 src={I2}
                 alt=""
               />
@@ -155,19 +171,12 @@ const Paint = () => {
 
         <div dir="rtl" className="flex flex-row justify-between ">
           <img
-            className="h-16 w-14"
+            className="cursor-pointer h-16 w-14"
             src={fourth}
             alt=""
             onClick={() => {
-              if (icons2) {
-                setIcons2(false);
-              } else {
-                setIcons2(true);
-                setIcons1(false);
-                setIcons3(false);
-                setIcons4(false);
-                setIcons5(false);
-              }
+              closeAll();
+              if (!icons2) setIcons2(true);
             }}
           />
           {icons2 && (
@@ -177,25 +186,25 @@ const Paint = () => {
             >
               <img
                 onClick={() => setActionType(supprimerPoly)}
-                className=" h-12 w-12"
+                className="cursor-pointer h-12 w-12"
                 src={I2}
                 alt=""
               />
               <img
                 onClick={() => setActionType(eraseLine)}
-                className=" h-12 w-12"
+                className="cursor-pointer h-12 w-12"
                 src={second}
                 alt=""
               />
               <img
                 onClick={() => setActionType(erasePoint)}
-                className=" h-12 w-12"
+                className="cursor-pointer h-12 w-12"
                 src={I1}
                 alt=""
               />
               <img
                 onClick={paintRef.current?.handleClear}
-                className=" h-12 w-12"
+                className="cursor-pointer h-12 w-12"
                 src={I3}
                 alt=""
               />
@@ -205,19 +214,12 @@ const Paint = () => {
 
         <div dir="rtl" className="flex flex-row justify-between ">
           <img
-            className=" h-16 w-14"
+            className="cursor-pointer h-16 w-14"
             src={fifth}
             alt=""
             onClick={() => {
-              if (icons3) {
-                setIcons3(false);
-              } else {
-                setIcons3(true);
-                setIcons1(false);
-                setIcons2(false);
-                setIcons4(false);
-                setIcons5(false);
-              }
+              closeAll();
+              if (!icons3) setIcons3(true);
             }}
           />
           {icons3 && (
@@ -227,31 +229,31 @@ const Paint = () => {
             >
               <img
                 onClick={() => setActionType(drawHexa)}
-                className=" h-14 w-12"
+                className="cursor-pointer h-14 w-12"
                 src={P1}
                 alt=""
               />
               <img
                 onClick={() => setActionType(drawPentagon)}
-                className=" h-12 w-14"
+                className="cursor-pointer h-12 w-14"
                 src={P2}
                 alt=""
               />
               <img
                 onClick={() => setActionType(drawRectangle)}
-                className=" h-10 w-16"
+                className="cursor-pointer h-10 w-16"
                 src={P3}
                 alt=""
               />
               <img
                 onClick={() => setActionType(drawLosange)}
-                className=" h-12 w-12"
+                className="cursor-pointer h-12 w-12"
                 src={P4}
                 alt=""
               />
               <img
                 onClick={() => setActionType(drawTriangle)}
-                className=" h-11 w-11"
+                className="cursor-pointer h-11 w-11"
                 src={P5}
                 alt=""
               />
@@ -261,20 +263,13 @@ const Paint = () => {
 
         <div dir="rtl" className="flex flex-row justify-between ">
           <img
-            className=" h-16 w-14"
+            className="cursor-pointer h-16 w-14"
             src={sixth}
             alt=""
             onClick={() => {
               setActionType(paintBucket);
-              if (icons4) {
-                setIcons4(false);
-              } else {
-                setIcons4(true);
-                setIcons1(false);
-                setIcons2(false);
-                setIcons3(false);
-                setIcons5(false);
-              }
+              closeAll();
+              if (!icons4) setIcons4(true);
             }}
           />
           {icons4 && (
@@ -285,33 +280,33 @@ const Paint = () => {
               <div className="flex flex-col h-24 justify-between">
                 <div
                   onClick={() => setBucketColor(RED)}
-                  className="bg-[#FF0000] rounded-full h-10 w-10"
+                  className="bg-[#FF0000] cursor-pointer rounded-full h-10 w-10"
                 ></div>
                 <div
                   onClick={() => setBucketColor(BLUE)}
-                  className="bg-[#0000FF] rounded-full h-10 w-10"
+                  className="bg-[#0000FF] cursor-pointer rounded-full h-10 w-10"
                 ></div>
               </div>
 
               <div className="flex flex-col h-24 justify-between">
                 <div
                   onClick={() => setBucketColor(GREEN)}
-                  className="bg-[#00FF00] rounded-full h-10 w-10"
+                  className="bg-[#00FF00] cursor-pointer rounded-full h-10 w-10"
                 ></div>
                 <div
                   onClick={() => setBucketColor(YELLOW)}
-                  className="bg-[#FFFF00] rounded-full h-10 w-10"
+                  className="bg-[#FFFF00] cursor-pointer rounded-full h-10 w-10"
                 ></div>
               </div>
 
               <div className="flex flex-col h-24 justify-between">
                 <div
                   onClick={() => setBucketColor(ORANGE)}
-                  className="bg-[#FFA500] rounded-full h-10 w-10"
+                  className="bg-[#FFA500] cursor-pointer rounded-full h-10 w-10"
                 ></div>
                 <div
                   onClick={() => setBucketColor(PURPLE)}
-                  className="bg-[#800080] rounded-full h-10 w-10"
+                  className="bg-[#800080] cursor-pointer rounded-full h-10 w-10"
                 ></div>
               </div>
             </div>
@@ -320,50 +315,59 @@ const Paint = () => {
 
         <div dir="rtl" className="flex flex-row justify-between ">
           <img
-            onClick={() => setActionType(rotation)}
-            className=" h-14 w-14"
+            onClick={() => {
+              setActionType(rotation);
+              closeAll();
+            }}
+            className="cursor-pointer h-14 w-14"
             src={seventh}
             alt=""
           />
         </div>
 
-        <div dir="rtl" className="flex flex-row justify-between ">
-          <img
-            className="  h-16 w-14"
-            src={eighth}
-            alt=""
-            onClick={() => {
-              if (icons5) {
-                setIcons5(false);
-              } else {
-                setIcons5(true);
-                setIcons1(false);
-                setIcons2(false);
-                setIcons3(false);
-                setIcons4(false);
-              }
-            }}
-          />
-          {icons5 && (
-            <div
-              className="p-1 px-1 w-32 rounded-xl justify-between  flex items-center flex-row bg-marron
+        {!exoMode && (
+          <div dir="rtl" className="flex flex-row justify-between ">
+            <img
+              className="cursor-pointer h-16 w-14"
+              src={eighth}
+              alt=""
+              onClick={() => {
+                closeAll();
+                if (!icons5) setIcons5(true);
+              }}
+            />
+            {icons5 && (
+              <div
+                className="p-1 px-1 w-44 rounded-xl justify-between  flex items-center flex-row bg-marron
                              mt-1 mr-20 absolute   "
-            >
-              <img
-                onClick={() => setActionType(symetrieCentrale)}
-                className=" h-12 w-12"
-                src={SC}
-                alt=""
-              />
-              <img
-                onClick={() => setActionType(symetrieAxiale)}
-                className=" h-12 w-12"
-                src={SA}
-                alt=""
-              />
-            </div>
-          )}
-        </div>
+              >
+                <img
+                  onClick={() => setActionType(symetrieCentrale)}
+                  className="cursor-pointer h-12 w-12"
+                  src={SC}
+                  alt=""
+                />
+                <img
+                  onClick={() => setActionType(symetrieAxialeVertical)}
+                  className="cursor-pointer h-12 w-12"
+                  src={SAV}
+                  alt=""
+                />
+                <img
+                  onClick={() => setActionType(symetrieAxialeHorizontal)}
+                  className="cursor-pointer h-12 w-12"
+                  src={SAH}
+                  alt=""
+                />
+              </div>
+            )}
+          </div>
+        )}
+        {exoMode && (
+          <button>
+            <img src={submitBtn} alt="" className="h-14 w-14" />
+          </button>
+        )}
       </div>
     </div>
   );

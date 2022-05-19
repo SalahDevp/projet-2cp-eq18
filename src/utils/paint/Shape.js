@@ -15,7 +15,7 @@ export default function Shape(firstPoint) {
     context.stroke();
     //draw points
     context.strokeStyle = "#000000";
-    context.fillStyle = this.color || "#000000";
+    context.fillStyle = "#000000";
     for (let i = 0; i < this.points.length; i++) {
       context.beginPath();
       context.arc(this.points[i].x, this.points[i].y, 2, 0, Math.PI * 2);

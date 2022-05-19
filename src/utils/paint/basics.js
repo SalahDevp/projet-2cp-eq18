@@ -1,7 +1,57 @@
-export function clearCanvas(context, width, height, unit) {
+import { LINEWIDTH } from "components/paint/PaintComponent";
+
+const drawSymmetryCenter = (context, width, height) => {
+  context.strokeStyle = "#00FF00";
+  context.fillStyle = "#00FF00";
+  context.beginPath();
+  context.arc(width / 2, height / 2, LINEWIDTH + 2, 0, Math.PI * 2);
+  context.fill();
+  context.stroke();
+};
+
+const drawSymmetryVerticalAxe = (context, width, height) => {
+  context.beginPath();
+  context.strokeStyle = "#00FF00";
+  context.fillStyle = "#00FF00";
+  context.lineWidth = LINEWIDTH + 2;
+  context.moveTo(width / 2, 0);
+  context.lineTo(width / 2, height);
+  context.stroke();
+  context.lineWidth = LINEWIDTH;
+};
+
+const drawSymmetryHorizontalAxe = (context, width, height) => {
+  context.beginPath();
+  context.strokeStyle = "#00FF00";
+  context.fillStyle = "#00FF00";
+  context.lineWidth = LINEWIDTH + 2;
+  context.moveTo(0, height / 2);
+  context.lineTo(width, height / 2);
+  context.stroke();
+  context.lineWidth = LINEWIDTH;
+};
+
+export function clearCanvas(
+  context,
+  width,
+  height,
+  unit,
+  exoShapes,
+  symetrieCentraleMode,
+  symetrieAxialeVerticalMode,
+  symetrieAxialeHorizontalMode
+) {
   context.clearRect(0, 0, width, height);
   //re draw the grid
   drawGrid(context, width, height, unit);
+  //redraw exo shapes
+  exoShapes.forEach((shape) => shape.draw(context));
+  //symetrie axe and centre
+  if (symetrieCentraleMode) drawSymmetryCenter(context, width, height);
+  if (symetrieAxialeVerticalMode)
+    drawSymmetryVerticalAxe(context, width, height);
+  if (symetrieAxialeHorizontalMode)
+    drawSymmetryHorizontalAxe(context, width, height);
 }
 
 export function getMousePos(canvasRef, evnt) {
