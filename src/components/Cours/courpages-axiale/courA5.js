@@ -28,12 +28,12 @@ const CourA5 = () => {
         </div>
         : 
         <div dir="rtl" className='mr-6 mt-2'>
-        <p  className='text-xl font-normal'> 2)  الطريقة الثانية:  باستخدام المدور فقط    .
+        <p  className='text-xl font-normal'> <span className='text-ltr-cr'> 2) الطريقةالثانية </span>   :  باستخدام المدور فقط   .
         </p>
-        <ul className='ml-10 text-xl font-normal list-disc'>
-         <li>ناخذ نقطتان  I و J من المستقيم (d) .</li>
-         <li>باستخدام المدور نرسم الدائرة ذات المركز I المارة بالنقطة A و نرسم الدائرة ذات المركز J المارة بالنقطة A .</li>
-       <li>هذان  الدائرتان يتقاطعان في النقطة A و في النقطه A1 نظير النقطة بالنسبة الى المستقيم (d) .</li>
+        <ul className='mr-10 text-xl font-normal list-disc'>
+         <li>نأخذ نقطتان  <span className='text-ltr-cr'>I</span> و <span className='text-ltr-cr'>J</span> من المستقيم <span className='text-ltr-cr'>(d)</span> .</li>
+         <li>باستخدام المدور نرسم الدائرة ذات المركز <span className='text-ltr-cr'>I</span> المارة بالنقطة <span className='text-ltr-cr'>A</span> و نرسم الدائرة ذات المركز <span className='text-ltr-cr'>J</span> المارة بالنقطة <span className='text-ltr-cr'>A</span> .</li>
+       <li>هذان  الدائرتان يتقاطعان في النقطة <span className='text-ltr-cr'>A</span> و في النقطه <span className='text-ltr-cr'>A1</span> نظير النقطة <span className='text-ltr-cr'> A </span>بالنسبة الى المستقيم <span className='text-ltr-cr'>(d)</span> .</li>
         </ul>
        </div> }
           <div className=' mt-24 flex justify-center'>

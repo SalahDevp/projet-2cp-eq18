@@ -31,11 +31,11 @@ const CourA11 = () => {
         : 
         <div dir="rtl" className='mr-6 mt-2'>
         <p className='text-xl font-normal'>
-        لانشاء  نظير مستقيم(d1) بالنسبة الى المستقيم (d)، يكفي تحديد نظائر  نقطتان  من المستقيم(d1)  بالنسبة الى محور التناظر(d)  </p>
+        لانشاء  نظير مستقيم <span className='text-ltr-cr'>(d1)</span> بالنسبة الى المستقيم <span className='text-ltr-cr'>(d) </span>، يكفي تحديد نظائر   <span className='text-ltr-cr'> نقطتان من المستقيم (d1) </span> بالنسبة الى محور التناظر<span className='text-ltr-cr'> (d) </span> .</p>
         <ul  className='mr-10 text-xl font-normal list-disc'>
-            <li>   نختار نقطتان عشوائيتانA وB من المستقيم(d1) .</li>
-            <li> نعين نظائر النقط AوB بالنسبة الى محور التناظر(d) ونسميهمA1 وB1 .</li>
-            <li> نرسم بعدها المستقيم(A1 B1) .</li>
+            <li>   نختار نقطتان عشوائيتان<span className='text-ltr-cr'> A </span> و<span className='text-ltr-cr'> B </span> من المستقيم <span className='text-ltr-cr'>(d1)</span> .</li>
+            <li> نعين نظائر النقط <span className='text-ltr-cr'> A </span> و <span className='text-ltr-cr'> B </span> بالنسبة الى محور التناظر<span className='text-ltr-cr'> (d) </span> ونسميهم<span className='text-ltr-cr'> A1 </span> و<span className='text-ltr-cr'> B1 </span> .</li>
+            <li> نرسم بعدها المستقيم<span className='text-ltr-cr'>(A1 B1)</span> .</li>
             <li> لا ننسى تسمية الاشكال والنقاط وترك خطوط الانشاء .</li>
         </ul>
         </div>      

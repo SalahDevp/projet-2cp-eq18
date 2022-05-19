@@ -35,11 +35,11 @@ useEffect(() => {
         :
         <div dir="rtl" className='mr-6 mt-2'>
         <p className='text-xl font-normal'>
-        لانشاء نظير دائرة ذات مركزO بالنسبة الى المستقيم (d) .
+        لانشاء نظير دائرة ذات مركز <span className='text-ltr-cr'>O</span> بالنسبة الى المستقيم <span className='text-ltr-cr'>(d)</span> .
         </p>
           <ul  className='mr-10 text-xl font-normal list-disc'>
-                 <li>نعين نظير النقطة O  بالنسبة الى المستقيم (d) .</li>
-                 <li>نرسم الدائرة الجديدة C1 ذات المركزO1  و نفس نصف القطر .</li>
+                 <li>نعين نظير النقطة  <span className='text-ltr-cr'>O</span>   بالنسبة الى المستقيم  <span className='text-ltr-cr'>(d)</span> .</li>
+                 <li>نرسم الدائرة الجديدة  <span className='text-ltr-cr'>C1</span> ذات المركز <span className='text-ltr-cr'>O1 </span> و نفس نصف القطر .</li>
                  <li>لا ننسى  تسمية النقاط والاشكال وترك خطوط الانشاء .</li>
           </ul>
     </div>

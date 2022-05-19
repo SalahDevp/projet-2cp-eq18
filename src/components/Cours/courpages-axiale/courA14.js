@@ -39,11 +39,11 @@ const CourA14 = () => {
       </div>:
        <div  dir="rtl" className="mr-6 mt-4">
        <p className="  text-xl font-normal">
-       نظير زاوية بالنسبة الى المستقيم (d) هي زاوية  لها نفس القيس .
+       نظير زاوية بالنسبة الى المستقيم <span className="text-ltr-cr">(d)</span> هي  زاوية <span className="text-ltr-cr">  لها نفس  القيس  </span>   .
        </p>
        <ul className="mr-10 mt-2 list-disc  text-xl font-normal">
          <li>
-         الزاوية BÂC والزاوية 'B'Â'C لهما نفس القيس .
+         الزاوية <span className="text-ltr-cr">BÂC</span> والزاوية <span className="text-ltr-cr">'B'Â'C</span> لهما نفس القيس .
          </li>
        </ul>
      </div>
@@ -58,7 +58,7 @@ const CourA14 = () => {
           <span className="text-ltr-cr">conserve les angles</span>.
         </li>: 
         <p >
-           نقول ان التناظر المحوري يحفظ الزوايا .
+           نقول ان التناظر المحوري  <span className="text-ltr-cr">يحفظ الزوايا</span> .
           </p>}
       </ul>
     </div>

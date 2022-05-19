@@ -29,10 +29,10 @@ const CourA8 = () => {
             </ul>
         </div> :  
        <div dir="rtl" className='mr-6 mt-2'>
-       <p className='text-xl font-normal'>  لانشاء نظير القطعة المستقيمة [AB]  بالنسبة الى المستقيم (d) .</p>
+       <p className='text-xl font-normal'>  لانشاء نظير القطعة المستقيمة <span className='text-ltr-cr'>[AB]</span>  بالنسبة الى المستقيم <span className='text-ltr-cr'>(d)</span> .</p>
        <ul className='mr-10 text-xl font-normal list-disc'>
-         <li> نعيم نظائر النقط A  و B بالنسبة الى المستقيم (d) و نسميهم 'A و 'B.</li>
-         <li> نرسم القطعة المستقيمة ['A'B].</li>
+         <li> نعيم نظائر النقط <span className='text-ltr-cr'>A</span>  و <span className='text-ltr-cr'>B</span> بالنسبة الى المستقيم <span className='text-ltr-cr'>(d)</span> و نسميهم <span className='text-ltr-cr'>'A</span> و <span className='text-ltr-cr'>'B</span>.</li>
+         <li> نرسم القطعة المستقيمة <span className='text-ltr-cr'>['A'B]</span>.</li>
          <li> لا ننسى تسمية النقاط والاشكال وترك خطوط الانشاء .</li>
        </ul>
    </div> }

@@ -48,14 +48,14 @@ const CourA12 = () => {
         : 
         <div dir="rtl" className="mr-6 mt-4">
         <p className="  text-xl font-normal">
-        نظير دائرة بالنسبة الى المستقيم (d) هي دائرة لها نفس القطر ومركزها هو نظير مركز الدائرة الاولى.
+        نظير دائرة بالنسبة الى المستقيم <span className="text-ltr-cr">(d)</span> هي   <span className="text-ltr-cr"> دائرة لها نفس  القطر</span> ومركزها هو <span className="text-ltr-cr">نظير</span> مركز الدائرة الاولى.
         </p>
         <ul className="mr-10 mt-3 list-disc  text-xl font-normal">
           <li>
-          النقطة  'A  هي نظير النقطة  A بالنسبة الى المستقيم (d) .
+          النقطة  <span className="text-ltr-cr">'A  </span>هي نظير النقطة  <span className="text-ltr-cr">A</span> بالنسبة الى المستقيم <span className="text-ltr-cr">(d)</span> .
           </li>
           <li>
-          الدائرة 'C هي  نظير الدائرة C بالنسبة الى المستقيم (d) .
+          الدائرة <span className="text-ltr-cr">'C</span> هي  نظير الدائرة <span  className="text-ltr-cr">C</span> بالنسبة الى المستقيم <span className="text-ltr-cr">(d)</span> .
           </li>
         </ul>
       </div>}

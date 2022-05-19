@@ -39,14 +39,14 @@ const CourA10 = () => {
       </div> :
        <div dir="rtl" className="mr-4 mt-2">
        <p className="text-xl font-medium">
-    1)   في حالة مستقيمان(AB)  و (d)  متوازيان :
+    1)   في حالة مستقيمان <span className="text-ltr-cr">(AB) </span> و <span className="text-ltr-cr">(d) </span> متوازيان :
        </p>
        <div className="mt-2 flex justify-center">
          <img className="h-48 w-96" src={img1} alt="" />
        </div>
        <ul className="mr-12 text-xl font-normal list-disc">
          <li>
-         المستقيم  (AB) و المستقيم(A'B') متوازيان ايضا.
+         المستقيم  <span className="text-ltr-cr">(AB)</span> و المستقيم<span className="text-ltr-cr">('A'B)</span> متوازيان أيضا.
          </li>
        </ul>
      </div>  
@@ -70,14 +70,14 @@ const CourA10 = () => {
       : 
       <div dir="rtl" className="mr-4 mt-4">
         <p className="text-xl font-medium">
-      2)  في حالة المستقيمان (AB)  و (d) متعامدان.
+      2)  في حالة المستقيمان    <span className="text-ltr-cr">(AB)  </span>و    <span className="text-ltr-cr">(d)</span> متعامدان.
         </p>
         <div className="mt-2 flex justify-center">
           <img className="h-48 w-96" src={img2} alt="" />
         </div>
-        <ul className="mr-12 text-xl font-normal list-disc">
+        <ul className="mr-12 mt-4 text-xl font-normal list-disc">
           <li>
-          المستقيم  (AB) و المستقيم('A'B) متطابقان.
+          المستقيم     <span className="text-ltr-cr">(AB)</span> و المستقيم   <span className="text-ltr-cr">('A'B)</span> متطابقان.
           </li>
         </ul>
       </div>

@@ -49,22 +49,22 @@ const CourA6 = () => {
       ملاحظة :
       </p>
       <p className="mr-6 text-xl font-normal">
-       اذا  النقطة A  تنتمي الى المستقيم (d)  فان A  و 'A  متطابقان .
+      إذا  النقطة <span className="text-ltr-cr">A</span>  تنتمي الى المستقيم <span className="text-ltr-cr">(d)</span>  فان <span className="text-ltr-cr">A</span>  و <span className="text-ltr-cr">'A </span> متطابقان .
 
       </p>
-      <div className="mt-8 flex justify-center">
+      <div className="mt-8 mr-28 flex justify-center">
         <img className="w-80 h-64" src={img2} alt="" />
       </div>
       <p className="mr-6 mt-8 text-xl font-normal">
-      في هذه الحالة A  هو نظير نفسه بالنسبة الى المستقيم (d)
+      في هذه الحالة <span className="text-ltr-cr">A </span> هو نظير نفسه بالنسبة الى المستقيم <span className="text-ltr-cr">(d)</span> .
       </p>
       <div className="mt-6">
         <p className="underline decoration-solid text-2xl text-red-600 font-semibold">
         ملاحظة :
         </p>
         <p className="mr-6 text-xl font-normal">
-      الطريقتان السابقتان  جد مهمة: فهي اساس كل ما هو اتي .<br/>
-       اذا لم تستوعب من الضروري  التركيز عليها  من خلال القيام بعدة تمارين.
+      الطريقتان السابقتان  جد مهمتان : فهما أساس كل ما هو أتي .
+      إذا لم تستوعبهما من الضروري  التركيز عليها  من خلال القيام بعدة تمارين.
         </p>
       </div>
     </div>}

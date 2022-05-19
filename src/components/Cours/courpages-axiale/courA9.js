@@ -50,17 +50,17 @@ useEffect(() => {
       </div> :  
       <div dir="rtl"  className="mr-6 mt-4">
       <p className="text-xl font-normal">
-      نظير مستقيم بالنسبة الى مستقيم (d) هو مستقيم .
+      نظير  مستقيم بالنسبة الى مستقيم <span className="text-ltr-cr" >(d)</span> هو <span className="text-ltr-cr" >مستقيم</span> .
       </p>
       <ul className="mr-10 mt-3 list-disc  text-xl font-normal">
         <li className="mt-1">
-        النقطة A' هي نظير النقطة A  بالنسبة الى المستقيم (d)
+        النقطة <span className="text-ltr-cr" > 'A </span> هي نظير النقطة <span className="text-ltr-cr" >A </span> بالنسبة الى المستقيم <span className="text-ltr-cr">(d)</span>.
         </li>
         <li className="mt-1">
-        النقطة B'هي نظير النقطة B بالنسبة الى المستقيم (d)
+        النقطة <span  className="text-ltr-cr"> 'B </span>هي نظير النقطة <span  className="text-ltr-cr">B</span> بالنسبة الى المستقيم <span  className="text-ltr-cr">(d)</span>.
         </li>
         <li className="mt-1">
-        المستقيم(A'B') هو نظير المستقيم(AB) بالنسبة الى المستقيم (d)
+        المستقيم <span  className="text-ltr-cr">('A'B)</span> هو نظير المستقيم<span  className="text-ltr-cr"> (AB)</span> بالنسبة الى المستقيم <span  className="text-ltr-cr">(d)</span>.
         </li>
       </ul>
     </div>

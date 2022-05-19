@@ -52,23 +52,23 @@ const CourA7 = () => {
       </div> :
        <div dir="rtl" className="mr-6 mt-2">
        <p className="  text-xl font-normal">
-       نظير قطعة مستقيمة بالنسبة الى المستقيم (d) هي قطعة مستقيمة لها نفس الطول.
+       نظير قطعة مستقيمة بالنسبة الى المستقيم <span className="text-ltr-cr">(d)</span> هي <span className="text-ltr-cr">قطعة مستقيمة لها نفس الطول</span>.
        </p>
        <ul className="mr-10 list-disc  text-xl font-normal">
          <li>
-         النقطة 'A هي نظيرة النقطة  A بالنسبة الى المستقيم (d).
+         النقطة <span className="text-ltr-cr">'A </span>هي نظيرة النقطة  <span className="text-ltr-cr">A</span> بالنسبة الى المستقيم <span className="text-ltr-cr">(d)</span>.
 
          </li>
          <li>
-         النقطة 'B هي نظيرة النقطة B  بالنسبة الى المستقيم (d).
+         النقطة <span className="text-ltr-cr">'B</span> هي نظيرة النقطة <span className="text-ltr-cr">B</span>  بالنسبة الى المستقيم <span className="text-ltr-cr">(d)</span>.
 
          </li>
          <li>
-         القطعة المستقيمة ['A'B]هي نظير القطعة المستقيمة [AB] بالنسبة الى المستقيم (d).
+         القطعة المستقيمة <span className="text-ltr-cr">['A'B]</span>هي نظير القطعة المستقيمة <span className="text-ltr-cr">[AB]</span> بالنسبة الى المستقيم <span className="text-ltr-cr">(d)</span>.
 
          </li>
          <li>
-         A'B' = AB .
+        <span className="text-ltr-cr">A'B' = AB </span> .
 
          </li>
        </ul>
@@ -86,7 +86,7 @@ const CourA7 = () => {
      
      <ul dir="rtl" className="list-disc mr-10 mt-8 font-normal text-xl ">
         <li>
-        نقول ان التناظر المحوري يحفظ المسافات .
+        نقول ان التناظر المحوري  <span className="text-ltr-cr">يحفظ المسافات</span> .
         </li>
       </ul> }
     </>

@@ -45,13 +45,13 @@ const CourA15 = () => {
       </div> :
       <div dir="rtl" className="mr-6 mt-2">
       <p className="text-xl font-normal">
-      نظائر ثلاثة نقاط في استقامة واحدة بالنسبة الى المستقيم (d) هي ثلاثة نقاط في استقامة واحدة .      </p>
+      نظائر ثلاثة نقاط في استقامة واحدة بالنسبة الى المستقيم  <span className="text-ltr-cr">(d)</span> هي ثلاثة نقاط في استقامة واحدة .      </p>
       <ul className="mr-10 list-disc  text-xl font-normal">
         <li>
-        النقاط  A , B و C  في استقامة واحدة .
+        النقاط   <span className="text-ltr-cr">A</span> ,  <span className="text-ltr-cr">B</span> و <span className="text-ltr-cr">C</span>   في استقامة واحدة .
         </li>
         <li>
-      النقاط 'A' , B  و 'C ايضا في استقامة واحدة .
+      النقاط  <span className="text-ltr-cr">'A'</span> ,  <span className="text-ltr-cr">B</span>  و  <span className="text-ltr-cr">'C </span>ايضا في استقامة واحدة .
         </li>
       </ul>
     </div> 
@@ -67,7 +67,7 @@ const CourA15 = () => {
       </ul>:
       <ul dir='rtl' className="list-disc mr-10 mt-8 font-normal text-xl ">
       <li>
-      نقول ان التناظر المحوري يحفظ الاستقامة .
+      نقول ان التناظر المحوري  <span className="text-ltr-cr">يحفظ الاستقامة</span> .
       </li>
     </ul>
       }

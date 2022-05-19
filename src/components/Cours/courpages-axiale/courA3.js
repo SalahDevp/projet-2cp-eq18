@@ -33,7 +33,7 @@ useEffect(() => {
       </div> :
       <div dir="rtl" className="ml-6 mt-4">
       <p className="font-normal text-xl ">
-      النقطتان A و B متناظرتان بالنسبة للخط المستقيم (d) إذا تطابقا عند الطي حول المستقيم (d).
+      النقطتان <span className="text-ltr-cr">A </span>و <span className="text-ltr-cr">B</span> متناظرتان بالنسبة للخط المستقيم <span className="text-ltr-cr">(d) </span>إذا <span className="text-ltr-cr">تطابقا</span> عند الطي حول المستقيم <span className="text-ltr-cr">(d)</span>.
       </p>
     </div> }
 
@@ -53,7 +53,7 @@ useEffect(() => {
       </ul> : 
       <ul dir="rtl" className="list-disc mr-10 mt-14 font-normal text-xl ">
         <li>
-        نقول أن النقطة B هي نظيرة النقطة A بالنسبة إلى المستقيم (d) إذا كان المستقيم (d) هو المنصف العمودي لقطعة المستقيمة [AB].
+        نقول أن النقطة <span className="text-ltr-cr">B</span> هي نظيرة النقطة <span className="text-ltr-cr">A</span> بالنسبة إلى المستقيم <span className="text-ltr-cr">(d)</span> إذا كان المستقيم <span className="text-ltr-cr">(d)</span> هو <span className="text-ltr-cr">المنصف العمودي</span> لقطعة المستقيمة <span className="text-ltr-cr">[AB]</span>.
         </li>
       </ul> 
       }

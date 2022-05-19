@@ -13,7 +13,7 @@ const TBMA = () => {
     }
   }, [i18n.language]);
   return (
-    <div>
+    <div >
        {fr? <div className='ml-6'>
         <h1 className='text-nav text-center text-4xl font-bold'>Symétrie axiale</h1>
         <h2 className='mt-8 text-nav  text-3xl font-bold' >TABLE DE MATIÈRE </h2>

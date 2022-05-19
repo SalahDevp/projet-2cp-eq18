@@ -50,18 +50,18 @@ const CourA4 = () => {
       </div> : 
       <div dir="rtl" className="mr-6 mt-2">
       <p className="text-xl font-normal">
-      1)  الطريقة الاولى باستخدام الكوس والمدور :
+      1)   <span className="text-ltr-cr">الطريقةالاولى</span> باستخدام الكوس والمدور  :
       </p>
       <ul  className="mr-10 text-xl font-normal list-disc">
         <li>
-        باستخدام الكوس ، نرسم المستقيم العمودي على الخط (d) الذي يمر عبر A.
+        باستخدام الكوس ، نرسم <span className="text-ltr-cr">المستقيم العمودي</span> على الخط <span className="text-ltr-cr"> (d) </span> الذي يمر عبر <span className="text-ltr-cr">A</span>.
         </li>
         <li>ثم نمدد الخط.</li>
         <li>
-        مع وجود المدور في تقرير المسافة بين النقطة A والخط (d) على الجانب الآخر من المستقيم.
+        مع وجود المدور في تقرير المسافة بين النقطة <span className="text-ltr-cr">A</span> والخط <span className="text-ltr-cr"> (d) </span> على الجانب الآخر من المستقيم.
         </li>
         <li>
-        وبالتالي نحصل على النقطة A' نظيرة النقطة A بالنسبة إلى مستقيم(d).
+        وبالتالي نحصل على النقطة <span className="text-ltr-cr">'A</span> نظيرة النقطة <span className="text-ltr-cr">A</span> بالنسبة إلى مستقيم<span className="text-ltr-cr"> (d) </span>.
         </li>
       </ul>
     </div>}
