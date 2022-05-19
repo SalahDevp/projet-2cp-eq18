@@ -1,7 +1,7 @@
 import { getGridPos, getMousePos } from "utils/paint/basics";
 import Shape from "../Shape";
 import { clickInsidePolygone, clickOnShapeSegment } from "../geometry";
-import { UNIT } from "pages/Paint";
+import { UNIT } from "components/paint/PaintComponent";
 
 export const handleClick = (event, state) => {
   //get click pos

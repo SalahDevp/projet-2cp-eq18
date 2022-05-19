@@ -6,14 +6,18 @@ const Canvas = ({
   onMouseUp,
   onMouseMove,
   onClick,
+  submitted,
+  rightAnswer,
 }) => {
   return (
     <div className="border-4 border-green-400 inline-block h-fit">
       <canvas
+        className={
+          !submitted ? "bg-white" : rightAnswer ? "bg-green-100" : "bg-red-100"
+        }
         ref={canvasRef}
         height={height}
         width={width}
-        className="bg-white"
         onMouseDown={onMouseDown}
         onMouseUp={onMouseUp}
         onMouseMove={onMouseMove}

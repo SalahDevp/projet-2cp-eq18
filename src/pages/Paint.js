@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import sortir from "assets/Grille/sortir.png";
 import first from "assets/Grille/1.png";
 import second from "assets/Grille/2.png";
@@ -19,7 +19,11 @@ import P5 from "assets/Grille/iconsovert/triangle.png";
 import SC from "assets/Grille/iconsovert/SC.png";
 import SAV from "assets/Grille/iconsovert/SAV.png";
 import SAH from "assets/Grille/iconsovert/SAH.png";
+//exo questions
 import submitBtn from "assets/exercices/submitBtn.png";
+import greenArrow from "assets/exercices/green-arrow.png";
+import redArrow from "assets/exercices/red-arrow.png";
+//
 import dossier from "components/nouveau-protype-component/dossier-ouvert .png";
 import sauvgarde from "components/nouveau-protype-component/sauvgarde.png";
 import NAV from "components/Nav";
@@ -43,6 +47,11 @@ import * as symetrieAxialeHorizontal from "utils/paint/actions/symetrieAxialeHor
 import * as symetrieAxialeVertical from "utils/paint/actions/symetrieAxialeVertical";
 import PaintComponent from "components/paint/PaintComponent";
 import Shape from "utils/paint/Shape";
+import SimpleBtn from "components/paint/SimpleBtn";
+import MenuBtn from "components/paint/MenuBtn";
+import { checkSameShape } from "utils/paint/geometry";
+import checkSymetrieCentral from "utils/paint/checkSymetrieCentral";
+import { useSearchParams } from "react-router-dom";
 
 const [RED, GREEN, BLUE, YELLOW, ORANGE, PURPLE] = [
   "#FF0000",
@@ -53,7 +62,22 @@ const [RED, GREEN, BLUE, YELLOW, ORANGE, PURPLE] = [
   "#800080",
 ];
 
+const tmp = [
+  {
+    points: [
+      { x: 520, y: 300 },
+      { x: 560, y: 300 },
+      { x: 560, y: 340 },
+      { x: 520, y: 340 },
+      { x: 520, y: 300 },
+    ],
+    polygone: true,
+  },
+];
+
 const Paint = () => {
+  //get params
+  const [searchParams, setSearchParams] = useSearchParams();
   //icons
   const [icons5, setIcons5] = useState(false);
   const [icons1, setIcons1] = useState(false);
@@ -62,10 +86,15 @@ const Paint = () => {
   const [icons4, setIcons4] = useState(false);
   //paint state
   const [shapes, setShapes] = useState([]);
-  const [exoShapes, setExoShapes] = useState([]);
   const [actionType, setActionType] = useState();
   const [bucketColor, setBucketColor] = useState(RED);
+  //exo mode
   const [exoMode, setExoMode] = useState(false);
+  const [exoShapes, setExoShapes] = useState([]);
+  const [exoSymetrieMode, setExoSymetrieMode] = useState("centrale");
+  const [submitted, setSubmitted] = useState(false);
+  const [rightAnswer, setRightAnswer] = useState(true);
+
   //ref
   const paintRef = useRef(null);
   //funcs
@@ -94,7 +123,48 @@ const Paint = () => {
     setIcons4(false);
     setIcons5(false);
   };
-
+  //handlers
+  const handleSubmit = () => {
+    let res;
+    //if user hasn't draw any shape exit fnc
+    if (shapes.length === 0) return;
+    setSubmitted(true);
+    //check if answer is correct
+    if (exoSymetrieMode === "centrale")
+      res = checkSymetrieCentral(exoShapes, shapes);
+    //if correct
+    if (res) setRightAnswer(true);
+    //if wrong
+    else setRightAnswer(false);
+  };
+  const handleNext = () => {
+    setSubmitted(false);
+  };
+  //exo mode
+  useEffect(() => {
+    const exo = searchParams.get("exoMode") === "true";
+    setExoMode(exo);
+    if (!exo) return;
+    const qstNum = searchParams.get("qstNum");
+    (async () => {
+      try {
+        const qstObj = await window.electronAPI.getPaintExoQst(
+          parseInt(qstNum)
+        );
+        const newExoShapes = qstObj.exoShapes.map((shape) => {
+          const newShape = new Shape();
+          newShape.points = shape.points;
+          newShape.polygone = shape.polygone;
+          newShape.color = shape.color;
+          return newShape;
+        });
+        setExoShapes(newExoShapes);
+        setExoSymetrieMode(qstObj.mode);
+      } catch (e) {
+        console.error(e);
+      }
+    })();
+  }, [searchParams]);
   return (
     <div className="relative flex justify-between overflow-hidden bg-white h-screen w-screen">
       <NAV
@@ -110,156 +180,123 @@ const Paint = () => {
         shapes={shapes}
         setShapes={setShapes}
         exoShapes={exoShapes}
-        symetrieCentraleMode={actionType === symetrieCentrale}
+        symetrieCentraleMode={actionType === symetrieCentrale || exoMode}
         symetrieAxialeHorizontalMode={actionType === symetrieAxialeHorizontal}
         symetrieAxialeVerticalMode={actionType === symetrieAxialeVertical}
         ref={paintRef}
+        exoMode={exoMode}
+        submitted={submitted}
+        rightAnswer={rightAnswer}
       />
       <div
         className="py-3 border-l-2 border-violet rounded-l-2xlh-screen w-20 bg-marron
             flex flex-col items-center justify-between"
       >
         <img className="cursor-pointer mt-1 h-14 w-14" src={sortir} alt="" />
-        <img
-          onClick={() => {
-            setActionType(undefined);
-            closeAll();
-          }}
-          className="cursor-pointer h-14 w-14"
+        <SimpleBtn
           src={first}
-          alt=""
+          closeAll={closeAll}
+          action={undefined}
+          setActionType={setActionType}
         />
-        <img
-          onClick={() => {
-            setActionType(drawShape);
-            closeAll();
-          }}
-          className="cursor-pointer h-14 w-14"
+        <SimpleBtn
           src={second}
-          alt=""
+          closeAll={closeAll}
+          action={drawShape}
+          setActionType={setActionType}
         />
-        <div dir="rtl" className="flex flex-row justify-between ">
-          <img
-            className="cursor-pointer h-16 w-14"
-            src={third}
-            alt=""
-            onClick={() => {
-              closeAll();
-              if (!icons1) setIcons1(true);
-            }}
+        <MenuBtn
+          src={third}
+          closeAll={closeAll}
+          opened={icons1}
+          setOpened={setIcons1}
+        >
+          <SimpleBtn
+            src={I1}
+            small
+            action={movePoint}
+            setActionType={setActionType}
+            closeAll={closeAll}
           />
-          {icons1 && (
-            <div
-              className="p-1 px-1 w-32 rounded-xl justify-between  flex items-center flex-row bg-marron
-                             mt-1 mr-20 absolute   "
-            >
-              <img
-                onClick={() => setActionType(movePoint)}
-                className="cursor-pointer h-12 w-12"
-                src={I1}
-                alt=""
-              />
-              <img
-                onClick={() => setActionType(moveShape)}
-                className="cursor-pointer h-12 w-12"
-                src={I2}
-                alt=""
-              />
-            </div>
-          )}
-        </div>
+          <SimpleBtn
+            src={I2}
+            small
+            action={moveShape}
+            setActionType={setActionType}
+            closeAll={closeAll}
+          />
+        </MenuBtn>
 
-        <div dir="rtl" className="flex flex-row justify-between ">
-          <img
-            className="cursor-pointer h-16 w-14"
-            src={fourth}
-            alt=""
-            onClick={() => {
-              closeAll();
-              if (!icons2) setIcons2(true);
-            }}
+        <MenuBtn
+          src={fourth}
+          closeAll={closeAll}
+          opened={icons2}
+          setOpened={setIcons2}
+        >
+          <SimpleBtn
+            src={I2}
+            small
+            action={supprimerPoly}
+            setActionType={setActionType}
+            closeAll={closeAll}
           />
-          {icons2 && (
-            <div
-              className="p-1 px-1 w-56 rounded-xl justify-between  flex items-center flex-row bg-marron
-                             mt-1 mr-20 absolute   "
-            >
-              <img
-                onClick={() => setActionType(supprimerPoly)}
-                className="cursor-pointer h-12 w-12"
-                src={I2}
-                alt=""
-              />
-              <img
-                onClick={() => setActionType(eraseLine)}
-                className="cursor-pointer h-12 w-12"
-                src={second}
-                alt=""
-              />
-              <img
-                onClick={() => setActionType(erasePoint)}
-                className="cursor-pointer h-12 w-12"
-                src={I1}
-                alt=""
-              />
-              <img
-                onClick={paintRef.current?.handleClear}
-                className="cursor-pointer h-12 w-12"
-                src={I3}
-                alt=""
-              />
-            </div>
-          )}
-        </div>
-
-        <div dir="rtl" className="flex flex-row justify-between ">
-          <img
-            className="cursor-pointer h-16 w-14"
-            src={fifth}
-            alt=""
-            onClick={() => {
-              closeAll();
-              if (!icons3) setIcons3(true);
-            }}
+          <SimpleBtn
+            src={second}
+            small
+            action={eraseLine}
+            setActionType={setActionType}
+            closeAll={closeAll}
           />
-          {icons3 && (
-            <div
-              className="p-1 px-1 w-80 rounded-xl justify-between  flex items-center flex-row bg-marron
-                                mt-1 mr-20 absolute   "
-            >
-              <img
-                onClick={() => setActionType(drawHexa)}
-                className="cursor-pointer h-14 w-12"
-                src={P1}
-                alt=""
-              />
-              <img
-                onClick={() => setActionType(drawPentagon)}
-                className="cursor-pointer h-12 w-14"
-                src={P2}
-                alt=""
-              />
-              <img
-                onClick={() => setActionType(drawRectangle)}
-                className="cursor-pointer h-10 w-16"
-                src={P3}
-                alt=""
-              />
-              <img
-                onClick={() => setActionType(drawLosange)}
-                className="cursor-pointer h-12 w-12"
-                src={P4}
-                alt=""
-              />
-              <img
-                onClick={() => setActionType(drawTriangle)}
-                className="cursor-pointer h-11 w-11"
-                src={P5}
-                alt=""
-              />
-            </div>
-          )}
-        </div>
+          <SimpleBtn
+            src={I1}
+            small
+            action={erasePoint}
+            setActionType={setActionType}
+            closeAll={closeAll}
+          />
+        </MenuBtn>
+        <MenuBtn
+          src={fifth}
+          closeAll={closeAll}
+          opened={icons3}
+          setOpened={setIcons3}
+        >
+          <SimpleBtn
+            src={P1}
+            small
+            action={drawHexa}
+            setActionType={setActionType}
+            closeAll={closeAll}
+          />
+          <SimpleBtn
+            src={P2}
+            small
+            action={drawPentagon}
+            setActionType={setActionType}
+            closeAll={closeAll}
+          />
+          <SimpleBtn
+            src={P3}
+            small
+            action={drawRectangle}
+            setActionType={setActionType}
+            closeAll={closeAll}
+          />
+          <SimpleBtn
+            src={P4}
+            small
+            action={drawLosange}
+            setActionType={setActionType}
+            closeAll={closeAll}
+          />
+          <SimpleBtn
+            src={P5}
+            small
+            action={drawTriangle}
+            setActionType={setActionType}
+            closeAll={closeAll}
+          />
+        </MenuBtn>
 
         <div dir="rtl" className="flex flex-row justify-between ">
           <img
@@ -312,18 +349,12 @@ const Paint = () => {
             </div>
           )}
         </div>
-
-        <div dir="rtl" className="flex flex-row justify-between ">
-          <img
-            onClick={() => {
-              setActionType(rotation);
-              closeAll();
-            }}
-            className="cursor-pointer h-14 w-14"
-            src={seventh}
-            alt=""
-          />
-        </div>
+        <SimpleBtn
+          src={seventh}
+          action={rotation}
+          setActionType={setActionType}
+          closeAll={closeAll}
+        />
 
         {!exoMode && (
           <div dir="rtl" className="flex flex-row justify-between ">
@@ -363,11 +394,20 @@ const Paint = () => {
             )}
           </div>
         )}
-        {exoMode && (
-          <button>
-            <img src={submitBtn} alt="" className="h-14 w-14" />
-          </button>
-        )}
+        {exoMode &&
+          (!submitted ? (
+            <button onClick={handleSubmit}>
+              <img src={submitBtn} alt="" className="h-14 w-14" />
+            </button>
+          ) : (
+            <button onClick={handleNext}>
+              <img
+                src={rightAnswer ? greenArrow : redArrow}
+                alt=""
+                className="h-14 w-14"
+              />
+            </button>
+          ))}
       </div>
     </div>
   );

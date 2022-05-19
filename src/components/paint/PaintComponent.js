@@ -26,6 +26,9 @@ const PaintComponent = forwardRef(
       symetrieCentraleMode,
       symetrieAxialeVerticalMode,
       symetrieAxialeHorizontalMode,
+      submitted,
+      rightAnswer,
+      exoMode,
     },
     ref
   ) => {
@@ -113,6 +116,8 @@ const PaintComponent = forwardRef(
           onMouseMove={(event) => actionType?.handleMouseMove?.(event, state)}
           onMouseUp={(event) => actionType?.handleMouseUp?.(event, state)}
           onClick={(event) => actionType?.handleClick?.(event, state)}
+          submitted={submitted && exoMode}
+          rightAnswer={rightAnswer}
         />
       </div>
     );

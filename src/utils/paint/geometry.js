@@ -122,3 +122,43 @@ const checkIntersection = (p, q1, q2) =>
 
 const segmentLength = (p1, p2) =>
   Math.sqrt((p2.x - p1.x) ** 2 + (p2.y - p1.y) ** 2);
+
+export function checkSameShape(shape1, shape2) {
+  const rotateArr = (arr, num) => {
+    for (let i = 0; i < num; i++) arr.push(arr.shift());
+  };
+
+  let arr1, arr2;
+  if (
+    shape1.points.length !== shape2.points.length ||
+    shape1.polygone !== shape2.polygone
+  )
+    return false;
+  let j;
+  arr1 = [...shape1.points];
+  arr2 = [...shape2.points];
+  if (shape1.polygone && shape2.polygone) {
+    arr1.pop();
+    arr2.pop();
+  }
+  j = arr2.findIndex((point) => point.x === arr1[0].x && point.y === arr1[0].y);
+  console.log(j);
+  if (j === -1) return false; //no point is equal to shape1.points[0]
+  rotateArr(arr2, j);
+  console.log(arr1, arr2);
+  if (
+    arr1.every(
+      (point, ind) => point.x === arr2[ind].x && point.y === arr2[ind].y
+    )
+  )
+    return true;
+  if (
+    arr1.every(
+      (point, ind) =>
+        point.x === arr2[ind === 0 ? 0 : arr2.length - ind].x &&
+        point.y === arr2[ind === 0 ? 0 : arr2.length - ind].y
+    )
+  )
+    return true;
+  return false;
+}
