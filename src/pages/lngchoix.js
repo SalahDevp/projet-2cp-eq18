@@ -2,9 +2,9 @@ import React from 'react'
 import { useNavigate } from "react-router-dom";
 import { useLanguage } from "AppContext";
 import { useTranslation } from "react-i18next";
-
-
-import sortir from "../components/nouveau-protype-component/sortir.png"
+import Triangle from 'components/triangle';
+import Rectangle from 'components/rectabgle';
+import Sortir from 'components/sortir';
 
 const Lngchoix = () => {
   const navigate = useNavigate();
@@ -25,9 +25,11 @@ const Lngchoix = () => {
                 <div className='bg-jeune border-rouze border-solid border-2 rounded-3xl   w-44 h-44' > </div>
             </div>
             <div className='relative bg-beige  w-2/3 h-screen flex justify-center items-center'>
+           
             <div className='left-1/3 absolute h-screen w-1 bg-v-clair z-0'></div>
-            <img className='absolute top-9 right-10 h-11 w-11 ' src={sortir} alt="sortir" />
-
+             <Rectangle />
+             <Triangle />
+              <Sortir />
                    <div className='px-14 py-14  z-10 bg-white shadow-md	 border-jeune border-2 border-solid w-98 h-96 rounded-3xl'>
                      <div className='flex text-4xl justify-between'>
                          <span>langue</span>

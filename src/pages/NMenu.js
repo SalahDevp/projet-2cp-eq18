@@ -9,8 +9,7 @@ import imgH3 from "../components/nouveau-protype-component/exohover.png";
 import { useTranslation } from "react-i18next";
 import { useNavigate, useState } from "react-router-dom";
 import Nav from "../components/Nav";
-import sortir from "../components/nouveau-protype-component/sortir.png";
-
+import Sortir from "components/sortir";
 const NMenu = () => {
   // const [hovercour, setHovercour] = useState(false);
   const { t } = useTranslation();
@@ -22,11 +21,7 @@ const NMenu = () => {
   };
   return (
     <div className="bg-beige relative h-screen w-screen flex overflow-hidden">
-      <img
-        className="absolute top-9 right-10 h-11 w-11 "
-        src={sortir}
-        alt="sortir"
-      />
+      <Sortir />
 
       <div className="left-1/4 absolute h-screen w-1.5 bg-bleu z-0"></div>
       <Nav pathAvant="/userMode" />
