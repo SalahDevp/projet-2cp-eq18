@@ -51,7 +51,8 @@ import SimpleBtn from "components/paint/SimpleBtn";
 import MenuBtn from "components/paint/MenuBtn";
 import { checkSameShape } from "utils/paint/geometry";
 import checkSymetrieCentral from "utils/paint/checkSymetrieCentral";
-import { useSearchParams } from "react-router-dom";
+import { Navigate, useNavigate, useSearchParams } from "react-router-dom";
+import { generateSymetrieCentrale } from "utils/paint/symetrie";
 
 const [RED, GREEN, BLUE, YELLOW, ORANGE, PURPLE] = [
   "#FF0000",
@@ -62,22 +63,12 @@ const [RED, GREEN, BLUE, YELLOW, ORANGE, PURPLE] = [
   "#800080",
 ];
 
-const tmp = [
-  {
-    points: [
-      { x: 520, y: 300 },
-      { x: 560, y: 300 },
-      { x: 560, y: 340 },
-      { x: 520, y: 340 },
-      { x: 520, y: 300 },
-    ],
-    polygone: true,
-  },
-];
+const MAXQST = 2;
 
 const Paint = () => {
   //get params
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams(); //contains exoMode:bool qstNum
+  const navigate = useNavigate();
   //icons
   const [icons5, setIcons5] = useState(false);
   const [icons1, setIcons1] = useState(false);
@@ -91,7 +82,7 @@ const Paint = () => {
   //exo mode
   const [exoMode, setExoMode] = useState(false);
   const [exoShapes, setExoShapes] = useState([]);
-  const [exoSymetrieMode, setExoSymetrieMode] = useState("centrale");
+  const [exoSymetrieMode, setExoSymetrieMode] = useState(""); // centrale | axiale-horizentale| axiale-verticale
   const [submitted, setSubmitted] = useState(false);
   const [rightAnswer, setRightAnswer] = useState(true);
 
@@ -128,6 +119,8 @@ const Paint = () => {
     let res;
     //if user hasn't draw any shape exit fnc
     if (shapes.length === 0) return;
+    //
+    closeAll(); //close all menus
     setSubmitted(true);
     //check if answer is correct
     if (exoSymetrieMode === "centrale")
@@ -136,8 +129,19 @@ const Paint = () => {
     if (res) setRightAnswer(true);
     //if wrong
     else setRightAnswer(false);
+    //generate correct shapes
+    let correctShapes = [];
+    if (exoSymetrieMode === "centrale")
+      correctShapes = exoShapes.map((shape) => generateSymetrieCentrale(shape));
+    //make shapes stroke color green
+    correctShapes.forEach((shape) => (shape.strokeStyle = GREEN));
+    //add them to shapes array
+    setShapes((prv) => [...prv, ...correctShapes]);
   };
   const handleNext = () => {
+    const qstNum = parseInt(searchParams.get("qstNum"));
+    navigate(`/paint?exoMode=true&qstNum=${qstNum < MAXQST ? qstNum + 1 : 1}`);
+    paintRef.current?.handleClear();
     setSubmitted(false);
   };
   //exo mode
@@ -145,12 +149,10 @@ const Paint = () => {
     const exo = searchParams.get("exoMode") === "true";
     setExoMode(exo);
     if (!exo) return;
-    const qstNum = searchParams.get("qstNum");
+    const qstNum = parseInt(searchParams.get("qstNum"));
     (async () => {
       try {
-        const qstObj = await window.electronAPI.getPaintExoQst(
-          parseInt(qstNum)
-        );
+        const qstObj = await window.electronAPI.getPaintExoQst(qstNum);
         const newExoShapes = qstObj.exoShapes.map((shape) => {
           const newShape = new Shape();
           newShape.points = shape.points;
@@ -169,8 +171,8 @@ const Paint = () => {
     <div className="relative flex justify-between overflow-hidden bg-white h-screen w-screen">
       <NAV
         pathAvant="/"
-        image1={dossier}
-        image2={sauvgarde}
+        image1={!exoMode && dossier}
+        image2={!exoMode && sauvgarde}
         saveDrawing={saveDrawing}
         getDrawing={getDrawing}
       />
@@ -195,17 +197,20 @@ const Paint = () => {
         <img className="cursor-pointer mt-1 h-14 w-14" src={sortir} alt="" />
         <SimpleBtn
           src={first}
+          submitted={submitted}
           closeAll={closeAll}
           action={undefined}
           setActionType={setActionType}
         />
         <SimpleBtn
           src={second}
+          submitted={submitted}
           closeAll={closeAll}
           action={drawShape}
           setActionType={setActionType}
         />
         <MenuBtn
+          submitted={submitted}
           src={third}
           closeAll={closeAll}
           opened={icons1}
@@ -228,6 +233,7 @@ const Paint = () => {
         </MenuBtn>
 
         <MenuBtn
+          submitted={submitted}
           src={fourth}
           closeAll={closeAll}
           opened={icons2}
@@ -254,9 +260,17 @@ const Paint = () => {
             setActionType={setActionType}
             closeAll={closeAll}
           />
+          <SimpleBtn
+            src={I3}
+            small
+            action={paintRef.current?.handleClear}
+            setActionType={setActionType}
+            closeAll={closeAll}
+          />
         </MenuBtn>
         <MenuBtn
           src={fifth}
+          submitted={submitted}
           closeAll={closeAll}
           opened={icons3}
           setOpened={setIcons3}
@@ -351,6 +365,7 @@ const Paint = () => {
         </div>
         <SimpleBtn
           src={seventh}
+          submitted={submitted}
           action={rotation}
           setActionType={setActionType}
           closeAll={closeAll}

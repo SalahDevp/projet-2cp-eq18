@@ -10,10 +10,10 @@ const Canvas = ({
   rightAnswer,
 }) => {
   return (
-    <div className="border-4 border-green-400 inline-block h-fit">
+    <div className="border-4 border-nav inline-block h-fit">
       <canvas
         className={
-          !submitted ? "bg-white" : rightAnswer ? "bg-green-100" : "bg-red-100"
+          !submitted ? "bg-white" : rightAnswer ? "bg-green-100" : "bg-red-50"
         }
         ref={canvasRef}
         height={height}
