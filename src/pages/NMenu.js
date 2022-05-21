@@ -10,6 +10,8 @@ import { useTranslation } from "react-i18next";
 import { useNavigate, useState } from "react-router-dom";
 import Nav from "../components/Nav";
 import Sortir from "components/sortir";
+import Cercles from "components/cercles";
+import Pastilles from "components/Pastilles";
 const NMenu = () => {
   // const [hovercour, setHovercour] = useState(false);
   const { t } = useTranslation();
@@ -24,11 +26,13 @@ const NMenu = () => {
       <Sortir />
 
       <div className="left-1/4 absolute h-screen w-1.5 bg-bleu z-0"></div>
+      <Pastilles MenuPr={true} />
+      <Cercles MenuPr={true} />
       <Nav pathAvant="/userMode" />
       <div
         className="z-10   absolute  top-1/2  left-1/2
-        -translate-x-1/2   -translate-y-1/2   
-        h-auto w-enorme flex justify-between transition  "
+        -translate-x-1/2    -translate-y-1/2 mt-8   
+        h-auto w-enorme flex justify-between transition"
       >
         <NBox
           image={img1}
@@ -36,7 +40,7 @@ const NMenu = () => {
           title={t("courses")}
           handleClick={handleCour}
         />
-        <div className="mt-36 ">
+        <div className="mt-20 ">
           <NBox image={img2} image2={imgH2} title={t("grid")} />
         </div>
         <div className="">

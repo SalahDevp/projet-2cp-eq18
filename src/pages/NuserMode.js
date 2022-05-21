@@ -11,6 +11,9 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useUserMode } from "AppContext";
 import Sortir from "components/sortir";
+import Ligne from "components/ligne";
+import Cercles from "components/cercles";
+import Pastilles from "components/Pastilles";
 const NUserMode = () => {
   const { t } = useTranslation();
   const { i18n } = useTranslation();
@@ -84,8 +87,10 @@ const NUserMode = () => {
         )}
       </div>
       <div className=" relative w-2/3 h-screen flex justify-center items-center">
-        <div className="left-1/3 absolute h-screen w-1 bg-v-clair z-0"></div>
+        <Pastilles />
+         <Ligne />
         <Sortir />
+        <Cercles />
 
         <div className="transition flex justify-between px-8 py-5 z-10 bg-white shadow-md	 border-jeune border-2 border-solid w-98 h-96 rounded-3xl">
           {/* div for teacher */}
