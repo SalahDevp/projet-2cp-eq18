@@ -16,7 +16,7 @@ const areSetsEqual = (a, b) =>
   a.size === b.size && [...a].every((value) => b.has(value));
 
 const QCM = () => {
-  const maxQuestions = 1;
+  const maxQuestions = 20;
   //audio
   const [correctAudio, wrongAudio] = useAudio();
   //routing

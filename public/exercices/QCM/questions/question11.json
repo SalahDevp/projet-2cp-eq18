@@ -1,0 +1,21 @@
+{
+    "question": { "fr": "les caractéristique de la symétrie centrale",
+        "ar":"من خصائص التناظر المركزي" 
+},
+"image": "question11.png",
+"options": {
+ "fr": [
+   "garder les longueurs",
+   "garder les volumes",
+   "garder les espaces",
+   "préserve la droiture"
+ ],
+ "ar" : ["يحفظ الأطوال",
+    "يحفظ الحجوم",
+     "يحفظ المساحات",
+    "يحفظ الاستقامية"
+ ]
+ 
+},
+"rightOptions": [ 1,2,4]  
+}

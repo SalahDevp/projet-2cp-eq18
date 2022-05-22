@@ -1,0 +1,22 @@
+{
+    "question": { "fr": "soit ABCD un Carré",
+        "ar":"مربع ABCD" 
+},
+"image": "question8.png",
+"options": {
+ "fr": [
+   " le carré ABCD a quatre axes de symétrie",
+   " tous ses diamètres sont des axes de symétrie ",
+   "le point C est la symétrie de point A par rapport à le point d'intersection de ces deux diamètres",
+   "le point C est la symétrie de point A par rapport à [BD]"
+ ],
+ "ar" : ["للمربع أربع محاور تناظر",
+    "حامل كل قطر هو محور تناظر للمربع",
+     " بالنسبة الى نقطة تلاقي القطرين A نظيرة C",
+    " [BD] بالنسبة الى  A نظيرة C"
+
+ ]
+ 
+},
+"rightOptions": [ 1,2,3,4]  
+}

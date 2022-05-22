@@ -1,0 +1,23 @@
+{
+    "question": { "fr": "Le diamètre dans le cercle est :",
+        "ar":" :القطر في الدائرة هو" 
+},
+"image": "question4.png",
+"options": {
+ "fr": [
+   "son axe de symétrie",
+   "L'accord le plus long",
+   "sa taille est : 3.14R",
+   "Un segment de cercle aux extrémités droites"
+ ],
+ "ar" : ["محور تناظر لها",
+    "أطول وتر فيها",
+    " R3.14 طوله هو  ",
+    "قطعة مستقيم طرفيها من الدائرة"
+
+ ]
+ 
+},
+"rightOptions": [ 1, 2]  
+}
+ 

@@ -1,0 +1,22 @@
+{
+    "question": { "fr": "soit ABCD un losange, O est le point d'intersection des deux diamètres  ",
+        "ar":" نقطة تقاطع القطرين O معينّ ABCD" 
+},
+"image": "question7.png",
+"options": {
+ "fr": [
+   "le point O est le centre de symétrie de losange",
+   "le point C est la symétrie de point A par rapport à O ",
+   "le point C est la symétrie de point A par rapport [BD]",
+   "le losange ABCD n'a pas d'axe de symétire"
+ ],
+ "ar" : ["نقطة تلاقي القطرين هي مركز تناظر المعين",
+    "O بالنسبة الى  A نظيرة C ",
+     "[BD] بالنسبة الى  A نظيرة C",
+    " المعين لا يقبل محور تناظر"
+
+ ]
+ 
+},
+"rightOptions": [ 1,2,3]  
+}

@@ -1,0 +1,21 @@
+{
+    "question": { "fr": "soit C un cercle de centre O ",
+        "ar":"O دائرة مركزها  C" 
+},
+"image": "question9.png",
+"options": {
+ "fr": [
+   "le cercle C possède quatre axes de symétrie ",
+   "Le porteur de chaque diamètre est l'axe de symétrie du cercle ",
+   "Le centre d'un cercle est son centre de symétrie",
+   "La symétrie de cercle C par rapport à O est elle meme"
+ ],
+ "ar" : ["أربعة محاور تناظر C للدائرة ",
+    "حامل كل قطر هو محور تناظر للدائرة",
+     "مركز الدائرة هو مركز تناظر لها",
+    "C هي نفسها الدائرة O بالنسبة الى C نظيرة الدائرة "
+ ]
+ 
+},
+"rightOptions": [ 2,3,4]  
+}

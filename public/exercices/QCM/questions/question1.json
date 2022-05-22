@@ -1,13 +1,19 @@
 {
-  "question": { "fr": "La symétrie conserve :" },
+  "question": { "fr": "La symétrie conserve :","ar": ":التناظر يحفظ"},
   "image": "question1.png",
   "options": {
     "fr": [
       "les longueurs",
       "les angles",
       "les aires et les périmètres",
-      "l’alignement"
+      "l'alignement"
+    ],
+    "ar":[
+      "الاطوال",
+      "الزوايا",
+      "المساحات",
+      "استقامية النقط"
     ]
   },
-  "rightOptions": [1, 2, 3]
+  "rightOptions": [1, 2, 3,4]
 }

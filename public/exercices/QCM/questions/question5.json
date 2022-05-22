@@ -1,0 +1,22 @@
+{
+    "question": { "fr": "ABC est un Triangle équilatéral dans A :",
+        "ar":"A مثلث متساوي الساقين في ABC" 
+},
+"image": "question5.png",
+"options": {
+ "fr": [
+   "L'axe du côté [BC] est l'axe de symétrie du triangle ABC",
+   " le triangle ABC a trois axes de symétrie",
+   " le triangle ABC a un axe de symétrie unique",
+   " L'axe du côté [AC] est l'axe de symétrie du triangle ABC"
+ ],
+ "ar" : ["  ABC هو محور تناظر للمثلث [BC]محور الضلع",
+    "   ثلاثة محاور تناظر ABC للمثلث  ",
+    " محور تناظر واحد ABC للمثلث  ",
+    " ABC هو محور تناظر للمثلث [AC]محور الضلع"
+
+ ]
+ 
+},
+"rightOptions": [ 1, 3]  
+}

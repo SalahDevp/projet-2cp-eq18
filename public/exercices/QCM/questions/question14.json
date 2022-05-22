@@ -1,0 +1,21 @@
+{
+    "question": { "fr": "Remarquez la forme et répondez",
+        "ar":"لاحظ الشكل و أجب " 
+},
+"image": "question14.png",
+"options": {
+ "fr": [
+   "la symétrie de [DC] par rapport à (d) est [D'C'] ",
+   "la symétrie de (BC) par rapport à (d) est (B'C')",
+   "la symétrie de A par rapport à (d) est A'",
+   "la symétrie de rectangle ABCD est le rectangle A'B'C'D'"
+ ],
+ "ar" : ["[D'C'] هي (d) بالنسبة الى  [DC] نظيرة",
+    "(B'C') هي (d) بالنسبة الى (BC) نظيرة",
+     "A' هي (d) بالنسبة الى A نظيرة",
+    "A'B'C'D'هو الرباعي  ABCD نظير الرباعي "
+ ]
+ 
+},
+"rightOptions": [ 2,3]  
+}

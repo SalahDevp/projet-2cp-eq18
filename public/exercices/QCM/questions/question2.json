@@ -1,0 +1,22 @@
+{
+    "question": { "fr": "les caractéristiques d'un axe segment droit sont : ",
+      "ar": ":خصائص محور قطعة مستقيم "
+     },
+    "image": "question2.png",
+    "options": {
+      "fr": [
+        "parallèle au segment",
+        "perpendiculaire au segment",
+        "coupe le segment au milieu",
+        "n'a pas de caractéristiques"
+      ],
+      "ar":[
+        "يوازي حامل القطعة",
+        "يعامد حامل القطعة ",
+        "يقطع القطعة في المنتصف ",
+        "ليس له خصائص"
+      ]
+    },
+    "rightOptions": [ 2, 3]
+  }
+  

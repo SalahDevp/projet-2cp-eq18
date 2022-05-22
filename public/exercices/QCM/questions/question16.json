@@ -1,0 +1,21 @@
+{
+    "question": { "fr": "combien d'axes de symétrie cette figure a-t-elle ",
+        "ar":" كم عدد خطوط التماثل التي يمتلكها هذا الشكل" 
+},
+"image": "question16.png",
+"options": {
+ "fr": [
+   "2",
+   "plus que 2",
+   "mois que 2",
+   "1"
+ ],
+ "ar" : [" 2 ",
+    " أكثر من 2 ",
+     "أقل من 2",
+    "1 "
+ ]
+ 
+},
+"rightOptions": [ 3,4]  
+}
