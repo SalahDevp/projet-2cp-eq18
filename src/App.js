@@ -16,7 +16,6 @@ import NchangeTeacherpassword from "pages/NchangeTeacherPassword";
 import Parametre from "pages/Parametre";
 import ImageQCM from "pages/ImageQCM";
 import MenuExo from "pages/MenuExo";
-
 function App() {
   return (
     <AppContext>

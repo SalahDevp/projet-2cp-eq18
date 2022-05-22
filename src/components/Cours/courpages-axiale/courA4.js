@@ -1,13 +1,27 @@
 import React from "react";
-// import VideoPlayer from 'react-video-js-player'
-import Video4 from "assets/cour/Video/1.mp4";
+import Video1 from "assets/cour/Video/1A.mp4";
+import { useTranslation } from "react-i18next";
+import { useState, useEffect } from "react";
+import i18n from "utils/translation/i18n";
+
 const CourA4 = () => {
+  const { i18n } = useTranslation();
+  const [fr, setFR] = useState(true);
+
+  useEffect(() => {
+    if (i18n.language === "ar") {
+      setFR(false);
+    }
+  }, [i18n.language]);
   return (
     <div>
-      <h1 className="underline decoration-solid text-2xl font-bold">
+     {fr? <h1 className="underline decoration-solid text-2xl font-bold">
         Procédé de construction :{" "}
-      </h1>
-      <div className="ml-6 mt-2">
+      </h1> : 
+       <h1 dir="rtl" className="underline decoration-solid text-2xl font-bold">
+         طريقة الانشاء :
+     </h1>} 
+      {fr ?<div className="ml-6 mt-2">
         <p className="text-xl font-normal">
           1) <span className="text-ltr-cr">Première méthode </span>: avec une
           équerre et un compas
@@ -33,11 +47,28 @@ const CourA4 = () => {
             <span className="text-ltr-cr">(d)</span>.
           </li>
         </ul>
-      </div>
+      </div> : 
+      <div dir="rtl" className="mr-6 mt-2">
+      <p className="text-xl font-normal">
+      1)   <span className="text-ltr-cr">الطريقةالاولى</span> باستخدام الكوس والمدور  :
+      </p>
+      <ul  className="mr-10 text-xl font-normal list-disc">
+        <li>
+        باستخدام الكوس ، نرسم <span className="text-ltr-cr">المستقيم العمودي</span> على الخط <span className="text-ltr-cr"> (d) </span> الذي يمر عبر <span className="text-ltr-cr">A</span>.
+        </li>
+        <li>ثم نمدد الخط.</li>
+        <li>
+        مع وجود المدور في تقرير المسافة بين النقطة <span className="text-ltr-cr">A</span> والخط <span className="text-ltr-cr"> (d) </span> على الجانب الآخر من المستقيم.
+        </li>
+        <li>
+        وبالتالي نحصل على النقطة <span className="text-ltr-cr">'A</span> نظيرة النقطة <span className="text-ltr-cr">A</span> بالنسبة إلى مستقيم<span className="text-ltr-cr"> (d) </span>.
+        </li>
+      </ul>
+    </div>}
 
-      <div className=" mt-10 flex justify-center">
+      <div className="  mt-20 flex justify-center">
         <video
-          src={Video4}
+          src={Video1}
           width="500"
           height="400"
           controls="controls"

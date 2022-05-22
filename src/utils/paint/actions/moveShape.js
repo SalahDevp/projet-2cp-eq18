@@ -1,4 +1,4 @@
-import { UNIT } from "pages/Paint";
+import { UNIT } from "components/paint/PaintComponent";
 import { getGridPos, getMousePos } from "utils/paint/basics";
 import {
   checkPoints,

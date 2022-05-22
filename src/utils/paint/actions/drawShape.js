@@ -1,6 +1,6 @@
 import { getMousePos, getGridPos, getShapeFromPoint } from "../basics";
 import Shape from "../Shape";
-import { UNIT } from "pages/Paint";
+import { UNIT } from "components/paint/PaintComponent";
 import { checkIfPointInSameShapeSegment, checkZeroAngle } from "../geometry";
 
 const handleFirstClick = (event, state) => {

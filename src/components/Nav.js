@@ -4,8 +4,10 @@ import img2 from "../components/nouveau-protype-component/home.png";
 import img3 from "../components/nouveau-protype-component/param.png";
 import img4 from "../components/nouveau-protype-component/aide.png";
 import { useNavigate } from "react-router-dom";
+import dossier from "../components/nouveau-protype-component/dossier-ouvert .png";
+import sauvgarde from "../components/nouveau-protype-component/sauvgarde.png";
 
-const Nav = ({ pathAvant }) => {
+const Nav = ({ pathAvant, image1, image2, saveDrawing, getDrawing }) => {
   const navigate = useNavigate();
 
   const Routeur = () => {
@@ -14,7 +16,7 @@ const Nav = ({ pathAvant }) => {
 
   return (
     <div className="bg-violet relative rounded-r-2xl h-screen w-20 flex flex-col items-center      ">
-      <div className="mt-8  ">
+      <div className="mt-8 h-auto ">
         <img
           className="w-11 h-11 cursor-pointer "
           onClick={Routeur}
@@ -33,6 +35,22 @@ const Nav = ({ pathAvant }) => {
           alt=""
           onClick={() => navigate("/parametre")}
         />
+        {image1 && (
+          <img
+            className="mt-12 w-14 h-14 cursor-pointer"
+            src={image1}
+            alt=""
+            onClick={getDrawing}
+          />
+        )}
+        {image2 && (
+          <img
+            className="mt-12 w-12 h-12 cursor-pointer"
+            src={image2}
+            alt=""
+            onClick={saveDrawing}
+          />
+        )}
       </div>
 
       <img

@@ -1,0 +1,16 @@
+{
+    "question": {
+        "fr": "Quelles figures représnetent une symétrie ?",
+        "ar": "اي مما يلي يمثل تناظرا؟"
+    },
+    "options": [
+        { "image": "qst11-img1.png", "text": { "fr": "Panther", "ar": "فهد" } },
+        { "image": "qst11-img2.png", "text": { "fr": "Lion", "ar": "أسد" } },
+        { "image": "qst11-img3.png", "text": { "fr": "Serpent", "ar": "ثعبان" } },
+        { "image": "qst11-img4.png", "text": { "fr": "Tigre", "ar": "نمر" } },
+        { "image": "qst11-img5.png", "text": { "fr": "Eléphant", "ar": "فيل" } },
+        { "image": "qst11-img6.png", "text": { "fr": "Aigle", "ar": "صقر" } }
+    ],
+
+    "rightOptions": [1, 2, 4]
+}

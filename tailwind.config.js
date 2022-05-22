@@ -31,6 +31,7 @@ module.exports = {
         vert: "#00FFB2",
         "smoke-light": "rgba(0, 0, 0, 0.4)",
         settingsLightGreen: "#00FFB2",
+        marron: " #FFF6EA",
       },
       backgroundSize: {
         check: "1rem",

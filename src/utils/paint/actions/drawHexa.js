@@ -1,5 +1,10 @@
-import { UNIT } from "pages/Paint";
-import { getGridPos, getMousePos, getShapeFromPoint,pointIndex } from "utils/paint/basics";
+import { UNIT } from "components/paint/PaintComponent";
+import {
+  getGridPos,
+  getMousePos,
+  getShapeFromPoint,
+  pointIndex,
+} from "utils/paint/basics";
 import Shape from "../Shape";
 
 const handleFirstClick = (event, state) => {

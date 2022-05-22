@@ -6,7 +6,7 @@ const Box = ({ image,image2, title, handleClick }) => {
     <div onMouseEnter={()=>{setTimeout(setHover(true),2000)}}
     onMouseLeave={()=>
       {setTimeout(setHover(false),2000)}}  className=" transition duration-700  hover:duration-1000 z-50 bg-whiteL  overflow-hidden border-2 border-jeune
-     w-52  hover:scale-125  h-64  rounded-xl cursor-pointer" onClick={handleClick}>
+         w-52  hover:scale-125  h-64  rounded-xl cursor-pointer" onClick={handleClick}>
       <p className="  mt-1.5 text-center text-xl  ">
           {title}
         </p>

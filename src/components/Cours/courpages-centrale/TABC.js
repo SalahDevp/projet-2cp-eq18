@@ -1,13 +1,24 @@
 import React from 'react'
-
+import { useTranslation } from "react-i18next";
+import { useState, useEffect } from "react";
+import i18n from "utils/translation/i18n";
 const TBMC = () => {
+
+const { i18n } = useTranslation();
+const [fr, setFR] = useState(true);
+
+useEffect(() => {
+  if (i18n.language === "ar") {
+    setFR(false);
+  }
+}, [i18n.language]);
   return (
     <div>
-        <div  className='ml-6'>
+       {fr? <div  className='ml-6'>
         <h1 className='text-nav text-center text-5xl font-bold'>Symétrie centrale</h1>
-        <h2 className='mt-7 text-nav  text-4xl font-bold' >TABLE DE MATIÈRE</h2>
-        <p  className='mt-4 text-2xl font-semibold' >I  . Figures symétriques par rapport à un point  ........................ 1</p> 
-        <p className='text-xl  mt-3 font-semibold'>II . Propriétés de la symétrie centrale  .................................... 2</p>
+        <h2 className='mt-8 text-nav  text-4xl font-bold' >TABLE DE MATIÈRE</h2>
+        <p  className='mt-7 text-2xl font-semibold' >I  . Figures symétriques par rapport à un point  ........................ 1</p> 
+        <p className='text-xl  mt-5 font-semibold'>II . Propriétés de la symétrie centrale  .............................................................. 2</p>
         <p className='text-xl mt-4  font-medium'>1) Symétrique d'un point </p>
         <p className='text-xl ml-8 mt-1 font-medium'>............................................................................................... 3</p>
         <p className='text-xl  mt-1 font-medium'>2) Symétrie d’un segment</p>    
@@ -16,9 +27,28 @@ const TBMC = () => {
         <p className='text-xl ml-8 mt-1 font-medium'>    ................................................................................................9</p>                                                                                    
         <p className='text-xl  mt-1 font-medium'>4) Symétrie d’un cercle   </p>         
         <p  className='text-xl ml-8 mt-1  font-medium'>   ...............................................................................................12</p>                                                                                      
-        <p className='text-xl  mt-4 font-semibold'> III . Centre de symétrie    ....................................................... 10 </p>
+        <p className='text-xl  mt-4 font-semibold'> III . Centre de symétrie    ........................................................................................ 10 </p>
+
+        </div>: 
+        <div dir="rtl"  className='mr-6'>
+        <h1 className='text-nav text-center text-5xl font-bold'>التناظر المركزي</h1>
+        <h2 className='mt-8 text-nav  text-4xl font-bold' >  الفهرس </h2>
+        <p  className='mt-7 text-2xl font-semibold' > I  . أشكال متناظرة بالنسبة الى نقطة ..................................................1</p> 
+        <p className='text-xl  mt-5 font-semibold'>II .  خصائص التناظر المركزي ................................................................................... 2</p>
+        <p className='text-xl mt-4  font-medium'>1)  نظير نقطة </p>
+        <p className='text-xl ml-8 mt-1 font-medium'>............................................................................................... 3</p>
+        <p className='text-xl  mt-1 font-medium'>2)  نظير قطعة مستقيمة</p>    
+        <p className='text-xl ml-8 mt-1  font-medium'>............................................................................................... 7</p>                                                                                     
+        <p className='text-xl  mt-1 font-medium'>3)  نظير مستقيم    </p>       
+        <p className='text-xl ml-8 mt-1 font-medium'>    ................................................................................................ 9</p>                                                                                    
+        <p className='text-xl  mt-1 font-medium'>4)  نظير الدائرة
+   </p>         
+        <p  className='text-xl ml-8 mt-1  font-medium'>   ............................................................................................... 12</p>                                                                                      
+        <p className='text-xl  mt-4 font-semibold'> III .  مركز التناظر
+ ..................................................................................................... 10 </p>
 
         </div>
+        }
     </div>
   )
 }

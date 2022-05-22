@@ -1,6 +1,33 @@
-import Canvas from "components/paint/Canvas";
-import React, { useRef, useEffect, useState } from "react";
-import { clearCanvas, drawLine } from "utils/paint/basics";
+import React, { useEffect, useRef } from "react";
+import sortir from "assets/Grille/sortir.png";
+import first from "assets/Grille/1.png";
+import second from "assets/Grille/2.png";
+import third from "assets/Grille/3.png";
+import fourth from "assets/Grille/4.png";
+import fifth from "assets/Grille/5.png";
+import sixth from "assets/Grille/6.png";
+import seventh from "assets/Grille/7.png";
+import eighth from "assets/Grille/8.png";
+import I1 from "assets/Grille/iconsovert/I1.png";
+import I2 from "assets/Grille/iconsovert/I2.png";
+import I3 from "assets/Grille/iconsovert/I3.png";
+import P1 from "assets/Grille/iconsovert/hexagone.png";
+import P2 from "assets/Grille/iconsovert/pentagone.png";
+import P3 from "assets/Grille/iconsovert/Rectangle.png";
+import P4 from "assets/Grille/iconsovert/Rhombus.png";
+import P5 from "assets/Grille/iconsovert/triangle.png";
+import SC from "assets/Grille/iconsovert/SC.png";
+import SAV from "assets/Grille/iconsovert/SAV.png";
+import SAH from "assets/Grille/iconsovert/SAH.png";
+//exo questions
+import submitBtn from "assets/exercices/submitBtn.png";
+import greenArrow from "assets/exercices/green-arrow.png";
+import redArrow from "assets/exercices/red-arrow.png";
+//
+import dossier from "components/nouveau-protype-component/dossier-ouvert .png";
+import sauvgarde from "components/nouveau-protype-component/sauvgarde.png";
+import NAV from "components/Nav";
+import { useState } from "react";
 //actions
 import * as drawShape from "utils/paint/actions/drawShape";
 import * as movePoint from "utils/paint/actions/movePoint";
@@ -16,90 +43,394 @@ import * as drawRectangle from "utils/paint/actions/drawRectangle";
 import * as drawLosange from "utils/paint/actions/drawLosange";
 import * as drawHexa from "utils/paint/actions/drawHexa";
 import * as eraseLine from "utils/paint/actions/eraseLine";
-import * as symetrieAxiale from "utils/paint/actions/symetireAxiale";
+import * as symetrieAxialeHorizontal from "utils/paint/actions/symetrieAxialeHorizontal";
+import * as symetrieAxialeVertical from "utils/paint/actions/symetrieAxialeVertical";
+import PaintComponent from "components/paint/PaintComponent";
+import Shape from "utils/paint/Shape";
+import SimpleBtn from "components/paint/SimpleBtn";
+import MenuBtn from "components/paint/MenuBtn";
+import { checkSameShape } from "utils/paint/geometry";
+import checkSymetrieCentral from "utils/paint/checkSymetrieCentral";
+import { Navigate, useNavigate, useSearchParams } from "react-router-dom";
+import { generateSymetrieCentrale } from "utils/paint/symetrie";
 
-// WIDTH and HEIGHT have to be equal
-export const HEIGHT = 700,
-  WIDTH = 700,
-  UNIT = 20;
+const [RED, GREEN, BLUE, YELLOW, ORANGE, PURPLE] = [
+  "#FF0000",
+  "#00FF00",
+  "#0000FF",
+  "#FFFF00",
+  "#FFA500",
+  "#800080",
+];
+
+const MAXQST = 2;
 
 const Paint = () => {
-  const [drawing, setDrawing] = useState(false);
+  //get params
+  const [searchParams, setSearchParams] = useSearchParams(); //contains exoMode:bool qstNum
+  const navigate = useNavigate();
+  //icons
+  const [icons5, setIcons5] = useState(false);
+  const [icons1, setIcons1] = useState(false);
+  const [icons2, setIcons2] = useState(false);
+  const [icons3, setIcons3] = useState(false);
+  const [icons4, setIcons4] = useState(false);
+  //paint state
   const [shapes, setShapes] = useState([]);
-  const [current, setCurrent] = useState({});
-  const [line, setLine] = useState();
-  //action type
   const [actionType, setActionType] = useState();
-  const canvasRef = useRef(null);
+  const [bucketColor, setBucketColor] = useState(RED);
+  //exo mode
+  const [exoMode, setExoMode] = useState(false);
+  const [exoShapes, setExoShapes] = useState([]);
+  const [exoSymetrieMode, setExoSymetrieMode] = useState(""); // centrale | axiale-horizentale| axiale-verticale
+  const [submitted, setSubmitted] = useState(false);
+  const [rightAnswer, setRightAnswer] = useState(true);
 
-  const state = {
-    drawing,
-    setDrawing,
-    shapes,
-    setShapes,
-    current,
-    setCurrent,
-    line,
-    setLine,
-    canvasRef,
-    actionType,
+  //ref
+  const paintRef = useRef(null);
+  //funcs
+  const saveDrawing = () => {
+    window.electronAPI.savePaintDrawing(JSON.stringify(shapes));
   };
-
-  const handleClear = () => {
-    const context = canvasRef.current.getContext("2d");
-    clearCanvas(context, WIDTH, HEIGHT, UNIT);
-    setShapes([]);
-    setLine({});
-    setCurrent({});
+  //
+  const getDrawing = async () => {
+    const shapesStr = await window.electronAPI.getPaintDrawing();
+    const shapesArr = JSON.parse(shapesStr);
+    const newShapes = shapesArr.map((shape) => {
+      const newShape = new Shape();
+      newShape.points = shape.points;
+      newShape.color = shape.color;
+      newShape.polygone = shape.polygone;
+      return newShape;
+    });
+    console.log(newShapes);
+    setShapes(newShapes);
   };
-
+  //close all menu's
+  const closeAll = () => {
+    setIcons1(false);
+    setIcons2(false);
+    setIcons3(false);
+    setIcons4(false);
+    setIcons5(false);
+  };
+  //handlers
+  const handleSubmit = () => {
+    let res;
+    //if user hasn't draw any shape exit fnc
+    if (shapes.length === 0) return;
+    //
+    closeAll(); //close all menus
+    setSubmitted(true);
+    //check if answer is correct
+    if (exoSymetrieMode === "centrale")
+      res = checkSymetrieCentral(exoShapes, shapes);
+    //if correct
+    if (res) setRightAnswer(true);
+    //if wrong
+    else setRightAnswer(false);
+    //generate correct shapes
+    let correctShapes = [];
+    if (exoSymetrieMode === "centrale")
+      correctShapes = exoShapes.map((shape) => generateSymetrieCentrale(shape));
+    //make shapes stroke color green
+    correctShapes.forEach((shape) => (shape.strokeStyle = GREEN));
+    //add them to shapes array
+    setShapes((prv) => [...prv, ...correctShapes]);
+  };
+  const handleNext = () => {
+    const qstNum = parseInt(searchParams.get("qstNum"));
+    navigate(`/paint?exoMode=true&qstNum=${qstNum < MAXQST ? qstNum + 1 : 1}`);
+    paintRef.current?.handleClear();
+    setSubmitted(false);
+  };
+  //exo mode
   useEffect(() => {
-    const context = canvasRef.current.getContext("2d");
-    clearCanvas(context, WIDTH, HEIGHT, UNIT);
-    shapes.forEach((shape) => shape.draw(context));
-    if (line?.x1) drawLine(context, line);
-  }, [shapes, line, drawing]);
+    const exo = searchParams.get("exoMode") === "true";
+    setExoMode(exo);
+    if (!exo) return;
+    const qstNum = parseInt(searchParams.get("qstNum"));
+    (async () => {
+      try {
+        const qstObj = await window.electronAPI.getPaintExoQst(qstNum);
+        const newExoShapes = qstObj.exoShapes.map((shape) => {
+          const newShape = new Shape();
+          newShape.points = shape.points;
+          newShape.polygone = shape.polygone;
+          newShape.color = shape.color;
+          return newShape;
+        });
+        setExoShapes(newExoShapes);
+        setExoSymetrieMode(qstObj.mode);
+      } catch (e) {
+        console.error(e);
+      }
+    })();
+  }, [searchParams]);
   return (
-    <div className="w-screen h-screen flex">
-      <Canvas
-        canvasRef={canvasRef}
-        width={WIDTH}
-        height={HEIGHT}
-        onMouseDown={(event) => actionType?.handleMouseDown?.(event, state)}
-        onMouseMove={(event) => actionType?.handleMouseMove?.(event, state)}
-        onMouseUp={(event) => actionType?.handleMouseUp?.(event, state)}
-        onClick={(event) => actionType?.handleClick?.(event, state)}
+    <div className="relative flex justify-between overflow-hidden bg-white h-screen w-screen">
+      <NAV
+        pathAvant="/"
+        image1={!exoMode && dossier}
+        image2={!exoMode && sauvgarde}
+        saveDrawing={saveDrawing}
+        getDrawing={getDrawing}
       />
-      <div className="grid grid-cols-5 gap-2" style={{ width: WIDTH }}>
-        <button onClick={handleClear}>clear</button>
-        <button onClick={() => setActionType(undefined)}>hand</button>
-        <button onClick={() => setActionType(drawShape)}>draw shape</button>
+      <PaintComponent
+        actionType={actionType}
+        bucketColor={bucketColor}
+        shapes={shapes}
+        setShapes={setShapes}
+        exoShapes={exoShapes}
+        symetrieCentraleMode={actionType === symetrieCentrale || exoMode}
+        symetrieAxialeHorizontalMode={actionType === symetrieAxialeHorizontal}
+        symetrieAxialeVerticalMode={actionType === symetrieAxialeVertical}
+        ref={paintRef}
+        exoMode={exoMode}
+        submitted={submitted}
+        rightAnswer={rightAnswer}
+      />
+      <div
+        className="py-3 border-l-2 border-violet rounded-l-2xlh-screen w-20 bg-marron
+            flex flex-col items-center justify-between"
+      >
+        <img className="cursor-pointer mt-1 h-14 w-14" src={sortir} alt="" />
+        <SimpleBtn
+          src={first}
+          submitted={submitted}
+          closeAll={closeAll}
+          action={undefined}
+          setActionType={setActionType}
+        />
+        <SimpleBtn
+          src={second}
+          submitted={submitted}
+          closeAll={closeAll}
+          action={drawShape}
+          setActionType={setActionType}
+        />
+        <MenuBtn
+          submitted={submitted}
+          src={third}
+          closeAll={closeAll}
+          opened={icons1}
+          setOpened={setIcons1}
+        >
+          <SimpleBtn
+            src={I1}
+            small
+            action={movePoint}
+            setActionType={setActionType}
+            closeAll={closeAll}
+          />
+          <SimpleBtn
+            src={I2}
+            small
+            action={moveShape}
+            setActionType={setActionType}
+            closeAll={closeAll}
+          />
+        </MenuBtn>
 
-        <button onClick={() => setActionType(movePoint)}>move point</button>
-        <button onClick={() => setActionType(moveShape)}>move shape</button>
+        <MenuBtn
+          submitted={submitted}
+          src={fourth}
+          closeAll={closeAll}
+          opened={icons2}
+          setOpened={setIcons2}
+        >
+          <SimpleBtn
+            src={I2}
+            small
+            action={supprimerPoly}
+            setActionType={setActionType}
+            closeAll={closeAll}
+          />
+          <SimpleBtn
+            src={second}
+            small
+            action={eraseLine}
+            setActionType={setActionType}
+            closeAll={closeAll}
+          />
+          <SimpleBtn
+            src={I1}
+            small
+            action={erasePoint}
+            setActionType={setActionType}
+            closeAll={closeAll}
+          />
+          <SimpleBtn
+            src={I3}
+            small
+            action={paintRef.current?.handleClear}
+            setActionType={setActionType}
+            closeAll={closeAll}
+          />
+        </MenuBtn>
+        <MenuBtn
+          src={fifth}
+          submitted={submitted}
+          closeAll={closeAll}
+          opened={icons3}
+          setOpened={setIcons3}
+        >
+          <SimpleBtn
+            src={P1}
+            small
+            action={drawHexa}
+            setActionType={setActionType}
+            closeAll={closeAll}
+          />
+          <SimpleBtn
+            src={P2}
+            small
+            action={drawPentagon}
+            setActionType={setActionType}
+            closeAll={closeAll}
+          />
+          <SimpleBtn
+            src={P3}
+            small
+            action={drawRectangle}
+            setActionType={setActionType}
+            closeAll={closeAll}
+          />
+          <SimpleBtn
+            src={P4}
+            small
+            action={drawLosange}
+            setActionType={setActionType}
+            closeAll={closeAll}
+          />
+          <SimpleBtn
+            src={P5}
+            small
+            action={drawTriangle}
+            setActionType={setActionType}
+            closeAll={closeAll}
+          />
+        </MenuBtn>
 
-        <button onClick={() => setActionType(drawTriangle)}>triangle</button>
-        <button onClick={() => setActionType(drawRectangle)}>rectangle</button>
-        <button onClick={() => setActionType(drawLosange)}>losange</button>
-        <button onClick={() => setActionType(drawHexa)}>hexagone</button>
-        <button onClick={() => setActionType(drawPentagon)}>pentagon</button>
+        <MenuBtn
+          src={sixth}
+          submitted={submitted}
+          closeAll={closeAll}
+          opened={icons4}
+          setOpened={setIcons4}
+        >
+          <div className="flex flex-col h-24 justify-between">
+            <div
+              onClick={() => {
+                setActionType(paintBucket);
+                setBucketColor(RED);
+              }}
+              className="bg-[#FF0000] cursor-pointer rounded-full h-10 w-10"
+            ></div>
+            <div
+              onClick={() => {
+                setActionType(paintBucket);
+                setBucketColor(BLUE);
+              }}
+              className="bg-[#0000FF] cursor-pointer rounded-full h-10 w-10"
+            ></div>
+          </div>
 
-        <button onClick={() => setActionType(paintBucket)}>bucket</button>
+          <div className="flex flex-col h-24 justify-between">
+            <div
+              onClick={() => {
+                setActionType(paintBucket);
+                setBucketColor(GREEN);
+              }}
+              className="bg-[#00FF00] cursor-pointer rounded-full h-10 w-10"
+            ></div>
+            <div
+              onClick={() => {
+                setActionType(paintBucket);
+                setBucketColor(YELLOW);
+              }}
+              className="bg-[#FFFF00] cursor-pointer rounded-full h-10 w-10"
+            ></div>
+          </div>
 
-        <button onClick={() => setActionType(symetrieCentrale)}>
-          symetrie centrale
-        </button>
-        <button onClick={() => setActionType(symetrieAxiale)}>
-          symetireAxiale
-        </button>
+          <div className="flex flex-col h-24 justify-between">
+            <div
+              onClick={() => {
+                setActionType(paintBucket);
+                setBucketColor(ORANGE);
+              }}
+              className="bg-[#FFA500] cursor-pointer rounded-full h-10 w-10"
+            ></div>
+            <div
+              onClick={() => {
+                setActionType(paintBucket);
+                setBucketColor(PURPLE);
+              }}
+              className="bg-[#800080] cursor-pointer rounded-full h-10 w-10"
+            ></div>
+          </div>
+        </MenuBtn>
 
-        <button onClick={() => setActionType(supprimerPoly)}>
-          delete polygone
-        </button>
-        <button onClick={() => setActionType(erasePoint)}>delete point</button>
-        <button onClick={() => setActionType(eraseLine)}>delete line</button>
+        <SimpleBtn
+          src={seventh}
+          submitted={submitted}
+          action={rotation}
+          setActionType={setActionType}
+          closeAll={closeAll}
+        />
 
-        <button onClick={() => setActionType(rotation)}>rotation</button>
+        {!exoMode && (
+          <div dir="rtl" className="flex flex-row justify-between ">
+            <img
+              className="cursor-pointer h-16 w-14"
+              src={eighth}
+              alt=""
+              onClick={() => {
+                closeAll();
+                if (!icons5) setIcons5(true);
+              }}
+            />
+            {icons5 && (
+              <div
+                className="p-1 px-1 w-44 rounded-xl justify-between  flex items-center flex-row bg-marron
+                             mt-1 mr-20 absolute   "
+              >
+                <img
+                  onClick={() => setActionType(symetrieCentrale)}
+                  className="cursor-pointer h-12 w-12"
+                  src={SC}
+                  alt=""
+                />
+                <img
+                  onClick={() => setActionType(symetrieAxialeVertical)}
+                  className="cursor-pointer h-12 w-12"
+                  src={SAV}
+                  alt=""
+                />
+                <img
+                  onClick={() => setActionType(symetrieAxialeHorizontal)}
+                  className="cursor-pointer h-12 w-12"
+                  src={SAH}
+                  alt=""
+                />
+              </div>
+            )}
+          </div>
+        )}
+        {exoMode &&
+          (!submitted ? (
+            <button onClick={handleSubmit}>
+              <img src={submitBtn} alt="" className="h-14 w-14" />
+            </button>
+          ) : (
+            <button onClick={handleNext}>
+              <img
+                src={rightAnswer ? greenArrow : redArrow}
+                alt=""
+                className="h-14 w-14"
+              />
+            </button>
+          ))}
       </div>
     </div>
   );
