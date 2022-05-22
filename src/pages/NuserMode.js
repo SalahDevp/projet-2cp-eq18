@@ -49,7 +49,7 @@ const NUserMode = () => {
   function nanaSE() {
     const divT = document.getElementById("teacher");
     const divS = document.getElementById("student");
-    const studentALL = document.getElementById("SALL");
+    const studentALL = document.getElementById("studentALL");
     studentALL.style.display = "inline";
     divT.style.display = "none";
     divS.style.display = "none";
@@ -57,8 +57,9 @@ const NUserMode = () => {
   function nanaSL() {
     const divT = document.getElementById("teacher");
     const divS = document.getElementById("student");
-    const studentALL = document.getElementById("SALL");
+    const studentALL = document.getElementById("studentALL");
     studentALL.style.display = "none";
+
     divT.style.display = "inline";
 
     divS.style.display = "inline";
@@ -96,7 +97,7 @@ const NUserMode = () => {
           {/* div for teacher */}
           <div
             id="teacher"
-            className="cursor-pointer overflow-hidden pt-2 pb-12 px-4 border-px border-gray-500 w-52 rounded-xl h-full"
+            className=" cursor-pointer overflow-hidden pt-2 pb-12 px-4 border-px border-gray-500 w-52 rounded-xl h-full"
             onMouseEnter={nanaTE}
           >
             <p className="text-center text-2xl">{t("teacher")}</p>
@@ -115,7 +116,7 @@ const NUserMode = () => {
 
           <div
             id="teacherALL"
-            className="cursor-pointer px-4 py-2   hidden overflow-hidden border-px border-gray-500 w-full rounded-xl"
+            className="  cursor-pointer px-4 py-2  hidden overflow-hidden border-px border-gray-500 w-full rounded-xl"
             onMouseLeave={nanaTL}
             onClick={() => navigate("/TeacherPassword")}
           >
@@ -126,8 +127,8 @@ const NUserMode = () => {
           </div>
 
           <div
-            id="SALL"
-            className="cursor-pointer px-4 pt-2 hidden overflow-hidden border-px border-gray-500 w-full rounded-xl"
+            id="studentALL"
+            className=" cursor-pointer px-4 pt-2 hidden overflow-hidden border-px border-gray-500 w-full rounded-xl"
             onMouseLeave={nanaSL}
             onClick={handleStudentMode}
           >

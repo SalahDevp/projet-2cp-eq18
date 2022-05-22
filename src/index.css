@@ -12,6 +12,7 @@ body {
   grid-template-rows: 80% 20%;
   overflow: hidden;
 }
+
 #addwait {
   transition: dispaly 3s ease-out;
   display: inline;

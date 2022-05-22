@@ -1,19 +1,35 @@
 import React from "react";
 import video3 from "assets/cour/Video/3_droite.mp4";
-
+import { useTranslation } from "react-i18next";
+import { useState, useEffect } from "react";
+import i18n from "utils/translation/i18n";
 const Courp7 = () => {
+  //
+  const { i18n } = useTranslation();
+  const [fr, setFR] = useState(true);
+
+  useEffect(() => {
+    if (i18n.language === "ar") {
+      setFR(false);
+    }
+  }, [i18n.language]);
+//
   return (
     <div>
-      <h1 className="underline decoration-solid text-2xl font-bold">
+      {fr?<h1 className="underline decoration-solid text-2xl font-bold">
         Procédé de construction :{" "}
-      </h1>
-      <div className="ml-6 mt-2">
-        <p className="text-xl font-normal">
+      </h1>:<h1 dir="rtl" className="underline decoration-solid text-2xl font-bold">
+      طريقة الانشاء :
+        </h1> }
+      <div className={fr? "ml-6 mt-2": "mr-6 mt-2" }>
+       {fr ? <p className="text-xl font-normal">
           Pour tracer le symétrique d'une droite{" "}
           <span className="text-ltr-cr">(AB)</span> par rapport au point{" "}
           <span className="text-ltr-cr">O</span> :
-        </p>
-        <ul className="ml-10 text-xl font-normal list-disc">
+        </p> : <p dir="rtl" className="text-xl font-normal">
+        لانشاء نظير المستقيم  <span className="text-ltr-cr">(AB)</span> بالنسبة الى النقطة<span className="text-ltr-cr"> O </span>  :
+        </p> }
+        {fr?<ul className="ml-10 text-xl font-normal list-disc">
           <li>
             on trace les symétriques des points{" "}
             <span className="text-ltr-cr">A</span> et{" "}
@@ -31,7 +47,18 @@ const Courp7 = () => {
             on n'oublie pas de coder la figure (nommer les points) et on laisse
             les traits de construction.
           </li>
-        </ul>
+        </ul> :  
+          <ul dir="rtl" className="ml-10 text-xl font-normal list-disc">
+          <li>
+          نرسم نظائر النقط <span className="text-ltr-cr">A</span> و <span className="text-ltr-cr">B</span> بالنسبة الى النقطة <span className="text-ltr-cr">O</span> ونسميهم <span className="text-ltr-cr">'A</span> و <span className="text-ltr-cr">'B</span> (  اذا لم تظهر النقاط على المستقيم بامكاننا تعيينهم) .
+          </li>
+          <li>
+          نرسم بعدها المستقيم <span className="text-ltr-cr">('A'B)</span>.
+          </li>
+          <li>
+          لا ننسى تسمية النقاط و ترك خطوط الانشاء.
+          </li>
+        </ul> }
       </div>
       <div className="mt-10 flex justify-center">
         <video
