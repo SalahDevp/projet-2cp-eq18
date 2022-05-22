@@ -10,7 +10,15 @@ const Canvas = ({
   rightAnswer,
 }) => {
   return (
-    <div className="border-4 border-nav inline-block h-fit">
+    <div
+      className={`border-4 ${
+        !submitted
+          ? "border-nav"
+          : rightAnswer
+          ? "border-green-400"
+          : "border-red-400"
+      } inline-block h-fit`}
+    >
       <canvas
         className={
           !submitted ? "bg-white" : rightAnswer ? "bg-green-100" : "bg-red-50"

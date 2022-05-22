@@ -1,22 +1,12 @@
 import React, { Children } from "react";
 
-const MenuBtn = ({
-  src,
-  action,
-  submitted,
-  setActionType,
-  closeAll,
-  opened,
-  setOpened,
-  children,
-}) => {
+const MenuBtn = ({ src, submitted, closeAll, opened, setOpened, children }) => {
   const childrenCount = Children.count(children);
   return (
     <div dir="rtl" className="flex flex-row justify-between ">
       <button
         disabled={submitted}
         onClick={() => {
-          if (action) setActionType(action);
           closeAll();
           if (!opened) setOpened(true);
         }}

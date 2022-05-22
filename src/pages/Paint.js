@@ -312,57 +312,65 @@ const Paint = () => {
           />
         </MenuBtn>
 
-        <div dir="rtl" className="flex flex-row justify-between ">
-          <img
-            className="cursor-pointer h-16 w-14"
-            src={sixth}
-            alt=""
-            onClick={() => {
-              setActionType(paintBucket);
-              closeAll();
-              if (!icons4) setIcons4(true);
-            }}
-          />
-          {icons4 && (
+        <MenuBtn
+          src={sixth}
+          submitted={submitted}
+          closeAll={closeAll}
+          opened={icons4}
+          setOpened={setIcons4}
+        >
+          <div className="flex flex-col h-24 justify-between">
             <div
-              className="p-0.5 px-1 w-48 h-28 border-2 border-violet rounded-xl flex flex-row justify-between  items-center  bg-marron
-                             mt-1 mr-20 absolute   "
-            >
-              <div className="flex flex-col h-24 justify-between">
-                <div
-                  onClick={() => setBucketColor(RED)}
-                  className="bg-[#FF0000] cursor-pointer rounded-full h-10 w-10"
-                ></div>
-                <div
-                  onClick={() => setBucketColor(BLUE)}
-                  className="bg-[#0000FF] cursor-pointer rounded-full h-10 w-10"
-                ></div>
-              </div>
+              onClick={() => {
+                setActionType(paintBucket);
+                setBucketColor(RED);
+              }}
+              className="bg-[#FF0000] cursor-pointer rounded-full h-10 w-10"
+            ></div>
+            <div
+              onClick={() => {
+                setActionType(paintBucket);
+                setBucketColor(BLUE);
+              }}
+              className="bg-[#0000FF] cursor-pointer rounded-full h-10 w-10"
+            ></div>
+          </div>
 
-              <div className="flex flex-col h-24 justify-between">
-                <div
-                  onClick={() => setBucketColor(GREEN)}
-                  className="bg-[#00FF00] cursor-pointer rounded-full h-10 w-10"
-                ></div>
-                <div
-                  onClick={() => setBucketColor(YELLOW)}
-                  className="bg-[#FFFF00] cursor-pointer rounded-full h-10 w-10"
-                ></div>
-              </div>
+          <div className="flex flex-col h-24 justify-between">
+            <div
+              onClick={() => {
+                setActionType(paintBucket);
+                setBucketColor(GREEN);
+              }}
+              className="bg-[#00FF00] cursor-pointer rounded-full h-10 w-10"
+            ></div>
+            <div
+              onClick={() => {
+                setActionType(paintBucket);
+                setBucketColor(YELLOW);
+              }}
+              className="bg-[#FFFF00] cursor-pointer rounded-full h-10 w-10"
+            ></div>
+          </div>
 
-              <div className="flex flex-col h-24 justify-between">
-                <div
-                  onClick={() => setBucketColor(ORANGE)}
-                  className="bg-[#FFA500] cursor-pointer rounded-full h-10 w-10"
-                ></div>
-                <div
-                  onClick={() => setBucketColor(PURPLE)}
-                  className="bg-[#800080] cursor-pointer rounded-full h-10 w-10"
-                ></div>
-              </div>
-            </div>
-          )}
-        </div>
+          <div className="flex flex-col h-24 justify-between">
+            <div
+              onClick={() => {
+                setActionType(paintBucket);
+                setBucketColor(ORANGE);
+              }}
+              className="bg-[#FFA500] cursor-pointer rounded-full h-10 w-10"
+            ></div>
+            <div
+              onClick={() => {
+                setActionType(paintBucket);
+                setBucketColor(PURPLE);
+              }}
+              className="bg-[#800080] cursor-pointer rounded-full h-10 w-10"
+            ></div>
+          </div>
+        </MenuBtn>
+
         <SimpleBtn
           src={seventh}
           submitted={submitted}
