@@ -33,7 +33,6 @@ const EditCour = () => {
   //to insert an image
   const getImage = (file) =>
     new Promise((resolve, reject) => {
-      console.log(file);
       const url = "file://" + file.path;
       resolve({
         data: {

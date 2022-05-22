@@ -16,7 +16,6 @@ const TeacherPassword = () => {
     //check if the password is correct
     if (password === storedPassword) {
       setTeacherMode(true);
-      console.log("success!");
       //navigate to menu
       navigate("/menu");
     } else {

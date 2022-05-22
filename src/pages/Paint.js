@@ -52,7 +52,13 @@ import MenuBtn from "components/paint/MenuBtn";
 import { checkSameShape } from "utils/paint/geometry";
 import checkSymetrieCentral from "utils/paint/checkSymetrieCentral";
 import { Navigate, useNavigate, useSearchParams } from "react-router-dom";
-import { generateSymetrieCentrale } from "utils/paint/symetrie";
+import {
+  generateSymetrieAxialeH,
+  generateSymetrieAxialeV,
+  generateSymetrieCentrale,
+} from "utils/paint/symetrie";
+import { checkSymetrieAxialeHorizontal } from "utils/paint/checkSymetrieAxialH";
+import { checkSymetrieAxialeVertical } from "utils/paint/checkSymetrieAxialV";
 
 const [RED, GREEN, BLUE, YELLOW, ORANGE, PURPLE] = [
   "#FF0000",
@@ -103,7 +109,6 @@ const Paint = () => {
       newShape.polygone = shape.polygone;
       return newShape;
     });
-    console.log(newShapes);
     setShapes(newShapes);
   };
   //close all menu's
@@ -125,6 +130,10 @@ const Paint = () => {
     //check if answer is correct
     if (exoSymetrieMode === "centrale")
       res = checkSymetrieCentral(exoShapes, shapes);
+    else if (exoSymetrieMode === "axiale-horizentale")
+      res = checkSymetrieAxialeHorizontal(exoShapes, shapes);
+    else if (exoSymetrieMode === "axiale-verticale")
+      res = checkSymetrieAxialeVertical(exoShapes, shapes);
     //if correct
     if (res) setRightAnswer(true);
     //if wrong
@@ -133,6 +142,11 @@ const Paint = () => {
     let correctShapes = [];
     if (exoSymetrieMode === "centrale")
       correctShapes = exoShapes.map((shape) => generateSymetrieCentrale(shape));
+    else if (exoSymetrieMode === "axiale-horizentale")
+      correctShapes = exoShapes.map((shape) => generateSymetrieAxialeH(shape));
+    else if (exoSymetrieMode === "axiale-verticale")
+      correctShapes = exoShapes.map((shape) => generateSymetrieAxialeV(shape));
+
     //make shapes stroke color green
     correctShapes.forEach((shape) => (shape.strokeStyle = GREEN));
     //add them to shapes array
@@ -182,9 +196,17 @@ const Paint = () => {
         shapes={shapes}
         setShapes={setShapes}
         exoShapes={exoShapes}
-        symetrieCentraleMode={actionType === symetrieCentrale || exoMode}
-        symetrieAxialeHorizontalMode={actionType === symetrieAxialeHorizontal}
-        symetrieAxialeVerticalMode={actionType === symetrieAxialeVertical}
+        symetrieCentraleMode={
+          actionType === symetrieCentrale || exoSymetrieMode === "centrale"
+        }
+        symetrieAxialeHorizontalMode={
+          actionType === symetrieAxialeHorizontal ||
+          exoSymetrieMode === "axiale-horizentale"
+        }
+        symetrieAxialeVerticalMode={
+          actionType === symetrieAxialeVertical ||
+          exoSymetrieMode === "axiale-verticale"
+        }
         ref={paintRef}
         exoMode={exoMode}
         submitted={submitted}
