@@ -12,7 +12,7 @@ body {
   grid-template-rows: 80% 20%;
   overflow: hidden;
 }
-#addwait {
-  transition: dispaly 3s ease-out;
+/* #addwait {
+  transition: display 3s linear;
   display: inline;
-}
+} */

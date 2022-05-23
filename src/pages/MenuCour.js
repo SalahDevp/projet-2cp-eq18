@@ -6,8 +6,12 @@ import Nav from "components/Nav";
 import Sortir from "components/sortir";
 import Cercles from "components/cercles";
 import Pastilles from "components/Pastilles";
+import { useTranslation } from "react-i18next";
+
 const MenuCour = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
+
   const handleCentralMode = () => {
     navigate("/cour-centrale");
   };
@@ -31,8 +35,8 @@ const MenuCour = () => {
           onClick={handleCentralMode}
         >
           <p className=" text-xl text-center  ">
-            Symétrie <br />
-            centrale
+           {t("symetrie")} <br />
+           {t("centrale")}
           </p>
           <img className="pt-4  h-full w-full  " src={img1} alt="not found" />
         </div>
@@ -42,8 +46,8 @@ const MenuCour = () => {
           onClick={handleAxialeMode}
         >
           <p className=" text-xl text-center">
-            Symétrie
-            <br /> axiale
+          {t("symetrie")}
+            <br />  {t("axiale")}
           </p>
           <img className="pt-8   h-full w-full  " src={img2} alt="not found" />
         </div>
