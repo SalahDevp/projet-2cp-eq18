@@ -1,5 +1,6 @@
 import React from "react";
 import img1 from "assets/cour/P-axiale/p3.png";
+import img2 from "assets/cour/P-axiale/p3ar.png";
 
 import { useTranslation } from "react-i18next";
 import { useState, useEffect } from "react";
@@ -38,7 +39,7 @@ useEffect(() => {
     </div> }
 
       <div className="mt-20 flex justify-center">
-        <img className="h-60 w-98" src={img1} alt="" />
+        <img className="h-60 w-98" src={fr?img1:img2} alt="" />
       </div>
 
       {fr?<ul className="list-disc ml-10 mt-14 font-normal text-xl ">
