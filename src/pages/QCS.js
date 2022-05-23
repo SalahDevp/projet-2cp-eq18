@@ -107,7 +107,10 @@ const QCS = () => {
         <div>
           <img src={imageSrc} alt="" className="h-60 mt-8" />
         </div>
-        <form className="flex-grow w-4/5 grid grid-cols-2 place-items-start z-10 mt-4">
+        <form
+          dir={i18n.language === "fr" ? "ltr" : "rtl"}
+          className="flex-grow w-4/5 grid grid-cols-2 place-items-start z-10 mt-4"
+        >
           {options.map((opt, ind) => (
             <QCSOption
               text={opt.text}
@@ -118,19 +121,21 @@ const QCS = () => {
             />
           ))}
         </form>
-        {submitted ? (
-          <button className="translate-x-60" onClick={handleNext}>
-            <img
-              src={checkedOption === rightOption ? greenArrow : redArrow}
-              alt=""
-              className="h-14"
-            />
-          </button>
-        ) : (
-          <button className="translate-x-60" onClick={handleSubmit}>
-            <img className="h-14 w-14" src={submitBtn} alt="" />
-          </button>
-        )}
+        <div className="w-4/5 h-16 relative">
+          {submitted ? (
+            <button className="absolute top-0 right-0" onClick={handleNext}>
+              <img
+                src={checkedOption === rightOption ? greenArrow : redArrow}
+                alt=""
+                className="h-14"
+              />
+            </button>
+          ) : (
+            <button className="absolute top-0 right-0" onClick={handleSubmit}>
+              <img className="h-14 w-14" src={submitBtn} alt="" />
+            </button>
+          )}
+        </div>
         <img
           src={QCSImage}
           alt=""

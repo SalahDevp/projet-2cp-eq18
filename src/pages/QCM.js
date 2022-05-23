@@ -5,7 +5,7 @@ import greenArrow from "assets/exercices/green-arrow.png";
 import redArrow from "assets/exercices/red-arrow.png";
 import QCMImage from "assets/exercices/QCM-image.png";
 import QCMOption from "components/exercices/QCMOption";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 //translation
 import { useTranslation } from "react-i18next";
@@ -113,7 +113,10 @@ const QCM = () => {
         <div>
           <img src={imageSrc} alt="" className="h-60 mt-8" />
         </div>
-        <form className="flex-grow w-4/5 grid grid-cols-2 place-items-center z-10">
+        <form
+          dir={i18n.language === "fr" ? "ltr" : "rtl"}
+          className="flex-grow w-4/5 grid grid-cols-2 place-items-start z-10"
+        >
           {options.map((opt, ind) => (
             <QCMOption
               text={opt.text}
@@ -124,23 +127,25 @@ const QCM = () => {
             />
           ))}
         </form>
-        {submitted ? (
-          <button className="translate-x-60" onClick={handleNext}>
-            <img
-              src={
-                areSetsEqual(checkedOptions, rightOptions)
-                  ? greenArrow
-                  : redArrow
-              }
-              alt=""
-              className="h-14"
-            />
-          </button>
-        ) : (
-          <button className="translate-x-60" onClick={handleSubmit}>
-            <img className="h-14 w-14" src={submitBtn} alt="" />
-          </button>
-        )}
+        <div className="w-4/5 h-16 relative">
+          {submitted ? (
+            <button className="absolute top-0 right-0" onClick={handleNext}>
+              <img
+                src={
+                  areSetsEqual(checkedOptions, rightOptions)
+                    ? greenArrow
+                    : redArrow
+                }
+                alt=""
+                className="h-14"
+              />
+            </button>
+          ) : (
+            <button className="absolute top-0 right-0" onClick={handleSubmit}>
+              <img className="h-14 w-14" src={submitBtn} alt="" />
+            </button>
+          )}
+        </div>
         <img
           src={QCMImage}
           alt=""
