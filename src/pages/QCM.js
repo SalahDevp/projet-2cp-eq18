@@ -1,5 +1,4 @@
 import Nav from "components/Nav";
-import sortir from "../components/nouveau-protype-component/sortir.png";
 import submitBtn from "assets/exercices/submitBtn.png";
 import greenArrow from "assets/exercices/green-arrow.png";
 import redArrow from "assets/exercices/red-arrow.png";
@@ -11,6 +10,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 //audio
 import useAudio from "utils/exercices/useAudio";
+import Sortir from "components/sortir";
 
 const areSetsEqual = (a, b) =>
   a.size === b.size && [...a].every((value) => b.has(value));
@@ -93,11 +93,7 @@ const QCM = () => {
 
   return (
     <div className="bg-beige relative h-screen w-screen flex overflow-hidden">
-      <img
-        className="absolute top-9 right-10 h-11 w-11 "
-        src={sortir}
-        alt="sortir"
-      />
+      <Sortir />
       <Nav pathAvant={"/NMenu"} />
       <div
         className={`relative h-auto flex-grow border-2 rounded-3xl border-jeune mx-24 mt-20 mb-10 pb-6 pt-7 flex flex-col items-center ${
