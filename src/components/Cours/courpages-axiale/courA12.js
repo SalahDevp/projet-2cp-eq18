@@ -1,5 +1,6 @@
 import React from "react";
 import img1 from "assets/cour/P-axiale/p12.png";
+import img2 from "assets/cour/P-axiale/p12ar.png";
 
 import { useTranslation } from "react-i18next";
 import { useState, useEffect } from "react";
@@ -60,7 +61,7 @@ const CourA12 = () => {
         </ul>
       </div>}
       <div className="mt-10 flex justify-center">
-        <img className="h-64 w-328" src={img1} alt="" />
+        <img className="h-64 w-328" src={fr?img1:img2} alt="" />
       </div>
     </div>
   );
