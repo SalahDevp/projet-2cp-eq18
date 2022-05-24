@@ -1,0 +1,21 @@
+{
+    "question": { "fr": "Remarquez la forme et répondez ",
+        "ar":" لاحظ الشكل و أجب" 
+},
+"image": "question20.png",
+"options": {
+ "fr": [
+   "la symétrie de AHO par rapport à (EF) est EDO",
+   "la symétrie de BFO par rapport à O est EDO",
+   "la symétrie de EAHO par rapport à O est CFOG",
+   "le point O est le centre de symétrie de ABCD"
+ ],
+ "ar" : ["EDO هو (EF) بالنسبة الى AHO نظير  ",
+    " EDO هو O بالنسبة الى BFO نظير  ",
+     "CFOG هو O بالنسبة الى EAHO نظير ",
+    " ABCD هي مركز تناظر المربع O النقطة"
+ ]
+ 
+},
+"rightOptions": [ 2,3,4]  
+}

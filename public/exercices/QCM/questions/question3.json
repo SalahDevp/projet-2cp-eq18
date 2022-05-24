@@ -1,0 +1,22 @@
+{
+    "question": { "fr": " L'ordre de symétrie de rotation d'un cercle est",
+        "ar":"كم من محور تناظر تملك الدائرة" 
+},
+"image": "question3.png",
+"options": {
+ "fr": [
+   "1",
+   "plus que 2",
+   "4",
+   "infinie"
+ ],
+ "ar":[
+    "1",
+    " 2 أكثر من",
+    "4",
+    "مالانهاية"
+
+ ]
+},
+"rightOptions": [ 2, 4]
+}

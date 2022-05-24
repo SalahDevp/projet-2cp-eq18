@@ -5,11 +5,12 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useUserMode } from "AppContext";
-
-import sortir from "../components/nouveau-protype-component/sortir.png";
 import cadna from "../components/nouveau-protype-component/cadna.png";
 import i18n from "utils/translation/i18n";
 import ErrorMessage from "components/password/ErrorMessage";
+import Triangle from 'components/triangle';
+import Rectangle from 'components/rectabgle';
+import Sortir from "components/sortir";
 
 const NTeacherpassword = () => {
   //state
@@ -49,9 +50,7 @@ const NTeacherpassword = () => {
   const Routeur = () => {
     navigate("/userMode");
   };
-  const quit = () => {
-    window.close();
-  };
+ 
   return (
     <div className="bg-beige h-screen w-screen flex ">
       <div className="w-1/3 h-screen rounded-r-2xl bg-violet flex justify-center items-center">
@@ -65,12 +64,9 @@ const NTeacherpassword = () => {
       </div>
       <div className="relative bg-beige  w-2/3 h-screen flex justify-center items-center">
         <div className="left-1/3 absolute h-screen w-1 bg-v-clair z-0"></div>
-        <img
-          className="absolute top-9 right-10 h-11 w-11 "
-          src={sortir}
-          alt="sortir"
-          onClick={quit}
-        />
+        <Rectangle />
+        <Triangle />
+       <Sortir />
         <div
           className={`pb-14 pt-20 px-14  z-10 ${
             wrongPassword ? "bg-red-200" : "bg-white"

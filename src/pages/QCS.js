@@ -1,16 +1,16 @@
 import Nav from "components/Nav";
-import sortir from "../components/nouveau-protype-component/sortir.png";
 import submitBtn from "assets/exercices/submitBtn.png";
 import QCSImage from "assets/exercices/QCS-image.png";
 import greenArrow from "assets/exercices/green-arrow.png";
 import redArrow from "assets/exercices/red-arrow.png";
 import QCSOption from "components/exercices/QCSOption";
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 //translation
 import { useTranslation } from "react-i18next";
 //audio
 import useAudio from "utils/exercices/useAudio";
+import Sortir from "components/sortir";
 
 const QCS = () => {
   const maxQuestions = 20;
@@ -87,11 +87,7 @@ const QCS = () => {
 
   return (
     <div className="bg-beige relative h-screen w-screen flex overflow-hidden">
-      <img
-        className="absolute top-9 right-10 h-11 w-11 "
-        src={sortir}
-        alt="sortir"
-      />
+      <Sortir />
       <Nav pathAvant={"/NMenu"} />
       <div
         className={`relative h-auto flex-grow border-2 rounded-3xl border-jeune mx-24 mt-20 mb-10 pb-6 pt-7 flex flex-col items-center ${
@@ -107,7 +103,10 @@ const QCS = () => {
         <div>
           <img src={imageSrc} alt="" className="h-60 mt-8" />
         </div>
-        <form className="flex-grow w-4/5 grid grid-cols-2 place-items-start z-10 mt-4">
+        <form
+          dir={i18n.language === "fr" ? "ltr" : "rtl"}
+          className="flex-grow w-4/5 grid grid-cols-2 place-items-start z-10 mt-4"
+        >
           {options.map((opt, ind) => (
             <QCSOption
               text={opt.text}
@@ -118,19 +117,21 @@ const QCS = () => {
             />
           ))}
         </form>
-        {submitted ? (
-          <button className="translate-x-60" onClick={handleNext}>
-            <img
-              src={checkedOption === rightOption ? greenArrow : redArrow}
-              alt=""
-              className="h-14"
-            />
-          </button>
-        ) : (
-          <button className="translate-x-60" onClick={handleSubmit}>
-            <img className="h-14 w-14" src={submitBtn} alt="" />
-          </button>
-        )}
+        <div className="w-4/5 h-16 relative">
+          {submitted ? (
+            <button className="absolute top-0 right-0" onClick={handleNext}>
+              <img
+                src={checkedOption === rightOption ? greenArrow : redArrow}
+                alt=""
+                className="h-14"
+              />
+            </button>
+          ) : (
+            <button className="absolute top-0 right-0" onClick={handleSubmit}>
+              <img className="h-14 w-14" src={submitBtn} alt="" />
+            </button>
+          )}
+        </div>
         <img
           src={QCSImage}
           alt=""

@@ -1,0 +1,21 @@
+{
+    "question": { "fr": "Remarquez la forme et répondez ",
+        "ar":"لاحظ الشكل و أجب " 
+},
+"image": "question12.png",
+"options": {
+ "fr": [
+   "le point B est la symétrie de point A par rapport à O",
+   "le point D est la symétrie de point C par rapport à O",
+   "le segment [OC] est la symétrie de segment [AO]  par rapport à O",
+   "l'angle AoC est la symétrie d'angle AoD par rapport à O"
+ ],
+ "ar" : ["B هي O بالنسبة الى  A نظيرة",
+    "D هي O بالنسبة الى C نظيرة",
+     "[OC] هي O بالنسبة الى  [AO] نظيرة",
+    "AoD هي O بالنسبة الى  AoC نظيرة"
+ ]
+ 
+},
+"rightOptions": [ 1,2]  
+}

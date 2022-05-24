@@ -33,7 +33,7 @@ const CourCentrale = () => {
     <courPages.Courp10 />,
   ];
 
-  useRestorePage("cour-centrale", setCpt, teacherMode);
+  useRestorePage("cour-centrale", setCpt, teacherMode, i18n.language); //get the stored page num
   useEffect(() => {
     //async block
     (async () => {
@@ -50,15 +50,27 @@ const CourCentrale = () => {
   }, [rerender, i18n.language]);
 
   return (
-    <div className={cpt===0?"bg-beige h-screen flex flex-col":"bg-white h-screen flex flex-col"}>
+    <div
+      className={
+        cpt === 0
+          ? "bg-beige h-screen flex flex-col"
+          : "bg-white h-screen flex flex-col"
+      }
+    >
       {/*<Nav title="Cour" pathAvant="/Menu-Cour" />*/}
 
-      <div className="relative pl-20 pr-20 pt-5 pb-7 flex-grow">
+      <div className="relative pl-20 pr-20 pt-20 pb-7 flex-grow">
         <CourControls
           pagesLength={pages.length}
           cpt={cpt}
           setCpt={(value) =>
-            changeCpt("cour-centrale", value, setCpt, teacherMode)
+            changeCpt(
+              "cour-centrale",
+              value,
+              setCpt,
+              teacherMode,
+              i18n.language
+            )
           }
           type="centrale"
           defaultPagesLength={tab.length}

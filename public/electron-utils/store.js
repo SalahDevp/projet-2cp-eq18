@@ -13,15 +13,39 @@ const schema = {
   "cour-centrale": {
     type: "object",
     properties: {
-      teacher: { type: "number" },
-      student: { type: "number" },
+      teacher: {
+        type: "object",
+        properties: {
+          ar: { type: "number", default: 0 },
+          fr: { type: "number", default: 0 },
+        },
+      },
+      student: {
+        type: "object",
+        properties: {
+          ar: { type: "number", default: 0 },
+          fr: { type: "number", default: 0 },
+        },
+      },
     },
   },
   "cour-axiale": {
     type: "object",
     properties: {
-      teacher: { type: "number" },
-      student: { type: "number" },
+      teacher: {
+        type: "object",
+        properties: {
+          ar: { type: "number", default: 0 },
+          fr: { type: "number", default: 0 },
+        },
+      },
+      student: {
+        type: "object",
+        properties: {
+          ar: { type: "number", default: 0 },
+          fr: { type: "number", default: 0 },
+        },
+      },
     },
   },
   sound: {

@@ -1,22 +1,22 @@
 import Nav from "components/Nav";
-import sortir from "../components/nouveau-protype-component/sortir.png";
 import submitBtn from "assets/exercices/submitBtn.png";
 import greenArrow from "assets/exercices/green-arrow.png";
 import redArrow from "assets/exercices/red-arrow.png";
 import QCMImage from "assets/exercices/QCM-image.png";
 import QCMOption from "components/exercices/QCMOption";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 //translation
 import { useTranslation } from "react-i18next";
 //audio
 import useAudio from "utils/exercices/useAudio";
+import Sortir from "components/sortir";
 
 const areSetsEqual = (a, b) =>
   a.size === b.size && [...a].every((value) => b.has(value));
 
 const QCM = () => {
-  const maxQuestions = 1;
+  const maxQuestions = 20;
   //audio
   const [correctAudio, wrongAudio] = useAudio();
   //routing
@@ -93,11 +93,7 @@ const QCM = () => {
 
   return (
     <div className="bg-beige relative h-screen w-screen flex overflow-hidden">
-      <img
-        className="absolute top-9 right-10 h-11 w-11 "
-        src={sortir}
-        alt="sortir"
-      />
+      <Sortir />
       <Nav pathAvant={"/NMenu"} />
       <div
         className={`relative h-auto flex-grow border-2 rounded-3xl border-jeune mx-24 mt-20 mb-10 pb-6 pt-7 flex flex-col items-center ${
@@ -113,7 +109,10 @@ const QCM = () => {
         <div>
           <img src={imageSrc} alt="" className="h-60 mt-8" />
         </div>
-        <form className="flex-grow w-4/5 grid grid-cols-2 place-items-center z-10">
+        <form
+          dir={i18n.language === "fr" ? "ltr" : "rtl"}
+          className="flex-grow w-4/5 grid grid-cols-2 place-items-start z-10"
+        >
           {options.map((opt, ind) => (
             <QCMOption
               text={opt.text}
@@ -124,23 +123,25 @@ const QCM = () => {
             />
           ))}
         </form>
-        {submitted ? (
-          <button className="translate-x-60" onClick={handleNext}>
-            <img
-              src={
-                areSetsEqual(checkedOptions, rightOptions)
-                  ? greenArrow
-                  : redArrow
-              }
-              alt=""
-              className="h-14"
-            />
-          </button>
-        ) : (
-          <button className="translate-x-60" onClick={handleSubmit}>
-            <img className="h-14 w-14" src={submitBtn} alt="" />
-          </button>
-        )}
+        <div className="w-4/5 h-16 relative">
+          {submitted ? (
+            <button className="absolute top-0 right-0" onClick={handleNext}>
+              <img
+                src={
+                  areSetsEqual(checkedOptions, rightOptions)
+                    ? greenArrow
+                    : redArrow
+                }
+                alt=""
+                className="h-14"
+              />
+            </button>
+          ) : (
+            <button className="absolute top-0 right-0" onClick={handleSubmit}>
+              <img className="h-14 w-14" src={submitBtn} alt="" />
+            </button>
+          )}
+        </div>
         <img
           src={QCMImage}
           alt=""

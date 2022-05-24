@@ -1,0 +1,21 @@
+{
+    "question": { "fr": "soit [OZ] le bisstectrice de l'angle XoY ",
+        "ar":"لاحظ الشكل و أجب " 
+},
+"image": "question15.png",
+"options": {
+ "fr": [
+   "[OZ] est l'axe de symétrie de l'angle XoY",
+   "la symétrie de [oX] est [oY] par rapport à O",
+   "YoZ = XoZ",
+   "tous les points de [OZ] ont la meme distance par rapport a les segment [OX] et [OY]"
+ ],
+ "ar" : [" XoY هو محور تناظر للزاوية [OZ] ",
+    "  O بالنسبة الى الرأس [oY] نظير [oX] ",
+     "YoZ = XoZ",
+    "[OY] و[OX] متساوية المسافة عن الضلع [OZ] كل نقطة من "
+ ]
+ 
+},
+"rightOptions": [ 1,3,4]  
+}

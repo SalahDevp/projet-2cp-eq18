@@ -1,0 +1,21 @@
+{
+    "question": { "fr": "le point G est la symétrie de point H par rapport à E",
+        "ar":"E بالنسبة الى  H نظيرة G" 
+},
+"image": "question10.png",
+"options": {
+ "fr": [
+   "E est le Centre de symétrie du segment [HG]",
+   "E,H,G sont dans une meme ligne droite",
+   "G c'est le milieu de segment [EH]",
+   "[EH]=[EG]"
+ ],
+ "ar" : ["[HG] مركز تناظر القطعة E",
+    "نقط في استقامية E ,H ,G ",
+     "[EH] منتصف G",
+    "[EH]=[EG]"
+ ]
+ 
+},
+"rightOptions": [ 1,2,4]  
+}

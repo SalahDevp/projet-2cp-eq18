@@ -8,7 +8,7 @@ const MenuExo = () => {
       <button onClick={() => navigate("/qcs/1")}>QCS</button>
       <button onClick={() => navigate("/qcm/1")}>QCM</button>
       <button onClick={() => navigate("/image-qcm/1")}>IMAGE QCM</button>
-      <button onClick={() => navigate("/paint?exoMode=true&qstNum=2")}>
+      <button onClick={() => navigate("/paint?exoMode=true&qstNum=1")}>
         grille
       </button>
     </div>

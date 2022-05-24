@@ -37,7 +37,7 @@ const CourAxiale = () => {
     <courPages.CourA14 />,
     <courPages.CourA15 />,
   ];
-  useRestorePage("cour-axiale", setCpt, teacherMode);
+  useRestorePage("cour-axiale", setCpt, teacherMode, i18n.language); //get the stored page num
   useEffect(() => {
     //async block
     (async () => {
@@ -54,15 +54,21 @@ const CourAxiale = () => {
   }, [rerender, i18n.language]);
 
   return (
-    <div  className={cpt===0?"bg-beige h-screen flex flex-col":"bg-white h-screen flex flex-col"}>
+    <div
+      className={
+        cpt === 0
+          ? "bg-beige h-screen flex flex-col"
+          : "bg-white h-screen flex flex-col"
+      }
+    >
       {/* <Nav title="Cour" pathAvant="/Menu-Cour" /> */}
 
-      <div className="relative pl-20 pr-20 pt-5 pb-7 flex-grow">
+      <div className="relative pl-20 pr-20 pt-20 pb-7 flex-grow">
         <CourControls
           pagesLength={pages.length}
           cpt={cpt}
           setCpt={(value) =>
-            changeCpt("cour-axiale", value, setCpt, teacherMode)
+            changeCpt("cour-axiale", value, setCpt, teacherMode, i18n.language)
           }
           type="axiale"
           defaultPagesLength={tab.length}

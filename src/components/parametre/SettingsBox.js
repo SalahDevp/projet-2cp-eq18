@@ -120,7 +120,7 @@ const SettingsBox = () => {
             onClick={() => navigate("/NchangeTeacherPassword")}
             className="cursor-pointer font-bold text-xl text-settingsLightGreen mb-3"
           >
-            {t("changePassword")}
+            {t("password.change")}
           </p>
         )}
         <p

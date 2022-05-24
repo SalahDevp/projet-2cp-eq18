@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 //images
 import retour from "components/nouveau-protype-component/retour.png";
 import img1 from "components/nouveau-protype-component/paramatre.png";
-import sortir from "components/nouveau-protype-component/sortir.png";
 import SettingsBox from "components/parametre/SettingsBox";
+import Sortir from "components/sortir";
 
 const Paramatre = () => {
   const navigate = useNavigate();
@@ -28,12 +28,7 @@ const Paramatre = () => {
       </div>
       <div className="relative bg-beige  w-2/3 h-screen flex  items-center">
         <div className="left-1/3 absolute h-screen w-1 bg-v-clair z-0"></div>
-        <img
-          className="absolute top-9 right-10 h-11 w-11 "
-          src={sortir}
-          alt="sortir"
-          onClick={quit}
-        />
+        <Sortir />
         <SettingsBox />
       </div>
     </div>

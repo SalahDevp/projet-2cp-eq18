@@ -4,10 +4,10 @@
  * @param {number} value -value to setCpt with
  * @param {'cour-axiale'|'cour-centrale'} courseType
  */
-export default function changeCpt(courseType, value, setCpt, teacherMode) {
+export default function changeCpt(courseType, value, setCpt, teacherMode, lng) {
   //store cpt
   window.electronAPI.storeSet(
-    `${courseType}.${teacherMode ? "teacher" : "student"}`,
+    `${courseType}.${teacherMode ? "teacher" : "student"}.${lng}`,
     value
   );
   //set cpt

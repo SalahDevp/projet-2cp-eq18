@@ -142,10 +142,8 @@ export function checkSameShape(shape1, shape2) {
     arr2.pop();
   }
   j = arr2.findIndex((point) => point.x === arr1[0].x && point.y === arr1[0].y);
-  console.log(j);
   if (j === -1) return false; //no point is equal to shape1.points[0]
   rotateArr(arr2, j);
-  console.log(arr1, arr2);
   if (
     arr1.every(
       (point, ind) => point.x === arr2[ind].x && point.y === arr2[ind].y

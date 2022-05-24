@@ -1,0 +1,21 @@
+{
+    "question": { "fr": "Remarquez la forme et répondez ",
+        "ar":" لاحظ الشكل و أجب" 
+},
+"image": "question19.png",
+"options": {
+ "fr": [
+   "(d) est un axe de symétrie pour le rectangle ABCD",
+   "(BD) est un axe de symétrie pour le rectangle ABCD",
+   "(D) est un axe de symétrie pour le rectangle ABCD",
+   "la symétrie de ABCD par rapport à [BC] est lui-meme"
+ ],
+ "ar" : ["ABCD هو محور تناظر للمستطيل (d) ",
+    " ABCD هو محور تناظر للمستطيل (BD) ",
+     "ABCD هو محور تناظر للمستطيل (D)",
+    "هو نفسه [BC] بالنسبة الى ABCD نظير المستطيل"
+ ]
+ 
+},
+"rightOptions": [ 1,3]  
+}

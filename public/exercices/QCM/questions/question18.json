@@ -1,0 +1,21 @@
+{
+    "question": { "fr": "Remarquez la forme et répondez ",
+        "ar":" لاحظ الشكل و أجب" 
+},
+"image": "question18.png",
+"options": {
+ "fr": [
+   "la symétrie de A par rapport à (d) est A'",
+   "la symétrie de C' par rapport à O est D",
+   "la symétrie de B par rapport à O est D'",
+   "la symétrie de B' par rapport à O est C"
+ ],
+ "ar" : [" A' هي (d) بالنسبة الى  A نظيرة ",
+    " D هي O بالنسبة الى  C' نظيرة ",
+     "D' هي O بالنسبة الى  B نظيرة",
+    "C هي O بالنسبة الى  B' نظيرة"
+ ]
+ 
+},
+"rightOptions": [ 1,2,3]  
+}

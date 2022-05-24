@@ -19,6 +19,9 @@ i18n
           grid: "GRILLE", //la grille
           exercices: "EXERCICES",
           password: {
+            symetrie:"Symétrie",
+            axiale:"axiale",
+            centrale:"Centrale",
             password: "Mot de passe",
             current: " Mot de passe actuel : ",
             new: "Nouveau mot de passe :",
@@ -45,6 +48,9 @@ i18n
       },
       ar: {
         translation: {
+          symetrie:"التناظر",
+          axiale:"المحوري",
+          centrale:"المركزي",
           student: "تلميذ",
           teacher: "أستاذ",
           courses: "دروس",

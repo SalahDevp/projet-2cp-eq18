@@ -1,0 +1,21 @@
+{
+    "question": { "fr": "soit (O,I,J) un repère normé",
+        "ar":"معلم متعامد و متجانس (O,I,J)" 
+},
+"image": "question13.png",
+"options": {
+ "fr": [
+   "le point A' est la symétrie de point A par rapport à O",
+   "le point B' est la symétrie de point B par rapport à (x,x')",
+   "la droite (y,y') est un axe de symétrie de rectangle ABB'A'",
+   "le point A est la symétrie de point B par rapport à O"
+ ],
+ "ar" : ["A' هي O بالنسبة الى  A نظيرة",
+    "B هي O بالنسبة الى B' نظيرة",
+     "ABB'A' هو محور تناظر الرباعي (y,y') المستقيم",
+    "A هي O بالنسبة الى B نظيرة"
+ ]
+ 
+},
+"rightOptions": [ 1,2,3]  
+}

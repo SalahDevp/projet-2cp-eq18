@@ -1,0 +1,22 @@
+{
+    "question": { "fr": " soit ABC un Triangle ou tous ces segments sont égaux ",
+        "ar":"مثلث متقايس الاضلاع ABC" 
+},
+"image": "question6.png",
+"options": {
+ "fr": [
+   "Le centre de gravité de ABC est le centre de sa symétrie",
+   " le triangle ABC a trois axes de symétrie",
+   " L'axe des côtes [AB] n'inclut pas la tête C",
+   " L'axe des côtes [AC] comprend la tete B"
+ ],
+ "ar" : ["  هو مركز تناظره ABC مركز ثقل المثلث  ",
+    "   ثلاثة محاور تناظر ABC للمثلث  ",
+    " C لا يشمل الرأس  [AB] محور الضلع ",
+    " B يشمل الرأس [AC] محور الضلع"
+
+ ]
+ 
+},
+"rightOptions": [ 1,2 ,4]  
+}
