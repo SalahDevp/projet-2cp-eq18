@@ -37,7 +37,7 @@ const CourAxiale = () => {
     <courPages.CourA14 />,
     <courPages.CourA15 />,
   ];
-  useRestorePage("cour-axiale", setCpt, teacherMode);
+  useRestorePage("cour-axiale", setCpt, teacherMode, i18n.language); //get the stored page num
   useEffect(() => {
     //async block
     (async () => {
@@ -68,7 +68,7 @@ const CourAxiale = () => {
           pagesLength={pages.length}
           cpt={cpt}
           setCpt={(value) =>
-            changeCpt("cour-axiale", value, setCpt, teacherMode)
+            changeCpt("cour-axiale", value, setCpt, teacherMode, i18n.language)
           }
           type="axiale"
           defaultPagesLength={tab.length}

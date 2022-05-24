@@ -33,7 +33,7 @@ const CourCentrale = () => {
     <courPages.Courp10 />,
   ];
 
-  useRestorePage("cour-centrale", setCpt, teacherMode);
+  useRestorePage("cour-centrale", setCpt, teacherMode, i18n.language); //get the stored page num
   useEffect(() => {
     //async block
     (async () => {
@@ -64,7 +64,13 @@ const CourCentrale = () => {
           pagesLength={pages.length}
           cpt={cpt}
           setCpt={(value) =>
-            changeCpt("cour-centrale", value, setCpt, teacherMode)
+            changeCpt(
+              "cour-centrale",
+              value,
+              setCpt,
+              teacherMode,
+              i18n.language
+            )
           }
           type="centrale"
           defaultPagesLength={tab.length}

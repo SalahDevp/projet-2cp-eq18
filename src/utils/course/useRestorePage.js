@@ -5,9 +5,11 @@ import { useEffect } from "react";
  * @param {Function} setCpt
  * @returns
  */
-export default function useRestorePage(courseType, setCpt, teacherMode) {
+export default function useRestorePage(courseType, setCpt, teacherMode, lng) {
   return useEffect(() => {
-    const storeString = `${courseType}.${teacherMode ? "teacher" : "student"}`;
+    const storeString = `${courseType}.${
+      teacherMode ? "teacher" : "student"
+    }.${lng}`;
     //async bloc
     (async () => {
       try {
