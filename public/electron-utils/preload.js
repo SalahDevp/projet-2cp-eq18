@@ -11,6 +11,7 @@ const { initGetImageQCMQustionRender } = require("./ipc/getImageQCMQuestion");
 const { initSavePaintDrawingRender } = require("./ipc/savePaintDrawing");
 const { initGetPaintDrawingRender } = require("./ipc/getPaintDrawing");
 const { initGetPaintExoQstRender } = require("./ipc/getPaintExoQst");
+const { initAddPaintExoRender } = require("./ipc/addPaintExo");
 
 //load -store api- in window object
 contextBridge.exposeInMainWorld("electronAPI", {
@@ -24,4 +25,5 @@ contextBridge.exposeInMainWorld("electronAPI", {
   ...initSavePaintDrawingRender(),
   ...initGetPaintDrawingRender(),
   ...initGetPaintExoQstRender(),
+  ...initAddPaintExoRender(),
 });

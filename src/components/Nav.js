@@ -7,7 +7,15 @@ import { useNavigate } from "react-router-dom";
 import dossier from "../components/nouveau-protype-component/dossier-ouvert .png";
 import sauvgarde from "../components/nouveau-protype-component/sauvgarde.png";
 
-const Nav = ({ pathAvant, image1, image2, saveDrawing, getDrawing }) => {
+const Nav = ({
+  pathAvant,
+  image1,
+  image2,
+  image3,
+  saveDrawing,
+  getDrawing,
+  createExo,
+}) => {
   const navigate = useNavigate();
 
   const Routeur = () => {
@@ -49,6 +57,14 @@ const Nav = ({ pathAvant, image1, image2, saveDrawing, getDrawing }) => {
             src={image2}
             alt=""
             onClick={saveDrawing}
+          />
+        )}
+        {image3 && (
+          <img
+            className="mt-12 w-12 h-12 cursor-pointer"
+            src={image3}
+            alt=""
+            onClick={createExo}
           />
         )}
       </div>

@@ -15,10 +15,12 @@ export const handleClick = (event, state) => {
   if (shape) {
     if (!shape.polygone) {
       if (shape.points.length === 2) {
-        state.shapes.splice(
+        const newShapes = [...state.shapes];
+        newShapes.splice(
           state.shapes.findIndex((element) => element === shape),
           1
         );
+        state.setShapes(newShapes);
       } else if (firstPointInd === 0) shape.points.splice(0, 1);
       // first line in a multi-line
       else if (firstPointInd === shape.points.length - 2)

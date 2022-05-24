@@ -8,6 +8,7 @@ const { initGetImageQCMQustionMain } = require("./ipc/getImageQCMQuestion");
 const { initSavePaintDrawingMain } = require("./ipc/savePaintDrawing");
 const { initGetPaintDrawingMain } = require("./ipc/getPaintDrawing");
 const { initGetPaintExoQstMain } = require("./ipc/getPaintExoQst");
+const { initAddPaintExoMain } = require("./ipc/addPaintExo");
 
 function initIpcMain() {
   initStoreMain();
@@ -20,6 +21,7 @@ function initIpcMain() {
   initSavePaintDrawingMain();
   initGetPaintDrawingMain();
   initGetPaintExoQstMain();
+  initAddPaintExoMain();
 }
 
 module.exports = initIpcMain;

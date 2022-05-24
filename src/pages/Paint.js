@@ -26,6 +26,7 @@ import redArrow from "assets/exercices/red-arrow.png";
 //
 import dossier from "components/nouveau-protype-component/dossier-ouvert .png";
 import sauvgarde from "components/nouveau-protype-component/sauvgarde.png";
+import addIcon from "assets/cour/add.png";
 import NAV from "components/Nav";
 import { useState } from "react";
 //actions
@@ -59,6 +60,8 @@ import {
 } from "utils/paint/symetrie";
 import { checkSymetrieAxialeHorizontal } from "utils/paint/checkSymetrieAxialH";
 import { checkSymetrieAxialeVertical } from "utils/paint/checkSymetrieAxialV";
+import { useUserMode } from "AppContext";
+import AddExoDialogue from "components/paint/AddExoDialogue";
 
 const [RED, GREEN, BLUE, YELLOW, ORANGE, PURPLE] = [
   "#FF0000",
@@ -91,6 +94,10 @@ const Paint = () => {
   const [exoSymetrieMode, setExoSymetrieMode] = useState(""); // centrale | axiale-horizentale| axiale-verticale
   const [submitted, setSubmitted] = useState(false);
   const [rightAnswer, setRightAnswer] = useState(true);
+  //user mode
+  const { teacherMode } = useUserMode();
+  //add exo dialogue
+  const [dialogueOpened, setDialogueOpened] = useState(false);
 
   //ref
   const paintRef = useRef(null);
@@ -187,9 +194,14 @@ const Paint = () => {
         pathAvant="/"
         image1={!exoMode && dossier}
         image2={!exoMode && sauvgarde}
+        image3={!exoMode && teacherMode && shapes.length > 0 && addIcon}
         saveDrawing={saveDrawing}
         getDrawing={getDrawing}
+        createExo={() => setDialogueOpened(true)}
       />
+      {dialogueOpened && (
+        <AddExoDialogue setDialogueOpened={setDialogueOpened} shapes={shapes} />
+      )}
       <PaintComponent
         actionType={actionType}
         bucketColor={bucketColor}
