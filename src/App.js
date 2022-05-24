@@ -23,6 +23,7 @@ function App() {
         <Routes>
           <Route path="edit-cour/:type" element={<EditCour />} />
           <Route path="paint" element={<Paint />} />
+
           <Route path="/cour-centrale" element={<CourCentrale />} />
           <Route path="/cour-axiale" element={<CourAxiale />} />
           <Route path="lng" element={<Lngchoix />} />

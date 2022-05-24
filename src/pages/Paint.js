@@ -170,7 +170,7 @@ const Paint = () => {
   return (
     <div className="relative flex justify-between overflow-hidden bg-white h-screen w-screen">
       <NAV
-        pathAvant="/NMenu"
+        pathAvant="/"
         image1={!exoMode && dossier}
         image2={!exoMode && sauvgarde}
         saveDrawing={saveDrawing}
