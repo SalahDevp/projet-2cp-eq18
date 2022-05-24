@@ -15,6 +15,12 @@ module.exports = {
         99: "35rem",
         100: "33rem",
         "9/10": "90%",
+        "tr":"9%",
+        "rec":"13%",
+        "pstmode":"16%",
+        "pstmenu":"17%",
+        "cermode":"14%",
+        "cermenu":"15%"
       },
       colors: {
         box: "#B9FFFC",
