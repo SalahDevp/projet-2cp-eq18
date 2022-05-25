@@ -32,7 +32,7 @@ const MenuExo = () => {
 
                   </div>
                   </div>
-                  <div className="mt-56 overflow-hidden w-32 h-32 rounded-2xl border-4 border-jeune">
+                  <div className="mt-40 overflow-hidden w-32 h-32 rounded-2xl border-4 border-jeune">
                   <img className="w-full h-full" src={cadnaexo} alt="" />
 
                   </div>
