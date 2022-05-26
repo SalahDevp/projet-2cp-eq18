@@ -1,10 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Nav from "components/Nav";
-import start from "../components/nouveau-protype-component/start.png"
 import finish from "../components/nouveau-protype-component/finish.png"
 import cadnaexo from "../components/nouveau-protype-component/cadnaexo.png"
-
+import Nivstart from "components/Nivstart";
+import Nivend from "components/Nivend";
+import Niveau from "components/Niveau";
+import { useState,useEffect } from 'react';
+import Score from "components/Score";
 
 const MenuExo = () => {
   const navigate = useNavigate();
@@ -19,43 +22,31 @@ const MenuExo = () => {
     // </div>
     <div className="relative h-screen w-screen bg-beige">
               <Nav pathAvant="/NMenu" />
-               <div className="absolute top-20 right-80 ">
-                 <p className="text-3xl">score :</p>
-                 <img src="" alt="" />
-               </div>
+              <Score />
               <div className="absolute   top-1/2  left-1/2
-        -translate-x-1/2   -translate-y-1/2    flex flex-row justify-between w-3/4 h-auto ">
-                  <div className="mt-20 flex flex-col">
-                    <img className="w-24 h-24" src={start} alt="" />
-                  <div className="overflow-hidden  w-32 h-32 rounded-2xl border-4 border-jeune">
-                  <img className="w-full h-full" src={cadnaexo} alt="" />
+        -translate-x-1/2   -translate-y-1/4   flex flex-row justify-between w-3/4 h-auto ">
+               <div className="">
+               <Nivstart />
+               </div>
+                <div className="mt-48">
+                <Niveau enable={true} />
+                </div>
+                <div className="mt-24">
+                <Niveau enable={false} />
+                </div>
+                <div className="mt-48">
+                <Niveau enable={false} />
+                </div>
+                <div className="mt-24">
+                <Niveau enable={true} />
+                </div>
 
-                  </div>
-                  </div>
-                  <div className="mt-40 overflow-hidden w-32 h-32 rounded-2xl border-4 border-jeune">
-                  <img className="w-full h-full" src={cadnaexo} alt="" />
 
-                  </div>
-                  <div className="overflow-hidden w-32 h-32 rounded-2xl border-4 border-jeune">
-                  <img className="w-full h-full" src={cadnaexo} alt="" />
+                 <div className="-mt-20"> 
+                 <Nivend enable={false} />
 
-                  </div>
-                  <div className="overflow-hidden w-32 h-32 rounded-2xl border-4 border-jeune">
-                  <img className="w-full h-full" src={cadnaexo} alt="" />
-
-                  </div>
-                  <div className="overflow-hidden w-32 h-32 rounded-2xl border-4 border-jeune">
-                  <img className="w-full h-full" src={cadnaexo} alt="" />
-
-                  </div>
-
-                  <div className="flex flex-col">
-                  <img className="w-24 h-24" src={finish} alt="" />
-
-                  <div className=" overflow-hidden w-32 h-32 rounded-2xl border-4 border-jeune">
-                  <img className="w-full h-full"  src={cadnaexo} alt="" />
-                  </div>
-                  </div>
+                 </div>
+                 
                </div>
     </div>
   );
