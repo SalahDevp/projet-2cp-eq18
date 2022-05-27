@@ -62,6 +62,7 @@ import { checkSymetrieAxialeHorizontal } from "utils/paint/checkSymetrieAxialH";
 import { checkSymetrieAxialeVertical } from "utils/paint/checkSymetrieAxialV";
 import { useUserMode } from "AppContext";
 import AddExoDialogue from "components/paint/AddExoDialogue";
+import useAudio from "utils/exercices/useAudio";
 
 const [RED, GREEN, BLUE, YELLOW, ORANGE, PURPLE] = [
   "#FF0000",
@@ -78,6 +79,8 @@ const Paint = () => {
   //get params
   const [searchParams, setSearchParams] = useSearchParams(); //contains exoMode:bool qstNum
   const navigate = useNavigate();
+  //audio
+  const [correctAudio, wrongAudio] = useAudio();
   //icons
   const [icons5, setIcons5] = useState(false);
   const [icons1, setIcons1] = useState(false);
@@ -127,7 +130,7 @@ const Paint = () => {
     setIcons5(false);
   };
   //handlers
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     let res;
     //if user hasn't draw any shape exit fnc
     if (shapes.length === 0) return;
@@ -142,7 +145,10 @@ const Paint = () => {
     else if (exoSymetrieMode === "axiale-verticale")
       res = checkSymetrieAxialeVertical(exoShapes, shapes);
     //if correct
-    if (res) setRightAnswer(true);
+    if (res) {
+      setRightAnswer(true);
+      await correctAudio.current.play();
+    }
     //if wrong
     else {
       setRightAnswer(false);
@@ -150,6 +156,7 @@ const Paint = () => {
       shapes.forEach((shape) => {
         if (shape.strokeStyle !== GREEN) shape.strokeStyle = RED;
       });
+      await wrongAudio.current.play();
     }
     setShapes([...shapes]);
   };
