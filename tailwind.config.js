@@ -15,6 +15,7 @@ module.exports = {
         99: "35rem",
         100: "33rem",
         "9/10": "90%",
+        "1/5":"30%"
       },
       colors: {
         box: "#B9FFFC",

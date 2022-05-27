@@ -3,7 +3,7 @@ import finish from "../components/nouveau-protype-component/finish.png"
 import cadnaexo from "../components/nouveau-protype-component/cadnaexo.png"
 import Etoiles from './etoiles'
 
-const Nivend = ({enable}) => {
+const Nivend = ({enable,num}) => {
   return (
     <div className="flex flex-col">
     <img className="w-24 h-24" src={finish} alt="" />
@@ -13,7 +13,7 @@ const Nivend = ({enable}) => {
    <img className="w-full h-full"  src={enable===true? "":cadnaexo} alt="" />
        
    
-   { (enable===true)? <Etoiles num={3} /> :""}
+   { (enable===true)? <Etoiles num={num} /> :""}
     </div>
     </div>  )
 }
