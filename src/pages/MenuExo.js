@@ -22,7 +22,7 @@ const MenuExo = () => {
     <div className="relative h-screen w-screen bg-beige">
                   <div className="left-1/5  absolute h-screen w-1.5 bg-bleu -z-0"></div>
                     <Sortir />
-                    {/* rectangle */}
+                    {/* triangle */}
                     <div className='absolute  top-6 left-1/5 -translate-x-1/2'>
                         <img  className='w-96 h-tr' src={trngle} alt="" />
                    </div>
@@ -34,18 +34,24 @@ const MenuExo = () => {
              {/* les niveau */}
               <div className="absolute   top-1/2  left-1/2
                      -translate-x-1/2   -translate-y-1/4   flex flex-row justify-between w-3/4 h-auto ">
+             
+             
                <div className="">
                <Nivstart num={0} />
                </div>
+
                 <div className="mt-48">
                 <Niveau enable={true} num={0}/>
                 </div>
+
                 <div className="mt-24">
                 <Niveau enable={true} num={0} />
                 </div>
+
                 <div className="mt-48">
                 <Niveau enable={false} num={0} />
                 </div>
+
                 <div className="mt-24">
                 <Niveau enable={true} num={0} />
                 </div>
@@ -53,7 +59,6 @@ const MenuExo = () => {
 
                  <div className="-mt-20"> 
                  <Nivend enable={true} num={0} />
-
                  </div>
                  
                </div>
