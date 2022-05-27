@@ -144,20 +144,14 @@ const Paint = () => {
     //if correct
     if (res) setRightAnswer(true);
     //if wrong
-    else setRightAnswer(false);
-    //generate correct shapes
-    let correctShapes = [];
-    if (exoSymetrieMode === "centrale")
-      correctShapes = exoShapes.map((shape) => generateSymetrieCentrale(shape));
-    else if (exoSymetrieMode === "axiale-horizentale")
-      correctShapes = exoShapes.map((shape) => generateSymetrieAxialeH(shape));
-    else if (exoSymetrieMode === "axiale-verticale")
-      correctShapes = exoShapes.map((shape) => generateSymetrieAxialeV(shape));
-
-    //make shapes stroke color green
-    correctShapes.forEach((shape) => (shape.strokeStyle = GREEN));
-    //add them to shapes array
-    setShapes((prv) => [...prv, ...correctShapes]);
+    else {
+      setRightAnswer(false);
+      //set wrong shapes color to red
+      shapes.forEach((shape) => {
+        if (shape.strokeStyle !== GREEN) shape.strokeStyle = RED;
+      });
+    }
+    setShapes([...shapes]);
   };
   const handleNext = () => {
     const qstNum = parseInt(searchParams.get("qstNum"));

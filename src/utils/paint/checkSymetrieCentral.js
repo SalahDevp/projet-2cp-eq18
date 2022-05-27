@@ -1,9 +1,8 @@
-import { HEIGHT, WIDTH } from "components/paint/PaintComponent";
 import { checkSameShape } from "./geometry";
-import Shape from "./Shape";
 import { generateSymetrieCentrale } from "./symetrie";
 
 export default function checkSymetrieCentral(exoShapes, shapes) {
+  let res = true;
   if (shapes.length !== exoShapes.length) {
     return false;
   }
@@ -12,13 +11,19 @@ export default function checkSymetrieCentral(exoShapes, shapes) {
     const newShape = generateSymetrieCentrale(exoShapes[i]);
     for (let j = 0; j < exoShapes.length; j++) {
       if (checkSameShape(shapes[j], newShape)) {
+        shapes[j].strokeStyle = "#00FF00"; //make shape color green
         stop = true;
         break;
       }
     }
+    //no shape is symetrical to exoShape
     if (!stop) {
-      return false;
+      //generate the symetric of exoShape
+      const correctShape = generateSymetrieCentrale(exoShapes[i]);
+      correctShape.strokeStyle = "#00FF00";
+      shapes.push(correctShape);
+      res = false;
     }
   }
-  return true;
+  return res;
 }
