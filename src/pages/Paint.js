@@ -26,6 +26,7 @@ import redArrow from "assets/exercices/red-arrow.png";
 //
 import dossier from "components/nouveau-protype-component/dossier-ouvert .png";
 import sauvgarde from "components/nouveau-protype-component/sauvgarde.png";
+import addIcon from "assets/cour/add.png";
 import NAV from "components/Nav";
 import { useState } from "react";
 //actions
@@ -59,6 +60,9 @@ import {
 } from "utils/paint/symetrie";
 import { checkSymetrieAxialeHorizontal } from "utils/paint/checkSymetrieAxialH";
 import { checkSymetrieAxialeVertical } from "utils/paint/checkSymetrieAxialV";
+import { useUserMode } from "AppContext";
+import AddExoDialogue from "components/paint/AddExoDialogue";
+import useAudio from "utils/exercices/useAudio";
 
 const [RED, GREEN, BLUE, YELLOW, ORANGE, PURPLE] = [
   "#FF0000",
@@ -75,6 +79,8 @@ const Paint = () => {
   //get params
   const [searchParams, setSearchParams] = useSearchParams(); //contains exoMode:bool qstNum
   const navigate = useNavigate();
+  //audio
+  const [correctAudio, wrongAudio] = useAudio();
   //icons
   const [icons5, setIcons5] = useState(false);
   const [icons1, setIcons1] = useState(false);
@@ -91,6 +97,10 @@ const Paint = () => {
   const [exoSymetrieMode, setExoSymetrieMode] = useState(""); // centrale | axiale-horizentale| axiale-verticale
   const [submitted, setSubmitted] = useState(false);
   const [rightAnswer, setRightAnswer] = useState(true);
+  //user mode
+  const { teacherMode } = useUserMode();
+  //add exo dialogue
+  const [dialogueOpened, setDialogueOpened] = useState(false);
 
   //ref
   const paintRef = useRef(null);
@@ -120,7 +130,7 @@ const Paint = () => {
     setIcons5(false);
   };
   //handlers
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     let res;
     //if user hasn't draw any shape exit fnc
     if (shapes.length === 0) return;
@@ -135,22 +145,20 @@ const Paint = () => {
     else if (exoSymetrieMode === "axiale-verticale")
       res = checkSymetrieAxialeVertical(exoShapes, shapes);
     //if correct
-    if (res) setRightAnswer(true);
+    if (res) {
+      setRightAnswer(true);
+      await correctAudio.current.play();
+    }
     //if wrong
-    else setRightAnswer(false);
-    //generate correct shapes
-    let correctShapes = [];
-    if (exoSymetrieMode === "centrale")
-      correctShapes = exoShapes.map((shape) => generateSymetrieCentrale(shape));
-    else if (exoSymetrieMode === "axiale-horizentale")
-      correctShapes = exoShapes.map((shape) => generateSymetrieAxialeH(shape));
-    else if (exoSymetrieMode === "axiale-verticale")
-      correctShapes = exoShapes.map((shape) => generateSymetrieAxialeV(shape));
-
-    //make shapes stroke color green
-    correctShapes.forEach((shape) => (shape.strokeStyle = GREEN));
-    //add them to shapes array
-    setShapes((prv) => [...prv, ...correctShapes]);
+    else {
+      setRightAnswer(false);
+      //set wrong shapes color to red
+      shapes.forEach((shape) => {
+        if (shape.strokeStyle !== GREEN) shape.strokeStyle = RED;
+      });
+      await wrongAudio.current.play();
+    }
+    setShapes([...shapes]);
   };
   const handleNext = () => {
     const qstNum = parseInt(searchParams.get("qstNum"));
@@ -187,9 +195,14 @@ const Paint = () => {
         pathAvant="/"
         image1={!exoMode && dossier}
         image2={!exoMode && sauvgarde}
+        image3={!exoMode && teacherMode && shapes.length > 0 && addIcon}
         saveDrawing={saveDrawing}
         getDrawing={getDrawing}
+        createExo={() => setDialogueOpened(true)}
       />
+      {dialogueOpened && (
+        <AddExoDialogue setDialogueOpened={setDialogueOpened} shapes={shapes} />
+      )}
       <PaintComponent
         actionType={actionType}
         bucketColor={bucketColor}

@@ -11,10 +11,12 @@ export const handleClick = (event, state) => {
     //delete point form shape
     shape.points.splice(pointIndex, 1);
     if (shape.points.length === 1) {
-      state.shapes.splice(
+      const newShapes = [...state.shapes];
+      newShapes.splice(
         state.shapes.findIndex((element) => element === shape),
         1
       );
+      state.setShapes(newShapes);
     }
     if (shape.polygone) {
       if (pointIndex === 0 || pointIndex === shape.points.length - 1) {

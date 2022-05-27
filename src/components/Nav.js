@@ -4,10 +4,16 @@ import img2 from "../components/nouveau-protype-component/home.png";
 import img3 from "../components/nouveau-protype-component/param.png";
 import img4 from "../components/nouveau-protype-component/aide.png";
 import { useNavigate } from "react-router-dom";
-import dossier from "../components/nouveau-protype-component/dossier-ouvert .png";
-import sauvgarde from "../components/nouveau-protype-component/sauvgarde.png";
 
-const Nav = ({ pathAvant, image1, image2, saveDrawing, getDrawing }) => {
+const Nav = ({
+  pathAvant,
+  image1,
+  image2,
+  image3,
+  saveDrawing,
+  getDrawing,
+  createExo,
+}) => {
   const navigate = useNavigate();
 
   const Routeur = () => {
@@ -16,18 +22,20 @@ const Nav = ({ pathAvant, image1, image2, saveDrawing, getDrawing }) => {
 
   return (
     <div className="bg-violet relative rounded-r-2xl h-screen w-20 flex flex-col items-center      ">
-      <div className="mt-8 h-auto ">
+      <div className="mt-8 h-auto flex flex-col justify-between items-center">
+        {pathAvant && (
+          <img
+            className="w-11 h-11 cursor-pointer mb-10"
+            onClick={Routeur}
+            src={img1}
+            alt=""
+          />
+        )}
         <img
-          className="w-11 h-11 cursor-pointer "
-          onClick={Routeur}
-          src={img1}
-          alt=""
-        />
-        <img
-          className="mt-10 w-12 h-12  cursor-pointer"
+          className="w-12 h-12  cursor-pointer"
           src={img2}
           alt=""
-          onClick={() => navigate("/userMode")}
+          onClick={() => navigate("/NMenu")}
         />
         <img
           className="mt-12 w-14 h-14 cursor-pointer"
@@ -49,6 +57,14 @@ const Nav = ({ pathAvant, image1, image2, saveDrawing, getDrawing }) => {
             src={image2}
             alt=""
             onClick={saveDrawing}
+          />
+        )}
+        {image3 && (
+          <img
+            className="mt-12 w-12 h-12 cursor-pointer"
+            src={image3}
+            alt=""
+            onClick={createExo}
           />
         )}
       </div>

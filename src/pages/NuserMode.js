@@ -19,6 +19,7 @@ const NUserMode = () => {
   const { i18n } = useTranslation();
   const [fr, setFR] = useState(true);
   const { setTeacherMode } = useUserMode();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (i18n.language === "ar") {
@@ -66,17 +67,16 @@ const NUserMode = () => {
 
     divS.style.display = "inline";
   }
-  const navigate = useNavigate();
 
   const Routeur = () => {
-    navigate("/");
+    navigate(-1);
   };
   return (
     <div className="bg-beige h-screen w-screen flex">
       {/* coté violé */}
       <div className="relative overflow-hidden  w-1/3 h-screen rounded-r-2xl bg-violet flex justify-center items-center">
         <img
-          className="absolute top-9 left-10 h-10 w-10 "
+          className="cursor-pointer absolute top-9 left-10 h-10 w-10 "
           src={retour}
           alt=""
           onClick={Routeur}
@@ -89,7 +89,7 @@ const NUserMode = () => {
       </div>
       <div className=" relative w-2/3 h-screen flex justify-center items-center">
         <Pastilles />
-         <Ligne />
+        <Ligne />
         <Sortir />
         <Cercles />
 
