@@ -6,6 +6,7 @@ import Nivend from "components/Nivend";
 import Niveau from "components/Niveau";
 import Sortir from "components/sortir";
 import Cercles from "components/cercles";
+import trngle from "../components/nouveau-protype-component/triangle.png"
 
 const MenuExo = () => {
   const navigate = useNavigate();
@@ -21,12 +22,18 @@ const MenuExo = () => {
     <div className="relative h-screen w-screen bg-beige">
                   <div className="left-1/5  absolute h-screen w-1.5 bg-bleu -z-0"></div>
                     <Sortir />
-
+                    {/* rectangle */}
+                    <div className='absolute  top-6 left-1/5 -translate-x-1/2'>
+                        <img  className='w-96 h-tr' src={trngle} alt="" />
+                   </div>
+                   {/* cercles */}
                    <Cercles Menuexo={true} />
+                   {/* Nav */}
               <Nav pathAvant="/NMenu" />
-            
+             
+             {/* les niveau */}
               <div className="absolute   top-1/2  left-1/2
-        -translate-x-1/2   -translate-y-1/4   flex flex-row justify-between w-3/4 h-auto ">
+                     -translate-x-1/2   -translate-y-1/4   flex flex-row justify-between w-3/4 h-auto ">
                <div className="">
                <Nivstart num={0} />
                </div>
