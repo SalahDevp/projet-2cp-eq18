@@ -7,13 +7,13 @@ import i18n from "utils/translation/i18n";
 import { useTranslation } from "react-i18next";
 import { useState, useEffect } from "react";
 import ErrorMessage from "components/password/ErrorMessage";
-import img2 from "../components/nouveau-protype-component/ar.png"
-import Triangle from 'components/triangle';
-import Rectangle from 'components/rectabgle';
+import img2 from "../components/nouveau-protype-component/ar.png";
+import Triangle from "components/triangle";
+import Rectangle from "components/rectabgle";
 import Sortir from "components/sortir";
 const NchangeTeacherpassword = () => {
   const { i18n } = useTranslation();
-  
+
   //password states
   const [currentPass, setCurrentPass] = useState();
   const [newPass, setNewPass] = useState();
@@ -71,25 +71,25 @@ const NchangeTeacherpassword = () => {
   const navigate = useNavigate();
 
   const Routeur = () => {
-    navigate("/TeacherPassword");
+    navigate(-1);
   };
- 
+
   return (
     <div className="bg-beige h-screen w-screen flex ">
       <div className="w-1/3 h-screen rounded-r-2xl bg-violet flex justify-center items-center">
         <img
-          className="absolute top-9 left-10 h-10 w-10 "
+          className="cursor-pointer absolute top-9 left-10 h-10 w-10 "
           src={retour}
           alt=""
           onClick={Routeur}
         />
-        <img className="h-2/4 w-3/4" src={fr? img1: img2} alt="" />
+        <img className="h-2/4 w-3/4" src={fr ? img1 : img2} alt="" />
       </div>
       <div className="relative bg-beige  w-2/3 h-screen flex justify-center items-center">
         <div className="left-1/3 absolute h-screen w-1 bg-v-clair z-0"></div>
         <Rectangle />
         <Triangle />
-       
+
         <Sortir />
 
         <div className=" px-10 py-5  z-10 overflow-hidden bg-white shadow-md	 border-jeune border-2 border-solid w-98 rounded-3xl">

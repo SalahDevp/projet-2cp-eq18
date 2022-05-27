@@ -19,7 +19,7 @@ const Paramatre = () => {
     <div className="bg-beige h-screen w-screen flex ">
       <div className="w-1/3 h-screen rounded-r-2xl bg-violet flex justify-center items-center">
         <img
-          className="absolute top-9 left-10 h-10 w-10 "
+          className="cursor-pointer absolute top-9 left-10 h-10 w-10 "
           src={retour}
           alt=""
           onClick={Routeur}

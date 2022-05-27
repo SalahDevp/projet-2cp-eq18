@@ -57,8 +57,6 @@ const CourCentrale = () => {
           : "bg-white h-screen flex flex-col"
       }
     >
-      {/*<Nav title="Cour" pathAvant="/Menu-Cour" />*/}
-
       <div className="relative pl-20 pr-20 pt-20 pb-7 flex-grow">
         <CourControls
           pagesLength={pages.length}

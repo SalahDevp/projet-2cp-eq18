@@ -8,8 +8,8 @@ import { useUserMode } from "AppContext";
 import cadna from "../components/nouveau-protype-component/cadna.png";
 import i18n from "utils/translation/i18n";
 import ErrorMessage from "components/password/ErrorMessage";
-import Triangle from 'components/triangle';
-import Rectangle from 'components/rectabgle';
+import Triangle from "components/triangle";
+import Rectangle from "components/rectabgle";
 import Sortir from "components/sortir";
 
 const NTeacherpassword = () => {
@@ -48,14 +48,14 @@ const NTeacherpassword = () => {
   }, [i18n.language]);
 
   const Routeur = () => {
-    navigate("/userMode");
+    navigate(-1);
   };
- 
+
   return (
     <div className="bg-beige h-screen w-screen flex ">
       <div className="w-1/3 h-screen rounded-r-2xl bg-violet flex justify-center items-center">
         <img
-          className="absolute top-9 left-10 h-10 w-10 "
+          className="cursor-pointer absolute top-9 left-10 h-10 w-10 "
           src={retour}
           alt=""
           onClick={Routeur}
@@ -66,7 +66,7 @@ const NTeacherpassword = () => {
         <div className="left-1/3 absolute h-screen w-1 bg-v-clair z-0"></div>
         <Rectangle />
         <Triangle />
-       <Sortir />
+        <Sortir />
         <div
           className={`pb-14 pt-20 px-14  z-10 ${
             wrongPassword ? "bg-red-200" : "bg-white"

@@ -88,7 +88,7 @@ const ImageQCM = () => {
   return (
     <div className="bg-beige relative h-screen w-screen flex overflow-hidden">
       <Sortir />
-      <Nav pathAvant={"/NMenu"} />
+      <Nav pathAvant={"/menu-exo"} />
       <div
         className={`relative h-auto w-[1100px] border-2 rounded-3xl border-jeune ml-24 mt-16 mb-8 pb-6 pt-7 flex flex-col items-center ${
           !submitted

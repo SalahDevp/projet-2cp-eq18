@@ -28,7 +28,7 @@ const NMenu = () => {
       <div className="left-1/4 absolute h-screen w-1.5 bg-bleu z-0"></div>
       <Pastilles MenuPr={true} />
       <Cercles MenuPr={true} />
-      <Nav pathAvant="/userMode" />
+      <Nav />
       <div
         className="z-10   absolute  top-1/2  left-1/2
         -translate-x-1/2    -translate-y-1/2 mt-8   
