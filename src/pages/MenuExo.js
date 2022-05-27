@@ -4,6 +4,8 @@ import Nav from "components/Nav";
 import Nivstart from "components/Nivstart";
 import Nivend from "components/Nivend";
 import Niveau from "components/Niveau";
+import Sortir from "components/sortir";
+import Cercles from "components/cercles";
 
 const MenuExo = () => {
   const navigate = useNavigate();
@@ -18,8 +20,11 @@ const MenuExo = () => {
     // </div>
     <div className="relative h-screen w-screen bg-beige">
                   <div className="left-1/5  absolute h-screen w-1.5 bg-bleu -z-0"></div>
+                    <Sortir />
 
+                   <Cercles Menuexo={true} />
               <Nav pathAvant="/NMenu" />
+            
               <div className="absolute   top-1/2  left-1/2
         -translate-x-1/2   -translate-y-1/4   flex flex-row justify-between w-3/4 h-auto ">
                <div className="">
