@@ -54,10 +54,10 @@ const Courp9 = () => {
       </ul> 
         }
       </div>
-      <div className="mt-14 flex justify-center">
+      <div className="mt-32 flex justify-center">
         <video
-          width="500"
-          height="100"
+          width="550"
+          height="300"
           controls="controls"
           autoplay="true"
           src={video4}

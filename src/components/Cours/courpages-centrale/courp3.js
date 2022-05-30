@@ -64,8 +64,8 @@ const Courp3 = () => {
     </div> }
       <div className="mt-16 flex justify-center">
         <video
-          width="430"
-          height="90"
+          width="460"
+          height="110"
           controls="controls"
           autoplay="true"
           src={video1}

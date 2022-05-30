@@ -63,10 +63,10 @@ useEffect(() => {
         </li>
       </ul>
     </div>}
-      <div className="mt-24 flex justify-center">
+      <div className="mt-44 flex justify-center">
         <video
           width="500"
-          height="100"
+          height="200"
           controls="controls"
           autoplay="true"
           src={video2}
