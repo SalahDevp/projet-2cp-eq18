@@ -41,9 +41,9 @@ const CourControls = ({
     }, 3000);
   };
 
-  const handleDeletePage = () => {
+  const handleDeletePage = async () => {
     const pageNum = cpt - defaultPagesLength + 1;
-    window.electronAPI.deleteCoursePage(type, pageNum, i18n.language);
+    await window.electronAPI.deleteCoursePage(type, pageNum, i18n.language);
     setCpt(cpt - 1);
     setRerender((prv) => !prv);
   };

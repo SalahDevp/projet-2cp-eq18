@@ -50,14 +50,8 @@ import PaintComponent from "components/paint/PaintComponent";
 import Shape from "utils/paint/Shape";
 import SimpleBtn from "components/paint/SimpleBtn";
 import MenuBtn from "components/paint/MenuBtn";
-import { checkSameShape } from "utils/paint/geometry";
 import checkSymetrieCentral from "utils/paint/checkSymetrieCentral";
-import { Navigate, useNavigate, useSearchParams } from "react-router-dom";
-import {
-  generateSymetrieAxialeH,
-  generateSymetrieAxialeV,
-  generateSymetrieCentrale,
-} from "utils/paint/symetrie";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { checkSymetrieAxialeHorizontal } from "utils/paint/checkSymetrieAxialH";
 import { checkSymetrieAxialeVertical } from "utils/paint/checkSymetrieAxialV";
 import { useUserMode } from "AppContext";
@@ -76,15 +70,13 @@ const [RED, GREEN, BLUE, YELLOW, ORANGE, PURPLE] = [
   "#800080",
 ];
 
-const MAXQST = 2;
-
 const Paint = () => {
   //get params
   /*contains:
     if custom exo: exoMode, qstNum, cstmExo, maxQst  
     exoMode:bool, qstNum(qst num to get it from paint exo questions file), exoQstNum(the number of the question in the level), maxQst, level, corrAns
   */
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   //audio
   const [correctAudio, wrongAudio] = useAudio();

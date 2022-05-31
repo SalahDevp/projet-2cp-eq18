@@ -5,7 +5,7 @@ const sortPages = require("../sortPages");
 
 //returns pages absolute paths
 function initDeleteCoursePageMain() {
-  ipcMain.on(
+  ipcMain.handle(
     "delete-course-page",
     async (evnt, type, pageNum, language = "fr") => {
       const coursesDirPath = path.join(
@@ -24,7 +24,7 @@ function initDeleteCoursePageMain() {
         sortPages(files);
         //rename all next pages
         for (let i = pageNum - 1; i < files.length; i++) {
-          fs.promises.rename(
+          await fs.promises.rename(
             path.join(coursesDirPath, files[i]),
             path.join(coursesDirPath, `page${i + 1}.html`)
           );
@@ -39,7 +39,7 @@ function initDeleteCoursePageMain() {
 function initDeleteCoursePageRender() {
   return {
     deleteCoursePage: (type, pageNum, language) =>
-      ipcRenderer.send("delete-course-page", type, pageNum, language),
+      ipcRenderer.invoke("delete-course-page", type, pageNum, language),
   };
 }
 

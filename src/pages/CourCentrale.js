@@ -42,6 +42,7 @@ const CourCentrale = () => {
         "centrale",
         i18n.language
       );
+      console.log(customPagesPathes);
       const customPages = customPagesPathes.map((path) => (
         <CustomCourse path={path} />
       ));
