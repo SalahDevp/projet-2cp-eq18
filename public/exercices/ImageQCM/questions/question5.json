@@ -1,16 +1,34 @@
 {
-    "question": {
-        "fr": "Quelles figures représnetent une symétrie ?",
-        "ar": "اي مما يلي يمثل تناظرا؟"
+  "question": {
+    "fr": "Quelles figures représnetent une symétrie ?",
+    "ar": "اي مما يلي يمثل تناظرا؟"
+  },
+  "options": [
+    {
+      "image": "qst5-img1.png",
+      "text": { "fr": "Nébuleuse Oeil du chat", "ar": "سديم عين القط" }
     },
-    "options": [
-        { "image": "qst5-img1.png", "text": { "fr": "Nébuleuse Oeil du chat", "ar": "سديم عين القط" } },
-        { "image": "qst5-img2.png", "text": { "fr": "Astronaute", "ar": "رائد فضاء" } },
-        { "image": "qst5-img3.png", "text": { "fr": "Navette Spatiale", "ar": "مكوك فضائي" } },
-        { "image": "qst5-img4.png", "text": { "fr": "Trou Noir", "ar": "الثقب الأسود" } },
-        { "image": "qst5-img5.png", "text": { "fr": "Planète Mercure", "ar": "كوكب عطارد" } },
-        { "image": "qst5-img6.png", "text": { "fr": "Baudrier d'Orion", "ar": "نجوم الحزام" } }
-    ],
+    {
+      "image": "qst5-img2.png",
+      "text": { "fr": "Astronaute", "ar": "رائد فضاء" }
+    },
+    {
+      "image": "qst5-img3.png",
+      "text": { "fr": "Navette Spatiale", "ar": "مكوك فضائي" }
+    },
+    {
+      "image": "qst5-img4.png",
+      "text": { "fr": "Trou Noir", "ar": "الثقب الأسود" }
+    },
+    {
+      "image": "qst5-img5.png",
+      "text": { "fr": "Planète Mercure", "ar": "كوكب عطارد" }
+    },
+    {
+      "image": "qst5-img6.png",
+      "text": { "fr": "Baudrier d'Orion", "ar": "نجوم الحزام" }
+    }
+  ],
 
-    "rightOptions": [1, 2, 3, 4]
+  "rightOptions": [2, 3, 4]
 }
