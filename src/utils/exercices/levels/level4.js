@@ -10,5 +10,6 @@ const level4 = [
   "/qcm/13",
   "/image-qcm/12",
   "/qcs/8",
+  "/grille/4",
 ];
 export default level4;

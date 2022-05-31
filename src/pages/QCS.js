@@ -115,7 +115,7 @@ const QCS = () => {
       <Sortir />
       <Nav pathAvant={"/menu-exo"} />
       <div
-        className={`relative h-auto flex-grow border-2 rounded-3xl border-jeune mx-24 mt-20 mb-10 pb-6 pt-7 flex flex-col items-center ${
+        className={`relative h-auto w-[1100px] border-2 rounded-3xl border-jeune ml-24 mt-20 mb-10 pb-6 pt-7 flex flex-col items-center ${
           !submitted
             ? "bg-white"
             : checkedOption === rightOption

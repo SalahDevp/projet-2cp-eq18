@@ -37,6 +37,9 @@
     "electron:start": "wait-on tcp:3000 && electron ."
   },
   "build": {
+    "win":{
+      "icon":"build/icon.png"
+    },
     "extends": null,
     "appId": "projet.2cp.eq18",
     "files": [

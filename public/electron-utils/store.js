@@ -58,7 +58,7 @@ const schema = {
     type: "number",
     maximum: 1,
     minimum: 0,
-    default: 1,
+    default: 0.2,
   },
   exoScore: {
     type: "array",
