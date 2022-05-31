@@ -42,6 +42,7 @@ const AppContext = ({ children }) => {
   };
   //
   const changeExoScore = (level, correctAnswers, maxQst) => {
+    if (teacherMode) return;
     const score = Math.floor((correctAnswers / maxQst) * 3);
     if (score <= exoScore[level - 1]) return;
     const newScores = [...exoScore];

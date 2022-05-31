@@ -10,7 +10,6 @@ import start from "../components/nouveau-protype-component/start.png";
 import { useExoScore } from "AppContext";
 
 const MenuExo = () => {
-  const navigate = useNavigate();
   const { exoScore } = useExoScore();
   return (
     // <div className="w-screen flex justify-around">

@@ -3,6 +3,7 @@ import finish from "../components/nouveau-protype-component/finish.png";
 import cadnaexo from "../components/nouveau-protype-component/cadnaexo.png";
 import { useUserMode } from "AppContext";
 import { useNavigate } from "react-router-dom";
+import level6 from "assets/exercices/levels/level6.png";
 
 const Nivend = ({ enable }) => {
   const { teacherMode } = useUserMode();
@@ -28,12 +29,12 @@ const Nivend = ({ enable }) => {
 
       <div
         onClick={handleClick}
-        className={`z-50 bg-beige relative overflow-hidden w-36 h-48 rounded-2xl border-4 border-jeune ${
+        className={`z-50 bg-beige relative flex items-center justify-center overflow-hidden w-36 h-36 rounded-2xl border-4 border-jeune ${
           activated && "cursor-pointer"
         }`}
       >
         {/* { (enable===false)?<img className="w-full h-full"  src={cadnaexo} alt="" /> */}
-        <img className="w-full h-full" src={activated ? "" : cadnaexo} alt="" />
+        <img className="w-full" src={activated ? level6 : cadnaexo} alt="" />
       </div>
     </div>
   );
