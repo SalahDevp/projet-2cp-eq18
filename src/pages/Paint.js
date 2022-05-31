@@ -63,6 +63,9 @@ import { checkSymetrieAxialeVertical } from "utils/paint/checkSymetrieAxialV";
 import { useUserMode } from "AppContext";
 import AddExoDialogue from "components/paint/AddExoDialogue";
 import useAudio from "utils/exercices/useAudio";
+//levels
+import * as levels from "utils/exercices/levels";
+import { useExoScore } from "AppContext";
 
 const [RED, GREEN, BLUE, YELLOW, ORANGE, PURPLE] = [
   "#FF0000",
@@ -77,7 +80,11 @@ const MAXQST = 2;
 
 const Paint = () => {
   //get params
-  const [searchParams, setSearchParams] = useSearchParams(); //contains exoMode:bool qstNum
+  /*contains:
+    if custom exo: exoMode, qstNum, cstmExo, maxQst  
+    exoMode:bool, qstNum(qst num to get it from paint exo questions file), exoQstNum(the number of the question in the level), maxQst, level, corrAns
+  */
+  const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
   //audio
   const [correctAudio, wrongAudio] = useAudio();
@@ -101,6 +108,8 @@ const Paint = () => {
   const { teacherMode } = useUserMode();
   //add exo dialogue
   const [dialogueOpened, setDialogueOpened] = useState(false);
+  //score
+  const { setExoScore } = useExoScore();
 
   //ref
   const paintRef = useRef(null);
@@ -160,21 +169,46 @@ const Paint = () => {
     }
     setShapes([...shapes]);
   };
+  const handleLastNext = (cstmExo, level, correctAnswers, maxQst) => {
+    if (!cstmExo) setExoScore(level, correctAnswers, maxQst);
+    navigate("/menu-exo");
+  };
   const handleNext = () => {
-    const qstNum = parseInt(searchParams.get("qstNum"));
-    navigate(`/paint?exoMode=true&qstNum=${qstNum < MAXQST ? qstNum + 1 : 1}`);
-    paintRef.current?.handleClear();
-    setSubmitted(false);
+    const cstmExo = searchParams.get("cstmExo") === "true";
+    const level = searchParams.get("level");
+    const qstNum = parseInt(searchParams.get(cstmExo ? "qstNum" : "exoQstNum"));
+    const maxQst = parseInt(searchParams.get("maxQst"));
+    const correctAnswers =
+      parseInt(searchParams.get("corrAns")) + (rightAnswer ? 1 : 0);
+    if (qstNum !== maxQst) {
+      if (cstmExo) {
+        navigate(
+          `/paint?exoMode=true&qstNum=${
+            qstNum + 1
+          }&cstmExo=true&maxQst=${maxQst}`
+        );
+        paintRef.current?.handleClear();
+        setSubmitted(false);
+      } else {
+        const nextQuestion = levels["level" + level][qstNum];
+        navigate(
+          `${nextQuestion}?&maxQst=${maxQst}&qstNum=${
+            qstNum + 1
+          }&level=${level}&corrAns=${correctAnswers}`
+        );
+      }
+    } else handleLastNext(cstmExo, level, correctAnswers, maxQst);
   };
   //exo mode
   useEffect(() => {
     const exo = searchParams.get("exoMode") === "true";
+    const cstmExo = searchParams.get("cstmExo") === "true";
     setExoMode(exo);
     if (!exo) return;
     const qstNum = parseInt(searchParams.get("qstNum"));
     (async () => {
       try {
-        const qstObj = await window.electronAPI.getPaintExoQst(qstNum);
+        const qstObj = await window.electronAPI.getPaintExoQst(qstNum, cstmExo);
         const newExoShapes = qstObj.exoShapes.map((shape) => {
           const newShape = new Shape();
           newShape.points = shape.points;
@@ -192,7 +226,7 @@ const Paint = () => {
   return (
     <div className="relative flex justify-between overflow-hidden bg-white h-screen w-screen">
       <NAV
-        pathAvant="/"
+        pathAvant="/NMenu"
         image1={!exoMode && dossier}
         image2={!exoMode && sauvgarde}
         image3={!exoMode && teacherMode && shapes.length > 0 && addIcon}

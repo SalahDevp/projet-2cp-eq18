@@ -1,22 +1,13 @@
 {
-  "question": {
-    "fr": "Par une symétrie centrale, quel est le symétrique d'un segment ?",
-    "ar": "بواسطة التناظر المركزي ، ما هو تناظر القطعة؟"
-  },
-  "image": "question5.png",
-  "options": {
-    "fr": [
-      "Un segment qui lui est parallèle",
-      "Un segment qui lui est parallèle et de même mesure",
-      "Un segment qui lui est sécant",
-      "Un segment qui lui est perpendiculaire"
-    ],
-    "ar": [
-      "قطعة موازية لها",
-      "قطعة موازية لها ولها نفس المقياس",
-      "مقطع قاطع له",
-      "قطعة متعامدة عليها"
-    ]
-  },
-  "rightOptions": 2
-}
+    "question": {
+      "fr": "Par une symétrie centrale, quel est le symétrique d'un segment ?",
+      "ar": "بواسطة التناظر المركزي ، ما هو تناظر القطعة؟"
+    },
+    "image": "question5.png",
+    "options": {
+      "fr": ["Un segment qui lui est parallèle", "Un segment de même mesure", "Un segment qui lui est sécant", "Un segment qui lui est perpendiculaire"],
+      "ar": ["قطعة موازية لها", "قطعة من نفس المقياس", "مقطع قاطع له", "قطعة متعامدة عليها"]
+    },
+    "rightOptions": 2
+  }
+  

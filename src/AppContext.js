@@ -4,6 +4,7 @@ const languageContext = React.createContext();
 const userModeContext = React.createContext();
 const soundContext = React.createContext();
 const musicContext = React.createContext();
+const exoScoreContext = React.createContext();
 
 export function useLanguage() {
   return useContext(languageContext);
@@ -17,12 +18,16 @@ export function useSoundLevel() {
 export function useMusicLevel() {
   return useContext(musicContext);
 }
+export function useExoScore() {
+  return useContext(exoScoreContext);
+}
 
 const AppContext = ({ children }) => {
   const [language, setLanguage] = useState("fr");
   const [teacherMode, setTeacherMode] = useState(false);
   const [soundLevel, setSoundLevel] = useState(0);
   const [musicLevel, setMusicLevel] = useState(0);
+  const [exoScore, setExoScore] = useState([]);
   //funcs
   /**
    *
@@ -35,41 +40,60 @@ const AppContext = ({ children }) => {
     window.electronAPI.storeSet(type, value);
     setLevel(value);
   };
+  //
+  const changeExoScore = (level, correctAnswers, maxQst) => {
+    const score = Math.floor((correctAnswers / maxQst) * 3);
+    if (score <= exoScore[level - 1]) return;
+    const newScores = [...exoScore];
+    newScores[level - 1] = score;
+    window.electronAPI.storeSet("exoScore", newScores);
+    setExoScore(newScores);
+  };
   //get saved music and sound levels
   useEffect(() => {
     (async () => {
       try {
         const sound = await window.electronAPI.storeGet("sound");
         const music = await window.electronAPI.storeGet("music");
+        const score = await window.electronAPI.storeGet("exoScore");
         setSoundLevel(sound);
         setMusicLevel(music);
+        setExoScore(score);
       } catch (e) {
         console.error(e);
       }
     })();
-  });
+  }, []);
 
   return (
     <languageContext.Provider value={{ language, setLanguage }}>
-      <soundContext.Provider
+      <exoScoreContext.Provider
         value={{
-          soundLevel,
-          setSoundLevel: (value) =>
-            changeAudioLevel("sound", value, setSoundLevel),
+          exoScore,
+          setExoScore: (level, correctAnswers, maxQst) =>
+            changeExoScore(level, correctAnswers, maxQst),
         }}
       >
-        <musicContext.Provider
+        <soundContext.Provider
           value={{
-            musicLevel,
-            setMusicLevel: (value) =>
-              changeAudioLevel("music", value, setMusicLevel),
+            soundLevel,
+            setSoundLevel: (value) =>
+              changeAudioLevel("sound", value, setSoundLevel),
           }}
         >
-          <userModeContext.Provider value={{ teacherMode, setTeacherMode }}>
-            {children}
-          </userModeContext.Provider>
-        </musicContext.Provider>
-      </soundContext.Provider>
+          <musicContext.Provider
+            value={{
+              musicLevel,
+              setMusicLevel: (value) =>
+                changeAudioLevel("music", value, setMusicLevel),
+            }}
+          >
+            <userModeContext.Provider value={{ teacherMode, setTeacherMode }}>
+              {children}
+            </userModeContext.Provider>
+          </musicContext.Provider>
+        </soundContext.Provider>
+      </exoScoreContext.Provider>
     </languageContext.Provider>
   );
 };

@@ -21,7 +21,6 @@ module.exports = {
         pstmenu: "17%",
         cermode: "14%",
         cermenu: "15%",
-        "1/5": "30%",
       },
       colors: {
         box: "#B9FFFC",

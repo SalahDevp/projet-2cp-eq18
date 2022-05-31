@@ -5,30 +5,36 @@ import redArrow from "assets/exercices/red-arrow.png";
 import QCMImage from "assets/exercices/QCM-image.png";
 import QCMOption from "components/exercices/QCMOption";
 import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useSearchParams } from "react-router-dom";
 //translation
 import { useTranslation } from "react-i18next";
 //audio
 import useAudio from "utils/exercices/useAudio";
 import Sortir from "components/sortir";
+//levels
+import * as levels from "utils/exercices/levels";
+import { useExoScore } from "AppContext";
 
 const areSetsEqual = (a, b) =>
   a.size === b.size && [...a].every((value) => b.has(value));
 
 const QCM = () => {
-  const maxQuestions = 20;
   //audio
   const [correctAudio, wrongAudio] = useAudio();
   //routing
   const { num: questionNum } = useParams();
+  const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   //states
+  const [progIndicator, setProgIndicator] = useState(""); //the num shown in top left ex: 1/20
   const [question, setQuestion] = useState("");
   const [imageSrc, setImageSrc] = useState();
   const [options, setOptions] = useState([]);
   const [rightOptions, setRightOptions] = useState(new Set());
   const [checkedOptions, setCheckedOptions] = useState(new Set());
   const [submitted, setSubmitted] = useState(false);
+  //score
+  const { setExoScore } = useExoScore();
   //translation
   const { i18n } = useTranslation();
   //funcs
@@ -57,9 +63,25 @@ const QCM = () => {
     setOptions([...options]);
     setSubmitted(true);
   };
+  const handleLastNext = (level, correctAnswers, maxQst) => {
+    setExoScore(level, correctAnswers, maxQst);
+    navigate("/menu-exo");
+  };
   const handleNext = () => {
-    const nextQuestion = parseInt(questionNum) + 1;
-    navigate(`/qcm/${nextQuestion <= maxQuestions ? nextQuestion : 1}`);
+    const level = searchParams.get("level");
+    const qstNum = parseInt(searchParams.get("qstNum"));
+    const nextQuestion = levels["level" + level][qstNum];
+    const maxQst = parseInt(searchParams.get("maxQst"));
+    const correctAnswers =
+      parseInt(searchParams.get("corrAns")) +
+      (areSetsEqual(checkedOptions, rightOptions) ? 1 : 0);
+    if (qstNum !== maxQst)
+      navigate(
+        `${nextQuestion}?&maxQst=${maxQst}&qstNum=${
+          qstNum + 1
+        }&level=${level}&corrAns=${correctAnswers}`
+      );
+    else handleLastNext(level, correctAnswers, maxQst);
   };
   //
   useEffect(() => {
@@ -67,6 +89,10 @@ const QCM = () => {
     //load audio
     correctAudio.current.load();
     wrongAudio.current.load();
+    //progress
+    setProgIndicator(
+      `${searchParams.get("qstNum")}/${searchParams.get("maxQst")}`
+    );
     (async () => {
       try {
         questionObj = await window.electronAPI.getQuizQuestion(
@@ -104,7 +130,9 @@ const QCM = () => {
             : "bg-red-200"
         }`}
       >
-        <span className="font-bold text-2xl absolute top-1 right-4">{`${questionNum}/${maxQuestions}`}</span>
+        <span className="font-bold text-2xl absolute top-1 right-4">
+          {progIndicator}
+        </span>
         <div className="text-2xl font-bold text-center py-4">{question}</div>
         <div>
           <img src={imageSrc} alt="" className="h-60 mt-8" />
