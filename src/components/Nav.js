@@ -72,6 +72,7 @@ const Nav = ({
       <img
         className="w-12 h-12 absolute bottom-16  cursor-pointer"
         src={img4}
+        onClick={() => window.open("./help.pdf", "help")}
         alt=""
       />
     </div>

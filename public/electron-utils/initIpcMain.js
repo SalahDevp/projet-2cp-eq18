@@ -9,6 +9,7 @@ const { initSavePaintDrawingMain } = require("./ipc/savePaintDrawing");
 const { initGetPaintDrawingMain } = require("./ipc/getPaintDrawing");
 const { initGetPaintExoQstMain } = require("./ipc/getPaintExoQst");
 const { initAddPaintExoMain } = require("./ipc/addPaintExo");
+const { initGetCustomPaintExoNumMain } = require("./ipc/getCustomPaintExoNum");
 
 function initIpcMain() {
   initStoreMain();
@@ -22,6 +23,7 @@ function initIpcMain() {
   initGetPaintDrawingMain();
   initGetPaintExoQstMain();
   initAddPaintExoMain();
+  initGetCustomPaintExoNumMain();
 }
 
 module.exports = initIpcMain;

@@ -60,6 +60,10 @@ const schema = {
     minimum: 0,
     default: 1,
   },
+  exoScore: {
+    type: "array",
+    default: [0, 0, 0, 0, 0],
+  },
 };
 
 const store = new Store({ schema });

@@ -1,10 +1,12 @@
-const { ipcMain, ipcRenderer } = require("electron");
+const { ipcMain, ipcRenderer, app } = require("electron");
 const fs = require("fs");
 const path = require("path");
 
 function initGetPaintExoQstMain() {
-  ipcMain.handle("get-paint-qst", async (evnt, qstNum) => {
-    const questionsPath = path.join(__dirname, "../..", "exercices", "grille");
+  ipcMain.handle("get-paint-qst", async (evnt, qstNum, customEx) => {
+    const questionsPath = customEx
+      ? path.join(app.getPath("userData"), "exoGrille")
+      : path.join(__dirname, "../..", "exercices", "grille");
     try {
       const jsonContent = await fs.promises.readFile(
         path.join(questionsPath, `question${qstNum}.json`),
@@ -21,7 +23,8 @@ function initGetPaintExoQstMain() {
 
 function initGetPaintExoQstRender() {
   return {
-    getPaintExoQst: (qstNum) => ipcRenderer.invoke("get-paint-qst", qstNum),
+    getPaintExoQst: (qstNum, customEx) =>
+      ipcRenderer.invoke("get-paint-qst", qstNum, customEx),
   };
 }
 module.exports = { initGetPaintExoQstMain, initGetPaintExoQstRender };

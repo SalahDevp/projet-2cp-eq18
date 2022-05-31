@@ -5,7 +5,8 @@ const path = require("path");
 function initAddPaintExoMain() {
   ipcMain.handle("add-paint-exo", async (evnt, jsonString) => {
     const exoGrilleDirPath = path.join(app.getPath("userData"), "exoGrille");
-    if (!fs.existsSync(exoGrilleDirPath)) fs.mkdirSync(exoGrilleDirPath); //if dir doesnt exits create one
+    if (!fs.existsSync(exoGrilleDirPath))
+      fs.mkdirSync(exoGrilleDirPath, { recursive: true }); //if dir doesnt exits create one
     const fileNames = await fs.promises.readdir(exoGrilleDirPath);
     const newFileName = `question${fileNames.length + 1}.json`;
     try {

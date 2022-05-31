@@ -15,6 +15,7 @@ import NchangeTeacherpassword from "pages/NchangeTeacherPassword";
 import Parametre from "pages/Parametre";
 import ImageQCM from "pages/ImageQCM";
 import MenuExo from "pages/MenuExo";
+import Grille from "pages/Grille";
 function App() {
   return (
     <AppContext>
@@ -25,6 +26,8 @@ function App() {
           <Route path="NMenu" element={<NMenu />} />
           <Route path="edit-cour/:type" element={<EditCour />} />
           <Route path="paint" element={<Paint />} />
+          <Route path="grille/:num" element={<Grille />} />
+
           <Route path="/cour-centrale" element={<CourCentrale />} />
           <Route path="/cour-axiale" element={<CourAxiale />} />
           <Route path="/Menu-Cour" element={<MenuCour />} />

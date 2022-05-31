@@ -12,6 +12,9 @@ const { initSavePaintDrawingRender } = require("./ipc/savePaintDrawing");
 const { initGetPaintDrawingRender } = require("./ipc/getPaintDrawing");
 const { initGetPaintExoQstRender } = require("./ipc/getPaintExoQst");
 const { initAddPaintExoRender } = require("./ipc/addPaintExo");
+const {
+  initGetCustomPaintExoNumRender,
+} = require("./ipc/getCustomPaintExoNum");
 
 //load -store api- in window object
 contextBridge.exposeInMainWorld("electronAPI", {
@@ -26,4 +29,5 @@ contextBridge.exposeInMainWorld("electronAPI", {
   ...initGetPaintDrawingRender(),
   ...initGetPaintExoQstRender(),
   ...initAddPaintExoRender(),
+  ...initGetCustomPaintExoNumRender(),
 });

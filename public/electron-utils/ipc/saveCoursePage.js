@@ -12,7 +12,8 @@ function initSaveCoursePageMain() {
         type,
         language
       );
-      if (!fs.existsSync(coursesDirPath)) fs.mkdirSync(coursesDirPath); //if dir doesnt exits create one
+      if (!fs.existsSync(coursesDirPath))
+        fs.mkdirSync(coursesDirPath, { recursive: true }); //if dir doesnt exits create one
       const fileNames = await fs.promises.readdir(coursesDirPath);
       const newFileName = `page${pageNum || fileNames.length + 1}.html`;
       try {

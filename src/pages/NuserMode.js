@@ -14,6 +14,7 @@ import Sortir from "components/sortir";
 import Ligne from "components/ligne";
 import Cercles from "components/cercles";
 import Pastilles from "components/Pastilles";
+
 const NUserMode = () => {
   const { t } = useTranslation();
   const { i18n } = useTranslation();
@@ -97,6 +98,7 @@ const NUserMode = () => {
           {/* div for teacher */}
           <div
             id="teacher"
+            onClick={() => navigate("/TeacherPassword")}
             className=" cursor-pointer overflow-hidden pt-2 pb-12 px-4 border-px border-gray-500 w-52 rounded-xl h-full"
             onMouseEnter={nanaTE}
           >
@@ -108,6 +110,7 @@ const NUserMode = () => {
             id="student"
             className="cursor-pointer overflow-hidden pt-2 pb-12 px-5  border-px border-gray-500 w-52 rounded-xl h-full"
             onMouseEnter={nanaSE}
+            onClick={handleStudentMode}
           >
             <p className="text-center text-2xl">{t("student")}</p>
             <img className="h-full w-56 mt-2" src={student} alt="" />

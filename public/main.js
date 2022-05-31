@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow, Menu } = require("electron");
 
 const path = require("path");
 const isDev = require("electron-is-dev");
@@ -14,6 +14,7 @@ function createWindow() {
     webPreferences: {
       preload: path.join(__dirname, "/electron-utils/preload.js"),
       webSecurity: isDev ? false : true,
+      devTools: isDev,
     },
   });
 
@@ -39,6 +40,10 @@ function createWindow() {
 }
 
 app.whenReady().then(() => {
+  //remove help form menu bar
+  const menu = Menu.getApplicationMenu();
+  const items = menu?.items.filter((item) => item.role !== "help");
+  Menu.setApplicationMenu(Menu.buildFromTemplate(items));
   initIpcMain();
   createWindow();
 });

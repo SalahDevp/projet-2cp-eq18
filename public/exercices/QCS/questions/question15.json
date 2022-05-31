@@ -1,12 +1,12 @@
 {
-    "question": {
-      "fr": "Combien y a-t-il d'axes de symétrie dans un parallélogramme ?",
-      "ar": "كم عدد خطوط التناظرالموجودة في متوازي الأضلاع؟"
-    },
-    "image": "question1.png",
-    "options": {
-      "fr": ["un", "deux ", "trois", "aucune de ces réponse"],
-      "ar": ["واحد", "إثنان", "ثلاثة", "أيا من هذه الإجابات"]
-    },
-    "rightOptions": 4
-  }
+  "question": {
+    "fr": "Combien y a-t-il d'axes de symétrie dans un parallélogramme ?",
+    "ar": "كم عدد محاور التناظر الموجودة في متوازي الأضلاع؟"
+  },
+  "image": "question15.png",
+  "options": {
+    "fr": ["un", "deux ", "trois", "aucune de ces réponse"],
+    "ar": ["واحد", "إثنان", "ثلاثة", "أيا من هذه الإجابات"]
+  },
+  "rightOptions": 4
+}
