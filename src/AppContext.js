@@ -1,4 +1,5 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect, useRef } from "react";
+import bgMusic from "assets/audio/bgMusic.mp3";
 
 const languageContext = React.createContext();
 const userModeContext = React.createContext();
@@ -28,6 +29,7 @@ const AppContext = ({ children }) => {
   const [soundLevel, setSoundLevel] = useState(0);
   const [musicLevel, setMusicLevel] = useState(0);
   const [exoScore, setExoScore] = useState([]);
+  const backgroundMusic = useRef(new Audio(bgMusic));
   //funcs
   /**
    *
@@ -64,7 +66,15 @@ const AppContext = ({ children }) => {
         console.error(e);
       }
     })();
+    //play bg music
+    backgroundMusic.current.loop = true;
+    backgroundMusic.current.play();
   }, []);
+  //change bgMusic volume
+  useEffect(() => {
+    backgroundMusic.current.volume = musicLevel;
+    backgroundMusic.current.play();
+  }, [musicLevel]);
 
   return (
     <languageContext.Provider value={{ language, setLanguage }}>

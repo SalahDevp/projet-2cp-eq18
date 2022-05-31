@@ -9,5 +9,6 @@ const level3 = [
   "/image-qcm/9",
   "/qcs/19",
   "/qcm/10",
+  "/grille/3",
 ];
 export default level3;
